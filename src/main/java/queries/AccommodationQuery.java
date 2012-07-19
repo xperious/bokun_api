@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import utils.DateUtils;
 import utils.StringUtils;
 
@@ -62,6 +64,7 @@ public class AccommodationQuery extends AbstractQuery {
     	return t.toUpperCase();
     }
 	
+    @JsonIgnore
 	public boolean isAvailabilityQuery() {
 		return checkInDate() != null && checkOutDate() != null;
 	}

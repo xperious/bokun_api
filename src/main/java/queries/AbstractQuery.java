@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import utils.StringUtils;
 
 /**
@@ -20,6 +22,7 @@ public abstract class AbstractQuery {
     public int pg = 1;
     public int ps = 20;
 
+    @JsonIgnore
     public Map<String,String[]> rawQueryString = new HashMap<String, String[]>();
 
     protected abstract String getStartDateParam();
