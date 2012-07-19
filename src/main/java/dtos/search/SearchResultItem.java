@@ -17,4 +17,8 @@ public class SearchResultItem {
 	
 	public PhotoDto keyPhoto;
 	public List<PhotoDto> photos = new ArrayList<PhotoDto>();
+	
+	public Long getLongId() {
+		return Long.parseLong(id);
+	}
 }
