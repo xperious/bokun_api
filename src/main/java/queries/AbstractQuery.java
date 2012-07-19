@@ -28,6 +28,25 @@ public abstract class AbstractQuery {
     protected abstract String getStartDateParam();
     protected abstract String getEndDateParam();
     
+    public AbstractQuery() {
+    }
+    
+    public void setV(String v) {
+    	this.v = v;
+    }
+    public void setL(LocationQuery l) {
+    	this.l = l;
+    }
+    public void setP(NumericRange p) {
+    	this.p = p;
+    }
+    public void setPg(int pg) {
+    	this.pg = pg;
+    }
+    public void setPs(int ps) {
+    	this.ps = ps;
+    }
+    
     public boolean hasNonEmptyParam(String name) {
         return rawQueryString.containsKey(name) && !rawQueryString.get(name)[0].trim().isEmpty();
     }
@@ -48,7 +67,7 @@ public abstract class AbstractQuery {
     public Date endDate() {
         return StringUtils.parseDate(getEndDateParam());
     }
-
+    
     public boolean viewMap() {
         return v != null && v.equalsIgnoreCase("map");
     }
@@ -65,7 +84,17 @@ public abstract class AbstractQuery {
     }
 
     public boolean filterByPrice() {
-        return p != null && p.filter("test") != null;
+    	if ( p == null ) {
+    		return false;
+    	}
+		if ( (p.f != null && p.f >= 0) && (p.t != null && p.t > p.f) ) {
+			return true;
+		} else if ( (p.f == null) && (p.t != null && p.t > 0) ) {
+			return true;
+		} else if ( (p.f != null && p.f >= 0) && (p.t == null) ) {
+			return true;
+		}
+		return false;
     }
 
     public int page() {

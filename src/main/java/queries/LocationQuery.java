@@ -16,4 +16,17 @@ public class LocationQuery {
 			return dist;
 		}
 	}
+	
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
+	public void setPref(String pref) {
+		this.pref = pref;
+	}
+	public void setDist(String dist) {
+		this.dist = dist;
+	}
 }

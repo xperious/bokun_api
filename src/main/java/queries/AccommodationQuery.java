@@ -23,7 +23,28 @@ public class AccommodationQuery extends AbstractQuery {
 	public SortOrder order;
 
 	public AccommodationQuery() {
+		super();
 		r.add(new RoomQuery(2, null));
+	}
+	
+	public void setCin(String s) {
+		this.cin = s;
+	}
+	public void setCout(String s) {
+		this.cout = s;
+	}
+	public void setT(String s) {
+		this.t = s;
+	}
+	public void setR(List<RoomQuery> rooms) {
+		this.r = rooms;
+	}
+	
+	public void setSort(AccommodationSortField s) {
+		this.sort = s;
+	}
+	public void setSortOrder(SortOrder s) {
+		this.order = s;
 	}
 
 	@Override
@@ -117,6 +138,11 @@ public class AccommodationQuery extends AbstractQuery {
 			sum += q.children().size();
 		}
 		return sum;
+	}
+	
+	public String validate() {
+		System.out.println("BOBOBOB");
+		return null;
 	}
 
 }
