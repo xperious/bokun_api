@@ -10,6 +10,8 @@ import utils.StringUtils;
 
 
 public class AccommodationQuery extends AbstractQuery {
+	
+	public String cin, cout;
 
 	public List<RoomQuery> r = new ArrayList<RoomQuery>();
 
@@ -20,6 +22,26 @@ public class AccommodationQuery extends AbstractQuery {
 
 	public AccommodationQuery() {
 		r.add(new RoomQuery(2, null));
+	}
+
+	@Override
+	public void setStartDateStr(String s) {
+		cin = s;
+	}
+
+	@Override
+	public void setEndDateStr(String s) {
+		cout = s;
+	}
+
+	@Override
+	protected String getStartDateParam() {
+		return cin;
+	}
+
+	@Override
+	protected String getEndDateParam() {
+		return cout;
 	}
 
 	public Set<Long> idsFromParam(String name) {  

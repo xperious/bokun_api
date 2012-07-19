@@ -7,13 +7,34 @@ import utils.StringUtils;
 
 public class ActivityQuery extends AbstractQuery { 
 
+	public String sd, ed;
     public int adl = 1;
     public String chl;
 
     public ActivityQuery() {
     }
 
-    public int adults() {
+    @Override
+	protected String getStartDateParam() {
+		return sd;
+	}
+
+	@Override
+	protected String getEndDateParam() {
+		return ed;
+	}
+	
+	@Override
+	public void setStartDateStr(String s) {
+		sd = s;
+	}
+
+	@Override
+	public void setEndDateStr(String s) {
+		ed = s;
+	}
+
+	public int adults() {
         return adl;
     }
 

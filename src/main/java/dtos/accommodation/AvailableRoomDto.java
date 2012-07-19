@@ -13,7 +13,6 @@ public class AvailableRoomDto {
 	public int totalPrice;
 	public int maxBookableCount;
 
-    public AccommodationQuery query;
     public List<Integer> guestCounts = new ArrayList<Integer>();
 
 	public RoomTypeDto roomType;
@@ -26,7 +25,6 @@ public class AvailableRoomDto {
 		this.id = id;
 		this.totalPrice = totalPrice;
 		this.roomType = roomType;
-        this.query = query;
 
         this.maxBookableCount = roomType.shared && !showFullAvailability
                 ? Math.min(availableAcrossInterval, query.totalCapacityNeeded())
