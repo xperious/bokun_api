@@ -3,6 +3,8 @@ package dtos.search;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import dtos.LocationDto;
 import dtos.PhotoDto;
 
@@ -18,6 +20,7 @@ public class SearchResultItem {
 	public PhotoDto keyPhoto;
 	public List<PhotoDto> photos = new ArrayList<PhotoDto>();
 	
+	@JsonIgnore
 	public Long getLongId() {
 		return Long.parseLong(id);
 	}

@@ -139,10 +139,5 @@ public class AccommodationQuery extends AbstractQuery {
 		}
 		return sum;
 	}
-	
-	public String validate() {
-		System.out.println("BOBOBOB");
-		return null;
-	}
 
 }
