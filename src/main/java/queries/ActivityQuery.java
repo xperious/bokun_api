@@ -13,6 +13,31 @@ public class ActivityQuery extends AbstractQuery {
 
     public ActivityQuery() {
     }
+    
+    public void setSd(String sd) {
+    	this.sd = sd;
+    }
+    public void setStartDate(String sd) {
+    	this.sd = sd;
+    }
+    public void setEd(String ed) {
+    	this.ed = ed;
+    }
+    public void setEndDate(String ed) {
+    	this.ed = ed;
+    }
+    public void setAdults(int adl) {
+    	this.adl = adl;
+    }
+    public void setAdl(int adl) {
+    	this.adl = adl;
+    }
+    public void setChildren(String chl) {
+    	this.chl = chl;
+    }
+    public void setChl(String chl) {
+    	this.chl = chl;
+    }
 
     @Override
 	protected String getStartDateParam() {
