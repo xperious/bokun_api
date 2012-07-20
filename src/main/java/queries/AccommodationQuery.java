@@ -80,10 +80,6 @@ public class AccommodationQuery extends AbstractQuery {
 		return cout;
 	}
 
-	public Set<Long> idsFromParam(String name) {  
-		return StringUtils.commaSeparatedStringToIds(rawQueryString.get(name)[0]);
-	}
-
     public boolean hasType() {
         if ( atype == null || atype.trim().isEmpty() ) {
             return false;

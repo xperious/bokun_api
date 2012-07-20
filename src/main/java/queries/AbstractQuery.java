@@ -24,9 +24,6 @@ public abstract class AbstractQuery {
 
     public int pg = 1;
     public int ps = 20;
-
-    @JsonIgnore
-    public Map<String,String[]> rawQueryString = new HashMap<String, String[]>();
     
     public AbstractQuery() {
     }
@@ -34,14 +31,17 @@ public abstract class AbstractQuery {
     protected abstract String getStartDateParam();
     protected abstract String getEndDateParam();
     
-    public void setFacetMap(Map<String,String> facetMap) {
+    public void setFacets(Map<String,String> facetMap) {
     	this.facets = facetMap;
     }
-    public Map<String,String> getFacetMap() {
+    public Map<String,String> getFacets() {
     	return facets;
     }
     public Set<String> getFacetValues(String name) {
     	return StringUtils.commaSeparatedToSet(facets.get(name));
+    }
+    public boolean hasFacet(String name) {
+    	return facets.containsKey(name);
     }
     
     public void setVm(String v) {
@@ -79,18 +79,6 @@ public abstract class AbstractQuery {
     }
     public void setPageSize(int ps) {
     	this.ps = ps;
-    }
-    
-    public boolean hasNonEmptyParam(String name) {
-        return rawQueryString.containsKey(name) && !rawQueryString.get(name)[0].trim().isEmpty();
-    }
-    
-    public String getFirstParamValue(String name) {
-    	if ( hasNonEmptyParam(name) ) {
-    		return rawQueryString.get(name)[0];
-    	} else {
-    		return null;
-    	}
     }
     
     public abstract void setStartDateStr(String s);
