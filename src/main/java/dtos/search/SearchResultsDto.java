@@ -11,5 +11,6 @@ public class SearchResultsDto<T extends SearchResultItem> {
 	
 	public List<T> items;
 	
-	public Map<String,TermsFacet> termFacets = new HashMap<String,TermsFacet>();
+	public Map<String,TermsFacetDto> termsFacets = new HashMap<String,TermsFacetDto>();
+	public Map<String,StatisticalFacetDto> statisticalFacets = new HashMap<String,StatisticalFacetDto>();
 }
