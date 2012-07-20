@@ -1,10 +1,9 @@
 package queries;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
@@ -17,11 +16,11 @@ public abstract class AbstractQuery {
 
     public String vm; // view mode
 
-    public LocationQuery lq;
+    public LocationQuery lq = new LocationQuery();
 
     public NumericRange pr; // price range
     
-    public List<FacetQuery> facets = new ArrayList<FacetQuery>();
+    public Map<String,String> facets = new HashMap<String,String>();
 
     public int pg = 1;
     public int ps = 20;
@@ -35,24 +34,36 @@ public abstract class AbstractQuery {
     protected abstract String getStartDateParam();
     protected abstract String getEndDateParam();
     
-    public void setFacets(List<FacetQuery> facets) {
-    	this.facets = facets;
+    public void setFacetMap(Map<String,String> facetMap) {
+    	this.facets = facetMap;
     }
-    public List<FacetQuery> facets() {
+    public Map<String,String> getFacetMap() {
     	return facets;
+    }
+    public Set<String> getFacetValues(String name) {
+    	return StringUtils.commaSeparatedToSet(facets.get(name));
     }
     
     public void setVm(String v) {
     	this.vm = v;
     }
+    public String getVm() {
+    	return vm;
+    }
     public void setLq(LocationQuery l) {
     	this.lq = l;
+    }
+    public LocationQuery getLq() {
+    	return lq;
     }
     public void setLocation(LocationQuery l) {
     	setLq(l);
     }
     public void setPr(NumericRange p) {
     	this.pr = p;
+    }
+    public NumericRange getPr() {
+    	return pr;
     }
     public void setPrice(NumericRange p) {
     	this.pr = p;

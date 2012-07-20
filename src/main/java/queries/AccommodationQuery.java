@@ -36,15 +36,28 @@ public class AccommodationQuery extends AbstractQuery {
 	public void setType(String s) {
 		this.atype = s;
 	}
+	
 	public void setRooms(List<RoomQuery> rooms) {
 		this.rooms = rooms;
+	}
+	public List<RoomQuery> getRooms() {
+		return rooms;
+	}
+	public List<RoomQuery> rooms() {
+		return rooms;
 	}
 	
 	public void setSort(AccommodationSortField s) {
 		this.sort = s;
 	}
+	public AccommodationSortField getSort() {
+		return sort;
+	}
 	public void setSortOrder(SortOrder s) {
 		this.order = s;
+	}
+	public SortOrder getSortOrder() {
+		return order;
 	}
 
 	@Override
@@ -99,10 +112,6 @@ public class AccommodationQuery extends AbstractQuery {
 	}
 	public Date checkOutDate() {
 		return endDate();
-	}
-	
-	public List<RoomQuery> rooms() {
-		return rooms;
 	}
 
     public int nightCount() {
