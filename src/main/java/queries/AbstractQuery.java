@@ -1,7 +1,9 @@
 package queries;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -18,17 +20,26 @@ public abstract class AbstractQuery {
     public LocationQuery lq;
 
     public NumericRange pr; // price range
+    
+    public List<FacetQuery> facets = new ArrayList<FacetQuery>();
 
     public int pg = 1;
     public int ps = 20;
 
     @JsonIgnore
     public Map<String,String[]> rawQueryString = new HashMap<String, String[]>();
-
+    
+    public AbstractQuery() {
+    }
+    
     protected abstract String getStartDateParam();
     protected abstract String getEndDateParam();
     
-    public AbstractQuery() {
+    public void setFacets(List<FacetQuery> facets) {
+    	this.facets = facets;
+    }
+    public List<FacetQuery> facets() {
+    	return facets;
     }
     
     public void setVm(String v) {
@@ -85,6 +96,9 @@ public abstract class AbstractQuery {
     }
     public boolean viewList() {
         return vm == null || !viewMap();
+    }
+    public String viewMode() {
+    	return vm;
     }
 
     public boolean hasLocation() {

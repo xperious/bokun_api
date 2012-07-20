@@ -77,6 +77,10 @@ public class AccommodationQuery extends AbstractQuery {
         }
         return type() != null;
     }
+    
+    public String atype() {
+    	return type();
+    }
 
     public String type() {
     	if ( atype == null || atype.trim().isEmpty() ) {

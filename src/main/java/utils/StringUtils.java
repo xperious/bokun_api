@@ -28,6 +28,17 @@ public class StringUtils {
     public static boolean isNullOrEmpty(String s) {
         return s == null || s.trim().isEmpty();
     }
+    
+    public static Set<String> commaSeparatedToSet(String s) {
+    	Set<String> set = new HashSet<String>();
+		if ( s == null || s.trim().isEmpty() ) return set;
+		for ( String id : s.trim().split(",") ) {
+			if ( !id.trim().isEmpty() ) {
+				set.add(id);
+			}
+		}
+    	return set;
+    }
 
 	public static Set<Long> commaSeparatedStringToIds( String s ) {
 		Set<Long> ids = new HashSet<Long>();
