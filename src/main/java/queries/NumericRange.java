@@ -5,30 +5,30 @@ package queries;
  */
 public class NumericRange {
 	
-	public Integer f;
-	public Integer t;
+	public Integer from;
+	public Integer to;
 	
-	public void setF(Integer f) {
-		this.f = f;
+	public void setFrom(Integer f) {
+		this.from = f;
 	}
-	public void setT(Integer t) {
-		this.t = t;
+	public void setTo(Integer t) {
+		this.to = t;
 	}
 
     public Integer from() {
-        return f == null ? 0 : f;
+        return from == null ? 0 : from;
     }
 
     public Integer to() {
-        return t == null ? 0 : t;
+        return to == null ? 0 : to;
     }
 	
 	public String asComparison(String low, String high, String varName) {
-		if ( (f != null && f >= 0) && (t != null && t > f) ) {
+		if ( (from != null && from >= 0) && (to != null && to > from) ) {
 			return "(" + low + " <= " + varName + ") && (" + varName + " <= " + high + ")";
-		} else if ( (f == null) && (t != null && t > 0) ) {
+		} else if ( (from == null) && (to != null && to > 0) ) {
 			return varName + " <= " + high;
-		} else if ( (f != null && f >= 0) && (t == null) ) {
+		} else if ( (from != null && from >= 0) && (to == null) ) {
 			return low + " <= " + varName;
 		}
 		return "true";

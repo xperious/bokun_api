@@ -25,7 +25,13 @@ public class RoomQuery {
 	public void setAdl(int adl) {
 		this.adl = adl;
 	}
+	public void setAdults(int adl) {
+		this.adl = adl;
+	}
 	public void setChl(String chl) {
+		this.chl = chl;
+	}
+	public void setChildren(String chl) {
 		this.chl = chl;
 	}
 

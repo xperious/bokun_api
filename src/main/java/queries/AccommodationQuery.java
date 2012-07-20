@@ -15,16 +15,16 @@ public class AccommodationQuery extends AbstractQuery {
 	
 	public String cin, cout;
 
-	public List<RoomQuery> r = new ArrayList<RoomQuery>();
+	public List<RoomQuery> rooms = new ArrayList<RoomQuery>();
 
-	public String t;
+	public String atype;
 
 	public AccommodationSortField sort;
 	public SortOrder order;
 
 	public AccommodationQuery() {
 		super();
-		r.add(new RoomQuery(2, null));
+		rooms.add(new RoomQuery(2, null));
 	}
 	
 	public void setCin(String s) {
@@ -33,11 +33,11 @@ public class AccommodationQuery extends AbstractQuery {
 	public void setCout(String s) {
 		this.cout = s;
 	}
-	public void setT(String s) {
-		this.t = s;
+	public void setType(String s) {
+		this.atype = s;
 	}
-	public void setR(List<RoomQuery> rooms) {
-		this.r = rooms;
+	public void setRooms(List<RoomQuery> rooms) {
+		this.rooms = rooms;
 	}
 	
 	public void setSort(AccommodationSortField s) {
@@ -72,17 +72,17 @@ public class AccommodationQuery extends AbstractQuery {
 	}
 
     public boolean hasType() {
-        if ( t == null || t.trim().isEmpty() ) {
+        if ( atype == null || atype.trim().isEmpty() ) {
             return false;
         }
         return type() != null;
     }
 
     public String type() {
-    	if ( t == null || t.trim().isEmpty() ) {
+    	if ( atype == null || atype.trim().isEmpty() ) {
     		return null;
     	}
-    	return t.toUpperCase();
+    	return atype.toUpperCase();
     }
 	
     @JsonIgnore
@@ -98,7 +98,7 @@ public class AccommodationQuery extends AbstractQuery {
 	}
 	
 	public List<RoomQuery> rooms() {
-		return r;
+		return rooms;
 	}
 
     public int nightCount() {
@@ -109,8 +109,8 @@ public class AccommodationQuery extends AbstractQuery {
     }
 
 	public int minCapacityNeeded() {
-		int min = r.get(0).sleepingPlacesNeeded();
-		for ( RoomQuery q : r ) {
+		int min = rooms.get(0).sleepingPlacesNeeded();
+		for ( RoomQuery q : rooms ) {
 			min = Math.min(min, q.sleepingPlacesNeeded());
 		}
 		return min;
@@ -118,7 +118,7 @@ public class AccommodationQuery extends AbstractQuery {
 
     public int totalCapacityNeeded() {
         int count = 0;
-        for ( RoomQuery q : r ) {
+        for ( RoomQuery q : rooms ) {
             count += q.sleepingPlacesNeeded();
         }
         return count;

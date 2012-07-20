@@ -13,11 +13,11 @@ import utils.StringUtils;
  */
 public abstract class AbstractQuery {
 
-    public String v; // view mode
+    public String vm; // view mode
 
-    public LocationQuery l;
+    public LocationQuery lq;
 
-    public NumericRange p; // price range
+    public NumericRange pr; // price range
 
     public int pg = 1;
     public int ps = 20;
@@ -31,19 +31,31 @@ public abstract class AbstractQuery {
     public AbstractQuery() {
     }
     
-    public void setV(String v) {
-    	this.v = v;
+    public void setVm(String v) {
+    	this.vm = v;
     }
-    public void setL(LocationQuery l) {
-    	this.l = l;
+    public void setLq(LocationQuery l) {
+    	this.lq = l;
     }
-    public void setP(NumericRange p) {
-    	this.p = p;
+    public void setLocation(LocationQuery l) {
+    	setLq(l);
+    }
+    public void setPr(NumericRange p) {
+    	this.pr = p;
+    }
+    public void setPrice(NumericRange p) {
+    	this.pr = p;
+    }
+    public void setPage(int pg) {
+    	this.pg = pg;
     }
     public void setPg(int pg) {
     	this.pg = pg;
     }
     public void setPs(int ps) {
+    	this.ps = ps;
+    }
+    public void setPageSize(int ps) {
     	this.ps = ps;
     }
     
@@ -69,29 +81,33 @@ public abstract class AbstractQuery {
     }
     
     public boolean viewMap() {
-        return v != null && v.equalsIgnoreCase("map");
+        return vm != null && vm.equalsIgnoreCase("map");
     }
     public boolean viewList() {
-        return v == null || !viewMap();
+        return vm == null || !viewMap();
     }
 
     public boolean hasLocation() {
-        return l != null && !(l.lat == 0 && l.lng == 0);
+        return lq != null && !(lq.lat == 0 && lq.lng == 0);
     }
 
     public LocationQuery location() {
-        return l;
+        return lq;
+    }
+    
+    public NumericRange priceRange() {
+    	return pr;
     }
 
     public boolean filterByPrice() {
-    	if ( p == null ) {
+    	if ( pr == null ) {
     		return false;
     	}
-		if ( (p.f != null && p.f >= 0) && (p.t != null && p.t > p.f) ) {
+		if ( (pr.from != null && pr.from >= 0) && (pr.to != null && pr.to > pr.from) ) {
 			return true;
-		} else if ( (p.f == null) && (p.t != null && p.t > 0) ) {
+		} else if ( (pr.from == null) && (pr.to != null && pr.to > 0) ) {
 			return true;
-		} else if ( (p.f != null && p.f >= 0) && (p.t == null) ) {
+		} else if ( (pr.from != null && pr.from >= 0) && (pr.to == null) ) {
 			return true;
 		}
 		return false;
