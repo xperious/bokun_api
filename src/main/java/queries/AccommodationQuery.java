@@ -17,8 +17,6 @@ public class AccommodationQuery extends AbstractQuery {
 
 	public List<RoomQuery> rooms = new ArrayList<RoomQuery>();
 
-	public String atype;
-
 	public AccommodationSortField sort;
 	public SortOrder order;
 
@@ -32,9 +30,6 @@ public class AccommodationQuery extends AbstractQuery {
 	}
 	public void setCout(String s) {
 		this.cout = s;
-	}
-	public void setType(String s) {
-		this.atype = s;
 	}
 	
 	public void setRooms(List<RoomQuery> rooms) {
@@ -81,21 +76,17 @@ public class AccommodationQuery extends AbstractQuery {
 	}
 
     public boolean hasType() {
-        if ( atype == null || atype.trim().isEmpty() ) {
+        if ( !hasFacet("type") || facets.get("type").trim().isEmpty() ) {
             return false;
         }
         return type() != null;
     }
-    
-    public String atype() {
-    	return type();
-    }
 
     public String type() {
-    	if ( atype == null || atype.trim().isEmpty() ) {
+    	if ( !hasType() ) {
     		return null;
     	}
-    	return atype.toUpperCase();
+    	return facets.get("type").toUpperCase();
     }
 	
     @JsonIgnore
