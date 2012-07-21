@@ -76,10 +76,7 @@ public class AccommodationQuery extends AbstractQuery {
 	}
 
     public boolean hasType() {
-        if ( !hasFacet("type") || facets.get("type").trim().isEmpty() ) {
-            return false;
-        }
-        return type() != null;
+        return hasFacet("type") && !facets.get("type").trim().isEmpty();
     }
 
     public String type() {
