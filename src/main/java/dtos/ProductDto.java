@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.codiform.moo.annotation.CollectionProperty;
+import com.codiform.moo.annotation.Optionality;
 import com.codiform.moo.annotation.Property;
 
 public abstract class ProductDto {
@@ -17,6 +19,7 @@ public abstract class ProductDto {
 
     public Set<Long> tags;
     
+    @CollectionProperty(optionality=Optionality.OPTIONAL)
     public Set<TagGroupDto> tagGroups = new HashSet<TagGroupDto>();
     
     @Property(translate = true)

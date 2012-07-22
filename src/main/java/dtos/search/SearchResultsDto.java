@@ -1,8 +1,7 @@
 package dtos.search;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class SearchResultsDto<T extends SearchResultItem> {
 
@@ -11,22 +10,21 @@ public class SearchResultsDto<T extends SearchResultItem> {
 	
 	public List<T> items;
 	
-	public Map<String,TermsFacetDto> termsFacets = new HashMap<String,TermsFacetDto>();
-	public Map<String,StatisticalFacetDto> statisticalFacets = new HashMap<String,StatisticalFacetDto>();
+	public TermsFacetDto typeFacet;
+	public List<TermsFacetDto> tagFacets = new ArrayList<TermsFacetDto>();
+	public StatisticalFacetDto priceFacet;
 	
-	public boolean hasTermsFacet(String name) {
-		return termsFacets.containsKey(name);
+	public boolean hasTagFacet(String name) {
+		return tagFacet(name) != null;
 	}
 	
-	public TermsFacetDto termsFacet(String name) {
-		return termsFacets.get(name);
+	public TermsFacetDto tagFacet(String name) {
+		for (TermsFacetDto facet : tagFacets) {
+			if ( facet.name.equals(name) ) {
+				return facet;
+			}
+		}
+		return null;
 	}
-	
-	public boolean hasStatisticalFacet(String name) {
-		return statisticalFacets.containsKey(name);
-	}
-	
-	public StatisticalFacetDto statisticalFacet(String name) {
-		return statisticalFacets.get(name);
-	}
+
 }
