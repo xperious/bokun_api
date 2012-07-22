@@ -1,6 +1,7 @@
 package dtos;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import com.codiform.moo.annotation.Property;
@@ -15,6 +16,8 @@ public abstract class ProductDto {
     public Date lastPublished;
 
     public Set<Long> tags;
+    
+    public Set<TagGroupDto> tagGroups = new HashSet<TagGroupDto>();
     
     @Property(translate = true)
     public VendorDto vendor;

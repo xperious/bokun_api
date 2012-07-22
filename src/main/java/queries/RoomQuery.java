@@ -1,9 +1,9 @@
 package queries;
 
-import utils.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import utils.StringUtils;
 
 /**
  * @author Olafur Gauti Gudmundsson
