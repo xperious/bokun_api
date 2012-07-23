@@ -10,6 +10,8 @@ public class SearchResultsDto<T extends SearchResultItem> {
 	
 	public List<T> items;
 	
+	public List<TermFilter> tagFilters = new ArrayList<TermFilter>();
+	
 	public TermsFacetDto typeFacet;
 	public List<TermsFacetDto> tagFacets = new ArrayList<TermsFacetDto>();
 	public StatisticalFacetDto priceFacet;
