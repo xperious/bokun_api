@@ -10,6 +10,6 @@ public class PhotoGalleryDto {
 	@Property(translate = true)
 	public PhotoDto keyPhoto;
 	
-	@CollectionProperty(itemTranslation = PhotoDto.class)
+	@CollectionProperty(itemTranslation = PhotoDto.class, translation = "getPhotos()")
 	public List<PhotoDto> photos;
 }
