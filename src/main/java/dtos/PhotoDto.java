@@ -8,7 +8,10 @@ public class PhotoDto {
 	public Long id;
 	
 	@Property(optionality=Optionality.OPTIONAL)
-	public String path;
+	public String sourceUrl;
+	
+	@Property(optionality=Optionality.OPTIONAL)
+	public String thumbnailUrl;
 	
 	public PhotoDto() {}
 }
