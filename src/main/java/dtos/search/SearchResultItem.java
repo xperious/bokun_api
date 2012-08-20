@@ -1,12 +1,10 @@
 package dtos.search;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-import dtos.LocationDto;
-import dtos.PhotoDto;
+import dtos.*;
 
 public class SearchResultItem {
 
@@ -19,6 +17,8 @@ public class SearchResultItem {
 	
 	public PhotoDto keyPhoto;
 	public List<PhotoDto> photos = new ArrayList<PhotoDto>();
+	
+	public List<VideoDto> videos = new ArrayList<VideoDto>();
 	
 	@JsonIgnore
 	public Long getLongId() {
