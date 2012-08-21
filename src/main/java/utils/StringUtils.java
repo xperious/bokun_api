@@ -65,4 +65,13 @@ public class StringUtils {
         }
         return ints;
     }
+    
+    public static String idSetToCommaSeparated(Set<Long> set) {
+    	StringBuilder s = new StringBuilder();
+    	for ( Long l : set ) {
+    		if ( s.length() > 0 ) { s.append(','); }
+    		s.append(l);
+    	}
+    	return s.toString();
+    }
 }
