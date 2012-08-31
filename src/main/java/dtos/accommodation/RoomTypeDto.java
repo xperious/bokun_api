@@ -1,9 +1,10 @@
 package dtos.accommodation;
 
-import java.util.Set;
+import java.util.*;
 
-import com.codiform.moo.annotation.CollectionProperty;
-import com.codiform.moo.annotation.Property;
+import com.codiform.moo.annotation.*;
+
+import dtos.*;
 
 public class RoomTypeDto {
 
@@ -36,11 +37,12 @@ public class RoomTypeDto {
 	public boolean singleOccupancyDiscountEnabled = false;
 	public int singleOccupancyDiscount = 0;
 	
-	public Set<Long> tags;
+	@CollectionProperty(optionality = Optionality.OPTIONAL)
+	public List<TagGroupDto> tags = new ArrayList<TagGroupDto>();
 	
-	@CollectionProperty(translation = "photos()")
-	public Set<Long> photoIds;
+	@CollectionProperty(optionality = Optionality.OPTIONAL)
+	public List<PhotoDto> photos = new ArrayList<PhotoDto>();
 	
-	@CollectionProperty(translation = "extras()")
-	public Set<Long> extraIds;
+	@CollectionProperty(optionality = Optionality.OPTIONAL)
+	public List<AccommodationExtraDto> extras = new ArrayList<AccommodationExtraDto>();
 }
