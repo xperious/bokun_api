@@ -1,10 +1,10 @@
 package dtos.activity;
 
-import java.util.Set;
+import java.util.*;
 
-import com.codiform.moo.annotation.*;
+import com.codiform.moo.annotation.Property;
 
-import dtos.PlaceDto;
+import dtos.*;
 
 public class AgendaItemDto {
 
@@ -16,7 +16,6 @@ public class AgendaItemDto {
     @Property(translate = true)
     public PlaceDto place;
     
-	@CollectionProperty(translation = "photos()")
-	public Set<Long> photoIds;
+    public List<PhotoDto> photos = new ArrayList<PhotoDto>();
     
 }

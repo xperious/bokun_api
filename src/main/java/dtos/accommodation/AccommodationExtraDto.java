@@ -13,8 +13,6 @@ public class AccommodationExtraDto {
 	public String title;
 	public boolean mandatory;
 
-	public boolean active = true;
-
 	public boolean freeOfCharge;
 	public int price;
 	

@@ -3,8 +3,6 @@ package dtos;
 import com.codiform.moo.annotation.Property;
 
 public class WidgetSettingsDto {
-
-	public Long id;
 	
 	@Property(translate = true)
 	public FacebookWidgetSettingsDto facebookWidget;

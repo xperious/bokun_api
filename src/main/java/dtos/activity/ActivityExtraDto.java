@@ -1,8 +1,7 @@
 package dtos.activity;
 
-import java.util.List;
+import java.util.*;
 
-import com.codiform.moo.annotation.CollectionProperty;
 import com.codiform.moo.annotation.Property;
 
 import dtos.QuestionDto;
@@ -10,9 +9,8 @@ import dtos.QuestionDto;
 public class ActivityExtraDto {
 
     public Long id;
-    public String description;
-
-    public boolean active = true;
+    public String externalId;
+    public String title;
 
     @Property(translation = "pricingType.name()")
     public String pricingType;
@@ -22,6 +20,5 @@ public class ActivityExtraDto {
     public int childDiscount = 100;
     public int teenagerDiscount = 50;
 
-    @CollectionProperty(itemTranslation = QuestionDto.class)
-    public List<QuestionDto> questions;
+    public List<QuestionDto> questions = new ArrayList<QuestionDto>();
 }

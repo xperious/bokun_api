@@ -1,30 +1,26 @@
 package dtos.accommodation;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-import com.codiform.moo.annotation.CollectionProperty;
-import com.codiform.moo.annotation.Property;
+import com.codiform.moo.annotation.*;
 
-import dtos.LocationDto;
-import dtos.ProductDto;
+import dtos.*;
 
 
 public class AccommodationDto extends ProductDto {
 
 	public int rating;
-	
-	@CollectionProperty(translation = "typesAsStrings") 
-	public Set<String> types;
+	 
+	public Set<String> types = new HashSet<String>();
 	
 	@Property(translate = true)
 	public LocationDto location;
 	
 	@CollectionProperty(itemTranslation = RoomTypeDto.class)
-	public List<RoomTypeDto> roomTypes;
+	public List<RoomTypeDto> roomTypes = new ArrayList<RoomTypeDto>();
 	
 	@CollectionProperty(itemTranslation = AccommodationExtraDto.class)
-	public List<AccommodationExtraDto> extras;
+	public List<AccommodationExtraDto> bookableExtras = new ArrayList<AccommodationExtraDto>();
 	
 	public AccommodationDto() {
 		super();

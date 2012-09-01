@@ -1,6 +1,6 @@
 package dtos.activity;
 
-import java.util.List;
+import java.util.*;
 
 import com.codiform.moo.annotation.CollectionProperty;
 import com.codiform.moo.annotation.Property;
@@ -15,6 +15,7 @@ public class ActivityDto extends ProductDto {
     
     @Property(translation = "durationType.name()")
     public String durationType;
+    public int duration;
 
     @Property(translation = "pricingType.name()")
     public String pricingType;
@@ -37,13 +38,13 @@ public class ActivityDto extends ProductDto {
     public String difficultyLevel;
     
     @CollectionProperty(itemTranslation = AgendaItemDto.class)
-    public List<AgendaItemDto> agendaItems;
+    public List<AgendaItemDto> agendaItems = new ArrayList<AgendaItemDto>();
 
     @CollectionProperty(itemTranslation = StartTimeDto.class)
-    public List<StartTimeDto> startTimes;
+    public List<StartTimeDto> startTimes = new ArrayList<StartTimeDto>();
 
     @CollectionProperty(itemTranslation = ActivityExtraDto.class)
-    public List<ActivityExtraDto> extras;
+    public List<ActivityExtraDto> bookableExtras = new ArrayList<ActivityExtraDto>();
 	
 	public ActivityDto() {
 		super();
