@@ -20,8 +20,18 @@ public class SearchResultItem {
 	
 	public List<VideoDto> videos = new ArrayList<VideoDto>();
 	
+	public Map<String,Object> fields = new HashMap<String,Object>();
+	
 	@JsonIgnore
 	public Long getLongId() {
 		return Long.parseLong(id);
+	}
+	
+	public String getString(String name) {
+		return fields.get(name).toString();
+	}
+	
+	public int getInt(String name) {
+		return Integer.parseInt(getString(name));
 	}
 }
