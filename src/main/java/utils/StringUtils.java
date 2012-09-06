@@ -11,7 +11,7 @@ import java.util.Set;
  */
 public class StringUtils {
 
-    private static final String[] DATE_FORMATS = {"dd.MM.yyyy", "yyyy-MM-dd"};
+    private static final String[] DATE_FORMATS = {"dd.MM.yyyy", "dd.MM.yy", "yyyy-MM-dd"};
 
     public static Date parseDate(String s) {
         if ( s == null || s.trim().isEmpty() ) {
