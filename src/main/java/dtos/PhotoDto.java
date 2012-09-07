@@ -13,5 +13,8 @@ public class PhotoDto {
 	@Property(optionality=Optionality.OPTIONAL)
 	public String thumbnailUrl;
 	
+	@Property(optionality=Optionality.OPTIONAL)
+	public String previewUrl;
+	
 	public PhotoDto() {}
 }
