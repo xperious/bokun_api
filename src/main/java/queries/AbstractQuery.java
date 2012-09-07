@@ -41,6 +41,14 @@ public abstract class AbstractQuery {
     public boolean hasFacet(String name) {
     	return facets.containsKey(name);
     }
+    public String getSingleFacetValue(String name) {
+    	Set<String> set = getFacetValues(name);
+    	if ( set.isEmpty() ) {
+    		return "";
+    	} else {
+    		return set.iterator().next();
+    	}
+    }
     
     public void setVm(String v) {
     	this.vm = v;

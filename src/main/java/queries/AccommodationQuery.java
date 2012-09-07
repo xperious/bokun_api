@@ -118,6 +118,10 @@ public class AccommodationQuery extends AbstractQuery {
         }
         return count;
     }
+    
+    public int totalPersons() {
+    	return totalAdults() + totalChildren();
+    }
 
 	public int totalAdults() {
 		int sum = 0;
