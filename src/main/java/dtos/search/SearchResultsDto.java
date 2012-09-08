@@ -1,7 +1,9 @@
 package dtos.search;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SearchResultsDto<T extends SearchResultItem> {
 
@@ -29,4 +31,13 @@ public class SearchResultsDto<T extends SearchResultItem> {
 		return null;
 	}
 
+	public Set<String> tagFilterValues(String name) {
+		Set<String> set = new HashSet<String>();
+		for (TermFilter t : tagFilters) {
+			if ( t.facetName.equals(name) ) {
+				set.add(t.value);
+			}
+		}
+ 		return set;
+	}
 }
