@@ -12,8 +12,6 @@ import utils.StringUtils;
  */
 public abstract class AbstractQuery {
 
-    public String vm; // view mode
-
     public LocationQuery lq = new LocationQuery();
 
     public NumericRange pr; // price range
@@ -50,12 +48,6 @@ public abstract class AbstractQuery {
     	}
     }
     
-    public void setVm(String v) {
-    	this.vm = v;
-    }
-    public String getVm() {
-    	return vm;
-    }
     public void setLq(LocationQuery l) {
     	this.lq = l;
     }
@@ -94,16 +86,6 @@ public abstract class AbstractQuery {
     public abstract void setEndDateStr(String s);
     public Date endDate() {
         return StringUtils.parseDate(getEndDateParam());
-    }
-    
-    public boolean viewMap() {
-        return vm != null && vm.equalsIgnoreCase("map");
-    }
-    public boolean viewList() {
-        return vm == null || !viewMap();
-    }
-    public String viewMode() {
-    	return vm;
     }
 
     public boolean hasLocation() {

@@ -7,6 +7,7 @@ import java.util.List;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import utils.DateUtils;
+import utils.StringUtils;
 
 
 public class AccommodationQuery extends AbstractQuery {
@@ -15,8 +16,8 @@ public class AccommodationQuery extends AbstractQuery {
 
 	public List<RoomQuery> rooms = new ArrayList<RoomQuery>();
 
-	public AccommodationSortField sort;
-	public SortOrder order;
+	public String sort;
+	public String order;
 
 	public AccommodationQuery() {
 		super();
@@ -40,17 +41,46 @@ public class AccommodationQuery extends AbstractQuery {
 		return rooms;
 	}
 	
-	public void setSort(AccommodationSortField s) {
+	public void setSort(String s) {
 		this.sort = s;
 	}
-	public AccommodationSortField getSort() {
+	public String getSort() {
 		return sort;
 	}
-	public void setSortOrder(SortOrder s) {
+	public void setSortOrder(String s) {
 		this.order = s;
 	}
-	public SortOrder getSortOrder() {
+	public String getSortOrder() {
 		return order;
+	}
+	public AccommodationSortField sortField() {
+		if ( StringUtils.isNullOrEmpty(sort) ) {
+			return null;
+		} else {
+			try {
+				return AccommodationSortField.valueOf(sort.toUpperCase());
+			} catch ( Throwable ignored ) {
+				return null;
+			}
+		}
+	}
+	public SortOrder orderBy() {
+		if (StringUtils.isNullOrEmpty(order) ) {
+			return null;
+		} else {
+			try {
+				return SortOrder.valueOf(order.toUpperCase());
+			} catch ( Throwable ignored ) {
+				return null;
+			}
+		}
+	}
+	
+	public boolean sortingByPrice() {
+		return sortField() != null && sortField() == AccommodationSortField.PRICE;
+	}
+	public boolean sortingByDistance() {
+		return sortField() != null && sortField() == AccommodationSortField.DISTANCE;
 	}
 
 	@Override
