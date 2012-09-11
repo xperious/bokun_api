@@ -28,10 +28,10 @@ public class SearchResultItem {
 	}
 	
 	public String getString(String name) {
-		return fields.get(name).toString();
+		return fields.containsKey(name) ? fields.get(name).toString() : "";
 	}
 	
 	public int getInt(String name) {
-		return Integer.parseInt(getString(name));
+		return fields.containsKey(name) ? Integer.parseInt(getString(name)) : 0;
 	}
 }
