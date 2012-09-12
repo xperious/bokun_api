@@ -15,6 +15,8 @@ public class SearchResultItem {
 	public Double distance;
 	public LocationDto location;
 	
+	public List<PlaceDto> places = new ArrayList<PlaceDto>();
+	
 	public PhotoDto keyPhoto;
 	public List<PhotoDto> photos = new ArrayList<PhotoDto>();
 	
