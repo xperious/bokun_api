@@ -114,11 +114,6 @@ public class AccommodationQuery extends AbstractQuery {
     	return facets.get("type").toUpperCase();
     }
 	
-    @JsonIgnore
-	public boolean isAvailabilityQuery() {
-		return checkInDate() != null && checkOutDate() != null;
-	}
-	
 	public Date checkInDate() {
 		return startDate();
 	}

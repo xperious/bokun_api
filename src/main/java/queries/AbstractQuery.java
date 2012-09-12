@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import utils.StringUtils;
 
 /**
@@ -87,6 +89,11 @@ public abstract class AbstractQuery {
     public Date endDate() {
         return StringUtils.parseDate(getEndDateParam());
     }
+    
+    @JsonIgnore
+	public boolean isAvailabilityQuery() {
+		return startDate() != null && endDate() != null;
+	}
 
     public boolean hasLocation() {
         return lq != null && !(lq.lat == 0 && lq.lng == 0);
