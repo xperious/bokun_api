@@ -9,6 +9,7 @@ public abstract class ProductDto {
 
     public String title;
     public String description;
+    public String slug;
     
     public List<TagGroupDto> tags = new ArrayList<TagGroupDto>();
     

@@ -11,6 +11,7 @@ public class SearchResultItem {
 	public String id;
 	public String title;
 	public String summary;
+	public String slug;
 	public Integer price;
 	public Double distance;
 	public LocationDto location;
