@@ -16,6 +16,8 @@ public class AvailableRoomDto {
     public List<Integer> guestCounts = new ArrayList<Integer>();
 
 	public RoomTypeDto roomType;
+	
+	public AvailableRoomDto() {}
 
 	public AvailableRoomDto(Long id, int totalPrice, int availableAcrossInterval, RoomTypeDto roomType, AccommodationQuery query) {
         this(id, totalPrice, availableAcrossInterval, roomType, query, false);
@@ -41,4 +43,5 @@ public class AvailableRoomDto {
         }
         Collections.sort(this.guestCounts);
 	}
+    
 }

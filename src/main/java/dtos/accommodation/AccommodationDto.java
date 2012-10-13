@@ -22,6 +22,8 @@ public class AccommodationDto extends ProductDto {
 	@CollectionProperty(itemTranslation = AccommodationExtraDto.class)
 	public List<AccommodationExtraDto> bookableExtras = new ArrayList<AccommodationExtraDto>();
 	
+	public AccommodationAvailabilityReportDto availabilityReport;
+	
 	public AccommodationDto() {
 		super();
 	}

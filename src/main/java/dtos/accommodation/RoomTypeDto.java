@@ -45,4 +45,24 @@ public class RoomTypeDto {
 	
 	@CollectionProperty(optionality = Optionality.OPTIONAL)
 	public List<AccommodationExtraDto> extras = new ArrayList<AccommodationExtraDto>();
+	
+	public List<AccommodationExtraDto> getIncludedExtras() {
+		List<AccommodationExtraDto> list = new ArrayList<AccommodationExtraDto>();
+		for ( AccommodationExtraDto e : extras ) {
+			if ( e.mandatory ) {
+				list.add(e);
+			}
+		}
+		return list;
+	}
+	
+	public List<AccommodationExtraDto> getOptionalExtras() {
+		List<AccommodationExtraDto> list = new ArrayList<AccommodationExtraDto>();
+		for ( AccommodationExtraDto e : extras ) {
+			if ( !e.mandatory ) {
+				list.add(e);
+			}
+		}
+		return list;
+	}
 }
