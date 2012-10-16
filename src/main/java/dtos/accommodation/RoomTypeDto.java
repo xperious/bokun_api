@@ -3,6 +3,7 @@ package dtos.accommodation;
 import java.util.*;
 
 import com.codiform.moo.annotation.*;
+import com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException;
 
 import dtos.*;
 
@@ -45,6 +46,15 @@ public class RoomTypeDto {
 	
 	@CollectionProperty(optionality = Optionality.OPTIONAL)
 	public List<AccommodationExtraDto> extras = new ArrayList<AccommodationExtraDto>();
+	
+	public AccommodationExtraDto findExtra(Long id) {
+		for (AccommodationExtraDto e : extras) {
+			if ( e.id.equals(id) ) {
+				return e;
+			}
+		}
+		return null;
+	}
 	
 	public List<AccommodationExtraDto> getIncludedExtras() {
 		List<AccommodationExtraDto> list = new ArrayList<AccommodationExtraDto>();
