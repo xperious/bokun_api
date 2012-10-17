@@ -19,5 +19,7 @@ public class AccommodationBookingDto {
     
     public String bookingStatus;
     
+    public int totalPrice;
+    
     public List<RoomBookingDto> roomBookings = new ArrayList<RoomBookingDto>();
 }

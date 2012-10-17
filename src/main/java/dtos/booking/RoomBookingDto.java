@@ -2,6 +2,8 @@ package dtos.booking;
 
 import java.util.*;
 
+import queries.RoomQuery;
+
 import dtos.accommodation.RoomTypeDto;
 
 public class RoomBookingDto {
@@ -22,6 +24,11 @@ public class RoomBookingDto {
 
 	public String specialRequests;
 	
+	public boolean unavailable;
+	public int availabilityCount;
+	public int roomPrice;
+	public int extrasPrice;
+	
 	public List<AccommodationExtraBookingDto> extraBookings = new ArrayList<AccommodationExtraBookingDto>();
 	
 	public List<AccommodationAvailabilityBookingDto> availabilityBookings = new ArrayList<AccommodationAvailabilityBookingDto>();
@@ -34,5 +41,10 @@ public class RoomBookingDto {
             }
         }
         return list;
+    }
+    
+    public int sleepingPlacesNeeded() {
+        RoomQuery r = new RoomQuery(adultCount, childAges);
+        return r.sleepingPlacesNeeded();
     }
 }
