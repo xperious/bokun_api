@@ -23,4 +23,13 @@ public class AccommodationAvailabilityReportDto {
 		}
 		return price;
 	}
+	
+	public AvailableRoomDto findAvailableRoom(Long roomTypeId) {
+		for (AvailableRoomDto room : availableRooms) {
+			if ( room.roomType.id.equals(roomTypeId) ) {
+				return room;
+			}
+		}
+		return null;
+	}
 }
