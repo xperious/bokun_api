@@ -2,6 +2,8 @@ package dtos.booking;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import queries.RoomQuery;
 
 import dtos.accommodation.RoomTypeDto;
@@ -31,6 +33,7 @@ public class RoomBookingDto {
 	
 	public List<AccommodationAvailabilityBookingDto> availabilityBookings = new ArrayList<AccommodationAvailabilityBookingDto>();
 	
+	@JsonIgnore
     public List<AccommodationExtraBookingDto> getExtraBookings(boolean included) {
         List<AccommodationExtraBookingDto> list = new ArrayList<AccommodationExtraBookingDto>();
         for ( AccommodationExtraBookingDto ae : extraBookings ) {
