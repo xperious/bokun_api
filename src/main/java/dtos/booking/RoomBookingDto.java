@@ -18,9 +18,7 @@ public class RoomBookingDto {
     public Date startDate;
     public Date endDate;
 	
-	public int adultCount;
-	public int childCount;
-	public String childAges;
+    public int unitCount;
 
 	public String specialRequests;
 	
@@ -42,9 +40,5 @@ public class RoomBookingDto {
         }
         return list;
     }
-    
-    public int sleepingPlacesNeeded() {
-        RoomQuery r = new RoomQuery(adultCount, childAges);
-        return r.sleepingPlacesNeeded();
-    }
+
 }

@@ -10,7 +10,7 @@ public class AccommodationExtraBookingDto {
 	
 	public String description;
 
+	public int unitCount;
+	public int bookedPrice;
 	public String pricingType;
-
-	public int price;
 }

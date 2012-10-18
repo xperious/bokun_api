@@ -2,7 +2,8 @@ package dtos.booking;
 
 import java.util.*;
 
-import utils.*;
+import utils.DateUtils;
+import utils.StringUtils;
 
 public class AccommodationBookingRequestDto {
 
@@ -27,11 +28,17 @@ public class AccommodationBookingRequestDto {
     public static class RoomBookingDTO {
 
         public Long roomTypeId;
-        public int adultCount;
-        public int childCount;
-        public String childAges;
-        public String extraIds;
+        public int unitCount;
+        public List<ExtraBookingDTO> extras = new ArrayList<ExtraBookingDTO>();
 
         public RoomBookingDTO() {}
+    }
+    
+    public static class ExtraBookingDTO {
+    	
+    	public Long extraId;
+    	public int unitCount;
+    	
+    	public ExtraBookingDTO() {}
     }
 }
