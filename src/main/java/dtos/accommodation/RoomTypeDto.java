@@ -2,6 +2,8 @@ package dtos.accommodation;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import com.codiform.moo.annotation.*;
 import com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException;
 
@@ -56,6 +58,7 @@ public class RoomTypeDto {
 		return null;
 	}
 	
+	@JsonIgnore
 	public List<AccommodationExtraDto> getIncludedExtras() {
 		List<AccommodationExtraDto> list = new ArrayList<AccommodationExtraDto>();
 		for ( AccommodationExtraDto e : extras ) {
@@ -66,6 +69,7 @@ public class RoomTypeDto {
 		return list;
 	}
 	
+	@JsonIgnore
 	public List<AccommodationExtraDto> getOptionalExtras() {
 		List<AccommodationExtraDto> list = new ArrayList<AccommodationExtraDto>();
 		for ( AccommodationExtraDto e : extras ) {
