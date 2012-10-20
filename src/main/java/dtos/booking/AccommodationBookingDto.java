@@ -4,7 +4,7 @@ import java.util.*;
 
 import dtos.accommodation.AccommodationDto;
 
-public class AccommodationBookingDto {
+public class AccommodationBookingDto implements ProductBookingDto {
 
 	public Long id;
 	

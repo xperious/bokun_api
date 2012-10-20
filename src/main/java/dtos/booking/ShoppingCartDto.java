@@ -2,6 +2,8 @@ package dtos.booking;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 public class ShoppingCartDto {
 
 	public String sessionId;
@@ -14,4 +16,18 @@ public class ShoppingCartDto {
 
 	
 	public ShoppingCartDto() {}
+	
+	@JsonIgnore
+	public List<ProductBookingDto> getProductBookings() {
+		List<ProductBookingDto> bookings = new ArrayList<ProductBookingDto>();
+		
+		bookings.addAll(accommodationBookings);
+		
+		return bookings;
+	}
+	
+	@JsonIgnore
+    public boolean isEmpty() {
+        return accommodationBookings.isEmpty();
+    }
 }

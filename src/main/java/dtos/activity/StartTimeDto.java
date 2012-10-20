@@ -1,5 +1,9 @@
 package dtos.activity;
 
+import java.util.Date;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import com.codiform.moo.annotation.Property;
 
 import dtos.PriceByMonthDto;
@@ -18,8 +22,11 @@ public class StartTimeDto {
     @Property(translate = true)
     public PriceByMonthDto prices;
     
-    public int childDiscount = 100;
-    public int teenagerDiscount = 50;
-    
     public StartTimeDto() {}
+    
+    @JsonIgnore
+    public int getLowestPrice() {
+    	return prices.getLowestPrice();
+    }
+    
 }
