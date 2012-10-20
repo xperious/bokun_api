@@ -1,5 +1,6 @@
 package dtos.activity;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -53,6 +54,18 @@ public class ActivityDto extends ProductDto {
 	
 	public ActivityDto() {
 		super();
+	}
+	
+	@JsonIgnore
+	public Date getSeasonStart() throws Exception {
+		SimpleDateFormat parser = new SimpleDateFormat("dd.MM");
+		return parser.parse("" + seasonStartDate + "." + seasonStartMonth);
+	}
+	
+	@JsonIgnore
+	public Date getSeasonEnd() throws Exception {
+		SimpleDateFormat parser = new SimpleDateFormat("dd.MM");
+		return parser.parse("" + seasonEndDate + "." + seasonEndMonth);
 	}
 	
     @JsonIgnore
