@@ -21,6 +21,15 @@ public class PriceByMonthDto {
     public int dec;
     
     @JsonIgnore
+    public String getCommaSeparatedPrices() {
+    	StringBuilder b = new StringBuilder();
+    	b.append(jan).append(',').append(feb).append(',').append(mar).append(',').append(apr)
+    		.append(',').append(may).append(',').append(jun).append(',').append(jul).append(',').append(aug)
+    		.append(',').append(sep).append(',').append(oct).append(',').append(nov).append(',').append(dec);
+    	return b.toString();
+    }
+    
+    @JsonIgnore
     public int getLowestPrice() {
     	int lowest = jan;
     	lowest = Math.min(lowest, feb);

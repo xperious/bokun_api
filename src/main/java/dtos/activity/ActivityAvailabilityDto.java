@@ -6,6 +6,7 @@ public class ActivityAvailabilityDto {
 
 	public Long startTimeId;
 	public Date date;
+	public String localizedDate;
     public int availabilityCount;
     public boolean unlimitedAvailability;
     

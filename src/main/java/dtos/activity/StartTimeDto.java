@@ -27,4 +27,16 @@ public class StartTimeDto {
     	return prices.getLowestPrice();
     }
     
+    @JsonIgnore
+    public String getTimeAsString() {
+        StringBuilder s = new StringBuilder();
+        s.append(hour);
+        s.append(':');
+        if ( minute < 10 ) {
+            s.append(0);
+        }
+        s.append(minute);
+        return s.toString();
+    }
+    
 }
