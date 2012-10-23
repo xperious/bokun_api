@@ -5,6 +5,8 @@ import java.util.*;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import utils.StringUtils;
+
 import com.codiform.moo.annotation.CollectionProperty;
 import com.codiform.moo.annotation.Property;
 
@@ -54,6 +56,39 @@ public class ActivityDto extends ProductDto {
 	
 	public ActivityDto() {
 		super();
+	}
+	
+	@JsonIgnore
+	public boolean hasAnyMapLocation() {
+		for (AgendaItemDto item : agendaItems) {
+			if ( item.place != null ) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	@JsonIgnore
+	public String[] includedPoints() {
+		return toPoints(included);
+	}
+	
+	@JsonIgnore
+	public String[] requirementsPoints() {
+		return toPoints(requirements);
+	}
+	
+	@JsonIgnore
+	public String[] attentionPoints() {
+		return toPoints(attention);
+	}
+	
+	@JsonIgnore
+	private String[] toPoints(String s) {
+		if ( StringUtils.isNullOrEmpty(s) ) {
+			return new String[0];
+		}
+		return s.split("\n");
 	}
 	
 	@JsonIgnore
