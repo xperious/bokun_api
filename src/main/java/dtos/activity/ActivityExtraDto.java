@@ -17,8 +17,5 @@ public class ActivityExtraDto {
 
     public int price;
 
-    public int childDiscount = 100;
-    public int teenagerDiscount = 50;
-
     public List<QuestionDto> questions = new ArrayList<QuestionDto>();
 }
