@@ -26,4 +26,8 @@ public class ActivityBookingDto extends ProductBookingDto {
 	public boolean unlimitedAvailability;
 	
 	public List<ActivityExtraBookingDto> extraBookings = new ArrayList<ActivityExtraBookingDto>();
+	
+	public Date getSortDate() {
+		return date;
+	}
 }

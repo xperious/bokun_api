@@ -12,4 +12,8 @@ public class AccommodationBookingDto extends ProductBookingDto {
     public AccommodationDto accommodation;
     
     public List<RoomBookingDto> roomBookings = new ArrayList<RoomBookingDto>();
+    
+    public Date getSortDate() {
+    	return startDate;
+    }
 }

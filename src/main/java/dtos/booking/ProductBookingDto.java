@@ -14,4 +14,6 @@ public abstract class ProductBookingDto {
     public String bookingStatus;
     
     public int totalPrice;
+    
+    public abstract Date getSortDate(); 
 }
