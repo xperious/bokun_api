@@ -4,22 +4,12 @@ import java.util.*;
 
 import dtos.accommodation.AccommodationDto;
 
-public class AccommodationBookingDto implements ProductBookingDto {
-
-	public Long id;
-	
-	public Date creationDate;
-	public Date lastModifedDate;
+public class AccommodationBookingDto extends ProductBookingDto {
 
     public Date startDate;
     public Date endDate;
     
-    public String userUuid;
     public AccommodationDto accommodation;
-    
-    public String bookingStatus;
-    
-    public int totalPrice;
     
     public List<RoomBookingDto> roomBookings = new ArrayList<RoomBookingDto>();
 }

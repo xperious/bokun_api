@@ -13,6 +13,7 @@ public class ShoppingCartDto {
 	public int totalPrice;
 	
 	public List<AccommodationBookingDto> accommodationBookings = new ArrayList<AccommodationBookingDto>();
+	public List<ActivityBookingDto> activityBookings = new ArrayList<ActivityBookingDto>();
 
 	
 	public ShoppingCartDto() {}

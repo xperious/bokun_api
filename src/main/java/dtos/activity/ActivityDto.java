@@ -53,9 +53,31 @@ public class ActivityDto extends ProductDto {
 
     @CollectionProperty(itemTranslation = ActivityExtraDto.class)
     public List<ActivityExtraDto> bookableExtras = new ArrayList<ActivityExtraDto>();
+    
+    public ActivityAvailabilityReportDto availabilityReport;
 	
 	public ActivityDto() {
 		super();
+	}
+	
+	@JsonIgnore
+	public StartTimeDto findStartTime(Long id) {
+		for (StartTimeDto dto : startTimes) {
+			if ( dto.id.equals(id) ) {
+				return dto;
+			}
+		}
+		return null;
+	}
+	
+	@JsonIgnore
+	public ActivityExtraDto findExtra(Long id) {
+		for (ActivityExtraDto dto : bookableExtras) {
+			if ( dto.id.equals(id) ) {
+				return dto;
+			}
+		}
+		return null;
 	}
 	
 	@JsonIgnore

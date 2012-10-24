@@ -1,5 +1,7 @@
 package dtos.activity;
 
+import java.util.Date;
+
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import com.codiform.moo.annotation.Property;
@@ -39,4 +41,31 @@ public class StartTimeDto {
         return s.toString();
     }
     
+    @JsonIgnore
+    public int getAdultPrice(Date d) {
+    	return prices.getPriceForDate(d);
+    }
+    
+    @JsonIgnore
+    public int getChildPrice(ActivityDto activity, Date d) {
+        if ( activity.childDiscount <= 0 ) {
+            return prices.getPriceForDate(d);
+        }
+        return getPercentageOfPrice(prices.getPriceForDate(d), activity.childDiscount);
+    }
+
+    @JsonIgnore
+    public int getTeenagerPrice(ActivityDto activity, Date d) {
+        if ( activity.teenagerDiscount <= 0 ) {
+            return prices.getPriceForDate(d);
+        }
+        return getPercentageOfPrice(prices.getPriceForDate(d), activity.teenagerDiscount);
+    }
+    
+    @JsonIgnore
+    private int getPercentageOfPrice(int price, int discount) {
+        int multiplier = 100 - discount;
+        double base = price;
+        return (int)Math.floor(base * (((double)multiplier) / 100d) + 0.5d);
+    }
 }
