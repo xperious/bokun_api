@@ -2,15 +2,21 @@ package dtos.booking;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+import utils.StringUtils;
+
 public class ActivityBookingRequestDto {
 
 	public Long activityId;
 	public Long startTimeId;
-	public Date date;
+	public String date;
 	public int adults;
 	public int teens;
 	public int children;
 	public List<ExtraBookingDTO> extras = new ArrayList<ExtraBookingDTO>();
+	
+	public ActivityBookingRequestDto() {}
 	
 	public Long getActivityId() {
 		return activityId;
@@ -28,13 +34,18 @@ public class ActivityBookingRequestDto {
 		this.startTimeId = startTimeId;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
+	
+	@JsonIgnore
+    public Date getDateObject() {
+        return StringUtils.parseDate(date);
+    }
 
 	public int getAdults() {
 		return adults;
