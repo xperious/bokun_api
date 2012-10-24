@@ -60,12 +60,18 @@ public class ActivityDto extends ProductDto {
 	
 	@JsonIgnore
 	public boolean hasAnyMapLocation() {
+		return countMapLocations() > 0;
+	}
+	
+	@JsonIgnore
+	public int countMapLocations() {
+		int count = 0;
 		for (AgendaItemDto item : agendaItems) {
 			if ( item.place != null ) {
-				return true;
+				count++;
 			}
 		}
-		return false;
+		return count;
 	}
 	
 	@JsonIgnore
