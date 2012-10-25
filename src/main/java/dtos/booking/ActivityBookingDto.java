@@ -2,6 +2,8 @@ package dtos.booking;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import dtos.activity.*;
 
 public class ActivityBookingDto extends ProductBookingDto {
@@ -27,6 +29,7 @@ public class ActivityBookingDto extends ProductBookingDto {
 	
 	public List<ActivityExtraBookingDto> extraBookings = new ArrayList<ActivityExtraBookingDto>();
 	
+	@JsonIgnore
 	public Date getSortDate() {
 		return date;
 	}

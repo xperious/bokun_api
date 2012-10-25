@@ -2,6 +2,8 @@ package dtos.booking;
 
 import java.util.Date;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 public abstract class ProductBookingDto {
 
 	public Long id;
@@ -15,5 +17,6 @@ public abstract class ProductBookingDto {
     
     public int totalPrice;
     
+    @JsonIgnore
     public abstract Date getSortDate(); 
 }
