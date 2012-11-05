@@ -63,7 +63,7 @@ public class StartTimeDto {
     }
     
     @JsonIgnore
-    private int getPercentageOfPrice(int price, int discount) {
+    public static int getPercentageOfPrice(int price, int discount) {
         int multiplier = 100 - discount;
         double base = price;
         return (int)Math.floor(base * (((double)multiplier) / 100d) + 0.5d);
