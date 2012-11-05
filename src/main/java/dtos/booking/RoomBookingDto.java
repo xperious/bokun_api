@@ -4,15 +4,11 @@ import java.util.*;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-import queries.RoomQuery;
-
-import dtos.accommodation.RoomTypeDto;
-
 public class RoomBookingDto {
 
 	public Long id;
 	
-	public RoomTypeDto roomType;
+	public BookingItemInfoDto roomType;
 	
 	public String guestFirstName;
 	public String guestLastName;
@@ -37,7 +33,7 @@ public class RoomBookingDto {
     public List<AccommodationExtraBookingDto> getExtraBookings(boolean included) {
         List<AccommodationExtraBookingDto> list = new ArrayList<AccommodationExtraBookingDto>();
         for ( AccommodationExtraBookingDto ae : extraBookings ) {
-            if ( (ae.extra.mandatory && included) || (!ae.extra.mandatory && !included) ) {
+            if ( (ae.included && included) || (!ae.included && !included) ) {
                 list.add(ae);
             }
         }

@@ -16,6 +16,7 @@ public class AvailableRoomDto {
     public List<Integer> guestCounts = new ArrayList<Integer>();
 
 	public RoomTypeDto roomType;
+	public List<AvailabilityInfoDto> availabilities = new ArrayList<AvailabilityInfoDto>();
 	
 	public AvailableRoomDto() {}
 

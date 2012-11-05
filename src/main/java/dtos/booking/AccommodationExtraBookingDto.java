@@ -1,12 +1,12 @@
 package dtos.booking;
 
-import dtos.accommodation.AccommodationExtraDto;
 
 public class AccommodationExtraBookingDto {
 
 	public Long id;
 	
-	public AccommodationExtraDto extra;
+	public BookingItemInfoDto extra;
+	public boolean included;
 	
 	public String description;
 

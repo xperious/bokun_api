@@ -10,7 +10,7 @@ public class ActivityBookingDto extends ProductBookingDto {
 
 	public Date date;
 	
-	public ActivityDto activity;
+	public ProductInfoDto activity;
 	public StartTimeDto startTime;
 	
 	public int bookedPrice;

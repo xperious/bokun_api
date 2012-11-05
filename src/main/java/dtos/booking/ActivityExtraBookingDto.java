@@ -1,11 +1,10 @@
 package dtos.booking;
 
-import dtos.activity.ActivityExtraDto;
 
 public class ActivityExtraBookingDto {
 
 	public Long id;
-	public ActivityExtraDto extra;
+	public BookingItemInfoDto extra;
 
 	public String description;
 
