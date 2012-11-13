@@ -9,6 +9,8 @@ public class SendRequestDto {
 	public boolean async = false;
 	
 	public List<Variable> template_content = new ArrayList<>();
+	public List<Variable> global_merge_vars = new ArrayList<>();
+	
 	public Message message;
 	
 	public String getKey() {
