@@ -96,6 +96,13 @@ public class SendRequestDto {
 		public String email;
 		public String name;
 		
+		public Recipient() {}
+		
+		public Recipient(String email, String name) {
+			this.email = email;
+			this.name = name;
+		}
+		
 		public String getEmail() {
 			return email;
 		}
@@ -114,6 +121,13 @@ public class SendRequestDto {
 		
 		public String name;
 		public String content;
+		
+		public Variable() {}
+		
+		public Variable(String name, String content) {
+			this.name = name;
+			this.content = content;
+		}
 		
 		public String getName() {
 			return name;
