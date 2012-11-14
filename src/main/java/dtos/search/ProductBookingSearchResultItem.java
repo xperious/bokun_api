@@ -6,6 +6,8 @@ import dtos.booking.BookingItemInfoDto;
 
 public class ProductBookingSearchResultItem {
 
+	public String confirmationCode;
+	
 	public BookingItemInfoDto channel;
 	public BookingItemInfoDto product;
 	public BookingItemInfoDto vendor;
