@@ -1,6 +1,9 @@
 package dtos.booking;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 public class BookingQuestionDto {
 
@@ -12,4 +15,14 @@ public class BookingQuestionDto {
 	public int answersNeeded = 1;
 	
 	public List<String> options = new ArrayList<String>();
+	
+	@JsonIgnore
+	public boolean isOfType(String t) {
+		return t.equals(type);
+	}
+	
+	@JsonIgnore
+	public String getQuestionType() {
+		return type;
+	}
 }
