@@ -6,6 +6,7 @@ public class RoomBookingQuestionsDto {
 
 	public BookingItemInfoDto roomType;
 	public Long bookingId;
+	public int unitCount;
 	
 	public List<BookingQuestionDto> questions = new ArrayList<BookingQuestionDto>();
 	public List<ExtraBookingQuestionsDto> extraBookings = new ArrayList<ExtraBookingQuestionsDto>();
