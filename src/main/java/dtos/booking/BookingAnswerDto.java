@@ -5,7 +5,6 @@ public class BookingAnswerDto {
 	public String type;
 	public String question;
 	public String answer;
-	public String group;
 	
 	public String getType() {
 		return type;
@@ -24,12 +23,6 @@ public class BookingAnswerDto {
 	}
 	public void setAnswer(String answer) {
 		this.answer = answer;
-	}
-	public String getGroup() {
-		return group;
-	}
-	public void setGroup(String group) {
-		this.group = group;
 	}
 	
 }

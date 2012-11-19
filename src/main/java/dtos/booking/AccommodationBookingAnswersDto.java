@@ -6,7 +6,7 @@ public class AccommodationBookingAnswersDto {
 
 	public Long bookingId;
 	
-	public List<BookingAnswerDto> answers = new ArrayList<BookingAnswerDto>();
+	public List<BookingAnswerGroupDto> answerGroups = new ArrayList<BookingAnswerGroupDto>();
 	
 	public List<RoomBookingAnswersDto> roomBookings = new ArrayList<RoomBookingAnswersDto>();
 
@@ -18,12 +18,12 @@ public class AccommodationBookingAnswersDto {
 		this.bookingId = bookingId;
 	}
 
-	public List<BookingAnswerDto> getAnswers() {
-		return answers;
+	public List<BookingAnswerGroupDto> getAnswerGroups() {
+		return answerGroups;
 	}
 
-	public void setAnswers(List<BookingAnswerDto> answers) {
-		this.answers = answers;
+	public void setAnswerGroups(List<BookingAnswerGroupDto> answerGroups) {
+		this.answerGroups = answerGroups;
 	}
 
 	public List<RoomBookingAnswersDto> getRoomBookings() {

@@ -6,7 +6,7 @@ public class ExtraBookingAnswersDto {
 
 	public Long bookingId;
 	
-	public List<BookingAnswerWithIdDto> answers = new ArrayList<BookingAnswerWithIdDto>();
+	public List<BookingAnswerWithIdGroupDto> answerGroups = new ArrayList<BookingAnswerWithIdGroupDto>();
 
 	public Long getBookingId() {
 		return bookingId;
@@ -16,11 +16,11 @@ public class ExtraBookingAnswersDto {
 		this.bookingId = bookingId;
 	}
 
-	public List<BookingAnswerWithIdDto> getAnswers() {
-		return answers;
+	public List<BookingAnswerWithIdGroupDto> getAnswerGroups() {
+		return answerGroups;
 	}
 
-	public void setAnswers(List<BookingAnswerWithIdDto> answers) {
-		this.answers = answers;
+	public void setAnswerGroups(List<BookingAnswerWithIdGroupDto> answerGroups) {
+		this.answerGroups = answerGroups;
 	}
 }

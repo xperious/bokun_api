@@ -8,6 +8,6 @@ public class ExtraBookingQuestionsDto {
 	public BookingItemInfoDto extra;
 	public int unitCount;
 	
-	public List<BookingQuestionWithIdGroupDto> questions = new ArrayList<BookingQuestionWithIdGroupDto>();
+	public List<BookingQuestionWithIdGroupDto> questionGroups = new ArrayList<BookingQuestionWithIdGroupDto>();
 	
 }
