@@ -8,6 +8,6 @@ public class RoomBookingQuestionsDto {
 	public Long bookingId;
 	public int unitCount;
 	
-	public List<BookingQuestionDto> questions = new ArrayList<BookingQuestionDto>();
+	public List<BookingQuestionGroupDto> questions = new ArrayList<BookingQuestionGroupDto>();
 	public List<ExtraBookingQuestionsDto> extraBookings = new ArrayList<ExtraBookingQuestionsDto>();
 }
