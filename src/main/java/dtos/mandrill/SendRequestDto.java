@@ -9,7 +9,6 @@ public class SendRequestDto {
 	public boolean async = false;
 	
 	public List<Variable> template_content = new ArrayList<>();
-	public List<Variable> global_merge_vars = new ArrayList<>();
 	
 	public Message message;
 	
@@ -60,6 +59,7 @@ public class SendRequestDto {
 		public String from_name;
 		public String bcc_address;
 		public List<Recipient> to = new ArrayList<>();
+		public List<Variable> global_merge_vars = new ArrayList<>();
 		
 		public String getSubject() {
 			return subject;
@@ -90,6 +90,12 @@ public class SendRequestDto {
 		}
 		public void setTo(List<Recipient> to) {
 			this.to = to;
+		}
+		public List<Variable> getGlobal_merge_vars() {
+			return global_merge_vars;
+		}
+		public void setGlobal_merge_vars(List<Variable> global_merge_vars) {
+			this.global_merge_vars = global_merge_vars;
 		}
 	}
 	
