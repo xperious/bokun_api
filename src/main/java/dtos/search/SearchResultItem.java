@@ -15,6 +15,7 @@ public class SearchResultItem {
 	public Integer price;
 	public Double distance;
 	public LocationDto location;
+	public ItemDto vendor;
 	
 	public List<PlaceDto> places = new ArrayList<PlaceDto>();
 	
