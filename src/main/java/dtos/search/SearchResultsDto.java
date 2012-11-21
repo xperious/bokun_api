@@ -1,9 +1,6 @@
 package dtos.search;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class SearchResultsDto<T extends SearchResultItem> {
 
@@ -12,11 +9,19 @@ public class SearchResultsDto<T extends SearchResultItem> {
 	
 	public List<T> items;
 	
-	public List<TermFilter> tagFilters = new ArrayList<TermFilter>();
+	public List<TermFilter> tagFilters = new ArrayList<>();
 	
-	public TermsFacetDto typeFacet;
-	public List<TermsFacetDto> tagFacets = new ArrayList<TermsFacetDto>();
+	public List<TermsFacetDto> tagFacets = new ArrayList<>();
 	public StatisticalFacetDto priceFacet;
+	public Map<String,TermsFacetDto> termFacets = new HashMap<>();
+	
+	public boolean hasTermFacet(String name) {
+		return termFacet(name) != null;
+	}
+	
+	public TermsFacetDto termFacet(String name) {
+		return termFacets.get(name);
+	}	
 	
 	public boolean hasTagFacet(String name) {
 		return tagFacet(name) != null;
