@@ -14,6 +14,7 @@ public class ProductBookingSearchResultItem {
 	public BookingItemInfoDto channel;
 	public BookingItemInfoDto product;
 	public BookingItemInfoDto vendor;
+	public BookingItemInfoDto seller;
 	
 	public Date creationDate;
 	public String productType;

@@ -13,6 +13,7 @@ public class BookingQuery {
 	
 	public String productTitle;
 	public String vendorTitle;
+	public String sellerTitle;
 	public String bookingChannelTitle;
 	
 	public String getConfirmationCode() {
@@ -56,6 +57,12 @@ public class BookingQuery {
 	}
 	public void setVendorTitle(String vendorTitle) {
 		this.vendorTitle = vendorTitle;
+	}
+	public String getSellerTitle() {
+		return sellerTitle;
+	}
+	public void setSellerTitle(String sellerTitle) {
+		this.sellerTitle = sellerTitle;
 	}
 	public String getBookingChannelTitle() {
 		return bookingChannelTitle;
