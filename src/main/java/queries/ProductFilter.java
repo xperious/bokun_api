@@ -5,10 +5,28 @@ import java.util.*;
 public class ProductFilter {
 
 	public Long owningVendorId;
+	public Set<String> owningVendorCategories = new HashSet<>();
 	public Map<Long,VendorFilter> vendorFilters = new HashMap<>();
 	
 	public boolean isEmpty() {
 		return vendorFilters.isEmpty();
+	}
+	
+	public boolean isAllowed(Long productVendorId, Long productGroupId, String productCategory) {
+		if ( owningVendorId.equals(productVendorId) ) {
+			return true;
+		}
+		for (ProductFilter.VendorFilter v : vendorFilters.values()) {
+			if ( v.vendorId.equals(productVendorId) ) {
+				if ( v.productCategories.contains(productCategory) ) {
+					return true;
+				}
+				if ( v.productGroupIds.contains(productGroupId) ) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	public VendorFilter getVendor(Long id) {
