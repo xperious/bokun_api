@@ -10,6 +10,10 @@ public class AccommodationAvailabilityReportDto {
 	public Date checkInDate, checkOutDate;
 	public List<AvailableRoomDto> availableRooms;
 	
+	public int getNumberOfNights() {
+		return numberOfNights();
+	}
+	
 	public int numberOfNights() {
 		return DateUtils.getNightCount(checkInDate, checkOutDate);
 	}
