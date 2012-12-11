@@ -9,6 +9,7 @@ public class BookingQuery {
 	
 	public List<Long> bookingChannelIds = new ArrayList<>();
 	public List<Long> vendorIds = new ArrayList<>();
+	public List<Long> sellingVendorIds = new ArrayList<>();
 	public List<Long> productIds = new ArrayList<>();
 	
 	public String productTitle;
@@ -39,6 +40,12 @@ public class BookingQuery {
 	}
 	public void setVendorIds(List<Long> vendorIds) {
 		this.vendorIds = vendorIds;
+	}
+	public List<Long> getSellingVendorIds() {
+		return cleanList(sellingVendorIds);
+	}
+	public void setSellingVendorIds(List<Long> sellingVendorIds) {
+		this.sellingVendorIds = sellingVendorIds;
 	}
 	public List<Long> getProductIds() {		
 		return cleanList(productIds);
