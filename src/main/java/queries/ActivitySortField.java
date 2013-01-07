@@ -1,14 +1,11 @@
 package queries;
 
-/**
- * @author Olafur Gauti Gudmundsson
- */
-public enum AccommodationSortField {
+public enum ActivitySortField {
 
 	BEST_SELLING_GLOBAL,
 	BEST_SELLING_IN_CHANNEL,
-	PRICE,
-	DISTANCE;
+	PLACE_DISTANCE,
+	PRICE;
 	
 	public String field() {
 		switch (this) {
@@ -16,12 +13,11 @@ public enum AccommodationSortField {
 				return "booking_count";
 			case BEST_SELLING_IN_CHANNEL:
 				return "booking_count_channel_";
-			case DISTANCE:
-				return "distance";
 			case PRICE:
 				return "_score";
 			default:
 				return "_score";
 		}
 	}
+
 }

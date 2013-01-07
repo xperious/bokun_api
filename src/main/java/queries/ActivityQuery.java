@@ -38,6 +38,22 @@ public class ActivityQuery extends AbstractQuery {
     public void setChl(String chl) {
     	this.chl = chl;
     }
+    
+	public ActivitySortField sortField() {
+		if ( StringUtils.isNullOrEmpty(sort) ) {
+			return null;
+		} else {
+			try {
+				return ActivitySortField.valueOf(sort.toUpperCase());
+			} catch ( Throwable ignored ) {
+				return null;
+			}
+		}
+	}
+	
+	public boolean sortingByPrice() {
+		return sortField() != null && sortField() == ActivitySortField.PRICE;
+	}
 
     @Override
 	protected String getStartDateParam() {

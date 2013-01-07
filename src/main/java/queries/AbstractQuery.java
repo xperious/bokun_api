@@ -23,6 +23,9 @@ public abstract class AbstractQuery {
     public int pg = 1;
     public int ps = 20;
     
+	public String sort;
+	public String order;
+    
     public AbstractQuery() {
     }
     
@@ -80,6 +83,30 @@ public abstract class AbstractQuery {
     public void setPageSize(int ps) {
     	this.ps = ps;
     }
+    
+	public void setSort(String s) {
+		this.sort = s;
+	}
+	public String getSort() {
+		return sort;
+	}
+	public void setSortOrder(String s) {
+		this.order = s;
+	}
+	public String getSortOrder() {
+		return order;
+	}
+	public SortOrder orderBy() {
+		if (StringUtils.isNullOrEmpty(order) ) {
+			return null;
+		} else {
+			try {
+				return SortOrder.valueOf(order.toUpperCase());
+			} catch ( Throwable ignored ) {
+				return null;
+			}
+		}
+	}
     
     public abstract void setStartDateStr(String s);
     public Date startDate() {
