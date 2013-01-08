@@ -25,6 +25,8 @@ public abstract class AbstractQuery {
     
 	public String sort;
 	public String order;
+	
+	public String title;
     
     public AbstractQuery() {
     }
@@ -108,7 +110,14 @@ public abstract class AbstractQuery {
 		}
 	}
     
-    public abstract void setStartDateStr(String s);
+    public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public abstract void setStartDateStr(String s);
     public Date startDate() {
         return StringUtils.parseDate(getStartDateParam());
     }

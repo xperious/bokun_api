@@ -5,7 +5,9 @@ public enum ActivitySortField {
 	BEST_SELLING_GLOBAL,
 	BEST_SELLING_IN_CHANNEL,
 	PLACE_DISTANCE,
-	PRICE;
+	PRICE,
+	ALPHABETIC,
+	RANDOM;
 	
 	public String field() {
 		switch (this) {

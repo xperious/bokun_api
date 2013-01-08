@@ -8,7 +8,9 @@ public enum AccommodationSortField {
 	BEST_SELLING_GLOBAL,
 	BEST_SELLING_IN_CHANNEL,
 	PRICE,
-	DISTANCE;
+	DISTANCE,
+	ALPHABETIC,
+	RANDOM;
 	
 	public String field() {
 		switch (this) {
