@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class ActivityAvailabilityDto {
 
+	public String startTime;
 	public Long startTimeId;
 	public Date date;
 	public String localizedDate;
