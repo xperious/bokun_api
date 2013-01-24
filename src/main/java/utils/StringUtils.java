@@ -14,10 +14,13 @@ public class StringUtils {
     private static final String[] DATE_FORMATS = {"dd.MM.yy", "dd.MM.yyyy", "yyyy-MM-dd"};
 
     public static Date parseDate(String s) {
+    	return parseDate(s, DATE_FORMATS);
+    }
+    public static Date parseDate(String s, String[] dateFormats) {
         if ( s == null || s.trim().isEmpty() ) {
             return null;
         }
-        for ( String format : DATE_FORMATS ) {
+        for ( String format : dateFormats ) {
             try {
                 return new SimpleDateFormat(format).parse(s.trim());
             } catch (ParseException ignored) {}

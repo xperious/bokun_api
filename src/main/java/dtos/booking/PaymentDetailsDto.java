@@ -7,10 +7,11 @@ public class PaymentDetailsDto {
 	public String paymentProvider;
 	
 	public String externalTransactionId;
+	public String authorizationCode;
 	public Date transactionDate;
 	
 	public String cardBrand;
-	public String cardNumberLastFour;
+	public String cardNumber;
 	
 	public String fullName;
 	public String address;
@@ -37,17 +38,23 @@ public class PaymentDetailsDto {
 	public void setTransactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
 	}
+	public String getAuthorizationCode() {
+		return authorizationCode;
+	}
+	public void setAuthorizationCode(String authorizationCode) {
+		this.authorizationCode = authorizationCode;
+	}
 	public String getCardBrand() {
 		return cardBrand;
 	}
 	public void setCardBrand(String cardBrand) {
 		this.cardBrand = cardBrand;
 	}
-	public String getCardNumberLastFour() {
-		return cardNumberLastFour;
+	public String getCardNumber() {
+		return cardNumber;
 	}
-	public void setCardNumberLastFour(String cardNumberLastFour) {
-		this.cardNumberLastFour = cardNumberLastFour;
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
 	}
 	public String getFullName() {
 		return fullName;

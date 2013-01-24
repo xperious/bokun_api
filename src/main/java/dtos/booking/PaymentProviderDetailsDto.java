@@ -13,6 +13,16 @@ public class PaymentProviderDetailsDto {
 		return this;
 	}
 	
+	public PaymentProviderDetailsDto addParam(String name, int value) {
+		parameters.add(new PaymentProviderParam(name, Integer.toString(value)));
+		return this;
+	}
+	
+	public PaymentProviderDetailsDto addParam(String name, long value) {
+		parameters.add(new PaymentProviderParam(name, Long.toString(value)));
+		return this;
+	}
+	
 	public static class PaymentProviderParam {
 		
 		public String name, value;
