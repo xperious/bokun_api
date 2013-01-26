@@ -24,4 +24,8 @@ public class BookingQuestionDto {
 	public String getQuestionType() {
 		return type;
 	}
+	
+	public Long getId() {
+		return null;
+	}
 }
