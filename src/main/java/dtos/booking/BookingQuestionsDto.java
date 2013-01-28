@@ -8,4 +8,8 @@ public class BookingQuestionsDto {
 	
 	public List<AccommodationBookingQuestionsDto> accommodationBookings = new ArrayList<AccommodationBookingQuestionsDto>();
 	public List<ActivityBookingQuestionsDto> activityBookings = new ArrayList<ActivityBookingQuestionsDto>();
+	
+	public boolean isEmpty() {
+		return accommodationBookings.isEmpty() && activityBookings.isEmpty();
+	}
 }
