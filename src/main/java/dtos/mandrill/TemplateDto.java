@@ -5,6 +5,7 @@ public class TemplateDto {
 	public Long id;
 	public String name;
 	public String code;
+	public String slug;
 	
 	public String publish_name;
 	public String publish_code;
@@ -17,6 +18,12 @@ public class TemplateDto {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getSlug() {
+		return slug;
+	}
+	public void setSlug(String slug) {
+		this.slug = slug;
 	}
 	public String getCode() {
 		return code;
