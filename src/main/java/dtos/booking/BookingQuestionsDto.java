@@ -12,4 +12,8 @@ public class BookingQuestionsDto {
 	public boolean isEmpty() {
 		return accommodationBookings.isEmpty() && activityBookings.isEmpty();
 	}
+	
+	public int size() {
+		return accommodationBookings.size() + activityBookings.size();
+	}
 }
