@@ -1,103 +1,87 @@
 package queries;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import utils.DateUtils;
 import utils.StringUtils;
 
 
-public class AccommodationQuery extends AbstractQuery {
-	
-	public String cin, cout;
+public class AccommodationQuery extends AbstractDateRangeQuery {
 
 	public List<RoomQuery> rooms = new ArrayList<RoomQuery>();
+	
+	public LocationFilters locationFilters = new LocationFilters();
 
 	public AccommodationQuery() {
 		super();
 		rooms.add(new RoomQuery(2, null));
 	}
 	
-	public void setCin(String s) {
-		this.cin = s;
-	}
-	public void setCout(String s) {
-		this.cout = s;
-	}
-	
 	public void setRooms(List<RoomQuery> rooms) {
 		this.rooms = rooms;
 	}
-	public List<RoomQuery> getRooms() {
-		return rooms;
+	public void setLocationFilters(LocationFilters l) {
+		this.locationFilters = l;
 	}
-	public List<RoomQuery> rooms() {
-		return rooms;
+	@JsonIgnore
+	public boolean hasDistanceField() {
+		return locationFilters != null && (locationFilters.hasGeoDistanceFilter() || locationFilters.hasGeoDistanceRangeFilter());
+	}
+	@JsonIgnore
+	public GeoPoint getDistancePoint() {
+		if ( hasDistanceField() ) {
+			if ( locationFilters.hasGeoDistanceFilter() ) {
+				return locationFilters.geoDistanceFilter.center;
+			} else if ( locationFilters.hasGeoDistanceRangeFilter() ) {
+				return locationFilters.geoDistanceRangeFilter.center;
+			}
+		}
+		return null;
 	}
 	
+	@JsonIgnore
 	public AccommodationSortField sortField() {
-		if ( StringUtils.isNullOrEmpty(sort) ) {
+		if ( StringUtils.isNullOrEmpty(sortField) ) {
 			return null;
 		} else {
 			try {
-				return AccommodationSortField.valueOf(sort.toUpperCase());
+				return AccommodationSortField.valueOf(sortField.toUpperCase());
 			} catch ( Throwable ignored ) {
 				return null;
 			}
 		}
 	}
-	
+	@JsonIgnore
 	public boolean sortingByPrice() {
 		return sortField() != null && sortField() == AccommodationSortField.PRICE;
 	}
+	@JsonIgnore
 	public boolean sortingByDistance() {
 		return sortField() != null && sortField() == AccommodationSortField.DISTANCE;
 	}
 
-	@Override
-	public void setStartDateStr(String s) {
-		cin = s;
-	}
 
-	@Override
-	public void setEndDateStr(String s) {
-		cout = s;
-	}
-
-	@Override
-	protected String getStartDateParam() {
-		return cin;
-	}
-
-	@Override
-	protected String getEndDateParam() {
-		return cout;
-	}
-
-    public boolean hasType() {
-        return hasFacet("type") && !facets.get("type").trim().isEmpty();
+	@JsonIgnore
+    public boolean hasTypeFilter() {
+        return hasFacetFilter("type") && !getSingleFacetFilterValue("type").trim().isEmpty();
     }
 
-    public String type() {
-    	if ( !hasType() ) {
+	@JsonIgnore
+    public String typeFilter() {
+    	if ( !hasTypeFilter() ) {
     		return null;
     	}
-    	return facets.get("type").toUpperCase();
+    	return getSingleFacetFilterValue("type").toUpperCase();
     }
-	
-	public Date checkInDate() {
-		return startDate();
-	}
-	public Date checkOutDate() {
-		return endDate();
-	}
 
     public int nightCount() {
         if ( !isAvailabilityQuery() ) {
             return 0;
         }
-        return DateUtils.getNightCount(checkInDate(), checkOutDate());
+        return DateUtils.getNightCount(parseStartDate(), parseEndDate());
     }
 
 	public int minCapacityNeeded() {
@@ -122,7 +106,7 @@ public class AccommodationQuery extends AbstractQuery {
 
 	public int totalAdults() {
 		int sum = 0;
-		for ( RoomQuery q : rooms() ) {
+		for ( RoomQuery q : rooms ) {
 			sum += q.adl;
 		}
 		return sum;
@@ -130,7 +114,7 @@ public class AccommodationQuery extends AbstractQuery {
 
 	public int totalChildren() {
 		int sum = 0;
-		for ( RoomQuery q : rooms() ) {
+		for ( RoomQuery q : rooms ) {
 			sum += q.children().size();
 		}
 		return sum;

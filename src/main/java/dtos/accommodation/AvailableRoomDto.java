@@ -34,12 +34,12 @@ public class AvailableRoomDto {
                 : availableAcrossInterval
                 ;
 
-        for ( RoomQuery rq : query.rooms() ) {
+        for ( RoomQuery rq : query.rooms ) {
             if ( rq.sleepingPlacesNeeded() <= roomType.capacity ) {
                 this.guestCounts.add(rq.sleepingPlacesNeeded());
             }
         }
-        if ( query.rooms().size() > 1 && query.totalCapacityNeeded() <= roomType.capacity ) {
+        if ( query.rooms.size() > 1 && query.totalCapacityNeeded() <= roomType.capacity ) {
             this.guestCounts.add(query.totalCapacityNeeded());
         }
         Collections.sort(this.guestCounts);

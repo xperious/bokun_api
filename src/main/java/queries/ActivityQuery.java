@@ -5,46 +5,23 @@ import java.util.List;
 
 import utils.StringUtils;
 
-public class ActivityQuery extends AbstractQuery { 
+public class ActivityQuery extends AbstractDateRangeQuery { 
 
-	public String sd, ed;
-    public int adl = 1;
-    public String chl;
+    public int adults = 1;
+    public List<Integer> children = new ArrayList<>();
+    
+    public LocationFilters agendaLocationFilters = new LocationFilters(); 
+    public LocationFilters startPointLocationFilters = new LocationFilters();
 
     public ActivityQuery() {
     }
     
-    public void setSd(String sd) {
-    	this.sd = sd;
-    }
-    public void setStartDate(String sd) {
-    	this.sd = sd;
-    }
-    public void setEd(String ed) {
-    	this.ed = ed;
-    }
-    public void setEndDate(String ed) {
-    	this.ed = ed;
-    }
-    public void setAdults(int adl) {
-    	this.adl = adl;
-    }
-    public void setAdl(int adl) {
-    	this.adl = adl;
-    }
-    public void setChildren(String chl) {
-    	this.chl = chl;
-    }
-    public void setChl(String chl) {
-    	this.chl = chl;
-    }
-    
 	public ActivitySortField sortField() {
-		if ( StringUtils.isNullOrEmpty(sort) ) {
+		if ( StringUtils.isNullOrEmpty(sortField) ) {
 			return null;
 		} else {
 			try {
-				return ActivitySortField.valueOf(sort.toUpperCase());
+				return ActivitySortField.valueOf(sortField.toUpperCase());
 			} catch ( Throwable ignored ) {
 				return null;
 			}
@@ -55,35 +32,23 @@ public class ActivityQuery extends AbstractQuery {
 		return sortField() != null && sortField() == ActivitySortField.PRICE;
 	}
 
-    @Override
-	protected String getStartDateParam() {
-		return sd;
+    public void setAdults(int adults) {
+		this.adults = adults;
 	}
 
-	@Override
-	protected String getEndDateParam() {
-		return ed;
-	}
-	
-	@Override
-	public void setStartDateStr(String s) {
-		sd = s;
+	public void setChildren(List<Integer> children) {
+		this.children = children;
 	}
 
-	@Override
-	public void setEndDateStr(String s) {
-		ed = s;
-	}
-
-	public int adults() {
-        return adl;
+	public int totalPassengerCount() {
+        return adults + children.size();
     }
 
-    public List<Integer> children() {
-        return new ArrayList<Integer>(StringUtils.commaSeparatedToInts(chl));
-    }
+	public void setAgendaLocationFilters(LocationFilters agendaLocationFilters) {
+		this.agendaLocationFilters = agendaLocationFilters;
+	}
 
-    public int totalPassengerCount() {
-        return adults() + children().size();
-    }
+	public void setStartPointLocationFilters(LocationFilters startPointLocationFilters) {
+		this.startPointLocationFilters = startPointLocationFilters;
+	}
 }
