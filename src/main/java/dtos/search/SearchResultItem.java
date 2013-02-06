@@ -13,7 +13,6 @@ public class SearchResultItem {
 	public String summary;
 	public String slug;
 	public Integer price;
-	public Double distance;
 	public LocationDto location;
 	public ItemDto vendor;
 	

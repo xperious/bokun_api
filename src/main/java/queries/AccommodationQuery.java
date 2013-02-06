@@ -107,7 +107,7 @@ public class AccommodationQuery extends AbstractDateRangeQuery {
 	public int totalAdults() {
 		int sum = 0;
 		for ( RoomQuery q : rooms ) {
-			sum += q.adl;
+			sum += q.adults;
 		}
 		return sum;
 	}
@@ -115,7 +115,7 @@ public class AccommodationQuery extends AbstractDateRangeQuery {
 	public int totalChildren() {
 		int sum = 0;
 		for ( RoomQuery q : rooms ) {
-			sum += q.children().size();
+			sum += q.children.size();
 		}
 		return sum;
 	}

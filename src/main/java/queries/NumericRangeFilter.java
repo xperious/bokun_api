@@ -50,11 +50,11 @@ public class NumericRangeFilter {
 	@JsonIgnore
 	public String asComparison(String low, String high, String varName) {
 		if ( (from != null && from >= 0) && (to != null && to > from) ) {
-			return "(" + low + " <= " + varName + ") && (" + varName + " <= " + high + ")";
+			return "(" + low + " <" + (includeLower ? "=" : "") + " " + varName + ") && (" + varName + " <" + (includeUpper ? "=" : "") + " " + high + ")";
 		} else if ( (from == null) && (to != null && to > 0) ) {
-			return varName + " <= " + high;
+			return varName + " <" + (includeUpper ? "=" : "") + " " + high;
 		} else if ( (from != null && from >= 0) && (to == null) ) {
-			return low + " <= " + varName;
+			return low + " <" + (includeLower ? "=" : "") + " " + varName;
 		}
 		return "true";
 	}
