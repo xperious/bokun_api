@@ -37,7 +37,7 @@ public class StringUtils {
 		if ( s == null || s.trim().isEmpty() ) return set;
 		for ( String id : s.trim().split(",") ) {
 			if ( !id.trim().isEmpty() ) {
-				set.add(id);
+				set.add(id.trim());
 			}
 		}
     	return set;
@@ -49,7 +49,7 @@ public class StringUtils {
 		for ( String id : s.trim().split(",") ) {
 			if ( !id.trim().isEmpty() ) {
 				try {
-					ids.add(Long.parseLong(id));
+					ids.add(Long.parseLong(id.trim()));
 				} catch ( Throwable ignored ) {}
 			}
 		}
@@ -62,7 +62,7 @@ public class StringUtils {
         for ( String i : s.trim().split(",") ) {
             if ( !i.trim().isEmpty() ) {
                 try {
-                    ints.add(Integer.parseInt(i));
+                    ints.add(Integer.parseInt(i.trim()));
                 } catch ( Throwable ignored ) {}
             }
         }
