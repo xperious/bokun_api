@@ -13,7 +13,7 @@ import utils.StringUtils;
  */
 public abstract class AbstractQuery {
 	
-	public String title;
+	public TextFilter textFilter;
 	
     public int page = 1;
     public int pageSize = 20;
@@ -28,8 +28,8 @@ public abstract class AbstractQuery {
     public AbstractQuery() {
     }
     
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTextFilter(TextFilter textFilter) {
+		this.textFilter = textFilter;
 	}
 	public void setPage(int page) {
 		this.page = page;
@@ -43,6 +43,11 @@ public abstract class AbstractQuery {
 	public void setSortOrder(String s) {
 		this.sortOrder = s;
 	}
+
+    @JsonIgnore
+    public boolean isTextFilterActive() {
+        return textFilter != null && textFilter.isActive();
+    }
 	
 	@JsonIgnore
 	public SortOrder orderBy() {

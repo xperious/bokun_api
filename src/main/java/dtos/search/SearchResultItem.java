@@ -15,15 +15,17 @@ public class SearchResultItem {
 	public Integer price;
 	public LocationDto location;
 	public ItemDto vendor;
+
+    public List<String> keywords = new ArrayList<>();
 	
-	public List<PlaceDto> places = new ArrayList<PlaceDto>();
+	public List<PlaceDto> places = new ArrayList<>();
 	
 	public PhotoDto keyPhoto;
-	public List<PhotoDto> photos = new ArrayList<PhotoDto>();
+	public List<PhotoDto> photos = new ArrayList<>();
 	
-	public List<VideoDto> videos = new ArrayList<VideoDto>();
+	public List<VideoDto> videos = new ArrayList<>();
 	
-	public Map<String,Object> fields = new HashMap<String,Object>();
+	public Map<String,Object> fields = new HashMap<>();
 	
 	@JsonIgnore
 	public Long getLongId() {

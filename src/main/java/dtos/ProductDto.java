@@ -13,18 +13,17 @@ public abstract class ProductDto {
 
     public String title;
     public String description;
+    public List<String> keywords = new ArrayList<>();
     public String slug;
     
-    public List<TagGroupDto> tags = new ArrayList<TagGroupDto>();
+    public List<TagGroupDto> tags = new ArrayList<>();
     
     public PhotoDto keyPhoto;
-    public List<PhotoDto> photos = new ArrayList<PhotoDto>();
-    public List<VideoDto> videos = new ArrayList<VideoDto>();
+    public List<PhotoDto> photos = new ArrayList<>();
+    public List<VideoDto> videos = new ArrayList<>();
     
     public VendorDto vendor;
-    
-    public WidgetSettingsDto widgets;
-    
+
     public ProductDto() {}
     
     @JsonIgnore
