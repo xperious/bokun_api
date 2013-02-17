@@ -5,10 +5,12 @@ import java.util.List;
 
 public class TagGroupDto extends ItemDto {
 
-	public List<ItemDto> tags = new ArrayList<ItemDto>();
+	public List<ItemDto> tags = new ArrayList<>();
 	public String facetName;
+    public List<String> flags = new ArrayList<>();
 	
 	public TagGroupDto() {}
+
 	public TagGroupDto(Long id, String title, String facetName) {
 		super(id, title);
 		this.facetName = facetName;
@@ -27,5 +29,12 @@ public class TagGroupDto extends ItemDto {
 	public void setFacetName(String facetName) {
 		this.facetName = facetName;
 	}
-	
+
+    public List<String> getFlags() {
+        return flags;
+    }
+
+    public void setFlags(List<String> flags) {
+        this.flags = flags;
+    }
 }
