@@ -16,7 +16,7 @@ public abstract class ProductDto {
     public List<String> keywords = new ArrayList<>();
     public String slug;
     
-    public List<TagGroupDto> tags = new ArrayList<>();
+    public List<TagGroupDto> tagGroups = new ArrayList<>();
     
     public PhotoDto keyPhoto;
     public List<PhotoDto> photos = new ArrayList<>();
@@ -28,7 +28,7 @@ public abstract class ProductDto {
     
     @JsonIgnore
     public TagGroupDto findTagGroup(String facetName) {
-    	for (TagGroupDto group : tags) {
+    	for (TagGroupDto group : tagGroups) {
     		if ( !StringUtils.isNullOrEmpty(group.facetName) && group.facetName.equals(facetName) ) {
     			return group;
     		}
@@ -39,7 +39,7 @@ public abstract class ProductDto {
     @JsonIgnore
     public List<TagGroupDto> filteredTagGroups(String... excluded) {
     	List<TagGroupDto> filtered = new ArrayList<TagGroupDto>();
-    	for (TagGroupDto group : tags) {
+    	for (TagGroupDto group : tagGroups) {
     		boolean found = false;
     		for (String excludedName : excluded) {
     			if ( !StringUtils.isNullOrEmpty(group.facetName) && group.facetName.equals(excludedName) ) {

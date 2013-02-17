@@ -1,15 +1,25 @@
 package dtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ItemDto {
 
 	public Long id;
 	public String title;
+
+    public List<String> flags = new ArrayList<>();
 	
 	public ItemDto() {}
+
+    public ItemDto(Long id, String title) {
+        this(id, title, null);
+    }
 	
-	public ItemDto(Long id, String title) {
+	public ItemDto(Long id, String title, List<String> flags) {
 		this.id = id;
 		this.title = title;
+        this.flags = flags;
 	}
 	
 	public Long getId() {
@@ -24,5 +34,13 @@ public class ItemDto {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+    public List<String> getFlags() {
+        return flags;
+    }
+
+    public void setFlags(List<String> flags) {
+        this.flags = flags;
+    }
 	
 }

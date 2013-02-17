@@ -11,9 +11,10 @@ public class TagGroupDto extends ItemDto {
 	
 	public TagGroupDto() {}
 
-	public TagGroupDto(Long id, String title, String facetName) {
-		super(id, title);
+	public TagGroupDto(Long id, String title, String facetName, List<String> flags) {
+		super(id, title, flags);
 		this.facetName = facetName;
+        this.flags = flags;
 	}
 
 	public List<ItemDto> getTags() {
@@ -29,12 +30,4 @@ public class TagGroupDto extends ItemDto {
 	public void setFacetName(String facetName) {
 		this.facetName = facetName;
 	}
-
-    public List<String> getFlags() {
-        return flags;
-    }
-
-    public void setFlags(List<String> flags) {
-        this.flags = flags;
-    }
 }
