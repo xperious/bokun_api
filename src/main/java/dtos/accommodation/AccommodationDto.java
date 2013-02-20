@@ -16,16 +16,16 @@ public class AccommodationDto extends ProductDto {
     public int checkOutHour = 12;
     public int checkOutMinute = 0;
 	 
-	public Set<String> types = new HashSet<String>();
+	public Set<String> types = new HashSet<>();
 	
 	@Property(translate = true)
 	public LocationDto location;
 	
 	@CollectionProperty(itemTranslation = RoomTypeDto.class)
-	public List<RoomTypeDto> roomTypes = new ArrayList<RoomTypeDto>();
+	public List<RoomTypeDto> roomTypes = new ArrayList<>();
 	
-	@CollectionProperty(itemTranslation = AccommodationExtraDto.class)
-	public List<AccommodationExtraDto> bookableExtras = new ArrayList<AccommodationExtraDto>();
+	@CollectionProperty(itemTranslation = BookableExtraDto.class)
+	public List<BookableExtraDto> bookableExtras = new ArrayList<>();
 	
 	public AccommodationAvailabilityReportDto availabilityReport;
 	

@@ -3,6 +3,8 @@ package dtos.activity;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import dtos.BookableExtraDto;
+import dtos.WithExtras;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import utils.StringUtils;
@@ -12,7 +14,7 @@ import com.codiform.moo.annotation.Property;
 
 import dtos.ProductDto;
 
-public class ActivityDto extends ProductDto {
+public class ActivityDto extends ProductDto implements WithExtras {
 
     public String included;
     public String requirements; 
@@ -46,13 +48,13 @@ public class ActivityDto extends ProductDto {
     public String difficultyLevel;
     
     @CollectionProperty(itemTranslation = AgendaItemDto.class)
-    public List<AgendaItemDto> agendaItems = new ArrayList<AgendaItemDto>();
+    public List<AgendaItemDto> agendaItems = new ArrayList<>();
 
     @CollectionProperty(itemTranslation = StartTimeDto.class)
-    public List<StartTimeDto> startTimes = new ArrayList<StartTimeDto>();
+    public List<StartTimeDto> startTimes = new ArrayList<>();
 
-    @CollectionProperty(itemTranslation = ActivityExtraDto.class)
-    public List<ActivityExtraDto> bookableExtras = new ArrayList<ActivityExtraDto>();
+    @CollectionProperty(itemTranslation = BookableExtraDto.class)
+    public List<BookableExtraDto> bookableExtras = new ArrayList<>();
     
     public ActivityAvailabilityReportDto availabilityReport;
 	
@@ -71,8 +73,8 @@ public class ActivityDto extends ProductDto {
 	}
 	
 	@JsonIgnore
-	public ActivityExtraDto findExtra(Long id) {
-		for (ActivityExtraDto dto : bookableExtras) {
+	public BookableExtraDto findExtra(Long id) {
+		for (BookableExtraDto dto : bookableExtras) {
 			if ( dto.id.equals(id) ) {
 				return dto;
 			}
@@ -159,5 +161,27 @@ public class ActivityDto extends ProductDto {
 		}
 		return lowestPrice;
 	}
+
+    @JsonIgnore
+    public List<BookableExtraDto> getIncludedExtras() {
+        List<BookableExtraDto> list = new ArrayList<>();
+        for ( BookableExtraDto e : bookableExtras ) {
+            if ( e.included ) {
+                list.add(e);
+            }
+        }
+        return list;
+    }
+
+    @JsonIgnore
+    public List<BookableExtraDto> getOptionalExtras() {
+        List<BookableExtraDto> list = new ArrayList<>();
+        for ( BookableExtraDto e : bookableExtras ) {
+            if ( !e.included ) {
+                list.add(e);
+            }
+        }
+        return list;
+    }
 
 }

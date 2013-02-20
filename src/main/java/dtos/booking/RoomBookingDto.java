@@ -25,14 +25,14 @@ public class RoomBookingDto {
 	public int roomPrice;
 	public int extrasPrice;
 	
-	public List<AccommodationExtraBookingDto> extraBookings = new ArrayList<AccommodationExtraBookingDto>();
+	public List<ExtraBookingDto> extraBookings = new ArrayList<>();
 	
 	public List<AccommodationAvailabilityBookingDto> availabilityBookings = new ArrayList<AccommodationAvailabilityBookingDto>();
 	
 	@JsonIgnore
-    public List<AccommodationExtraBookingDto> getExtraBookings(boolean included) {
-        List<AccommodationExtraBookingDto> list = new ArrayList<AccommodationExtraBookingDto>();
-        for ( AccommodationExtraBookingDto ae : extraBookings ) {
+    public List<ExtraBookingDto> getExtraBookings(boolean included) {
+        List<ExtraBookingDto> list = new ArrayList<>();
+        for ( ExtraBookingDto ae : extraBookings ) {
             if ( (ae.included && included) || (!ae.included && !included) ) {
                 list.add(ae);
             }

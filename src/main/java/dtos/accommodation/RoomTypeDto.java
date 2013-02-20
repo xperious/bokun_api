@@ -9,7 +9,7 @@ import com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException;
 
 import dtos.*;
 
-public class RoomTypeDto {
+public class RoomTypeDto implements WithExtras {
 
 	public Long id;
 	public String externalId;
@@ -41,16 +41,17 @@ public class RoomTypeDto {
 	public int singleOccupancyDiscount = 0;
 	
 	@CollectionProperty(optionality = Optionality.OPTIONAL)
-	public List<TagGroupDto> tags = new ArrayList<TagGroupDto>();
+	public List<TagGroupDto> tags = new ArrayList<>();
 	
 	@CollectionProperty(optionality = Optionality.OPTIONAL)
-	public List<PhotoDto> photos = new ArrayList<PhotoDto>();
+	public List<PhotoDto> photos = new ArrayList<>();
 	
 	@CollectionProperty(optionality = Optionality.OPTIONAL)
-	public List<AccommodationExtraDto> extras = new ArrayList<AccommodationExtraDto>();
-	
-	public AccommodationExtraDto findExtra(Long id) {
-		for (AccommodationExtraDto e : extras) {
+	public List<BookableExtraDto> extras = new ArrayList<>();
+
+    @JsonIgnore
+	public BookableExtraDto findExtra(Long id) {
+		for (BookableExtraDto e : extras) {
 			if ( e.id.equals(id) ) {
 				return e;
 			}
@@ -59,10 +60,10 @@ public class RoomTypeDto {
 	}
 	
 	@JsonIgnore
-	public List<AccommodationExtraDto> getIncludedExtras() {
-		List<AccommodationExtraDto> list = new ArrayList<AccommodationExtraDto>();
-		for ( AccommodationExtraDto e : extras ) {
-			if ( e.mandatory ) {
+	public List<BookableExtraDto> getIncludedExtras() {
+		List<BookableExtraDto> list = new ArrayList<>();
+		for ( BookableExtraDto e : extras ) {
+			if ( e.included ) {
 				list.add(e);
 			}
 		}
@@ -70,10 +71,10 @@ public class RoomTypeDto {
 	}
 	
 	@JsonIgnore
-	public List<AccommodationExtraDto> getOptionalExtras() {
-		List<AccommodationExtraDto> list = new ArrayList<AccommodationExtraDto>();
-		for ( AccommodationExtraDto e : extras ) {
-			if ( !e.mandatory ) {
+	public List<BookableExtraDto> getOptionalExtras() {
+		List<BookableExtraDto> list = new ArrayList<>();
+		for ( BookableExtraDto e : extras ) {
+			if ( !e.included ) {
 				list.add(e);
 			}
 		}
