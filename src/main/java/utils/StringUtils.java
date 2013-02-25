@@ -28,12 +28,17 @@ public class StringUtils {
         return null;
     }
 
-    public static boolean isNullOrEmpty(String s) {
-        return s == null || s.trim().isEmpty();
+    public static boolean isNullOrEmpty(String... s) {
+        for (String str : s) {
+            if ( str == null || str.trim().isEmpty() ) {
+                return true;
+            }
+        }
+        return false;
     }
     
     public static Set<String> commaSeparatedToSet(String s) {
-    	Set<String> set = new HashSet<String>();
+    	Set<String> set = new HashSet<>();
 		if ( s == null || s.trim().isEmpty() ) return set;
 		for ( String id : s.trim().split(",") ) {
 			if ( !id.trim().isEmpty() ) {
@@ -44,7 +49,7 @@ public class StringUtils {
     }
 
 	public static Set<Long> commaSeparatedStringToIds( String s ) {
-		Set<Long> ids = new HashSet<Long>();
+		Set<Long> ids = new HashSet<>();
 		if ( s == null || s.trim().isEmpty() ) return ids;
 		for ( String id : s.trim().split(",") ) {
 			if ( !id.trim().isEmpty() ) {
@@ -57,7 +62,7 @@ public class StringUtils {
 	}
 
     public static Set<Integer> commaSeparatedToInts(String s) {
-        Set<Integer> ints = new HashSet<Integer>();
+        Set<Integer> ints = new HashSet<>();
         if ( s == null || s.trim().isEmpty() ) return ints;
         for ( String i : s.trim().split(",") ) {
             if ( !i.trim().isEmpty() ) {
