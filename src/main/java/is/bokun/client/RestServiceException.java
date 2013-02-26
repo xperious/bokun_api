@@ -3,6 +3,8 @@ package is.bokun.client;
 import is.bokun.dtos.ApiResponse;
 
 /**
+ * This exception is thrown from client methods when the status code of the response is not OK (200).
+ *
  * @author Olafur Gauti Gudmundsson
  */
 public class RestServiceException extends RuntimeException {

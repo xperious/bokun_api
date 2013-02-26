@@ -8,11 +8,14 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import is.bokun.utils.DateUtils;
 import is.bokun.utils.StringUtils;
 
-
+/**
+ * Query object for Accommodations.
+ *
+ * @author Olafur Gauti Gudmundsson
+ */
 public class AccommodationQuery extends AbstractDateRangeQuery {
 
 	public List<RoomQuery> rooms = new ArrayList<RoomQuery>();
-	
 	public LocationFilters locationFilters = new LocationFilters();
 
 	public AccommodationQuery() {

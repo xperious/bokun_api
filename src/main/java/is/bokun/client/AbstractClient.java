@@ -30,6 +30,14 @@ public abstract class AbstractClient {
     protected final AsyncHttpClient asyncClient;
     protected final String host, accessKey, secretKey;
 
+    /**
+     * The general constructor for the REST clients.
+     *
+     * @param host the host where the REST services are running (e.g. "http://api.bokun.is" or "http://localhost:9000")
+     * @param accessKey the Access Key as specified in the Bokun API credentials
+     * @param secretKey the Secret Key as specified in the Bokun API credentials
+     * @param asyncClient instance of the HTTP client to use for the communication
+     */
     protected AbstractClient(String host, String accessKey, String secretKey, AsyncHttpClient asyncClient) {
         this.host = host;
         this.asyncClient = asyncClient;
@@ -38,11 +46,15 @@ public abstract class AbstractClient {
     }
 
     /**
-     * X-Bokun-Date         : The date the request was created in UTC, formatted as "yyyy-MM-dd HH:mm:ss"
-     * X-Bokun-AccessKey    : The access key identifying the caller
-     * X-Bokun-Signature    : The HMAC signature to be validated
+     * This method appends the Bokun headers and security signature to the request.
+     * <br/><br/>
+     * X-Bokun-Date         : The date the request was created in UTC, formatted as "yyyy-MM-dd HH:mm:ss"<br/>
+     * X-Bokun-AccessKey    : The access key identifying the caller<br/>
+     * X-Bokun-Signature    : The HMAC signature to be validated<br/>
      *
-     * @param r
+     * @param r the request
+     * @param method the HTTP method being used
+     * @param uri the path + querystring to the REST service being called
      */
     protected void addSecurityHeaders(AsyncHttpClient.BoundRequestBuilder r, String method, String uri) {
         r.addHeader("Content-type", "application/json; charset=utf-8");
@@ -54,7 +66,7 @@ public abstract class AbstractClient {
         StringBuilder signatureInput = new StringBuilder();
         signatureInput.append(date);
         signatureInput.append(accessKey);
-        signatureInput.append(method);
+        signatureInput.append(method.toUpperCase());
         signatureInput.append(uri);
 
         r.addHeader("X-Bokun-Signature", calculateHMAC(secretKey, signatureInput.toString()));
@@ -103,6 +115,12 @@ public abstract class AbstractClient {
         return appendLangAndCurrency(uri, lang, currency, null);
     }
 
+    /**
+     * Validates the response. If the status code is not OK (200), a RestServiceException
+     * will be thrown, containing the API response. The caller must handle this exception.
+     *
+     * @param r the response to be validated
+     */
     protected void validateResponse(Response r) {
         if ( r.getStatusCode() != 200 ) {
             // try parsing an API response
@@ -116,11 +134,25 @@ public abstract class AbstractClient {
         }
     }
 
+    /**
+     * Wraps an exception in an RestServiceException.
+     * Generally used to handle exceptions that occur in the client code.
+     *
+     * @param t the exception that occurred
+     * @return a RestServiceException wrapping the original exception
+     */
     protected RestServiceException wrapException(Throwable t) {
         ApiResponse ar = new ApiResponse(t.getMessage());
         return new RestServiceException(ar, t);
     }
 
+    /**
+     * Calculates the HMAC signature for the data supplied, using the secret key.
+     *
+     * @param secret the secret key (as specified in the Bokun API key)
+     * @param data the input data
+     * @return the calculated HMAC
+     */
     private String calculateHMAC(String secret, String data) {
         try {
             SecretKeySpec signingKey = new SecretKeySpec(secret.getBytes(),	HMAC_SHA1_ALGORITHM);

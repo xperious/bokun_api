@@ -20,6 +20,14 @@ public class CountryClient extends AbstractClient {
 
     private static final String BASE = "/country.json";
 
+    /**
+     * @see AbstractClient#()
+     *
+     * @param host
+     * @param accessKey
+     * @param secretKey
+     * @param asyncClient
+     */
     public CountryClient(String host, String accessKey, String secretKey, AsyncHttpClient asyncClient) {
         super(host, accessKey, secretKey, asyncClient);
     }
