@@ -9,13 +9,21 @@ import is.bokun.utils.DateUtils;
 import is.bokun.utils.StringUtils;
 
 /**
- * Query object for Accommodations.
+ * Query object for searching Accommodations.
  *
  * @author Olafur Gauti Gudmundsson
  */
 public class AccommodationQuery extends AbstractDateRangeQuery {
 
-	public List<RoomQuery> rooms = new ArrayList<RoomQuery>();
+    /**
+     * List of room requirements (number of rooms and number of guests in each room). <br/>
+     * Note: This is only relevant if date range is specified, else ignored.
+     */
+	public List<RoomQuery> rooms = new ArrayList<>();
+
+    /**
+     * Filter the results by location.
+     */
 	public LocationFilters locationFilters = new LocationFilters();
 
 	public AccommodationQuery() {

@@ -3,12 +3,22 @@ package is.bokun.queries;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
- * A filter allowing to filter hits based on a point location using a bounding box. 
+ * A filter allowing to filter hits based on a point location using a bounding box.
+ * If applied, then only results within the box will be returned.
+ * When a result has multiple locations: once a single location / point matches the filter, the hit will be included in the filter.
  *
+ * @author Olafur Gauti Gudmundsson
  */
 public class GeoBoundingBoxFilter {
 
-	public GeoPoint topLeft, bottomRight;
+    /**
+     * The top-left coordinates of the box.
+     */
+	public GeoPoint topLeft;
+    /**
+     * The bottom-right coordinates of the box.
+     */
+    public GeoPoint bottomRight;
 	
 	public GeoBoundingBoxFilter() {}
 

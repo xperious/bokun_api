@@ -3,12 +3,29 @@ package is.bokun.queries;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
+ * For filtering results with fields that have values within a certain numeric range.
+ *
  * @author Olafur Gauti Gudmundsson
  */
 public class NumericRangeFilter {
-	
-	public Integer from, to;
-	public boolean includeLower, includeUpper = true;
+
+    /**
+     * The lower bound of the range. Defaults to start from the first.
+     */
+	public Integer from;
+    /**
+     * The upper bound of the range. Defaults to unbounded.
+     */
+    public Integer to;
+
+    /**
+     * Should the first "from" (if set) be inclusive or not. Defaults to true.
+     */
+	public boolean includeLower = true;
+    /**
+     * Should the last "to" (if set) be inclusive or not. Defaults to true.
+     */
+    public boolean includeUpper = true;
 	
 	public void setFrom(Integer f) {
 		this.from = f;

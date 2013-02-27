@@ -3,12 +3,21 @@ package is.bokun.queries;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
- * Filters documents that include only hits that exists within a specific distance from a geo point.
+ * Filters results that include only hits that exists within a specific distance from a geo point.
  *
+ * @author Olafur Gauti Gudmundsson
  */
 public class GeoDistanceFilter {
 
+    /**
+     * The center geo point from which to calculate the distance.
+     */
 	public GeoPoint center = new GeoPoint();
+
+    /**
+     * The distance, specified as a number followed by a distance unit (either mi/miles or km can be set).
+     * Default value is "50km".
+     */
 	public String distance = "50km";
 	
 	public GeoDistanceFilter() {}

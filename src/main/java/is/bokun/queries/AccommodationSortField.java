@@ -1,6 +1,8 @@
 package is.bokun.queries;
 
 /**
+ * The available sort fields for Accommodation results.
+ *
  * @author Olafur Gauti Gudmundsson
  */
 public enum AccommodationSortField {

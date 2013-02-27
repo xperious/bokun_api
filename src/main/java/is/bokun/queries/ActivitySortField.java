@@ -1,5 +1,10 @@
 package is.bokun.queries;
 
+/**
+ * The available sort fields for Activity results.
+ *
+ * @author Olafur Gauti Gudmundsson
+ */
 public enum ActivitySortField {
 
 	BEST_SELLING_GLOBAL,

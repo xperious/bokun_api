@@ -6,13 +6,23 @@ import java.util.List;
 import is.bokun.utils.StringUtils;
 
 /**
+ * Requirements for an Accommodation "room".
+ *
  * @author Olafur Gauti Gudmundsson
  */
 public class RoomQuery {
 	
 	public static final int MIN_AGE_FOR_SEPARATE_BED = 4;
-	
+
+    /**
+     * Number of adults staying in the room.
+     */
 	public int adults = 1;
+
+    /**
+     * Number of children staying with the adults. The list should contain one item for each
+     * child, and the item value should be the age of the child.
+     */
 	public List<Integer> children = new ArrayList<>();
 
 	public RoomQuery() {}

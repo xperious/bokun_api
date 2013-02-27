@@ -6,12 +6,19 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  * A filter allowing to include only hits that fall within a polygon of points.
+ * If applied, then only results within the polygon will be returned.
+ *
+ * @author Olafur Gauti Gudmundsson
  */
 public class GeoPolygonFilter {
 
-	public List<GeoPoint> points = new ArrayList<>();
-	
-	
+    /**
+     * The points that describe the polygon.
+     */
+    public List<GeoPoint> points = new ArrayList<>();
+
+    public GeoPolygonFilter() {}
+
 	public List<GeoPoint> getPoints() {
 		return points;
 	}

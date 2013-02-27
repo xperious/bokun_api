@@ -12,17 +12,43 @@ import is.bokun.utils.StringUtils;
  * @author Olafur Gauti Gudmundsson
  */
 public abstract class AbstractQuery {
-	
+
+    /**
+     * Specifying this filter will filter the results using a textual search.
+     */
 	public TextFilter textFilter;
-	
+
+    /**
+     * Number of the page to retrieve in the paginated result list.
+     * Default value is 1.
+     */
     public int page = 1;
+    /**
+     * Number of result on each page in the paginated result list.
+     * Default value is 20.
+     */
     public int pageSize = 20;
-    
+
+    /**
+     * The name of the field to sort the results by.
+     */
 	public String sortField;
+    /**
+     * The sort order. Either "asc" or "desc". Defaults to "asc".
+     */
 	public String sortOrder;
-	
+
+    /**
+     * A list of filters to filter the results by facets.
+     */
 	public List<FacetFilter> facetFilters = new ArrayList<>();
-	
+
+    /**
+     * Specifying this filter will filter the results by price.
+     * Note: for date-related products (e.g. Accommodation, Activity), the price is only calculated
+     * when searching for availability. For such products his filter is therefore only
+     * applied during availability search (using start date and end date).
+     */
 	public NumericRangeFilter priceRangeFilter;
     
     public AbstractQuery() {
@@ -44,6 +70,10 @@ public abstract class AbstractQuery {
 		this.sortOrder = s;
 	}
 
+    /**
+     * Check whether we should filter using textual search.
+     * @return true if text filter is active, else false
+     */
     @JsonIgnore
     public boolean isTextFilterActive() {
         return textFilter != null && textFilter.isActive();
@@ -92,7 +122,13 @@ public abstract class AbstractQuery {
 		}
 		return new ArrayList<String>();
 	}
-	
+
+    /**
+     * Check if filtering by the facet with the name supplied.
+     *
+     * @param facetName name of the facet
+     * @return true if filtering by the facet, else false
+     */
 	@JsonIgnore
 	public boolean hasFacetFilter(String facetName) {
 		for (FacetFilter f : facetFilters) {

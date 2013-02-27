@@ -6,9 +6,24 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 import is.bokun.utils.StringUtils;
 
+/**
+ * Abstract query class for date ranges, extends the AbstractQuery superclass with start and end dates.
+ * The dates do not include time.<br/>
+ * The dates should be provided in one of the following formats (in order of parsing):
+ * "dd.MM.yy", "dd.MM.yyyy", "yyyy-MM-dd".
+ *
+ * @author Olafur Gauti Gudmundsson
+ */
 public abstract class AbstractDateRangeQuery extends AbstractQuery {
 
-	public String startDate, endDate;
+    /**
+     * The start date of the range.
+     */
+	public String startDate;
+    /**
+     * The end date of the range.
+     */
+    public String endDate;
 	
 	public AbstractDateRangeQuery() {
 		super();

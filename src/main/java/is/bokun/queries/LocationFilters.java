@@ -4,14 +4,33 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  * All the supported location filters.
- * Note that if GeoDistanceFilter is applied, then GeoDistanceRangeFilter will be ignored.
- * Similarly, if GeoBoundingBoxFilter is applied, then GeoPolygonFilter will be ignored.
+ * <br/><br/>
+ * Note that GeoDistanceFilter and GeoDistanceRangeFilter are mutually exclusive, that is, if GeoDistanceFilter is applied,
+ * then GeoDistanceRangeFilter will be ignored.
+ * <br/>
+ * Similarly, GeoBoundingBoxFilter and GeoPolygonFilter are mutually exclusive: if GeoBoundingBoxFilter is applied, then
+ * GeoPolygonFilter will be ignored.
+ *
+ * @author Olafur Gauti Gudmundsson
  */
 public class LocationFilters {
 
+    /**
+     * Match results within a given distance from a center point.
+     */
 	public GeoDistanceFilter geoDistanceFilter;
+    /**
+     * Match results within a given distance range from a center point.
+     */
 	public GeoDistanceRangeFilter geoDistanceRangeFilter;
+
+    /**
+     * Match results within a given box.
+     */
 	public GeoBoundingBoxFilter geoBoundingBoxFilter;
+    /**
+     * Match results within a given polygon.
+     */
 	public GeoPolygonFilter geoPolygonFilter;
 	
 	public void setGeoDistanceFilter(GeoDistanceFilter geoDistanceFilter) {

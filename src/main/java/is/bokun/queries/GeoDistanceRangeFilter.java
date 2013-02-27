@@ -5,14 +5,38 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import is.bokun.utils.StringUtils;
 
 /**
- * Filters documents that exists within a range from a specific center point.
+ * Filters results that exists within a range from a specific center point.
+ *
+ * @author Olafur Gauti Gudmundsson
  */
 public class GeoDistanceRangeFilter {
 
+    /**
+     * The center geo point from which to calculate the distance.
+     */
 	public GeoPoint center = new GeoPoint();
-	public String fromDistance;
+
+    /**
+     * The minimum distance, specified as a number followed by a distance unit (either mi/miles or km can be set).
+     * Default value is "10km".
+     */
+	public String fromDistance = "10km";
+
+    /**
+     * The maximum distance, specified as a number followed by a distance unit (either mi/miles or km can be set).
+     * Default value is "100km".
+     */
 	public String toDistance;
-	public boolean includeLower, includeUpper = true;
+
+    /**
+     * Should the "fromDistance" be inclusive or not. Defaults to true.
+     */
+    public boolean includeLower = true;
+
+    /**
+     * Should the "toDistance" be inclusive or not. Defaults to true.
+     */
+    public boolean includeUpper = true;
 	
 	public GeoDistanceRangeFilter() {}
 
