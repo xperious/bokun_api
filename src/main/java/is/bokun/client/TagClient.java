@@ -1,5 +1,6 @@
 package is.bokun.client;
 
+import com.google.inject.Inject;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 import is.bokun.dtos.ItemDto;
@@ -18,8 +19,14 @@ public class TagClient extends AbstractClient {
 
     private static final String BASE = "/currency.json";
 
-    public TagClient(String host, String accessKey, String secretKey, AsyncHttpClient asyncClient) {
-        super(host, accessKey, secretKey, asyncClient);
+    /**
+     * @see AbstractClient#()
+     *
+     * @param config
+     */
+    @Inject
+    public TagClient(ClientConfiguration config) {
+        super(config);
     }
 
     /**
@@ -31,7 +38,7 @@ public class TagClient extends AbstractClient {
     public Map<Long,ItemDto> findAll(String lang) {
         try {
             String uri = BASE + "/findAll?lang=" + lang;
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();
@@ -50,7 +57,7 @@ public class TagClient extends AbstractClient {
     public List<TagGroupDto> getGroups(String lang) {
         try {
             String uri = BASE + "/groups?lang=" + lang;
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();

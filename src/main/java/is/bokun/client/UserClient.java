@@ -1,5 +1,6 @@
 package is.bokun.client;
 
+import com.google.inject.Inject;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 import is.bokun.dtos.*;
@@ -17,13 +18,11 @@ public class UserClient extends AbstractClient {
     /**
      * @see AbstractClient#()
      *
-     * @param host
-     * @param accessKey
-     * @param secretKey
-     * @param asyncClient
+     * @param config
      */
-    public UserClient(String host, String accessKey, String secretKey, AsyncHttpClient asyncClient) {
-        super(host, accessKey, secretKey, asyncClient);
+    @Inject
+    public UserClient(ClientConfiguration config) {
+        super(config);
     }
 
     /**
@@ -75,7 +74,7 @@ public class UserClient extends AbstractClient {
 
     private AuthenticationResponse postUser(String uri, Object body) {
         try {
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.preparePost(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
             addSecurityHeaders(b, "POST", uri);
             b.setBodyEncoding("UTF-8");
             b.setBody(json.writeValueAsString(body));
@@ -114,7 +113,7 @@ public class UserClient extends AbstractClient {
             dto.firstName = firstName;
             dto.lastName = lastName;
 
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.preparePost(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
             addSecurityHeaders(b, "POST", uri);
             b.setBodyEncoding("UTF-8");
             b.setBody(json.writeValueAsString(dto));
@@ -137,7 +136,7 @@ public class UserClient extends AbstractClient {
     public BooleanResponse usernameExists(String securityToken, String email) {
         String uri = BASE + "/username-exists?securityToken=" + securityToken + "&email=" + email;
         try {
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();
@@ -172,7 +171,7 @@ public class UserClient extends AbstractClient {
         String uri = BASE + "/" + securityToken + "/change-password";
         UserPasswordChangeDto dto = new UserPasswordChangeDto(oldPassword, newPassword);
         try {
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.preparePost(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
             addSecurityHeaders(b, "POST", uri);
             b.setBodyEncoding("UTF-8");
             b.setBody(json.writeValueAsString(dto));
@@ -187,7 +186,7 @@ public class UserClient extends AbstractClient {
 
     private UserAccountDto getUser(String uri) {
         try {
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();

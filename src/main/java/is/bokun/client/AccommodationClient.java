@@ -1,5 +1,6 @@
 package is.bokun.client;
 
+import com.google.inject.Inject;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 import is.bokun.dtos.accommodation.AccommodationAvailabilityReportDto;
@@ -19,13 +20,11 @@ public class AccommodationClient extends AbstractClient {
     /**
      * @see AbstractClient#()
      *
-     * @param host
-     * @param accessKey
-     * @param secretKey
-     * @param asyncClient
+     * @param config
      */
-    public AccommodationClient(String host, String accessKey, String secretKey, AsyncHttpClient asyncClient) {
-        super(host, accessKey, secretKey, asyncClient);
+    @Inject
+    public AccommodationClient(ClientConfiguration config) {
+        super(config);
     }
 
     /**
@@ -39,7 +38,7 @@ public class AccommodationClient extends AbstractClient {
     public AccommodationDto findById(Long accommodationId, String lang, String currency) {
         try {
             String uri = appendLangAndCurrency(BASE + "/" + accommodationId, lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();
@@ -63,7 +62,7 @@ public class AccommodationClient extends AbstractClient {
     public AccommodationDto findBySlug(String slug, String lang, String currency) {
         try {
             String uri = appendLangAndCurrency(BASE + "/slug/" + slug, lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();
@@ -86,7 +85,7 @@ public class AccommodationClient extends AbstractClient {
     public SearchResultsDto search(AccommodationQuery query, String lang, String currency) {
         try {
             String uri = appendLangAndCurrency(BASE + "/search", lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.preparePost(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
             addSecurityHeaders(b, "POST", uri);
             b.setBodyEncoding("UTF-8");
             b.setBody(json.writeValueAsString(query));
@@ -111,7 +110,7 @@ public class AccommodationClient extends AbstractClient {
     public AccommodationAvailabilityReportDto getAvailabilityReport(Long accommodationId, AccommodationQuery query, String lang, String currency) {
         try {
             String uri = appendLangAndCurrency(BASE + "/" + accommodationId + "/check-availability", lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.preparePost(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
             addSecurityHeaders(b, "POST", uri);
             b.setBodyEncoding("UTF-8");
             b.setBody(json.writeValueAsString(query));

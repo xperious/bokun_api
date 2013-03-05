@@ -15,5 +15,6 @@ libraryDependencies ++= Seq(
     "commons-codec" % "commons-codec" % "1.7",
     "com.codiform" % "moo" % "1.3",
     "ch.qos.logback" % "logback-classic" % "1.0.9",
-    "ch.qos.logback" % "logback-core" % "1.0.9"
+    "ch.qos.logback" % "logback-core" % "1.0.9",
+    "com.google.inject" % "guice" % "3.0"
 )

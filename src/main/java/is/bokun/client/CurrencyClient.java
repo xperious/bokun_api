@@ -1,5 +1,6 @@
 package is.bokun.client;
 
+import com.google.inject.Inject;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 import is.bokun.dtos.CurrencyDto;
@@ -20,13 +21,11 @@ public class CurrencyClient extends AbstractClient {
     /**
      * @see AbstractClient#()
      *
-     * @param host
-     * @param accessKey
-     * @param secretKey
-     * @param asyncClient
+     * @param config
      */
-    public CurrencyClient(String host, String accessKey, String secretKey, AsyncHttpClient asyncClient) {
-        super(host, accessKey, secretKey, asyncClient);
+    @Inject
+    public CurrencyClient(ClientConfiguration config) {
+        super(config);
     }
 
     /**
@@ -38,7 +37,7 @@ public class CurrencyClient extends AbstractClient {
     public List<CurrencyDto> findAll() {
         try {
             String uri = BASE + "/findAll";
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();

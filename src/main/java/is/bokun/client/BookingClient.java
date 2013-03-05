@@ -1,5 +1,6 @@
 package is.bokun.client;
 
+import com.google.inject.Inject;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 import is.bokun.dtos.ApiResponse;
@@ -22,13 +23,11 @@ public class BookingClient extends AbstractClient {
     /**
      * @see AbstractClient#()
      *
-     * @param host
-     * @param accessKey
-     * @param secretKey
-     * @param asyncClient
+     * @param config
      */
-    public BookingClient(String host, String accessKey, String secretKey, AsyncHttpClient asyncClient) {
-        super(host, accessKey, secretKey, asyncClient);
+    @Inject
+    public BookingClient(ClientConfiguration config) {
+        super(config);
     }
 
     /**
@@ -61,7 +60,7 @@ public class BookingClient extends AbstractClient {
 
     private BookingQuestionsDto getQuestions(String uri) {
         try {
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();
@@ -122,7 +121,7 @@ public class BookingClient extends AbstractClient {
 
     private BookingDetailsDto postBooking(String uri, Object body) {
         try {
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.preparePost(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
             addSecurityHeaders(b, "POST", uri);
             b.setBodyEncoding("UTF-8");
             b.setBody(json.writeValueAsString(body));
@@ -159,7 +158,7 @@ public class BookingClient extends AbstractClient {
     public ApiResponse cancelReservedBooking(Long bookingId, boolean timeout) {
         try {
             String uri = BASE + "/" + bookingId + "/cancel-reserved?timeout=" + timeout;
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();
@@ -183,7 +182,7 @@ public class BookingClient extends AbstractClient {
     public PaymentProviderDetailsDto getPaymentProviderDetails(Long bookingId, String lang, String currency) {
         try {
             String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/payment-provider", lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();
@@ -205,7 +204,7 @@ public class BookingClient extends AbstractClient {
     public ApiResponse reportPaymentError(Long bookingId, ErrorDto errorDetails) {
         try {
             String uri = BASE + "/" + bookingId + "/payment-error";
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.preparePost(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
             addSecurityHeaders(b, "POST", uri);
             b.setBodyEncoding("UTF-8");
             b.setBody(json.writeValueAsString(errorDetails));

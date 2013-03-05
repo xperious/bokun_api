@@ -1,5 +1,6 @@
 package is.bokun.client;
 
+import com.google.inject.Inject;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 import is.bokun.dtos.booking.AccommodationBookingRequestDto;
@@ -19,13 +20,11 @@ public class ShoppingCartClient extends AbstractClient {
     /**
      * @see AbstractClient#()
      *
-     * @param host
-     * @param accessKey
-     * @param secretKey
-     * @param asyncClient
+     * @param config
      */
-    public ShoppingCartClient(String host, String accessKey, String secretKey, AsyncHttpClient asyncClient) {
-        super(host, accessKey, secretKey, asyncClient);
+    @Inject
+    public ShoppingCartClient(ClientConfiguration config) {
+        super(config);
     }
 
     /**
@@ -157,7 +156,7 @@ public class ShoppingCartClient extends AbstractClient {
 
     private ShoppingCartDto getCart(String uri) {
         try {
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();
@@ -226,7 +225,7 @@ public class ShoppingCartClient extends AbstractClient {
 
     private ShoppingCartDto postAndGetCart(String uri, Object body) {
         try {
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.preparePost(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
             addSecurityHeaders(b, "POST", uri);
             b.setBodyEncoding("UTF-8");
             b.setBody(json.writeValueAsString(body));

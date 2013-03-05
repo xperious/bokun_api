@@ -1,5 +1,6 @@
 package is.bokun.client;
 
+import com.google.inject.Inject;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 import is.bokun.dtos.activity.ActivityAvailabilityDto;
@@ -23,13 +24,11 @@ public class ActivityClient extends AbstractClient {
     /**
      * @see AbstractClient#()
      *
-     * @param host
-     * @param accessKey
-     * @param secretKey
-     * @param asyncClient
+     * @param config
      */
-    public ActivityClient(String host, String accessKey, String secretKey, AsyncHttpClient asyncClient) {
-        super(host, accessKey, secretKey, asyncClient);
+    @Inject
+    public ActivityClient(ClientConfiguration config) {
+        super(config);
     }
 
     /**
@@ -43,7 +42,7 @@ public class ActivityClient extends AbstractClient {
     public ActivityDto findById(Long activityId, String lang, String currency) {
         try {
             String uri = appendLangAndCurrency(BASE + "/" + activityId, lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();
@@ -67,7 +66,7 @@ public class ActivityClient extends AbstractClient {
     public ActivityDto findBySlug(String slug, String lang, String currency) {
         try {
             String uri = appendLangAndCurrency(BASE + "/slug/" + slug, lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();
@@ -89,8 +88,8 @@ public class ActivityClient extends AbstractClient {
      */
     public SearchResultsDto search(ActivityQuery query, String lang, String currency) {
         try {
-            String uri = appendLangAndCurrency(BASE + "/search", lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.preparePost(host + uri);
+            String uri = appendLangAndCurrency(BASE + "/config.getAsyncClient()", lang, currency);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
             addSecurityHeaders(b, "POST", uri);
             b.setBodyEncoding("UTF-8");
             b.setBody(json.writeValueAsString(query));
@@ -116,7 +115,7 @@ public class ActivityClient extends AbstractClient {
     public List<ActivityAvailabilityDto> getUpcomingAvailabilities(Long activityId, int maxResults, boolean includeSoldOut, String lang, String currency) {
         try {
             String uri = appendLangAndCurrency(BASE + "/id/" + activityId + "/upcoming-availabilities/" + maxResults, lang, currency, new NVP("includeSoldOut", ""+includeSoldOut));
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();
@@ -145,7 +144,7 @@ public class ActivityClient extends AbstractClient {
                     new NVP("start", Long.toString(start.getTime())), new NVP("end", Long.toString(end.getTime())),
                     new NVP("includeSoldOut", ""+includeSoldOut));
 
-            AsyncHttpClient.BoundRequestBuilder b = asyncClient.prepareGet(host + uri);
+            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
             addSecurityHeaders(b, "GET", uri);
 
             Response r = b.execute().get();

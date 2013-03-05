@@ -27,22 +27,19 @@ public abstract class AbstractClient {
 
     protected static final ObjectMapper json = new ObjectMapper();
 
-    protected final AsyncHttpClient asyncClient;
-    protected final String host, accessKey, secretKey;
+    protected final ClientConfiguration config;
 
     /**
      * The general constructor for the REST clients.
      *
-     * @param host the host where the REST services are running (e.g. "http://api.bokun.is" or "http://localhost:9000")
-     * @param accessKey the Access Key as specified in the Bokun API credentials
-     * @param secretKey the Secret Key as specified in the Bokun API credentials
-     * @param asyncClient instance of the HTTP client to use for the communication
+     * @param config The configuration for the client.
      */
-    protected AbstractClient(String host, String accessKey, String secretKey, AsyncHttpClient asyncClient) {
-        this.host = host;
-        this.asyncClient = asyncClient;
-        this.accessKey = accessKey;
-        this.secretKey = secretKey;
+    protected AbstractClient(ClientConfiguration config) {
+        this.config = config;
+    }
+
+    public ClientConfiguration getConfig() {
+        return config;
     }
 
     /**
@@ -61,15 +58,15 @@ public abstract class AbstractClient {
 
         String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         r.addHeader("X-Bokun-Date", date);
-        r.addHeader("X-Bokun-AccessKey", accessKey);
+        r.addHeader("X-Bokun-AccessKey", config.getAccessKey());
 
         StringBuilder signatureInput = new StringBuilder();
         signatureInput.append(date);
-        signatureInput.append(accessKey);
+        signatureInput.append(config.getAccessKey());
         signatureInput.append(method.toUpperCase());
         signatureInput.append(uri);
 
-        r.addHeader("X-Bokun-Signature", calculateHMAC(secretKey, signatureInput.toString()));
+        r.addHeader("X-Bokun-Signature", calculateHMAC(config.getSecretKey(), signatureInput.toString()));
     }
 
     public static class NVP {
