@@ -88,7 +88,7 @@ public class ActivityClient extends AbstractClient {
      */
     public SearchResultsDto search(ActivityQuery query, String lang, String currency) {
         try {
-            String uri = appendLangAndCurrency(BASE + "/config.getAsyncClient()", lang, currency);
+            String uri = appendLangAndCurrency(BASE + "/search", lang, currency);
             AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
             addSecurityHeaders(b, "POST", uri);
             b.setBodyEncoding("UTF-8");
