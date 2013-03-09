@@ -155,16 +155,7 @@ public class ShoppingCartClient extends AbstractClient {
     }
 
     private ShoppingCartDto getCart(String uri) {
-        try {
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), ShoppingCartDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        return getAndValidate(uri, ShoppingCartDto.class);
     }
 
     /**
@@ -224,17 +215,6 @@ public class ShoppingCartClient extends AbstractClient {
     }
 
     private ShoppingCartDto postAndGetCart(String uri, Object body) {
-        try {
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
-            addSecurityHeaders(b, "POST", uri);
-            b.setBodyEncoding("UTF-8");
-            b.setBody(json.writeValueAsString(body));
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), ShoppingCartDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        return postAndValidate(uri, body, ShoppingCartDto.class);
     }
 }

@@ -59,16 +59,7 @@ public class BookingClient extends AbstractClient {
     }
 
     private BookingQuestionsDto getQuestions(String uri) {
-        try {
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), BookingQuestionsDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        return getAndValidate(uri, BookingQuestionsDto.class);
     }
 
     /**
@@ -120,18 +111,7 @@ public class BookingClient extends AbstractClient {
     }
 
     private BookingDetailsDto postBooking(String uri, Object body) {
-        try {
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
-            addSecurityHeaders(b, "POST", uri);
-            b.setBodyEncoding("UTF-8");
-            b.setBody(json.writeValueAsString(body));
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), BookingDetailsDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        return postAndValidate(uri, body, BookingDetailsDto.class);
     }
 
     /**
@@ -156,17 +136,8 @@ public class BookingClient extends AbstractClient {
      * @return a simple OK response if things go well
      */
     public ApiResponse cancelReservedBooking(Long bookingId, boolean timeout) {
-        try {
-            String uri = BASE + "/" + bookingId + "/cancel-reserved?timeout=" + timeout;
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), ApiResponse.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        String uri = BASE + "/" + bookingId + "/cancel-reserved?timeout=" + timeout;
+        return getAndValidate(uri, ApiResponse.class);
     }
 
     /**
@@ -180,17 +151,8 @@ public class BookingClient extends AbstractClient {
      * @return details about the payment provider, along with all the required parameters for the payment gateway
      */
     public PaymentProviderDetailsDto getPaymentProviderDetails(Long bookingId, String lang, String currency) {
-        try {
-            String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/payment-provider", lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), PaymentProviderDetailsDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/payment-provider", lang, currency);
+        return getAndValidate(uri, PaymentProviderDetailsDto.class);
     }
 
     /**
@@ -202,18 +164,7 @@ public class BookingClient extends AbstractClient {
      * @return a simple OK response if things go well
      */
     public ApiResponse reportPaymentError(Long bookingId, ErrorDto errorDetails) {
-        try {
-            String uri = BASE + "/" + bookingId + "/payment-error";
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
-            addSecurityHeaders(b, "POST", uri);
-            b.setBodyEncoding("UTF-8");
-            b.setBody(json.writeValueAsString(errorDetails));
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), ApiResponse.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        String uri = BASE + "/" + bookingId + "/payment-error";
+        return postAndValidate(uri, errorDetails, ApiResponse.class);
     }
 }

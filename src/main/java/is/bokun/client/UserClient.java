@@ -73,18 +73,7 @@ public class UserClient extends AbstractClient {
     }
 
     private AuthenticationResponse postUser(String uri, Object body) {
-        try {
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
-            addSecurityHeaders(b, "POST", uri);
-            b.setBodyEncoding("UTF-8");
-            b.setBody(json.writeValueAsString(body));
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), AuthenticationResponse.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        return postAndValidate(uri, body, AuthenticationResponse.class);
     }
 
     /**
@@ -108,22 +97,11 @@ public class UserClient extends AbstractClient {
      */
     public UserAccountDto updateUserAccount(String securityToken, String firstName, String lastName) {
         String uri = BASE + "/" + securityToken + "/update-details";
-        try {
-            UserAccountDto dto = new UserAccountDto();
-            dto.firstName = firstName;
-            dto.lastName = lastName;
+        UserAccountDto dto = new UserAccountDto();
+        dto.firstName = firstName;
+        dto.lastName = lastName;
 
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
-            addSecurityHeaders(b, "POST", uri);
-            b.setBodyEncoding("UTF-8");
-            b.setBody(json.writeValueAsString(dto));
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), UserAccountDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        return postAndValidate(uri, dto, UserAccountDto.class);
     }
 
     /**
@@ -135,16 +113,7 @@ public class UserClient extends AbstractClient {
      */
     public BooleanResponse usernameExists(String securityToken, String email) {
         String uri = BASE + "/username-exists?securityToken=" + securityToken + "&email=" + email;
-        try {
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), BooleanResponse.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        return getAndValidate(uri, BooleanResponse.class);
     }
 
     /**
@@ -170,30 +139,10 @@ public class UserClient extends AbstractClient {
     public UserAccountDto changePassword(String securityToken, String oldPassword, String newPassword) {
         String uri = BASE + "/" + securityToken + "/change-password";
         UserPasswordChangeDto dto = new UserPasswordChangeDto(oldPassword, newPassword);
-        try {
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
-            addSecurityHeaders(b, "POST", uri);
-            b.setBodyEncoding("UTF-8");
-            b.setBody(json.writeValueAsString(dto));
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), UserAccountDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        return postAndValidate(uri, dto, UserAccountDto.class);
     }
 
     private UserAccountDto getUser(String uri) {
-        try {
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), UserAccountDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        return getAndValidate(uri, UserAccountDto.class);
     }
 }

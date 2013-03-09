@@ -36,17 +36,8 @@ public class AccommodationClient extends AbstractClient {
      * @return the Accommodation with the ID supplied
      */
     public AccommodationDto findById(Long accommodationId, String lang, String currency) {
-        try {
-            String uri = appendLangAndCurrency(BASE + "/" + accommodationId, lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), AccommodationDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        String uri = appendLangAndCurrency(BASE + "/" + accommodationId, lang, currency);
+        return getAndValidate(uri, AccommodationDto.class);
     }
 
     /**
@@ -60,17 +51,8 @@ public class AccommodationClient extends AbstractClient {
      * @return the Accommodation matching the slug and language provided
      */
     public AccommodationDto findBySlug(String slug, String lang, String currency) {
-        try {
-            String uri = appendLangAndCurrency(BASE + "/slug/" + slug, lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), AccommodationDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        String uri = appendLangAndCurrency(BASE + "/slug/" + slug, lang, currency);
+        return getAndValidate(uri, AccommodationDto.class);
     }
 
     /**
@@ -83,19 +65,8 @@ public class AccommodationClient extends AbstractClient {
      * @return search results matching the query
      */
     public SearchResultsDto search(AccommodationQuery query, String lang, String currency) {
-        try {
-            String uri = appendLangAndCurrency(BASE + "/search", lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
-            addSecurityHeaders(b, "POST", uri);
-            b.setBodyEncoding("UTF-8");
-            b.setBody(json.writeValueAsString(query));
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), SearchResultsDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        String uri = appendLangAndCurrency(BASE + "/search", lang, currency);
+        return postAndValidate(uri, query, SearchResultsDto.class);
     }
 
     /**
@@ -108,18 +79,7 @@ public class AccommodationClient extends AbstractClient {
      * @return an availability report for the Accommodation
      */
     public AccommodationAvailabilityReportDto getAvailabilityReport(Long accommodationId, AccommodationQuery query, String lang, String currency) {
-        try {
-            String uri = appendLangAndCurrency(BASE + "/" + accommodationId + "/check-availability", lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
-            addSecurityHeaders(b, "POST", uri);
-            b.setBodyEncoding("UTF-8");
-            b.setBody(json.writeValueAsString(query));
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), AccommodationAvailabilityReportDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        String uri = appendLangAndCurrency(BASE + "/" + accommodationId + "/check-availability", lang, currency);
+        return postAndValidate(uri, query, AccommodationAvailabilityReportDto.class);
     }
 }

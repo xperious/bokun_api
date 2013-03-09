@@ -42,6 +42,60 @@ public abstract class AbstractClient {
         return config;
     }
 
+    protected AsyncHttpClient.BoundRequestBuilder prepareGet(String uri) {
+        AsyncHttpClient.BoundRequestBuilder r = config.getAsyncClient().prepareGet(config.getHost() + uri);
+        addSecurityHeaders(r, "GET", uri);
+        return r;
+    }
+
+    protected String getAndValidateStr(String uri) {
+        try {
+            Response r = prepareGet(uri).execute().get();
+            validateResponse(r);
+            return r.getResponseBody("UTF-8");
+        } catch (Exception e) {
+            throw wrapException(e);
+        }
+    }
+
+    protected <T> T getAndValidate(String uri, Class<T> c)  {
+        try {
+            Response r = prepareGet(uri).execute().get();
+            validateResponse(r);
+            return json.readValue(r.getResponseBody("UTF-8"), c);
+        } catch (Exception e) {
+            throw wrapException(e);
+        }
+    }
+
+    protected AsyncHttpClient.BoundRequestBuilder preparePost(String uri, Object body) throws Exception {
+        AsyncHttpClient.BoundRequestBuilder r = config.getAsyncClient().preparePost(config.getHost() + uri);
+        addSecurityHeaders(r, "POST", uri);
+        r.setBodyEncoding("UTF-8");
+        r.setBody(json.writeValueAsString(body));
+        return r;
+    }
+
+    protected String postAndValidateStr(String uri, Object body) {
+        try {
+            Response r = preparePost(uri, body).execute().get();
+            validateResponse(r);
+            return r.getResponseBody("UTF-8");
+        } catch (Exception e) {
+            throw wrapException(e);
+        }
+    }
+
+    protected <T> T postAndValidate(String uri, Object body, Class<T> c) {
+        try {
+            Response r = preparePost(uri, body).execute().get();
+            validateResponse(r);
+            return json.readValue(r.getResponseBody("UTF-8"), c);
+        } catch (Exception e) {
+            throw wrapException(e);
+        }
+    }
+
     /**
      * This method appends the Bokun headers and security signature to the request.
      * <br/><br/>
@@ -76,6 +130,14 @@ public abstract class AbstractClient {
         public NVP(String name, String value) {
             this.name = name;
             this.value = value;
+        }
+
+        public NVP(String name, boolean value) {
+            this(name, ""+value);
+        }
+
+        public NVP(String name, int value) {
+            this(name, Integer.toString(value));
         }
     }
 

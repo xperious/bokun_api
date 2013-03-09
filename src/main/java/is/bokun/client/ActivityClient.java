@@ -40,17 +40,8 @@ public class ActivityClient extends AbstractClient {
      * @return the Activity with the ID supplied
      */
     public ActivityDto findById(Long activityId, String lang, String currency) {
-        try {
-            String uri = appendLangAndCurrency(BASE + "/" + activityId, lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), ActivityDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        String uri = appendLangAndCurrency(BASE + "/" + activityId, lang, currency);
+        return getAndValidate(uri, ActivityDto.class);
     }
 
     /**
@@ -64,17 +55,8 @@ public class ActivityClient extends AbstractClient {
      * @return the Activity matching the slug and language provided
      */
     public ActivityDto findBySlug(String slug, String lang, String currency) {
-        try {
-            String uri = appendLangAndCurrency(BASE + "/slug/" + slug, lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), ActivityDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        String uri = appendLangAndCurrency(BASE + "/slug/" + slug, lang, currency);
+        return getAndValidate(uri, ActivityDto.class);
     }
 
     /**
@@ -87,19 +69,8 @@ public class ActivityClient extends AbstractClient {
      * @return search results matching the query
      */
     public SearchResultsDto search(ActivityQuery query, String lang, String currency) {
-        try {
-            String uri = appendLangAndCurrency(BASE + "/search", lang, currency);
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().preparePost(config.getHost() + uri);
-            addSecurityHeaders(b, "POST", uri);
-            b.setBodyEncoding("UTF-8");
-            b.setBody(json.writeValueAsString(query));
-
-            Response r = b.execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), SearchResultsDto.class);
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+        String uri = appendLangAndCurrency(BASE + "/search", lang, currency);
+        return postAndValidate(uri, query, SearchResultsDto.class);
     }
 
     /**
@@ -115,10 +86,7 @@ public class ActivityClient extends AbstractClient {
     public List<ActivityAvailabilityDto> getUpcomingAvailabilities(Long activityId, int maxResults, boolean includeSoldOut, String lang, String currency) {
         try {
             String uri = appendLangAndCurrency(BASE + "/id/" + activityId + "/upcoming-availabilities/" + maxResults, lang, currency, new NVP("includeSoldOut", ""+includeSoldOut));
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
+            Response r = prepareGet(uri).execute().get();
             validateResponse(r);
             return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<List<ActivityAvailabilityDto>>(){});
         } catch (Exception e) {
@@ -144,10 +112,7 @@ public class ActivityClient extends AbstractClient {
                     new NVP("start", Long.toString(start.getTime())), new NVP("end", Long.toString(end.getTime())),
                     new NVP("includeSoldOut", ""+includeSoldOut));
 
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
+            Response r = prepareGet(uri).execute().get();
             validateResponse(r);
             return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<List<ActivityAvailabilityDto>>(){});
         } catch (Exception e) {

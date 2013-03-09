@@ -38,10 +38,7 @@ public class TagClient extends AbstractClient {
     public Map<Long,ItemDto> findAll(String lang) {
         try {
             String uri = BASE + "/findAll?lang=" + lang;
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
+            Response r = prepareGet(uri).execute().get();
             validateResponse(r);
             return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<Map<Long,ItemDto>>(){});
         } catch (Exception e) {
@@ -57,10 +54,7 @@ public class TagClient extends AbstractClient {
     public List<TagGroupDto> getGroups(String lang) {
         try {
             String uri = BASE + "/groups?lang=" + lang;
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
+            Response r = prepareGet(uri).execute().get();
             validateResponse(r);
             return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<List<TagGroupDto>>(){});
         } catch (Exception e) {

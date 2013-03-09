@@ -37,10 +37,7 @@ public class CurrencyClient extends AbstractClient {
     public List<CurrencyDto> findAll() {
         try {
             String uri = BASE + "/findAll";
-            AsyncHttpClient.BoundRequestBuilder b = config.getAsyncClient().prepareGet(config.getHost() + uri);
-            addSecurityHeaders(b, "GET", uri);
-
-            Response r = b.execute().get();
+            Response r = prepareGet(uri).execute().get();
             validateResponse(r);
             return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<List<CurrencyDto>>(){});
         } catch (Exception e) {
