@@ -4,6 +4,7 @@ public class BookingItemInfoDto {
 
 	public Long id;
 	public String title;
+    public Integer price;
 	
 	public BookingItemInfoDto() {}
 	
