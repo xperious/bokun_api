@@ -46,7 +46,7 @@ public class SnippetClient extends AbstractClient {
     }
 
     public String getAccommodationBookingOptions(Long id, AccommodationQuery query, String lang, String currency, boolean cart) {
-        String uri = appendLangAndCurrency("/snippets/accommodaiton/" + id + "/room-list", lang, currency, new NVP("cart", cart));
+        String uri = appendLangAndCurrency("/snippets/accommodation/" + id + "/room-list", lang, currency, new NVP("cart", cart));
         return postAndValidateStr(uri, query);
     }
 
@@ -67,6 +67,18 @@ public class SnippetClient extends AbstractClient {
 
     public String getBookingQuestionsForUser(String securityToken, String lang, String currency) {
         String uri = appendLangAndCurrency("/snippets/booking-questions/user/" + securityToken, lang, currency);
+        return getAndValidateStr(uri);
+    }
+
+    public String getShoppingCartForGuest(String sessionId, String lang, String currency, boolean allowRemoval, boolean showIncludedExtras, boolean fluidLayout) {
+        String uri = appendLangAndCurrency("/snippets/shopping-cart/session/" + sessionId, lang, currency,
+                new NVP("allowRemoval", allowRemoval), new NVP("showIncludedExtras", showIncludedExtras), new NVP("fluidLayout", fluidLayout));
+        return getAndValidateStr(uri);
+    }
+
+    public String getShoppingCartForUser(String securityToken, String lang, String currency, boolean allowRemoval, boolean showIncludedExtras, boolean fluidLayout) {
+        String uri = appendLangAndCurrency("/snippets/shopping-cart/user/" + securityToken, lang, currency,
+                new NVP("allowRemoval", allowRemoval), new NVP("showIncludedExtras", showIncludedExtras), new NVP("fluidLayout", fluidLayout));
         return getAndValidateStr(uri);
     }
 }
