@@ -1,19 +1,17 @@
 package is.bokun.dtos;
 
-import is.bokun.dtos.UserAccountDto;
-
 public class AuthenticationResponse {
 
 	public boolean success;
 	public String securityToken;
-	public UserAccountDto user;
+	public CustomerDto customer;
 	
 	public AuthenticationResponse() {}
 	
-	public static AuthenticationResponse success(UserAccountDto user, String securityToken) {
+	public static AuthenticationResponse success(CustomerDto customer, String securityToken) {
 		AuthenticationResponse r = new AuthenticationResponse();
 		r.success = true;
-		r.user = user;
+		r.customer = customer;
 		r.securityToken = securityToken;
 		return r;
 	}
@@ -38,11 +36,11 @@ public class AuthenticationResponse {
         this.securityToken = securityToken;
     }
 
-    public UserAccountDto getUser() {
-        return user;
+    public CustomerDto getCustomer() {
+        return customer;
     }
 
-    public void setUser(UserAccountDto user) {
-        this.user = user;
+    public void setCustomer(CustomerDto customer) {
+        this.customer = customer;
     }
 }

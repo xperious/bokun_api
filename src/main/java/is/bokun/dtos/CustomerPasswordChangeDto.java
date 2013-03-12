@@ -3,13 +3,13 @@ package is.bokun.dtos;
 /**
  * @author Olafur Gauti Gudmundsson
  */
-public class UserPasswordChangeDto {
+public class CustomerPasswordChangeDto {
 
     public String oldPassword, newPassword;
 
-    public UserPasswordChangeDto() {}
+    public CustomerPasswordChangeDto() {}
 
-    public UserPasswordChangeDto(String oldPassword, String newPassword) {
+    public CustomerPasswordChangeDto(String oldPassword, String newPassword) {
         this.oldPassword = oldPassword;
         this.newPassword = newPassword;
     }
