@@ -19,6 +19,8 @@ public class CustomerDto {
 
     public String organization;
 
+    public CustomerCredentialsDto credentials;
+
 	public CustomerDto() {}
 
 	public String getUuid() {
@@ -115,5 +117,13 @@ public class CustomerDto {
 
     public void setOrganization(String organization) {
         this.organization = organization;
+    }
+
+    public CustomerCredentialsDto getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(CustomerCredentialsDto credentials) {
+        this.credentials = credentials;
     }
 }

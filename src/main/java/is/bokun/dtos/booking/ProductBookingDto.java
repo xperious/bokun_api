@@ -11,7 +11,7 @@ public abstract class ProductBookingDto {
 	public Date creationDate;
 	public Date lastModifedDate;
     
-    public String userUuid;
+    public String customerUuid;
     
     public String bookingStatus;
     

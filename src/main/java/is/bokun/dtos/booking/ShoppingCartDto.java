@@ -9,7 +9,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 public class ShoppingCartDto {
 
 	public String sessionId;
-	public String userUUID;
+	public String customerUUID;
 	public Date lastAccessDate;
 	
 	public int totalPrice;

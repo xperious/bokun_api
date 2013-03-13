@@ -45,16 +45,16 @@ public class BookingClient extends AbstractClient {
     }
 
     /**
-     * Get a list of questions for the user. This provides a list of all questions the user
+     * Get a list of questions for the customer. This provides a list of all questions the customer
      * must answer in order to reserve the booking before payment.
      *
-     * @param securityToken the token received by the user on authentication
+     * @param securityToken the token received by the customer on authentication
      * @param lang The language the content should be in.
      * @param currency The currency used for prices.
-     * @return questions derived from the user's shopping cart
+     * @return questions derived from the customer's shopping cart
      */
-    public BookingQuestionsDto getUserBookingQuestions(String securityToken, String lang, String currency) {
-        String uri = appendLangAndCurrency(BASE + "/user/" + securityToken + "/questions", lang, currency);
+    public BookingQuestionsDto getCustomerBookingQuestions(String securityToken, String lang, String currency) {
+        String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/questions", lang, currency);
         return getQuestions(uri);
     }
 
@@ -81,11 +81,11 @@ public class BookingClient extends AbstractClient {
     }
 
     /**
-     * Reserve a booking for a user, reserving availability for all products. Normally called before accepting payment.
+     * Reserve a booking for a customer, reserving availability for all products. Normally called before accepting payment.
      * Creates a Booking with the status RESERVED from the items
-     * in the users's shopping cart, applying the answers supplied.
+     * in the customer's shopping cart, applying the answers supplied.
      *
-     * @param securityToken the token received by the user on authentication
+     * @param securityToken the token received by the customer on authentication
      * @param answers answers to the questions required for booking
      * @param lang The language the content should be in.
      * @param currency The currency used for prices.
@@ -93,8 +93,8 @@ public class BookingClient extends AbstractClient {
      *                              Refer to the relevant payment provider documentation for more info.
      * @return details for the reserved booking
      */
-    public BookingDetailsDto reserveBookingForUser(String securityToken, BookingAnswersDto answers, String lang, String currency, Map<String,String> paymentProviderParams) {
-        String uri = appendQueryParams(BASE + "/user/" + securityToken + "/reserve", gatherParams(lang, currency, paymentProviderParams));
+    public BookingDetailsDto reserveBookingForCustomer(String securityToken, BookingAnswersDto answers, String lang, String currency, Map<String,String> paymentProviderParams) {
+        String uri = appendQueryParams(BASE + "/customer/" + securityToken + "/reserve", gatherParams(lang, currency, paymentProviderParams));
         return postBooking(uri, answers);
     }
 
@@ -129,10 +129,10 @@ public class BookingClient extends AbstractClient {
     }
 
     /**
-     * Cancel a RESERVED booking. Normally called if the user cancels the payment, or the payment session times out.
+     * Cancel a RESERVED booking. Normally called if the customer cancels the payment, or the payment session times out.
      *
      * @param bookingId the ID of the booking
-     * @param timeout specifies whether the booking was cancelled due to a timeout, should be "false" if the user manually cancelled
+     * @param timeout specifies whether the booking was cancelled due to a timeout, should be "false" if the customer manually cancelled
      * @return a simple OK response if things go well
      */
     public ApiResponse cancelReservedBooking(Long bookingId, boolean timeout) {
