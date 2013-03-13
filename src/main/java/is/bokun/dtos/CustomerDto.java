@@ -10,6 +10,7 @@ public class CustomerDto {
 
     public String language;
     public String nationality;
+    public String sex;
 
     public String phoneNumber;
     public String address;
@@ -77,6 +78,14 @@ public class CustomerDto {
 
     public void setNationality(String nationality) {
         this.nationality = nationality;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public String getAddress() {

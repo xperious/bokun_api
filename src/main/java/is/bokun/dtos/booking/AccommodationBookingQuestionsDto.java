@@ -1,5 +1,7 @@
 package is.bokun.dtos.booking;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import java.util.*;
 
 public class AccommodationBookingQuestionsDto {
@@ -8,7 +10,24 @@ public class AccommodationBookingQuestionsDto {
 	public Long bookingId;
 	public Date startDate, endDate;
 	
-	public List<BookingQuestionGroupDto> questionGroups = new ArrayList<BookingQuestionGroupDto>();
+	public List<BookingQuestionGroupDto> questionGroups = new ArrayList<>();
 	
-	public List<RoomBookingQuestionsDto> roomBookings = new ArrayList<RoomBookingQuestionsDto>();
+	public List<RoomBookingQuestionsDto> roomBookings = new ArrayList<>();
+
+    @JsonIgnore
+    public boolean hasQuestions() {
+        for (BookingQuestionGroupDto g : questionGroups) {
+            if ( !g.questions.isEmpty() ) {
+                return true;
+            }
+        }
+
+        for (RoomBookingQuestionsDto r : roomBookings) {
+            if ( r.hasQuestions() ) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

@@ -6,5 +6,6 @@ public class BookingQuestionGroupDto {
 
 	public String name;
 	public int answersNeeded;
-	public List<BookingQuestionDto> questions = new ArrayList<BookingQuestionDto>();
+	public List<BookingQuestionDto> questions = new ArrayList<>();
+
 }
