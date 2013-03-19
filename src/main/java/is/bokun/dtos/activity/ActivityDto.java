@@ -55,8 +55,6 @@ public class ActivityDto extends ProductDto implements WithExtras {
 
     @CollectionProperty(itemTranslation = BookableExtraDto.class)
     public List<BookableExtraDto> bookableExtras = new ArrayList<>();
-    
-    public ActivityAvailabilityReportDto availabilityReport;
 	
 	public ActivityDto() {
 		super();

@@ -27,12 +27,10 @@ public class AccommodationDto extends ProductDto {
 	@CollectionProperty(itemTranslation = BookableExtraDto.class)
 	public List<BookableExtraDto> bookableExtras = new ArrayList<>();
 	
-	public AccommodationAvailabilityReportDto availabilityReport;
-	
 	public AccommodationDto() {
 		super();
 	}
-	
+
 	public String checkInTime() {
 		return getTimeAsString(checkInHour, checkInMinute);
 	}
