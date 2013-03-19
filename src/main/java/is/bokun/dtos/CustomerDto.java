@@ -1,7 +1,12 @@
 package is.bokun.dtos;
 
 
+import java.util.Date;
+
 public class CustomerDto {
+
+    public Long id;
+    public Date created;
 
 	public String uuid;
 	public String email;
@@ -24,7 +29,15 @@ public class CustomerDto {
 
 	public CustomerDto() {}
 
-	public String getUuid() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUuid() {
 		return uuid;
 	}
 

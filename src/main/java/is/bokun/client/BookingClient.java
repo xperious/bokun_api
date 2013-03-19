@@ -1,8 +1,6 @@
 package is.bokun.client;
 
 import com.google.inject.Inject;
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Response;
 import is.bokun.dtos.ApiResponse;
 import is.bokun.dtos.ErrorDto;
 import is.bokun.dtos.booking.*;
@@ -123,7 +121,7 @@ public class BookingClient extends AbstractClient {
      * @param currency The currency used for prices.
      * @return
      */
-    public BookingDetailsDto confirmBooking(Long bookingId, PaymentDetailsDto paymentDetails, String lang, String currency) {
+    public BookingDetailsDto confirmBooking(Long bookingId, PaymentDto paymentDetails, String lang, String currency) {
         String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/confirm", lang, currency);
         return postBooking(uri, paymentDetails);
     }

@@ -13,8 +13,7 @@ public class BookingDto {
     
 	public int totalPrice;
 	
-	public List<AccommodationBookingDto> accommodationBookings = new ArrayList<AccommodationBookingDto>();
-	public List<ActivityBookingDto> activityBookings = new ArrayList<ActivityBookingDto>();
-	
-	public PaymentDetailsDto paymentDetails;
+	public List<AccommodationBookingDto> accommodationBookings = new ArrayList<>();
+	public List<ActivityBookingDto> activityBookings = new ArrayList<>();
+
 }

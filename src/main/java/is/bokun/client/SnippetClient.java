@@ -65,8 +65,8 @@ public class SnippetClient extends AbstractClient {
         return getAndValidateStr(uri);
     }
 
-    public String getBookingQuestionsForUser(String securityToken, String lang, String currency) {
-        String uri = appendLangAndCurrency("/snippets/booking-questions/user/" + securityToken, lang, currency);
+    public String getBookingQuestionsForCustomer(String securityToken, String lang, String currency) {
+        String uri = appendLangAndCurrency("/snippets/booking-questions/customer/" + securityToken, lang, currency);
         return getAndValidateStr(uri);
     }
 
@@ -76,8 +76,8 @@ public class SnippetClient extends AbstractClient {
         return getAndValidateStr(uri);
     }
 
-    public String getShoppingCartForUser(String securityToken, String lang, String currency, boolean allowRemoval, boolean showIncludedExtras, boolean fluidLayout) {
-        String uri = appendLangAndCurrency("/snippets/shopping-cart/user/" + securityToken, lang, currency,
+    public String getShoppingCartForCustomer(String securityToken, String lang, String currency, boolean allowRemoval, boolean showIncludedExtras, boolean fluidLayout) {
+        String uri = appendLangAndCurrency("/snippets/shopping-cart/customer/" + securityToken, lang, currency,
                 new NVP("allowRemoval", allowRemoval), new NVP("showIncludedExtras", showIncludedExtras), new NVP("fluidLayout", fluidLayout));
         return getAndValidateStr(uri);
     }

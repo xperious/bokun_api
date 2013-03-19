@@ -2,7 +2,15 @@ package is.bokun.dtos.booking;
 
 import java.util.Date;
 
-public class PaymentDetailsDto {
+public class PaymentDto {
+
+    public Long id;
+    public String paymentType;
+    public Double amount;
+    public String currency;
+
+    public String reference;
+    public String comments;
 
 	public String paymentProvider;
 	
@@ -19,8 +27,56 @@ public class PaymentDetailsDto {
 	public String place;
 	public String country;
 	public String emailAddress;
-	
-	public String getPaymentProvider() {
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getPaymentProvider() {
 		return paymentProvider;
 	}
 	public void setPaymentProvider(String paymentProvider) {
