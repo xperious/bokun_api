@@ -8,6 +8,7 @@ public class PaymentDto {
     public String paymentType;
     public Double amount;
     public String currency;
+    public boolean confirmed;
 
     public String reference;
     public String comments;
@@ -58,6 +59,14 @@ public class PaymentDto {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
     }
 
     public String getReference() {
