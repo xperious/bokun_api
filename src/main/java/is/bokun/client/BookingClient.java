@@ -117,24 +117,25 @@ public class BookingClient extends AbstractClient {
      *
      * @param bookingId the ID of the Booking
      * @param paymentDetails details of the payment
+     * @param paidType specifies how the payment should be treated. Must be one of the following values: "PAID_IN_FULL", "DEPOSIT", "FREE", "NOT_PAID".
      * @param lang The language the content should be in.
      * @param currency The currency used for prices.
      * @return
      */
-    public BookingDetailsDto confirmBooking(Long bookingId, PaymentDto paymentDetails, String lang, String currency) {
-        String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/confirm", lang, currency);
+    public BookingDetailsDto confirmBooking(Long bookingId, PaymentDto paymentDetails, String paidType, String lang, String currency) {
+        String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/confirm", lang, currency, new NVP("paidType", paidType));
         return postBooking(uri, paymentDetails);
     }
 
     /**
-     * Cancel a RESERVED booking. Normally called if the customer cancels the payment, or the payment session times out.
+     * Abort a RESERVED booking. Normally called if the customer aborts the payment, or the payment session times out.
      *
      * @param bookingId the ID of the booking
-     * @param timeout specifies whether the booking was cancelled due to a timeout, should be "false" if the customer manually cancelled
+     * @param timeout specifies whether the booking was aborted due to a timeout, should be "false" if the customer manually aborted
      * @return a simple OK response if things go well
      */
-    public ApiResponse cancelReservedBooking(Long bookingId, boolean timeout) {
-        String uri = BASE + "/" + bookingId + "/cancel-reserved?timeout=" + timeout;
+    public ApiResponse abortReservedBooking(Long bookingId, boolean timeout) {
+        String uri = BASE + "/" + bookingId + "/abort-reserved?timeout=" + timeout;
         return getAndValidate(uri, ApiResponse.class);
     }
 
@@ -154,7 +155,7 @@ public class BookingClient extends AbstractClient {
     }
 
     /**
-     * Report an error that occurred in payment. This will cancel the RESERVED booking, storing the details
+     * Report an error that occurred in payment. This will abort the RESERVED booking, storing the details
      * about the error provided.
      *
      * @param bookingId the ID of the booking
