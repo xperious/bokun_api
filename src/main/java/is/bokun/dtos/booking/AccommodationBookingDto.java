@@ -12,7 +12,7 @@ public class AccommodationBookingDto extends ProductBookingDto {
     
     public ProductInfoDto accommodation;
     
-    public List<RoomBookingDto> roomBookings = new ArrayList<RoomBookingDto>();
+    public List<RoomBookingDto> roomBookings = new ArrayList<>();
 
     @JsonIgnore
     public int getNightCount() {

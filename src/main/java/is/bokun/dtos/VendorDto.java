@@ -11,4 +11,12 @@ public class VendorDto {
 	
 	public String currencyCode;
 
+    public VendorDto() {}
+
+    public VendorDto(Long id, String title, String currencyCode) {
+        this.id = id;
+        this.title = title;
+        this.currencyCode = currencyCode;
+    }
+
 }
