@@ -122,7 +122,7 @@ public class BookingClient extends AbstractClient {
      * @param currency The currency used for prices.
      * @return
      */
-    public BookingDetailsDto confirmBooking(Long bookingId, PaymentDto paymentDetails, String paidType, String lang, String currency) {
+    public BookingDetailsDto confirmBooking(Long bookingId, BookingPaymentInfoDto paymentDetails, String paidType, String lang, String currency) {
         String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/confirm", lang, currency, new NVP("paidType", paidType));
         return postBooking(uri, paymentDetails);
     }

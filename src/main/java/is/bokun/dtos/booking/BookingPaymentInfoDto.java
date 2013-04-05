@@ -2,7 +2,12 @@ package is.bokun.dtos.booking;
 
 import java.util.Date;
 
-public class PaymentDto {
+public class BookingPaymentInfoDto {
+
+    public String productCategory;
+    public Long bookingId;
+    public String bookingPaidType;
+    public Long ownerId;
 
     public Long id;
     public String paymentType;
@@ -35,6 +40,38 @@ public class PaymentDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(String productCategory) {
+        this.productCategory = productCategory;
+    }
+
+    public Long getBookingId() {
+        return bookingId;
+    }
+
+    public String getBookingPaidType() {
+        return bookingPaidType;
+    }
+
+    public void setBookingPaidType(String bookingPaidType) {
+        this.bookingPaidType = bookingPaidType;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public void setBookingId(Long bookingId) {
+        this.bookingId = bookingId;
     }
 
     public String getPaymentType() {

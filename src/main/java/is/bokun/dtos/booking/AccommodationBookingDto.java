@@ -2,6 +2,7 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
+import is.bokun.dtos.VendorDto;
 import is.bokun.utils.DateUtils;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
@@ -22,5 +23,10 @@ public class AccommodationBookingDto extends ProductBookingDto {
     @JsonIgnore
     public Date getSortDate() {
     	return startDate;
+    }
+
+    @Override
+    public VendorDto getVendor() {
+        return accommodation.vendor;
     }
 }

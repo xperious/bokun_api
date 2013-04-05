@@ -2,6 +2,7 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
+import is.bokun.dtos.VendorDto;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import is.bokun.dtos.activity.*;
@@ -36,4 +37,9 @@ public class ActivityBookingDto extends ProductBookingDto {
 	public Date getSortDate() {
 		return date;
 	}
+
+    @Override
+    public VendorDto getVendor() {
+        return activity.vendor;
+    }
 }
