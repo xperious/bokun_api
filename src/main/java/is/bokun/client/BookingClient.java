@@ -66,16 +66,16 @@ public class BookingClient extends AbstractClient {
      * in the guest's session shopping cart, applying the answers supplied.
      *
      * @param sessionId the guest's session ID
-     * @param answers answers to the questions required for booking
+     * @param reservationInfo all the info for reserving the booking, such as payment info and answers to the questions required for booking
      * @param lang The language the content should be in.
      * @param currency The currency used for prices.
      * @param paymentProviderParams optional map of parameters directed at the payment provider (successURL, cancelURL, etc.).
      *                              Refer to the relevant payment provider documentation for more info.
      * @return details for the reserved booking
      */
-    public BookingDetailsDto reserveBookingForGuest(String sessionId, BookingAnswersDto answers, String lang, String currency, Map<String,String> paymentProviderParams) {
+    public BookingDetailsDto reserveBookingForGuest(String sessionId, BookingReservationRequestDto reservationInfo, String lang, String currency, Map<String,String> paymentProviderParams) {
         String uri = appendQueryParams(BASE + "/guest/" + sessionId + "/reserve", gatherParams(lang, currency, paymentProviderParams));
-        return postBooking(uri, answers);
+        return postBooking(uri, reservationInfo);
     }
 
     /**
@@ -84,16 +84,16 @@ public class BookingClient extends AbstractClient {
      * in the customer's shopping cart, applying the answers supplied.
      *
      * @param securityToken the token received by the customer on authentication
-     * @param answers answers to the questions required for booking
+     * @param reservationInfo all the info for reserving the booking, such as payment info and answers to the questions required for booking
      * @param lang The language the content should be in.
      * @param currency The currency used for prices.
      * @param paymentProviderParams optional map of parameters directed at the payment provider (successURL, cancelURL, etc.).
      *                              Refer to the relevant payment provider documentation for more info.
      * @return details for the reserved booking
      */
-    public BookingDetailsDto reserveBookingForCustomer(String securityToken, BookingAnswersDto answers, String lang, String currency, Map<String,String> paymentProviderParams) {
+    public BookingDetailsDto reserveBookingForCustomer(String securityToken, BookingReservationRequestDto reservationInfo, String lang, String currency, Map<String,String> paymentProviderParams) {
         String uri = appendQueryParams(BASE + "/customer/" + securityToken + "/reserve", gatherParams(lang, currency, paymentProviderParams));
-        return postBooking(uri, answers);
+        return postBooking(uri, reservationInfo);
     }
 
     private NVP[] gatherParams(String lang, String currency, Map<String,String> paymentProviderParams) {

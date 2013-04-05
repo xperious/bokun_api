@@ -2,14 +2,32 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
-public class AccommodationBookingDetailsDto {
+public class AccommodationBookingDetailsDto extends ProductBookingDetailsDto {
 
-	public Long bookingId;
-	public String title;
 	public Date startDate, endDate;
-	
-	public int totalPrice;
-	
-	public List<BookingAnswerDto> answers = new ArrayList<BookingAnswerDto>();
-	public List<RoomBookingDetailsDto> rooms = new ArrayList<RoomBookingDetailsDto>();
+	public List<RoomBookingDetailsDto> rooms = new ArrayList<>();
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public List<RoomBookingDetailsDto> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<RoomBookingDetailsDto> rooms) {
+        this.rooms = rooms;
+    }
 }
