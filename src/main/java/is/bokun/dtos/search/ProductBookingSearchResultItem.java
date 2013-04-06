@@ -20,6 +20,9 @@ public class ProductBookingSearchResultItem {
 	public String productType;
 	public int totalPrice;
 	public String currency;
+    public Double paidAmount;
+    public String paidType;
+    public boolean unconfirmedPayments;
 	public Date startDate, endDate;
 	
 	public String getCurrency() {
