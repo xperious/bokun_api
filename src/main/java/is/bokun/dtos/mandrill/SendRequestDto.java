@@ -1,7 +1,10 @@
 package is.bokun.dtos.mandrill;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import java.util.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SendRequestDto {
 
 	public String key;
