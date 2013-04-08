@@ -40,6 +40,16 @@ public class ShoppingCartDto {
 		
 		return bookings;
 	}
+
+    @JsonIgnore
+    public ProductBookingDto findProductBookingById(Long id) {
+        for (ProductBookingDto dto : getProductBookings()) {
+            if ( dto.id.equals(id) ) {
+                return dto;
+            }
+        }
+        return null;
+    }
 	
 	@JsonIgnore
     public boolean isEmpty() {

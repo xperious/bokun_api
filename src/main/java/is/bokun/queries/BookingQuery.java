@@ -11,13 +11,32 @@ public class BookingQuery {
 	public List<Long> vendorIds = new ArrayList<>();
 	public List<Long> sellingVendorIds = new ArrayList<>();
 	public List<Long> productIds = new ArrayList<>();
-	
+
+    public String textFilter;
+
 	public String productTitle;
 	public String vendorTitle;
 	public String sellerTitle;
 	public String bookingChannelTitle;
-	
-	public String getConfirmationCode() {
+
+    public DateRangeFilter creationDateRange = new DateRangeFilter();
+
+    public boolean hasCreationDateRange() {
+        return creationDateRange != null && creationDateRange.isActive();
+    }
+    public DateRangeFilter getCreationDateRange() {
+        return creationDateRange;
+    }
+    public void setCreationDateRange(DateRangeFilter creationDateRange) {
+        this.creationDateRange = creationDateRange;
+    }
+    public String getTextFilter() {
+        return textFilter;
+    }
+    public void setTextFilter(String textFilter) {
+        this.textFilter = textFilter;
+    }
+    public String getConfirmationCode() {
 		return confirmationCode;
 	}
 	public void setConfirmationCode(String confirmationCode) {
