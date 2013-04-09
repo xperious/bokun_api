@@ -6,7 +6,10 @@ import com.codiform.moo.annotation.Property;
 public class PhotoDto {
 
 	public Long id;
-	
+
+    @Property(optionality=Optionality.OPTIONAL)
+    public String originalUrl;
+
 	@Property(optionality=Optionality.OPTIONAL)
 	public String sourceUrl;
 	
