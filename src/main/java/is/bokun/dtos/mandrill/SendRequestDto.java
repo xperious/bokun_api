@@ -8,10 +8,7 @@ import java.util.*;
 public class SendRequestDto {
 
 	public String key;
-	public String template_name;
 	public boolean async = false;
-	
-	public List<Variable> template_content = new ArrayList<>();
 	
 	public Message message;
 	
@@ -21,22 +18,6 @@ public class SendRequestDto {
 
 	public void setKey(String key) {
 		this.key = key;
-	}
-
-	public String getTemplate_name() {
-		return template_name;
-	}
-
-	public void setTemplate_name(String template_name) {
-		this.template_name = template_name;
-	}
-
-	public List<Variable> getTemplate_content() {
-		return template_content;
-	}
-
-	public void setTemplate_content(List<Variable> template_content) {
-		this.template_content = template_content;
 	}
 
 	public Message getMessage() {
@@ -55,16 +36,32 @@ public class SendRequestDto {
 		this.async = async;
 	}
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Message {
 		
 		public String subject;
+        public String text;
+        public String html;
 		public String from_email;
 		public String from_name;
 		public String bcc_address;
 		public List<Recipient> to = new ArrayList<>();
 		public List<Variable> global_merge_vars = new ArrayList<>();
-		
-		public String getSubject() {
+        public List<Attachment> attachments = new ArrayList<>();
+
+        public String getText() {
+            return text;
+        }
+        public void setText(String text) {
+            this.text = text;
+        }
+        public String getHtml() {
+            return html;
+        }
+        public void setHtml(String html) {
+            this.html = html;
+        }
+        public String getSubject() {
 			return subject;
 		}
 		public void setSubject(String subject) {
@@ -100,8 +97,16 @@ public class SendRequestDto {
 		public void setGlobal_merge_vars(List<Variable> global_merge_vars) {
 			this.global_merge_vars = global_merge_vars;
 		}
-	}
-	
+
+        public List<Attachment> getAttachments() {
+            return attachments;
+        }
+        public void setAttachments(List<Attachment> attachments) {
+            this.attachments = attachments;
+        }
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Recipient {
 		
 		public String email;
@@ -120,7 +125,8 @@ public class SendRequestDto {
 		}
 
 	}
-	
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Variable {
 		
 		public String name;
@@ -146,4 +152,44 @@ public class SendRequestDto {
 			this.content = content;
 		}
 	}
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Attachment {
+
+        public String type;
+        public String name;
+        public String content;
+
+        public Attachment() {}
+
+        public Attachment(String type, String name, String content) {
+            this.type = type;
+            this.name = name;
+            this.content = content;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+    }
 }

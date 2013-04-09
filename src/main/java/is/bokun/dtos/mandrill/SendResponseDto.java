@@ -54,6 +54,7 @@ public class SendResponseDto {
 		this.mails = mails;
 	}
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
 	public static class MailResultDto {
 		
 		public String email;
