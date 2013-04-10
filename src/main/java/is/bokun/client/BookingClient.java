@@ -116,15 +116,26 @@ public class BookingClient extends AbstractClient {
      * Confirm a RESERVED booking. Normally called after processing payment.
      *
      * @param bookingId the ID of the Booking
-     * @param paymentDetails details of the payment
-     * @param paidType specifies how the payment should be treated. Must be one of the following values: "PAID_IN_FULL", "DEPOSIT", "FREE", "NOT_PAID".
      * @param lang The language the content should be in.
      * @param currency The currency used for prices.
      * @return
      */
-    public BookingDetailsDto confirmBooking(Long bookingId, BookingPaymentInfoDto paymentDetails, String paidType, String lang, String currency) {
-        String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/confirm", lang, currency, new NVP("paidType", paidType));
-        return postBooking(uri, paymentDetails);
+    public BookingDetailsDto confirmBooking(Long bookingId, String lang, String currency) {
+    	return confirmBooking(bookingId, new ArrayList<BookingPaymentInfoDto>(), lang, currency);
+    }
+    
+    /**
+     * Confirm a RESERVED booking. Normally called after processing payment.
+     *
+     * @param bookingId the ID of the Booking
+     * @param payments a list of payment infos, each describing how a payment was made for a product booking
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return
+     */
+    public BookingDetailsDto confirmBooking(Long bookingId, List<BookingPaymentInfoDto> payments, String lang, String currency) {
+        String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/confirm", lang, currency);
+        return postBooking(uri, payments);
     }
 
     /**
