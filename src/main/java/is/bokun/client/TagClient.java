@@ -1,14 +1,13 @@
 package is.bokun.client;
 
-import com.google.inject.Inject;
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Response;
-import is.bokun.dtos.ItemDto;
 import is.bokun.dtos.TagGroupDto;
-import org.codehaus.jackson.type.TypeReference;
 
 import java.util.List;
-import java.util.Map;
+
+import org.codehaus.jackson.type.TypeReference;
+
+import com.google.inject.Inject;
+import com.ning.http.client.Response;
 
 /**
  * Client for the Tag resource.
@@ -17,7 +16,7 @@ import java.util.Map;
  */
 public class TagClient extends AbstractClient {
 
-    private static final String BASE = "/currency.json";
+    private static final String BASE = "/tag.json";
 
     /**
      * @see AbstractClient#()
@@ -27,23 +26,6 @@ public class TagClient extends AbstractClient {
     @Inject
     public TagClient(ClientConfiguration config) {
         super(config);
-    }
-
-    /**
-     * Get all the available tags.
-     *
-     * @param lang The language in which to serve the tags.
-     * @return a Map containing the Tags, where the key is the Tag ID, and the value is the Tag information
-     */
-    public Map<Long,ItemDto> findAll(String lang) {
-        try {
-            String uri = BASE + "/findAll?lang=" + lang;
-            Response r = prepareGet(uri).execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<Map<Long,ItemDto>>(){});
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
     }
 
     /**

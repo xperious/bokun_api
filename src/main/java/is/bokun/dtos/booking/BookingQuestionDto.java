@@ -3,8 +3,9 @@ package is.bokun.dtos.booking;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingQuestionDto {
 
 	public String type;
