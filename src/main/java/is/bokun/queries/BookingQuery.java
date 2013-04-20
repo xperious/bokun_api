@@ -18,8 +18,15 @@ public class BookingQuery {
 	public String vendorTitle;
 	public String sellerTitle;
 	public String bookingChannelTitle;
+	
+	public Map<String,Object> fields = new HashMap<>();
+	
+	public List<SortField> sortFields = new ArrayList<>();
+	
+	public List<String> bookingStatuses = new ArrayList<>();
 
     public DateRangeFilter creationDateRange = new DateRangeFilter();
+    public DateRangeFilter startDateRange = new DateRangeFilter();
 
     public boolean hasCreationDateRange() {
         return creationDateRange != null && creationDateRange.isActive();
@@ -30,7 +37,16 @@ public class BookingQuery {
     public void setCreationDateRange(DateRangeFilter creationDateRange) {
         this.creationDateRange = creationDateRange;
     }
-    public String getTextFilter() {
+    public boolean hasStartDateRange() {
+        return startDateRange != null && startDateRange.isActive();
+    }
+    public DateRangeFilter getStartDateRange() {
+		return startDateRange;
+	}
+	public void setStartDateRange(DateRangeFilter startDateRange) {
+		this.startDateRange = startDateRange;
+	}
+	public String getTextFilter() {
         return textFilter;
     }
     public void setTextFilter(String textFilter) {
@@ -95,6 +111,25 @@ public class BookingQuery {
 	}
 	public void setBookingChannelTitle(String bookingChannelTitle) {
 		this.bookingChannelTitle = bookingChannelTitle;
+	}
+
+	public List<String> getBookingStatuses() {
+		return bookingStatuses;
+	}
+	public void setBookingStatuses(List<String> bookingStatuses) {
+		this.bookingStatuses = bookingStatuses;
+	}
+	public Map<String, Object> getFields() {
+		return fields;
+	}
+	public void setFields(Map<String, Object> fields) {
+		this.fields = fields;
+	}
+	public List<SortField> getSortFields() {
+		return sortFields;
+	}
+	public void setSortFields(List<SortField> sortFields) {
+		this.sortFields = sortFields;
 	}
 	private static List<Long> cleanList(List<Long> l) {
 		List<Long> list = new ArrayList<>();

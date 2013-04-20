@@ -28,6 +28,13 @@ public class DateRangeFilter {
      * Should the last "to" (if set) be inclusive or not. Defaults to true.
      */
     public boolean includeUpper = true;
+    
+    public DateRangeFilter() {}
+    
+    public DateRangeFilter(Date from, Date to) {
+    	this.from = from;
+    	this.to = to;
+    }
 
     public void setFrom(Date f) {
         this.from = f;

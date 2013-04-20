@@ -1,11 +1,12 @@
 package is.bokun.dtos.search;
 
-import java.util.Date;
-
 import is.bokun.dtos.CustomerDto;
+import is.bokun.dtos.booking.BookingItemInfoDto;
 import is.bokun.utils.StringUtils;
 
-import is.bokun.dtos.booking.BookingItemInfoDto;
+import java.util.*;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 public class ProductBookingSearchResultItem {
 
@@ -27,6 +28,12 @@ public class ProductBookingSearchResultItem {
     public String paidType;
     public boolean unconfirmedPayments;
 	public Date startDate, endDate;
+	public Map<String,Object> fields = new HashMap<>();
+	
+	@JsonIgnore
+	public int getIntField(String name) {
+		return (Integer) fields.get(name);
+	}
 	
 	public String getCurrency() {
 		if ( StringUtils.isNullOrEmpty(currency) ) {
