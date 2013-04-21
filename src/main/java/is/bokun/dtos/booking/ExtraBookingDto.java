@@ -1,5 +1,7 @@
 package is.bokun.dtos.booking;
 
+import java.util.*;
+
 
 public class ExtraBookingDto {
 
@@ -12,4 +14,6 @@ public class ExtraBookingDto {
     public int unitCount;
     public int bookedPrice;
     public String pricingType;
+    
+    public List<BookingAnswerWithIdDto> answers = new ArrayList<>();
 }

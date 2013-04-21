@@ -24,6 +24,8 @@ public class BookingQuery {
 	public List<SortField> sortFields = new ArrayList<>();
 	
 	public List<String> bookingStatuses = new ArrayList<>();
+	
+	public List<Long> bookedExtrasIds = new ArrayList<>();
 
     public DateRangeFilter creationDateRange = new DateRangeFilter();
     public DateRangeFilter startDateRange = new DateRangeFilter();
@@ -113,6 +115,12 @@ public class BookingQuery {
 		this.bookingChannelTitle = bookingChannelTitle;
 	}
 
+	public List<Long> getBookedExtrasIds() {
+		return bookedExtrasIds;
+	}
+	public void setBookedExtrasIds(List<Long> bookedExtrasIds) {
+		this.bookedExtrasIds = bookedExtrasIds;
+	}
 	public List<String> getBookingStatuses() {
 		return bookingStatuses;
 	}
