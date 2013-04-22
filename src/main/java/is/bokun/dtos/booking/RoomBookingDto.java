@@ -27,7 +27,7 @@ public class RoomBookingDto {
 	
 	public List<ExtraBookingDto> extraBookings = new ArrayList<>();
 	
-	public List<AccommodationAvailabilityBookingDto> availabilityBookings = new ArrayList<AccommodationAvailabilityBookingDto>();
+	public List<AccommodationAvailabilityBookingDto> availabilityBookings = new ArrayList<>();
 	
 	@JsonIgnore
     public List<ExtraBookingDto> getExtraBookings(boolean included) {
