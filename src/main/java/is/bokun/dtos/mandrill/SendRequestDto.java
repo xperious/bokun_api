@@ -45,6 +45,8 @@ public class SendRequestDto {
 		public String from_email;
 		public String from_name;
 		public String bcc_address;
+		public Boolean preserve_recipients = true;
+		
 		public List<Recipient> to = new ArrayList<>();
 		public List<Variable> global_merge_vars = new ArrayList<>();
         public List<Attachment> attachments = new ArrayList<>();
