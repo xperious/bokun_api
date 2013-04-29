@@ -100,12 +100,25 @@ public class CustomerClient extends AbstractClient {
     /**
      * Check if a username exists.
      *
-     * @param securityToken the token received by the customer on authentication
+     * @param username the username to check for existence
+     * @return a simple Boolean response indicating whether the username exists
+     */
+    public BooleanResponse usernameExists(String username) {
+    	return usernameExists(null, username);
+    }
+    
+    /**
+     * Check if a username exists.
+     *
+     * @param securityToken the token received by the customer on authentication. This parameter is optional.
      * @param username the username to check for existence
      * @return a simple Boolean response indicating whether the username exists
      */
     public BooleanResponse usernameExists(String securityToken, String username) {
-        String uri = BASE + "/username-exists?securityToken=" + securityToken + "&username=" + username;
+        String uri = BASE + "/username-exists?username=" + username;
+        if ( !StringUtils.isNullOrEmpty(securityToken) ) {
+        	uri += "&securityToken=" + securityToken;
+        }
         return getAndValidate(uri, BooleanResponse.class);
     }
 
