@@ -85,7 +85,7 @@ public class ActivityClient extends AbstractClient {
      */
     public List<ActivityAvailabilityDto> getUpcomingAvailabilities(Long activityId, int maxResults, boolean includeSoldOut, String lang, String currency) {
         try {
-            String uri = appendLangAndCurrency(BASE + "/id/" + activityId + "/upcoming-availabilities/" + maxResults, lang, currency, new NVP("includeSoldOut", ""+includeSoldOut));
+            String uri = appendLangAndCurrency(BASE + "/" + activityId + "/upcoming-availabilities/" + maxResults, lang, currency, new NVP("includeSoldOut", ""+includeSoldOut));
             Response r = prepareGet(uri).execute().get();
             validateResponse(r);
             return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<List<ActivityAvailabilityDto>>(){});
@@ -108,7 +108,7 @@ public class ActivityClient extends AbstractClient {
      */
     public List<ActivityAvailabilityDto> getAvailabilitiesOnRange(Long activityId, Date start, Date end, boolean includeSoldOut, String lang, String currency) {
         try {
-            String uri = appendLangAndCurrency(BASE + "/id/" + activityId + "/availabilities", lang, currency,
+            String uri = appendLangAndCurrency(BASE + "/" + activityId + "/availabilities", lang, currency,
                     new NVP("start", Long.toString(start.getTime())), new NVP("end", Long.toString(end.getTime())),
                     new NVP("includeSoldOut", ""+includeSoldOut));
 

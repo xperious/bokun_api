@@ -35,6 +35,11 @@ public class FacetFilter {
 		this.values.add(value);
 	}
 	
+	public FacetFilter(String name, List<String> values) {
+		this.name = name;
+		this.values = values;
+	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
