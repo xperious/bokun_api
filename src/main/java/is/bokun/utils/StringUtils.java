@@ -82,4 +82,13 @@ public class StringUtils {
     	}
     	return s.toString();
     }
+    
+    public static String setToCommaSeparated(Set<String> set) {
+    	StringBuilder s = new StringBuilder();
+    	for ( String l : set ) {
+    		if ( s.length() > 0 ) { s.append(','); }
+    		s.append(l);
+    	}
+    	return s.toString();
+    }
 }
