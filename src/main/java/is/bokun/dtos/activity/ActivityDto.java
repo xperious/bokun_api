@@ -1,18 +1,14 @@
 package is.bokun.dtos.activity;
 
+import is.bokun.dtos.*;
+import is.bokun.utils.StringUtils;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import is.bokun.dtos.BookableExtraDto;
-import is.bokun.dtos.WithExtras;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-import is.bokun.utils.StringUtils;
-
-import com.codiform.moo.annotation.CollectionProperty;
-import com.codiform.moo.annotation.Property;
-
-import is.bokun.dtos.ProductDto;
+import com.codiform.moo.annotation.*;
 
 public class ActivityDto extends ProductDto implements WithExtras {
 
@@ -43,6 +39,8 @@ public class ActivityDto extends ProductDto implements WithExtras {
 
     public int seasonEndDate;
     public int seasonEndMonth;
+    
+    public List<WeekdayDto> weekdays = new ArrayList<>();
     
     @Property(translation = "difficultyLevel.name()")
     public String difficultyLevel;
