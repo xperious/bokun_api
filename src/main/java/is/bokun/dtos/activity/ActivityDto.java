@@ -8,19 +8,15 @@ import java.util.*;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-import com.codiform.moo.annotation.*;
-
 public class ActivityDto extends ProductDto implements WithExtras {
 
     public String included;
     public String requirements; 
     public String attention;
     
-    @Property(translation = "durationType.name()")
     public String durationType;
     public int duration;
 
-    @Property(translation = "pricingType.name()")
     public String pricingType;
     
     public int minAge;
@@ -42,16 +38,12 @@ public class ActivityDto extends ProductDto implements WithExtras {
     
     public List<WeekdayDto> weekdays = new ArrayList<>();
     
-    @Property(translation = "difficultyLevel.name()")
     public String difficultyLevel;
     
-    @CollectionProperty(itemTranslation = AgendaItemDto.class)
     public List<AgendaItemDto> agendaItems = new ArrayList<>();
 
-    @CollectionProperty(itemTranslation = StartTimeDto.class)
     public List<StartTimeDto> startTimes = new ArrayList<>();
 
-    @CollectionProperty(itemTranslation = BookableExtraDto.class)
     public List<BookableExtraDto> bookableExtras = new ArrayList<>();
 	
 	public ActivityDto() {

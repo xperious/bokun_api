@@ -4,8 +4,6 @@ import java.util.Date;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-import com.codiform.moo.annotation.Property;
-
 import is.bokun.dtos.PriceByMonthDto;
 
 public class StartTimeDto {
@@ -15,11 +13,9 @@ public class StartTimeDto {
 	public int hour = 12;
 	public int minute;
 	
-    @Property(translation = "durationType.name()")
     public String durationType;
     public int duration = 1;
     
-    @Property(translate = true)
     public PriceByMonthDto prices;
     
     public StartTimeDto() {}

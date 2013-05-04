@@ -1,12 +1,10 @@
 package is.bokun.dtos.accommodation;
 
+import is.bokun.dtos.*;
+
 import java.util.*;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
-
-import com.codiform.moo.annotation.*;
-
-import is.bokun.dtos.*;
 
 public class RoomTypeDto implements WithExtras {
 
@@ -14,7 +12,6 @@ public class RoomTypeDto implements WithExtras {
 	public String externalId;
 	public String title;
 	
-	@Property(translation = "accommodationType.name()")
     public String accommodationType;
 	
     public String spaceType;
@@ -33,19 +30,16 @@ public class RoomTypeDto implements WithExtras {
 
 	public boolean shared = false;
 	
-	@Property(translation = "pricingType.name()")
 	public String pricingType;
 
 	public boolean singleOccupancyDiscountEnabled = false;
 	public int singleOccupancyDiscount = 0;
 	
-	@CollectionProperty(optionality = Optionality.OPTIONAL)
 	public List<TagGroupDto> tags = new ArrayList<>();
 	
-	@CollectionProperty(optionality = Optionality.OPTIONAL)
+	public PhotoDto keyPhoto;
 	public List<PhotoDto> photos = new ArrayList<>();
 	
-	@CollectionProperty(optionality = Optionality.OPTIONAL)
 	public List<BookableExtraDto> extras = new ArrayList<>();
 
     @JsonIgnore

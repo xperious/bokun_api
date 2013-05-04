@@ -2,8 +2,6 @@ package is.bokun.dtos.accommodation;
 
 import java.util.*;
 
-import com.codiform.moo.annotation.*;
-
 import is.bokun.dtos.*;
 
 
@@ -18,13 +16,10 @@ public class AccommodationDto extends ProductDto {
 	 
 	public Set<String> types = new HashSet<>();
 	
-	@Property(translate = true)
 	public LocationDto location;
 	
-	@CollectionProperty(itemTranslation = RoomTypeDto.class)
 	public List<RoomTypeDto> roomTypes = new ArrayList<>();
 	
-	@CollectionProperty(itemTranslation = BookableExtraDto.class)
 	public List<BookableExtraDto> bookableExtras = new ArrayList<>();
 	
 	public AccommodationDto() {

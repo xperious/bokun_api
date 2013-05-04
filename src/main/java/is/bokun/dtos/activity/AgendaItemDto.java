@@ -2,8 +2,6 @@ package is.bokun.dtos.activity;
 
 import java.util.*;
 
-import com.codiform.moo.annotation.Property;
-
 import is.bokun.dtos.*;
 
 public class AgendaItemDto {
@@ -15,9 +13,9 @@ public class AgendaItemDto {
     public boolean possibleStartPoint;
     public List<String> flags = new ArrayList<>();
 
-    @Property(translate = true)
     public PlaceDto place;
     
+    public PhotoDto keyPhoto;
     public List<PhotoDto> photos = new ArrayList<>();
     
 }
