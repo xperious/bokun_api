@@ -45,6 +45,8 @@ public class ActivityDto extends ProductDto implements WithExtras {
     public List<StartTimeDto> startTimes = new ArrayList<>();
 
     public List<BookableExtraDto> bookableExtras = new ArrayList<>();
+    
+    public ActivityRouteDto route;
 	
 	public ActivityDto() {
 		super();
