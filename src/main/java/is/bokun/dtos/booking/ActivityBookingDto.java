@@ -21,9 +21,6 @@ public class ActivityBookingDto extends ProductBookingDto {
     public Integer activityPrice;
     public Integer extrasPrice;
 	
-	public String firstName;
-	public String lastName;
-	
 	public int adults;
 	public int teens;
 	public int children;

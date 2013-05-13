@@ -11,6 +11,7 @@ public class BookingQuery {
 	public List<Long> vendorIds = new ArrayList<>();
 	public List<Long> sellingVendorIds = new ArrayList<>();
 	public List<Long> productIds = new ArrayList<>();
+	public Long agentId;
 
     public String textFilter;
 
@@ -138,6 +139,12 @@ public class BookingQuery {
 	}
 	public void setSortFields(List<SortField> sortFields) {
 		this.sortFields = sortFields;
+	}
+	public Long getAgentId() {
+		return agentId;
+	}
+	public void setAgentId(Long agentId) {
+		this.agentId = agentId;
 	}
 	private static List<Long> cleanList(List<Long> l) {
 		List<Long> list = new ArrayList<>();
