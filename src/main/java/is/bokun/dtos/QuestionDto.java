@@ -11,4 +11,6 @@ public class QuestionDto {
     public String type;
 
     public String options;
+    
+    public boolean answerRequired;
 }
