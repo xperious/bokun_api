@@ -13,6 +13,7 @@ public class BookingQuestionDto {
 	public String question;
 	public boolean selectFromOptions;
 	public String defaultAnswer;
+	public boolean answerRequired;
 	
 	public List<String> options = new ArrayList<String>();
 	
