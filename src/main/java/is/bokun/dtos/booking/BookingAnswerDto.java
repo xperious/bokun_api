@@ -5,6 +5,7 @@ public class BookingAnswerDto {
 	public String type;
 	public String question;
 	public String answer;
+	public String group;
 	
 	public String getType() {
 		return type;
