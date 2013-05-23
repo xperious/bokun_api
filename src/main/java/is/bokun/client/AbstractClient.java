@@ -144,7 +144,7 @@ public abstract class AbstractClient {
     protected String appendQueryParams(String uri, NVP... params) {
         StringBuilder s = new StringBuilder();
         for (NVP p : params) {
-            if ( !StringUtils.isNullOrEmpty(p.value) ) {
+            if ( p != null && !StringUtils.isNullOrEmpty(p.value) ) {
                 if ( s.length() == 0 ) {
                     s.append('?');
                 } else {
@@ -164,14 +164,16 @@ public abstract class AbstractClient {
         list.add(new NVP("currency",currency));
         if ( params != null ) {
             for (NVP p : params) {
-                list.add(p);
+            	if ( p != null ) {
+            		list.add(p);
+            	}
             }
         }
         return appendQueryParams(uri, list.toArray(new NVP[list.size()]));
     }
 
     protected String appendLangAndCurrency(String uri, String lang, String currency) {
-        return appendLangAndCurrency(uri, lang, currency, (NVP)null);
+        return appendLangAndCurrency(uri, lang, currency, (NVP) null);
     }
 
     /**
