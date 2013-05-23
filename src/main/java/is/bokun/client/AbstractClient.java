@@ -171,7 +171,7 @@ public abstract class AbstractClient {
     }
 
     protected String appendLangAndCurrency(String uri, String lang, String currency) {
-        return appendLangAndCurrency(uri, lang, currency, null);
+        return appendLangAndCurrency(uri, lang, currency, (NVP)null);
     }
 
     /**
