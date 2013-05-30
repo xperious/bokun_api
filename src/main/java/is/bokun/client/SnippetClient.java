@@ -56,8 +56,8 @@ public class SnippetClient extends AbstractClient {
         return postAndValidateStr(uri, query);
     }
 
-    public String getActivityCalendar(Long id, int year, int month, String lang, String currency) {
-        String uri = appendLangAndCurrency("/snippets/activity/" + id + "/calendar/" + year + "/" + month, lang, currency);
+    public String getActivityCalendar(Long id, int year, int month, String lang, String currency, boolean includeSoldOut) {
+        String uri = appendLangAndCurrency("/snippets/activity/" + id + "/calendar/" + year + "/" + month, lang, currency, new NVP("includeSoldOut", includeSoldOut));
         return getAndValidateStr(uri);
     }
 
