@@ -4,9 +4,7 @@ import is.bokun.dtos.*;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-
-public class RoomTypeDto implements WithExtras {
+public class RoomTypeDto extends HasBookableExtras {
 
 	public Long id;
 	public String externalId;
@@ -40,37 +38,5 @@ public class RoomTypeDto implements WithExtras {
 	public PhotoDto keyPhoto;
 	public List<PhotoDto> photos = new ArrayList<>();
 	
-	public List<BookableExtraDto> extras = new ArrayList<>();
 
-    @JsonIgnore
-	public BookableExtraDto findExtra(Long id) {
-		for (BookableExtraDto e : extras) {
-			if ( e.id.equals(id) ) {
-				return e;
-			}
-		}
-		return null;
-	}
-	
-	@JsonIgnore
-	public List<BookableExtraDto> getIncludedExtras() {
-		List<BookableExtraDto> list = new ArrayList<>();
-		for ( BookableExtraDto e : extras ) {
-			if ( e.included ) {
-				list.add(e);
-			}
-		}
-		return list;
-	}
-	
-	@JsonIgnore
-	public List<BookableExtraDto> getOptionalExtras() {
-		List<BookableExtraDto> list = new ArrayList<>();
-		for ( BookableExtraDto e : extras ) {
-			if ( !e.included ) {
-				list.add(e);
-			}
-		}
-		return list;
-	}
 }

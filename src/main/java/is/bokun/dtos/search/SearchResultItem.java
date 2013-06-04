@@ -6,7 +6,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 import is.bokun.dtos.*;
 
-public class SearchResultItem {
+public class SearchResultItem implements SearchResult, WithPhotos {
 
 	public String id;
 	public String title;
@@ -38,5 +38,39 @@ public class SearchResultItem {
 	
 	public int getInt(String name) {
 		return fields.containsKey(name) ? Integer.parseInt(getString(name)) : 0;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	public List<String> getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(List<String> keywords) {
+		this.keywords = keywords;
+	}
+	
+	@Override
+	public void addPhoto(PhotoDto p) {
+		photos.add(p);
+	}
+
+	@Override
+	public void setKeyPhoto(PhotoDto p) {
+		keyPhoto = p;
 	}
 }
