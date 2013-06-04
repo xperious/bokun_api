@@ -1,12 +1,12 @@
 package is.bokun.client;
 
 import is.bokun.dtos.carrental.CarSearchResultsDto;
-import is.bokun.queries.AccommodationQuery;
+import is.bokun.queries.CarQuery;
 
 import com.google.inject.Inject;
 
 /**
- * Client for the Accommodation resource.
+ * Client for the CarRental resource.
  *
  * @author Olafur Gauti Gudmundsson
  */
@@ -33,7 +33,7 @@ public class CarRentalClient extends AbstractClient {
      * @param currency The currency used for prices.
      * @return search results matching the query
      */
-    public CarSearchResultsDto search(AccommodationQuery query, String lang, String currency) {
+    public CarSearchResultsDto search(CarQuery query, String lang, String currency) {
         String uri = appendLangAndCurrency(BASE + "/search-cars", lang, currency);
         return postAndValidate(uri, query, CarSearchResultsDto.class);
     }
