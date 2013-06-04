@@ -21,7 +21,7 @@ public enum CarSortField {
 			case BEST_SELLING_IN_CHANNEL:
 				return "booking_count_channel_";
 			case PRICE:
-				return "totalPrice";
+				return "_score";
 			default:
 				return "_score";
 		}
