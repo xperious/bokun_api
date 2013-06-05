@@ -68,9 +68,20 @@ public class SearchResultItem implements SearchResult, WithPhotos {
 	public void addPhoto(PhotoDto p) {
 		photos.add(p);
 	}
-
+	@Override
+	public List<PhotoDto> getPhotos() {
+		return photos;
+	}
+	@Override
+	public void setPhotos(List<PhotoDto> photos) {
+		this.photos = photos;
+	}
 	@Override
 	public void setKeyPhoto(PhotoDto p) {
 		keyPhoto = p;
+	}
+	@Override
+	public PhotoDto getKeyPhoto() {
+		return keyPhoto;
 	}
 }

@@ -9,16 +9,11 @@ public class RoomBookingDto {
 	public Long id;
 	
 	public BookingItemInfoDto roomType;
-	
-	public String guestFirstName;
-	public String guestLastName;
 
     public Date startDate;
     public Date endDate;
 	
     public int unitCount;
-
-	public String specialRequests;
 	
 	public boolean unavailable;
 	public int availabilityCount;

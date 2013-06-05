@@ -4,7 +4,7 @@ import is.bokun.dtos.*;
 
 import java.util.*;
 
-public class RoomTypeDto extends HasBookableExtras {
+public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 
 	public Long id;
 	public String externalId;
@@ -37,6 +37,27 @@ public class RoomTypeDto extends HasBookableExtras {
 	
 	public PhotoDto keyPhoto;
 	public List<PhotoDto> photos = new ArrayList<>();
+	
+	@Override
+	public void addPhoto(PhotoDto p) {
+		photos.add(p);
+	}
+	@Override
+	public List<PhotoDto> getPhotos() {
+		return photos;
+	}
+	@Override
+	public void setPhotos(List<PhotoDto> photos) {
+		this.photos = photos;
+	}
+	@Override
+	public void setKeyPhoto(PhotoDto p) {
+		keyPhoto = p;
+	}
+	@Override
+	public PhotoDto getKeyPhoto() {
+		return keyPhoto;
+	}
 	
 
 }

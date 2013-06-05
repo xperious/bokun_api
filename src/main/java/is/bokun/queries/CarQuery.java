@@ -19,6 +19,11 @@ public class CarQuery extends AbstractDateRangeQuery {
 	public List<Long> carRentalIds = new ArrayList<>();
 	
 	/**
+	 * Set this to get results for the single a car rental that has this (language dependent) slug.
+	 */
+	public String carRentalSlug;
+	
+	/**
 	 * Set to get only cars that allow this driver age (and above). 
 	 */
 	public Integer driverAge;
@@ -160,6 +165,14 @@ public class CarQuery extends AbstractDateRangeQuery {
 		this.airConditioning = airConditioning;
 	}
 	
+	public String getCarRentalSlug() {
+		return carRentalSlug;
+	}
+
+	public void setCarRentalSlug(String carRentalSlug) {
+		this.carRentalSlug = carRentalSlug;
+	}
+
 	@JsonIgnore
 	public CarSortField sortField() {
 		if ( StringUtils.isNullOrEmpty(sortField) ) {

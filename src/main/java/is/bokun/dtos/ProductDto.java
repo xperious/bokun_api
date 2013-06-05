@@ -9,7 +9,9 @@ import is.bokun.utils.StringUtils;
 public abstract class ProductDto {
 
     public Long id;
-    public  String externalId;
+    public String externalId;
+    public Long productGroupId;
+    public String productCategory;
 
     public String title;
     public String description;
