@@ -1,4 +1,4 @@
-package is.bokun.dtos.accommodation;
+package is.bokun.dtos;
 
 public class AvailabilityInfoDto {
 

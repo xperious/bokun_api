@@ -21,6 +21,10 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 	public int luggageCapacity = 2;
 	public int minDriverAge = 17;
 	
+	public boolean rentalRestrictions = false;
+	public int minRentalDays = 1;
+	public int maxRentalDays = 30;
+	
 	public double co2Emission;
 	public double fuelEconomy;
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import is.bokun.dtos.AvailabilityInfoDto;
 import is.bokun.queries.AccommodationQuery;
 import is.bokun.queries.RoomQuery;
 

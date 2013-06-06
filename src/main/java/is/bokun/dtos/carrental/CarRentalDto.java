@@ -1,6 +1,7 @@
 package is.bokun.dtos.carrental;
 
 import is.bokun.dtos.*;
+import is.bokun.dtos.accommodation.RoomTypeDto;
 
 import java.util.*;
 
@@ -36,4 +37,14 @@ public class CarRentalDto extends ProductDto {
 		}
 		return null;
 	}
+	
+	@JsonIgnore
+    public CarTypeDto findCarType(Long id) {
+    	for (CarTypeDto rt : carTypes) {
+    		if ( rt.id.equals(id) ) {
+    			return rt;
+    		}
+    	}
+    	return null;
+    }
 }
