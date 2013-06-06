@@ -7,7 +7,7 @@ import java.util.*;
 
 public class CarTypeDto extends HasBookableExtras implements SearchResult, WithPhotos {
 
-	public String id;
+	public Long id;
 	public String title;
 	public String description;
 	public String exampleCarModel;

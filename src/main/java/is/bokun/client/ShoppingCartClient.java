@@ -1,12 +1,8 @@
 package is.bokun.client;
 
+import is.bokun.dtos.booking.*;
+
 import com.google.inject.Inject;
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Response;
-import is.bokun.dtos.booking.AccommodationBookingRequestDto;
-import is.bokun.dtos.booking.ActivityBookingRequestDto;
-import is.bokun.dtos.booking.ShoppingCartDto;
-import is.bokun.dtos.search.SearchResultsDto;
 
 /**
  * Client for the ShoppingCart resource.
@@ -70,6 +66,21 @@ public class ShoppingCartClient extends AbstractClient {
     }
 
     /**
+     * Remove a car rental booking from a guest's session cart.
+     *
+     * @param sessionId the guest's session ID
+     * @param carRentalBookingId the ID of the car rental booking to be removed
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto removeCarRentalFromSessionCart(String sessionId, Long carRentalBookingId, String lang, String currency) {
+        String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/remove-car-rental/" + carRentalBookingId, lang, currency);
+        return getCart(uri);
+    }
+
+    
+    /**
      * Remove an activity booking from a guest's session cart.
      *
      * @param sessionId the guest's session ID
@@ -94,6 +105,20 @@ public class ShoppingCartClient extends AbstractClient {
      */
     public ShoppingCartDto removeAccommodationFromCustomerCart(String securityToken, Long accommodationBookingId, String lang, String currency) {
         String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/remove-accommodation/" + accommodationBookingId, lang, currency);
+        return getCart(uri);
+    }
+    
+    /**
+     * Remove a car rental booking from a customer's shopping cart.
+     *
+     * @param securityToken the token received by the customer on authentication
+     * @param carRentalBookingId the ID of the car rental booking to be removed
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto removeCarRentalFromCustomerCart(String securityToken, Long carRentalBookingId, String lang, String currency) {
+        String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/remove-car-rental/" + carRentalBookingId, lang, currency);
         return getCart(uri);
     }
 
@@ -138,6 +163,34 @@ public class ShoppingCartClient extends AbstractClient {
         String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/remove-room/" + roomBookingId, lang, currency);
         return getCart(uri);
     }
+    
+    /**
+     * Remove a car booking from a guest's session cart.
+     *
+     * @param sessionId the guest's session ID
+     * @param carBookingId the ID of the room booking to be removed
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto removeCarFromSessionCart(String sessionId, Long carBookingId, String lang, String currency) {
+        String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/remove-car/" + carBookingId, lang, currency);
+        return getCart(uri);
+    }
+    
+    /**
+     * Remove a car booking from a customer's shopping cart.
+     *
+     * @param securityToken the token received by the customer on authentication
+     * @param carBookingId the ID of the room booking to be removed
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto removeCarFromCustomerCart(String securityToken, Long carBookingId, String lang, String currency) {
+        String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/remove-car/" + carBookingId, lang, currency);
+        return getCart(uri);
+    }
 
     /**
      * Merge a session shopping cart with a customer's cart.
@@ -171,6 +224,20 @@ public class ShoppingCartClient extends AbstractClient {
         String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/accommodation", lang, currency);
         return postAndGetCart(uri, bookingRequest);
     }
+    
+    /**
+     * Add a car rental booking to a guest's session cart.
+     *
+     * @param sessionId the guest's session ID
+     * @param bookingRequest the request describing the booking
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto addCarRentalToSessionCart(String sessionId, CarRentalBookingRequestDto bookingRequest, String lang, String currency) {
+        String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/car-rental", lang, currency);
+        return postAndGetCart(uri, bookingRequest);
+    }
 
     /**
      * Add an activity booking to a guest's session cart.
@@ -187,7 +254,7 @@ public class ShoppingCartClient extends AbstractClient {
     }
 
     /**
-     * Add an accommodation booking from a customer's shopping cart.
+     * Add an accommodation booking to a customer's shopping cart.
      *
      * @param securityToken the token received by the customer on authentication
      * @param bookingRequest the request describing the booking
@@ -199,9 +266,23 @@ public class ShoppingCartClient extends AbstractClient {
         String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/accommodation", lang, currency);
         return postAndGetCart(uri, bookingRequest);
     }
+    
+    /**
+     * Add a car rental booking to a customer's shopping cart.
+     *
+     * @param securityToken the token received by the customer on authentication
+     * @param bookingRequest the request describing the booking
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto addCarRentalToCustomerCart(String securityToken, CarRentalBookingRequestDto bookingRequest, String lang, String currency) {
+        String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/car-rental", lang, currency);
+        return postAndGetCart(uri, bookingRequest);
+    }
 
     /**
-     * Add an activity booking from a customer's shopping cart.
+     * Add an activity booking to a customer's shopping cart.
      *
      * @param securityToken the token received by the customer on authentication
      * @param bookingRequest the request describing the booking

@@ -28,6 +28,9 @@ public class StartTimeDto {
     @JsonIgnore
     public String getTimeAsString() {
         StringBuilder s = new StringBuilder();
+        if ( hour < 10 ) {
+            s.append(0);
+        }
         s.append(hour);
         s.append(':');
         if ( minute < 10 ) {

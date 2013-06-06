@@ -2,8 +2,7 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.*;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class ShoppingCartDto {
@@ -15,6 +14,7 @@ public class ShoppingCartDto {
 	public int totalPrice;
 	
 	public List<AccommodationBookingDto> accommodationBookings = new ArrayList<>();
+	public List<CarRentalBookingDto> carRentalBookings = new ArrayList<>();
 	public List<ActivityBookingDto> activityBookings = new ArrayList<>();
 
 	
@@ -29,6 +29,7 @@ public class ShoppingCartDto {
 		List<ProductBookingDto> bookings = new ArrayList<>();
 		
 		bookings.addAll(accommodationBookings);
+		bookings.addAll(carRentalBookings);
 		bookings.addAll(activityBookings);
 		
 		Collections.sort(bookings, new Comparator<ProductBookingDto>() {
@@ -53,6 +54,6 @@ public class ShoppingCartDto {
 	
 	@JsonIgnore
     public boolean isEmpty() {
-        return accommodationBookings.isEmpty() && activityBookings.isEmpty();
+        return accommodationBookings.isEmpty() && activityBookings.isEmpty() && carRentalBookings.isEmpty();
     }
 }

@@ -27,6 +27,20 @@ public class StringUtils {
         }
         return null;
     }
+    
+    public static String formatTime(int hour, int minute) {
+        StringBuilder s = new StringBuilder();
+        if ( hour < 10 ) {
+            s.append(0);
+        }
+        s.append(hour);
+        s.append(':');
+        if ( minute < 10 ) {
+            s.append(0);
+        }
+        s.append(minute);
+        return s.toString();
+    }
 
     public static boolean isNullOrEmpty(String... s) {
         for (String str : s) {

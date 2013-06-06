@@ -8,7 +8,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 public class CarTypeAvailabilityDto extends AvailabilityDto {
 
 	public int price;
-	public ItemDto carType;
+	public Long carTypeId;
 	
 	
 	public int getPrice() {
@@ -17,12 +17,13 @@ public class CarTypeAvailabilityDto extends AvailabilityDto {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public ItemDto getCarType() {
-		return carType;
+	public Long getCarTypeId() {
+		return carTypeId;
 	}
-	public void setCarType(ItemDto carType) {
-		this.carType = carType;
+	public void setCarTypeId(Long carTypeId) {
+		this.carTypeId = carTypeId;
 	}
+
 	
 	
 }

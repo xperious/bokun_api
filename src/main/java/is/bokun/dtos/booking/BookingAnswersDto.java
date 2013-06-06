@@ -10,6 +10,7 @@ public class BookingAnswersDto {
 	public List<BookingAnswerDto> answers = new ArrayList<>();
 	
 	public List<AccommodationBookingAnswersDto> accommodationsBookings = new ArrayList<>();
+	public List<CarRentalBookingAnswersDto> carRentalBookings = new ArrayList<>();
 	public List<ActivityBookingAnswersDto> activityBookings = new ArrayList<>();
 	
 	public List<BookingAnswerDto> getAnswers() {
@@ -31,8 +32,14 @@ public class BookingAnswersDto {
 	public void setActivityBookings(List<ActivityBookingAnswersDto> activityBookings) {
 		this.activityBookings = activityBookings;
 	}
-
-    @JsonIgnore
+    public List<CarRentalBookingAnswersDto> getCarRentalBookings() {
+		return carRentalBookings;
+	}
+	public void setCarRentalBookings(
+			List<CarRentalBookingAnswersDto> carRentalBookings) {
+		this.carRentalBookings = carRentalBookings;
+	}
+	@JsonIgnore
     public CustomerDto getCustomerInfo() {
         CustomerDto dto = new CustomerDto();
         for (BookingAnswerDto a : answers) {
