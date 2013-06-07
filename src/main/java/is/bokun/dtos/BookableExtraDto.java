@@ -8,12 +8,15 @@ public class BookableExtraDto {
     public Long id;
     public String externalId;
     public String title;
+    public String information;
     public boolean included;
 
     public String pricingType;
     public int price;
 
     public int maxPerBooking;
+    
+    public List<String> flags = new ArrayList<>();
 
     public List<QuestionDto> questions = new ArrayList<>();
 }
