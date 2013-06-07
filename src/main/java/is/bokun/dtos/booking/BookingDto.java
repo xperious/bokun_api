@@ -14,6 +14,7 @@ public class BookingDto {
 	public int totalPrice;
 	
 	public List<AccommodationBookingDto> accommodationBookings = new ArrayList<>();
+	public List<CarRentalBookingDto> carRentalBookings = new ArrayList<>();
 	public List<ActivityBookingDto> activityBookings = new ArrayList<>();
 
 }
