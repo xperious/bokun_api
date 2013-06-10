@@ -2,9 +2,7 @@ package is.bokun.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author Olafur Gauti Gudmundsson
@@ -114,4 +112,47 @@ public class StringUtils {
     	}
     	return s.toString();
     }
+    
+	public static String formatLocalDate(String lang, Date date, String format) {
+		if ( date == null ) {
+			return "";
+		}
+		return new SimpleDateFormat(format, new Locale(lang.toLowerCase())).format(date);
+	}
+    
+	public static String formatLocalDateRange(String lang, Date start, Date end) {
+		return formatLocalDateRange(lang, start, end, true, true);
+	}
+	
+	public static String formatLocalDateRange(String lang, Date start, Date end, boolean displayYear, boolean displayWeekdays) {
+		Calendar startCal = Calendar.getInstance();
+		startCal.setTime(start);
+		Calendar endCal = Calendar.getInstance();
+		endCal.setTime(end);
+		
+		Locale locale = new Locale(lang.toLowerCase());
+		
+		String dayPrefix = displayWeekdays ? "EEE " : "";
+		
+		// if same month and year, then we can write a shorthand notion
+		if ( startCal.get(Calendar.YEAR) == endCal.get(Calendar.YEAR) && startCal.get(Calendar.MONTH) == endCal.get(Calendar.MONTH) ) {
+			StringBuilder buffer = new StringBuilder();
+			buffer.append(new SimpleDateFormat(dayPrefix + "d.", locale).format(start));
+			buffer.append(" - ");
+			buffer.append(new SimpleDateFormat(dayPrefix + "d.MMM" + (displayYear ? " ''yy" : ""), locale).format(end));
+			return buffer.toString();
+		} else if ( startCal.get(Calendar.YEAR) == endCal.get(Calendar.YEAR) ) {
+			StringBuilder buffer = new StringBuilder();
+			buffer.append(new SimpleDateFormat(dayPrefix + "d.MMM", locale).format(start));
+			buffer.append(" - ");
+			buffer.append(new SimpleDateFormat(dayPrefix + "d.MMM" + (displayYear ? " ''yy" : ""), locale).format(end));
+			return buffer.toString();
+		} else {
+			StringBuilder buffer = new StringBuilder();
+			buffer.append(new SimpleDateFormat(dayPrefix + "d.MMM" + (displayYear ? " ''yy" : ""), locale).format(start));
+			buffer.append(" - ");
+			buffer.append(new SimpleDateFormat(dayPrefix + "d.MMM" + (displayYear ? " ''yy" : ""), locale).format(end));
+			return buffer.toString();
+		}
+	}
 }
