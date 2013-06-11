@@ -72,6 +72,19 @@ public class StringUtils {
 		}
 		return ids;
 	}
+	
+	public static List<Long> commaSeparatedStringToIdList( String s ) {
+		List<Long> ids = new ArrayList<>();
+		if ( s == null || s.trim().isEmpty() ) return ids;
+		for ( String id : s.trim().split(",") ) {
+			if ( !id.trim().isEmpty() ) {
+				try {
+					ids.add(Long.parseLong(id.trim()));
+				} catch ( Throwable ignored ) {}
+			}
+		}
+		return ids;
+	}
 
     public static Set<Integer> commaSeparatedToInts(String s) {
         Set<Integer> ints = new HashSet<>();
@@ -87,6 +100,15 @@ public class StringUtils {
     }
     
     public static String idSetToCommaSeparated(Set<Long> set) {
+    	StringBuilder s = new StringBuilder();
+    	for ( Long l : set ) {
+    		if ( s.length() > 0 ) { s.append(','); }
+    		s.append(l);
+    	}
+    	return s.toString();
+    }
+    
+    public static String idListToCommaSeparated(List<Long> set) {
     	StringBuilder s = new StringBuilder();
     	for ( Long l : set ) {
     		if ( s.length() > 0 ) { s.append(','); }
