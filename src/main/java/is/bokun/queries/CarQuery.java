@@ -13,6 +13,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  */
 public class CarQuery extends AbstractDateRangeQuery {
 	
+	public static final String[] DATE_FORMATS = {"dd.MM.yy HH:mm", "dd.MM.yyyy HH:mm", "yyyy-MM-dd HH:mm"};
+	
 	/**
 	 * Set this to get results for specific car rentals only.
 	 */
@@ -37,6 +39,11 @@ public class CarQuery extends AbstractDateRangeQuery {
 	 * Set to get only cars where luggage capacity is greater than or equal to this.
 	 */
 	public Integer luggage;
+	
+	/**
+	 * Set to get only cars where door count is greater than or equal to this.
+	 */
+	public Integer minDoorCount;
 	
 	/**
 	 * Set to filter by CO2 emission (g/km).
@@ -74,7 +81,7 @@ public class CarQuery extends AbstractDateRangeQuery {
 	public List<Long> dropoffLocationIds = new ArrayList<>();
 
 	public CarQuery() {
-		super();
+		super(DATE_FORMATS);
 	}
 
 	public List<Long> getCarRentalIds() {
@@ -107,6 +114,14 @@ public class CarQuery extends AbstractDateRangeQuery {
 
 	public void setLuggage(Integer luggage) {
 		this.luggage = luggage;
+	}
+
+	public Integer getMinDoorCount() {
+		return minDoorCount;
+	}
+
+	public void setMinDoorCount(Integer minDoorCount) {
+		this.minDoorCount = minDoorCount;
 	}
 
 	public LocationFilters getPickupLocationFilters() {

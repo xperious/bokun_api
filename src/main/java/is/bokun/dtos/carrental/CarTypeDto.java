@@ -15,19 +15,24 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 	public ItemDto vendor;
 	public ItemDto carRental;
 	
-	public Integer price;
+	public Integer rentalPrice;
+	public Integer avgRentalPricePerDay;
 	
 	public int passengerCapacity = 5;
 	public int luggageCapacity = 2;
 	public int minDriverAge = 17;
+	public int doorCount = 5;
 	
 	public boolean rentalRestrictions = false;
-	public int minRentalDays = 1;
-	public int maxRentalDays = 30;
+	public int minRentalHours = 24;
+	public int maxRentalHours = 240;
+	
+	public int bookingCutoff;
 	
 	public double co2Emission;
 	public double fuelEconomy;
 	
+	public String acrissCode;
 	public String acrissCategory;
 	public String acrissType;
 	public String transmissionType;

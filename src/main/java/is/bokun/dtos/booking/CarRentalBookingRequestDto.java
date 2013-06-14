@@ -1,5 +1,6 @@
 package is.bokun.dtos.booking;
 
+import is.bokun.queries.CarQuery;
 import is.bokun.utils.*;
 
 import java.util.*;
@@ -11,13 +12,9 @@ public class CarRentalBookingRequestDto {
 	public Long carRentalId;
 	
 	public String pickupDate;
-	public int pickupHour;
-	public int pickupMinute;
 	public Long pickupLocationId;
 	
 	public String dropoffDate;
-	public int dropoffHour;
-	public int dropoffMinute;
 	public Long dropoffLocationId;
 	
 	public List<CarBookingDTO> cars = new ArrayList<>();
@@ -35,35 +32,11 @@ public class CarRentalBookingRequestDto {
 	public void setPickupDate(String pickupDate) {
 		this.pickupDate = pickupDate;
 	}
-	public int getPickupHour() {
-		return pickupHour;
-	}
-	public void setPickupHour(int pickupHour) {
-		this.pickupHour = pickupHour;
-	}
-	public int getPickupMinute() {
-		return pickupMinute;
-	}
-	public void setPickupMinute(int pickupMinute) {
-		this.pickupMinute = pickupMinute;
-	}
 	public String getDropoffDate() {
 		return dropoffDate;
 	}
 	public void setDropoffDate(String dropoffDate) {
 		this.dropoffDate = dropoffDate;
-	}
-	public int getDropoffHour() {
-		return dropoffHour;
-	}
-	public void setDropoffHour(int dropoffHour) {
-		this.dropoffHour = dropoffHour;
-	}
-	public int getDropoffMinute() {
-		return dropoffMinute;
-	}
-	public void setDropoffMinute(int dropoffMinute) {
-		this.dropoffMinute = dropoffMinute;
 	}
 	public Long getPickupLocationId() {
 		return pickupLocationId;
@@ -85,15 +58,15 @@ public class CarRentalBookingRequestDto {
 	}
 	@JsonIgnore
     public Date getStartDate() {
-        return StringUtils.parseDate(pickupDate);
+        return StringUtils.parseDate(pickupDate, CarQuery.DATE_FORMATS);
     }
     @JsonIgnore
     public Date getEndDate() {
-        return StringUtils.parseDate(dropoffDate);
+        return StringUtils.parseDate(dropoffDate, CarQuery.DATE_FORMATS);
     }
     @JsonIgnore
     public int getDayCount() {
-        return DateUtils.getNightCount(getStartDate(), getEndDate());
+        return DateUtils.getRentalDayCount(getStartDate(), getEndDate());
     }
 	
 	

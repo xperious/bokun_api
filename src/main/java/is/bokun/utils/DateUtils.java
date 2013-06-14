@@ -1,13 +1,17 @@
 package is.bokun.utils;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Olafur Gauti Gudmundsson
  */
 public class DateUtils {
+	
+	public static double getHourDiff(Date startDate, Date endDate) {
+		return (endDate.getTime() - startDate.getTime()) / TimeUnit.HOURS.toMillis(1);
+	}
 
     public static int getNightCount(Date startDate, Date endDate) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -29,6 +33,21 @@ public class DateUtils {
         return nightCount;
     }
 
+	public static int getRentalDayCount(Date startDate, Date endDate) {
+		Calendar start = Calendar.getInstance();
+		start.setTime(startDate);
+		Calendar end = Calendar.getInstance();
+		end.setTime(endDate);
+		int counter = 0;
+		while (start.before(end)) {
+			counter++;
+
+			// jump to the next date
+			start.add(Calendar.DATE, 1);
+		}
+		return counter;
+	}
+    
     public static void nullifyTime(Calendar c) {
         c.set(Calendar.HOUR_OF_DAY, 0);
         c.set(Calendar.MINUTE, 0);

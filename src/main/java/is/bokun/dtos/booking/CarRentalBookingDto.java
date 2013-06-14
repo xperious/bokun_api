@@ -13,11 +13,6 @@ public class CarRentalBookingDto extends ProductBookingDto {
 	public Date startDate;
 	public Date endDate;
 	
-	public int pickupHour;
-	public int pickupMinute;
-	public int dropoffHour;
-	public int dropoffMinute;
-	
 	public CarRentalLocationDto pickupLocation;
 	public CarRentalLocationDto dropoffLocation;
 	
@@ -27,7 +22,7 @@ public class CarRentalBookingDto extends ProductBookingDto {
 
 	@JsonIgnore
 	public int getDayCount() {
-		return DateUtils.getNightCount(startDate, endDate);
+		return DateUtils.getRentalDayCount(startDate, endDate);
 	}
 
 	@JsonIgnore

@@ -8,8 +8,9 @@ import is.bokun.utils.StringUtils;
 
 /**
  * Abstract query class for date ranges, extends the AbstractQuery superclass with start and end dates.
- * The dates do not include time.<br/>
- * The dates should be provided in one of the following formats (in order of parsing):
+ * The dates can include time, although by default they are assumed not to.<br/>
+ * The date strings are parsed using a list of formats, and the output of the first one that successfully parses the date string
+ * is used. Implementing classes can provide their own date/time formats. The default list of formats is (in order of parsing):
  * "dd.MM.yy", "dd.MM.yyyy", "yyyy-MM-dd".
  *
  * @author Olafur Gauti Gudmundsson
@@ -24,9 +25,16 @@ public abstract class AbstractDateRangeQuery extends AbstractQuery {
      * The end date of the range.
      */
     public String endDate;
+    
+    public String[] dateFormats = {"dd.MM.yy", "dd.MM.yyyy", "yyyy-MM-dd"};
 	
 	public AbstractDateRangeQuery() {
 		super();
+	}
+	
+	public AbstractDateRangeQuery(String[] dateFormats) {
+		super();
+		this.dateFormats = dateFormats;
 	}
 
 	public String getStartDate() {
@@ -52,11 +60,11 @@ public abstract class AbstractDateRangeQuery extends AbstractQuery {
 
     @JsonIgnore
     public Date parseStartDate() {
-    	return StringUtils.parseDate(startDate);
+    	return StringUtils.parseDate(startDate, dateFormats);
     }
     
     @JsonIgnore
     public Date parseEndDate() {
-    	return StringUtils.parseDate(endDate);
+    	return StringUtils.parseDate(endDate, dateFormats);
     }
 }

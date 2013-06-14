@@ -11,7 +11,7 @@ public class CarRentalAvailabilityReportDto {
 	public int dayCount;
 	
 	public int numberOfDays() {
-		return DateUtils.getNightCount(pickupDate, dropoffDate);
+		return DateUtils.getRentalDayCount(pickupDate, dropoffDate);
 	}
 	
 	public int lowestTotalPrice() {
