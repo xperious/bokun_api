@@ -9,7 +9,6 @@ public class CarRentalBookingQuestionsDto {
 	public BookingItemInfoDto carRental;
 	public Long bookingId;
 	public Date startDate, endDate;
-	public String pickupTime, dropoffTime;
 	public CarRentalLocationDto pickupLocation, dropoffLocation;
 	
 	public List<BookingQuestionGroupDto> questionGroups = new ArrayList<>();
