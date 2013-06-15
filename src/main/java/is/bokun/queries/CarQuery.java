@@ -13,7 +13,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  */
 public class CarQuery extends AbstractDateRangeQuery {
 	
-	public static final String[] DATE_FORMATS = {"dd.MM.yy HH:mm", "dd.MM.yyyy HH:mm", "yyyy-MM-dd HH:mm"};
+	public static final String[] DATE_FORMATS = {"yyyy-MM-dd HH:mm", "dd.MM.yy HH:mm", "dd.MM.yyyy HH:mm"};
 	
 	/**
 	 * Set this to get results for specific car rentals only.
