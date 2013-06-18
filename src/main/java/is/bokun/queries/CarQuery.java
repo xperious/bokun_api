@@ -187,6 +187,30 @@ public class CarQuery extends AbstractDateRangeQuery {
 	public void setCarRentalSlug(String carRentalSlug) {
 		this.carRentalSlug = carRentalSlug;
 	}
+	
+	@JsonIgnore
+	public CarQueryTime getStartTime() {
+		Date startDate = parseStartDate();
+		if ( startDate == null ) {
+			return new CarQueryTime(12,0);
+		}
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(startDate);
+		
+		return new CarQueryTime(cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
+	}
+	
+	@JsonIgnore
+	public CarQueryTime getEndTime() {
+		Date endDate = parseEndDate();
+		if ( endDate == null ) {
+			return new CarQueryTime(14,0);
+		}
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(endDate);
+		
+		return new CarQueryTime(cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
+	}
 
 	@JsonIgnore
 	public CarSortField sortField() {
@@ -198,6 +222,31 @@ public class CarQuery extends AbstractDateRangeQuery {
 			} catch ( Throwable ignored ) {
 				return null;
 			}
+		}
+	}
+	
+	public static class CarQueryTime {
+		public int hour;
+		public int minute;
+		
+		public CarQueryTime() {}
+		
+		public CarQueryTime(int hour, int minute) {
+			this.hour = hour;
+			this.minute = minute;
+		}
+		
+		public int getHour() {
+			return hour;
+		}
+		public void setHour(int hour) {
+			this.hour = hour;
+		}
+		public int getMinute() {
+			return minute;
+		}
+		public void setMinute(int minute) {
+			this.minute = minute;
 		}
 	}
 }

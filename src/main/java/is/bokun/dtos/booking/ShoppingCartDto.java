@@ -12,6 +12,7 @@ public class ShoppingCartDto {
 	public Date lastAccessDate;
 	
 	public int totalPrice;
+	public int totalPriceInInvoiceCurrency;
 	
 	public List<AccommodationBookingDto> accommodationBookings = new ArrayList<>();
 	public List<CarRentalBookingDto> carRentalBookings = new ArrayList<>();
