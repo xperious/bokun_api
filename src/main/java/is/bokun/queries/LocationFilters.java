@@ -47,6 +47,19 @@ public class LocationFilters {
 		this.geoPolygonFilter = geoPolygonFilter;
 	}
 	
+	public GeoDistanceFilter getGeoDistanceFilter() {
+		return geoDistanceFilter;
+	}
+	public GeoDistanceRangeFilter getGeoDistanceRangeFilter() {
+		return geoDistanceRangeFilter;
+	}
+	public GeoBoundingBoxFilter getGeoBoundingBoxFilter() {
+		return geoBoundingBoxFilter;
+	}
+	public GeoPolygonFilter getGeoPolygonFilter() {
+		return geoPolygonFilter;
+	}
+	
 	@JsonIgnore
 	public boolean hasGeoDistanceFilter() {
 		return geoDistanceFilter != null && geoDistanceFilter.isActive();

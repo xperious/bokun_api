@@ -75,4 +75,20 @@ public class ActivityQuery extends AbstractDateRangeQuery {
 	public void setStartPointLocationFilters(LocationFilters startPointLocationFilters) {
 		this.startPointLocationFilters = startPointLocationFilters;
 	}
+
+	public int getAdults() {
+		return adults;
+	}
+
+	public List<Integer> getChildren() {
+		return children;
+	}
+
+	public LocationFilters getAgendaLocationFilters() {
+		return agendaLocationFilters;
+	}
+
+	public LocationFilters getStartPointLocationFilters() {
+		return startPointLocationFilters;
+	}
 }

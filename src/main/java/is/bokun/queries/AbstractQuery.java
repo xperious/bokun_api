@@ -176,4 +176,32 @@ public abstract class AbstractQuery {
 		return priceRangeFilter.isActive();
 	}
 
+	public TextFilter getTextFilter() {
+		return textFilter;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	public String getSortField() {
+		return sortField;
+	}
+
+	public String getSortOrder() {
+		return sortOrder;
+	}
+
+	public List<FacetFilter> getFacetFilters() {
+		return facetFilters;
+	}
+
+	public NumericRangeFilter getPriceRangeFilter() {
+		return priceRangeFilter;
+	}
+
 }

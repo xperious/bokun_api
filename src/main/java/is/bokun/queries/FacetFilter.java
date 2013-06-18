@@ -47,6 +47,14 @@ public class FacetFilter {
 		this.values = values;
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public List<String> getValues() {
+		return values;
+	}
+
 	@JsonIgnore
 	public Set<Long> getValuesAsSetOfLong() {
 		Set<Long> set = new HashSet<>();
