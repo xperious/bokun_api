@@ -295,6 +295,70 @@ public class ShoppingCartClient extends AbstractClient {
         return postAndGetCart(uri, bookingRequest);
     }
 
+    /**
+     * Add or update an extra booking in a guest's session cart.
+     *
+     * @param sessionId the guest's session ID
+     * @param bookingType the type of the parent booking (room booking / car booking / activity booking / etc.)
+     * @param bookingId the ID of the parent booking
+     * @param bookingRequest the request describing the booking
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto addOrUpdateExtraBookingInGuestCart(String sessionId, BookingTypeWithExtraEnum bookingType, Long bookingId, ExtraBookingRequestDto bookingRequest, String lang, String currency) {
+    	String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/add-or-update-extra/" + bookingType.name().toLowerCase() + "/" + bookingId, lang, currency);
+    	return postAndGetCart(uri, bookingRequest);
+    }
+    
+    /**
+     * Add or update an extra booking in a customer's shopping cart.
+     *
+     * @param securityToken the token received by the customer on authentication
+     * @param bookingType the type of the parent booking (room booking / car booking / activity booking / etc.)
+     * @param bookingId the ID of the parent booking
+     * @param bookingRequest the request describing the booking
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto addOrUpdateExtraBookingInCustomerCart(String securityToken, BookingTypeWithExtraEnum bookingType, Long bookingId, ExtraBookingRequestDto bookingRequest, String lang, String currency) {
+    	String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/add-or-update-extra/" + bookingType.name().toLowerCase() + "/" + bookingId, lang, currency);
+    	return postAndGetCart(uri, bookingRequest);
+    }
+
+    /**
+     * Remove an extra booking from a guest's session cart.
+     *
+     * @param sessionId the guest's session ID
+     * @param bookingType the type of the parent booking (room booking / car booking / activity booking / etc.)
+     * @param bookingId the ID of the parent booking
+     * @param extraId the ID of the bookable extra (NOTE: NOT the extra booking)
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto removeExtraBookingFromGuestCart(String sessionId, BookingTypeWithExtraEnum bookingType, Long bookingId, Long extraId, String lang, String currency) {
+    	String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/remove-extra/" + bookingType.name().toLowerCase() + "/" + bookingId + "/" + extraId, lang, currency);
+    	return getCart(uri);
+    }
+    
+    /**
+     * Remove an extra booking from a customer's shopping cart.
+     *
+     * @param securityToken the token received by the customer on authentication
+     * @param bookingType the type of the parent booking (room booking / car booking / activity booking / etc.)
+     * @param bookingId the ID of the parent booking
+     * @param extraId the ID of the bookable extra (NOTE: NOT the extra booking)
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto removeExtraBookingFromCustomerCart(String securityToken, BookingTypeWithExtraEnum bookingType, Long bookingId, Long extraId, String lang, String currency) {
+    	String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/remove-extra/" + bookingType.name().toLowerCase() + "/" + bookingId + "/" + extraId, lang, currency);
+    	return getCart(uri);
+    }
+    
     private ShoppingCartDto postAndGetCart(String uri, Object body) {
         return postAndValidate(uri, body, ShoppingCartDto.class);
     }

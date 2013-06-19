@@ -149,6 +149,36 @@ public class BookingClient extends AbstractClient {
         String uri = BASE + "/" + bookingId + "/abort-reserved?timeout=" + timeout;
         return getAndValidate(uri, ApiResponse.class);
     }
+    
+    /**
+     * Move a RESERVED booking back to a guest's shopping cart. 
+     * All reserved availability is rolled back. 
+     * 
+     * @param sessionId the guest's session ID
+     * @param bookingId the ID of the booking to move to the cart
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto moveReservedBookingBackToGuestCart(String sessionId, Long bookingId, String lang, String currency) {
+    	String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/move-back-to-cart/session/" + sessionId, lang, currency);
+    	return getAndValidate(uri, ShoppingCartDto.class);       
+    }
+    
+    /**
+     * Move a RESERVED booking back to a customer's shopping cart. 
+     * All reserved availability is rolled back. 
+     * 
+     * @param securityToken the token received by the customer on authentication
+     * @param bookingId the ID of the booking to move to the cart
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto moveReservedBookingBackToCustomerCart(String securityToken, Long bookingId, String lang, String currency) {
+    	String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/move-back-to-cart/customer/" + securityToken, lang, currency);
+    	return getAndValidate(uri, ShoppingCartDto.class);
+    }
 
     /**
      * Get the Payment provider details for a particular booking. This will contain all the name/value pairs that the

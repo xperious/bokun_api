@@ -14,7 +14,7 @@ public class ActivityBookingRequestDto {
 	public int adults;
 	public int teens;
 	public int children;
-	public List<ExtraBookingDTO> extras = new ArrayList<ExtraBookingDTO>();
+	public List<ExtraBookingRequestDto> extras = new ArrayList<ExtraBookingRequestDto>();
 	
 	public ActivityBookingRequestDto() {}
 	
@@ -71,36 +71,12 @@ public class ActivityBookingRequestDto {
 		this.children = children;
 	}
 
-	public List<ExtraBookingDTO> getExtras() {
+	public List<ExtraBookingRequestDto> getExtras() {
 		return extras;
 	}
 
-	public void setExtras(List<ExtraBookingDTO> extras) {
+	public void setExtras(List<ExtraBookingRequestDto> extras) {
 		this.extras = extras;
 	}
 	
-    public static class ExtraBookingDTO {
-    	
-    	public Long extraId;
-    	public int unitCount;
-    	
-    	public ExtraBookingDTO() {}
-
-		public Long getExtraId() {
-			return extraId;
-		}
-
-		public void setExtraId(Long extraId) {
-			this.extraId = extraId;
-		}
-
-		public int getUnitCount() {
-			return unitCount;
-		}
-
-		public void setUnitCount(int unitCount) {
-			this.unitCount = unitCount;
-		}
-    	
-    }
 }
