@@ -1,6 +1,6 @@
 package is.bokun.queries;
 
-import is.bokun.utils.StringUtils;
+import is.bokun.utils.*;
 
 import java.util.*;
 
@@ -82,6 +82,15 @@ public class CarQuery extends AbstractDateRangeQuery {
 
 	public CarQuery() {
 		super(DATE_FORMATS);
+	}
+	
+	@JsonIgnore
+	public int getRentalDayCount() {
+		if ( isAvailabilityQuery() ) {
+			return DateUtils.getRentalDayCount(parseStartDate(), parseEndDate());
+		} else {
+			return 0;
+		}
 	}
 
 	public List<Long> getCarRentalIds() {

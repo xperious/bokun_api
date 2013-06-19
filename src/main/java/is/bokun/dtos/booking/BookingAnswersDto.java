@@ -1,6 +1,8 @@
 package is.bokun.dtos.booking;
 
 import is.bokun.dtos.CustomerDto;
+import is.bokun.utils.StringUtils;
+
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.util.*;
@@ -39,6 +41,35 @@ public class BookingAnswersDto {
 			List<CarRentalBookingAnswersDto> carRentalBookings) {
 		this.carRentalBookings = carRentalBookings;
 	}
+	
+	@JsonIgnore
+	public void setCustomerInfo(CustomerDto c) {
+		answers.add(new BookingAnswerDto("first-name", c.getFirstName()));
+		answers.add(new BookingAnswerDto("last-name", c.getLastName()));
+		answers.add(new BookingAnswerDto("email", c.getEmail()));
+		if ( !StringUtils.isNullOrEmpty(c.getPhoneNumber()) ) {
+			answers.add(new BookingAnswerDto("phone-number", c.getPhoneNumber()));
+		}
+		if ( !StringUtils.isNullOrEmpty(c.getNationality()) ) {
+			answers.add(new BookingAnswerDto("nationality", c.getNationality()));
+		}
+		if ( !StringUtils.isNullOrEmpty(c.getAddress()) ) {
+			answers.add(new BookingAnswerDto("address", c.getAddress()));
+		}
+		if ( !StringUtils.isNullOrEmpty(c.getPostCode()) ) {
+			answers.add(new BookingAnswerDto("post-code", c.getPostCode()));
+		}
+		if ( !StringUtils.isNullOrEmpty(c.getPlace()) ) {
+			answers.add(new BookingAnswerDto("place", c.getPlace()));
+		}
+		if ( !StringUtils.isNullOrEmpty(c.getCountry()) ) {
+			answers.add(new BookingAnswerDto("country", c.getCountry()));
+		}		
+		if ( !StringUtils.isNullOrEmpty(c.getOrganization()) ) {
+			answers.add(new BookingAnswerDto("organization", c.getOrganization()));
+		}
+	}
+	
 	@JsonIgnore
     public CustomerDto getCustomerInfo() {
         CustomerDto dto = new CustomerDto();

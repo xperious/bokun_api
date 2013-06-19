@@ -7,6 +7,18 @@ public class BookingAnswerDto {
 	public String answer;
 	public String group;
 	
+	public BookingAnswerDto() {}
+	
+	public BookingAnswerDto(String type, String answer) {
+		this(null, type, answer);
+	}
+	
+	public BookingAnswerDto(String group, String type, String answer) {
+		this.group = group;
+		this.type = type;
+		this.answer = answer;
+	}
+	
 	public String getType() {
 		return type;
 	}

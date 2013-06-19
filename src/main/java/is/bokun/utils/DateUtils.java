@@ -34,6 +34,12 @@ public class DateUtils {
     }
 
 	public static int getRentalDayCount(Date startDate, Date endDate) {
+		if ( startDate == null ) {
+			return 0;
+		}
+		if ( endDate == null ) {
+			return 1;
+		}
 		Calendar start = Calendar.getInstance();
 		start.setTime(startDate);
 		Calendar end = Calendar.getInstance();
