@@ -134,8 +134,10 @@ public class BookingClient extends AbstractClient {
      * @return
      */
     public BookingDetailsDto confirmBooking(Long bookingId, List<BookingPaymentInfoDto> payments, String lang, String currency) {
+    	BookingPaymentsDto paymentsDto = new BookingPaymentsDto();
+    	paymentsDto.payments = payments;
         String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/confirm", lang, currency);
-        return postBooking(uri, payments);
+        return postBooking(uri, paymentsDto);
     }
 
     /**
