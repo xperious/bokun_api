@@ -9,6 +9,7 @@ public class BookingDetailsDto {
 	public Long bookingId;
     public String confirmationCode;
     public String status;
+    public String qrCodeUrl;
     
 	public int totalPrice;
 	public int totalPriceConverted;
