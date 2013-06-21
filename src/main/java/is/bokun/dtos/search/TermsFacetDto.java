@@ -1,7 +1,8 @@
 package is.bokun.dtos.search;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 public class TermsFacetDto extends AbstractFacet {
 
@@ -15,6 +16,16 @@ public class TermsFacetDto extends AbstractFacet {
 		super(name);
 		this.title = title;
         this.flags = flags;
+	}
+	
+	@JsonIgnore
+	public boolean hasTerm(String term) {
+		for (TermsFacetEntryDto e : entries) {
+			if ( e.term.equals(term) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 }
