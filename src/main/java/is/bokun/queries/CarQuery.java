@@ -21,6 +21,11 @@ public class CarQuery extends AbstractDateRangeQuery {
 	public List<Long> carRentalIds = new ArrayList<>();
 	
 	/**
+	 * Set this to filter results by flags.
+	 */
+	public Set<String> flags = new HashSet<>();
+	
+	/**
 	 * Set this to get results for the single a car rental that has this (language dependent) slug.
 	 */
 	public String carRentalSlug;
@@ -197,6 +202,14 @@ public class CarQuery extends AbstractDateRangeQuery {
 		this.carRentalSlug = carRentalSlug;
 	}
 	
+	public Set<String> getFlags() {
+		return flags;
+	}
+
+	public void setFlags(Set<String> flags) {
+		this.flags = flags;
+	}
+
 	@JsonIgnore
 	public CarQueryTime getStartTime() {
 		Date startDate = parseStartDate();

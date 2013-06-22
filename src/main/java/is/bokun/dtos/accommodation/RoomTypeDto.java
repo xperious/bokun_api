@@ -38,6 +38,8 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 	public PhotoDto keyPhoto;
 	public List<PhotoDto> photos = new ArrayList<>();
 	
+	public List<String> flags = new ArrayList<>();
+	
 	@Override
 	public void addPhoto(PhotoDto p) {
 		photos.add(p);
