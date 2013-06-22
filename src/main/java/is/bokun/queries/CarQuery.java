@@ -23,7 +23,7 @@ public class CarQuery extends AbstractDateRangeQuery {
 	/**
 	 * Set this to filter results by flags.
 	 */
-	public Set<String> flags = new HashSet<>();
+	public List<String> flags = new ArrayList<>();
 	
 	/**
 	 * Set this to get results for the single a car rental that has this (language dependent) slug.
@@ -201,12 +201,12 @@ public class CarQuery extends AbstractDateRangeQuery {
 	public void setCarRentalSlug(String carRentalSlug) {
 		this.carRentalSlug = carRentalSlug;
 	}
-	
-	public Set<String> getFlags() {
+
+	public List<String> getFlags() {
 		return flags;
 	}
 
-	public void setFlags(Set<String> flags) {
+	public void setFlags(List<String> flags) {
 		this.flags = flags;
 	}
 
