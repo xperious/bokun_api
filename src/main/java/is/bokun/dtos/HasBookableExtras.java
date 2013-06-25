@@ -17,6 +17,45 @@ public class HasBookableExtras implements WithExtras {
 		}
 		return null;
 	}
+    
+    @JsonIgnore
+    public List<BookableExtraDto> getSortedExtras() {
+    	Collections.sort(extras, new Comparator<BookableExtraDto>() {
+			@Override
+			public int compare(BookableExtraDto o1, BookableExtraDto o2) {
+				if ( o1.included && !o2.included ) {
+					return -1;
+				} else if ( !o1.included && o2.included ) {
+					return 1;
+				} else {
+					return o1.title.compareTo(o2.title);
+				}
+			}
+    	});
+    	return extras;
+    }
+    
+    @JsonIgnore
+    public List<BookableExtraDto> getExtrasByFlag(String flag) {
+    	List<BookableExtraDto> list = new ArrayList<>();
+    	for (BookableExtraDto e : getSortedExtras()) {
+    		if ( e.flags.contains(flag) ) {
+    			list.add(e);
+    		}
+    	}
+    	return list;
+    }
+    
+    @JsonIgnore
+    public List<BookableExtraDto> getExtrasExcludingFlag(String flag) {
+    	List<BookableExtraDto> list = new ArrayList<>();
+    	for (BookableExtraDto e : getSortedExtras()) {
+    		if ( !e.flags.contains(flag) ) {
+    			list.add(e);
+    		}
+    	}
+    	return list;
+    }
 	
 	@JsonIgnore
 	public List<BookableExtraDto> getIncludedExtras() {

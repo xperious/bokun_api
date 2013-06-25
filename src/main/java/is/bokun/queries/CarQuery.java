@@ -21,6 +21,11 @@ public class CarQuery extends AbstractDateRangeQuery {
 	public List<Long> carRentalIds = new ArrayList<>();
 	
 	/**
+	 * Set this to get results for specific car types only.
+	 */
+	public List<Long> carTypeIds = new ArrayList<>();
+	
+	/**
 	 * Set this to filter results by flags.
 	 */
 	public List<String> flags = new ArrayList<>();
@@ -208,6 +213,14 @@ public class CarQuery extends AbstractDateRangeQuery {
 
 	public void setFlags(List<String> flags) {
 		this.flags = flags;
+	}
+
+	public List<Long> getCarTypeIds() {
+		return carTypeIds;
+	}
+
+	public void setCarTypeIds(List<Long> carTypeIds) {
+		this.carTypeIds = carTypeIds;
 	}
 
 	@JsonIgnore

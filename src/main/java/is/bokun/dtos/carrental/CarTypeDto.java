@@ -2,8 +2,11 @@ package is.bokun.dtos.carrental;
 
 import is.bokun.dtos.*;
 import is.bokun.dtos.search.SearchResult;
+import is.bokun.queries.CarQuery;
 
 import java.util.*;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 public class CarTypeDto extends HasBookableExtras implements SearchResult, WithPhotos {
 
@@ -73,6 +76,43 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 
 	public void setKeywords(List<String> keywords) {
 		this.keywords = keywords;
+	}
+	
+	@JsonIgnore
+	public CarRentalLocationDto getPickup(CarQuery q) {
+		for (CarRentalLocationDto l : pickupLocations) {
+			if ( q.getPickupLocationIds().contains(l.id) ) {
+				return l;
+			}
+		}
+		return null;
+	}
+	
+	@JsonIgnore
+	public CarRentalLocationDto getDropoff(CarQuery q) {
+		for (CarRentalLocationDto l : dropoffLocations) {
+			if ( q.getDropoffLocationIds().contains(l.id) ) {
+				return l;
+			}
+		}
+		return null;
+	}
+	
+	@JsonIgnore
+	public int getLocationPrice(CarQuery q) {
+		if ( q.isAvailabilityQuery() ) {
+			CarRentalLocationDto pickup = getPickup(q);
+			CarRentalLocationDto dropoff = getDropoff(q);
+			
+			if ( pickup.id.equals(dropoff.id) ) {
+				return pickup.priceForPickupAndDropoff;
+			} else {
+				return pickup.priceForPickup + dropoff.priceForDropoff;
+			}
+			
+		} else {
+			return 0;
+		}
 	}
 
 	@Override
