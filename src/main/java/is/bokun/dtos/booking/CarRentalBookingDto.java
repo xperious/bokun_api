@@ -20,7 +20,6 @@ public class CarRentalBookingDto extends ProductBookingDto {
 
 	public List<CarBookingDto> carBookings = new ArrayList<>();
 
-	@JsonIgnore
 	public int getDayCount() {
 		return DateUtils.getRentalDayCount(startDate, endDate);
 	}

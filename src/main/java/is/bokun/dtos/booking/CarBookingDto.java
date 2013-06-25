@@ -1,5 +1,7 @@
 package is.bokun.dtos.booking;
 
+import is.bokun.dtos.carrental.CarTypeInfoDto;
+
 import java.util.*;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -8,7 +10,7 @@ public class CarBookingDto {
 
 	public Long id;
 	
-	public BookingItemInfoDto carType;
+	public CarTypeInfoDto carType;
 
     public Date startDate;
     public Date endDate;
@@ -35,4 +37,5 @@ public class CarBookingDto {
         }
         return list;
     }
+	
 }

@@ -1,12 +1,14 @@
 package is.bokun.dtos.booking;
 
+import is.bokun.dtos.carrental.CarTypeInfoDto;
+
 import java.util.*;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 public class CarBookingQuestionsDto {
 
-	public BookingItemInfoDto carType;
+	public CarTypeInfoDto carType;
 	public Long bookingId;
 	public int unitCount;
 	
