@@ -6,8 +6,9 @@ import is.bokun.queries.CarQuery;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CarTypeDto extends HasBookableExtras implements SearchResult, WithPhotos {
 
 	public Long id;
@@ -45,6 +46,8 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 
     public List<String> keywords = new ArrayList<>();
     public List<String> flags = new ArrayList<>();
+    
+    public List<Long> priceModulatorIds = new ArrayList<>();
 		
 	public PhotoDto keyPhoto;
 	public List<PhotoDto> photos = new ArrayList<>();
