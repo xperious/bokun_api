@@ -99,6 +99,19 @@ public class StringUtils {
         return ints;
     }
     
+    public static List<Integer> commaSeparatedToIntLists(String s) {
+    	List<Integer> ints = new ArrayList<>();
+        if ( s == null || s.trim().isEmpty() ) return ints;
+        for ( String i : s.trim().split(",") ) {
+            if ( !i.trim().isEmpty() ) {
+                try {
+                    ints.add(Integer.parseInt(i.trim()));
+                } catch ( Throwable ignored ) {}
+            }
+        }
+        return ints;
+    }
+    
     public static String idSetToCommaSeparated(Set<Long> set) {
     	StringBuilder s = new StringBuilder();
     	for ( Long l : set ) {
