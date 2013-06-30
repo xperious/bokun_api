@@ -3,6 +3,9 @@ package is.bokun.dtos;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BookableExtraDto {
 
     public Long id;
@@ -12,6 +15,7 @@ public class BookableExtraDto {
     public boolean included;
 
     public String pricingType;
+    public String pricingTypeLabel;
     public int price;
 
     public int maxPerBooking;
