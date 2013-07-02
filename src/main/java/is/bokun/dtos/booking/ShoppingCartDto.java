@@ -57,4 +57,8 @@ public class ShoppingCartDto {
     public boolean isEmpty() {
         return accommodationBookings.isEmpty() && activityBookings.isEmpty() && carRentalBookings.isEmpty();
     }
+
+    public List<CarRentalBookingDto> getCarRentalBookings() {
+        return carRentalBookings;
+    }
 }

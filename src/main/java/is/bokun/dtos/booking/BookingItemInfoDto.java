@@ -12,4 +12,16 @@ public class BookingItemInfoDto {
 		this.id = id;
 		this.title = title;
 	}
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
 }
