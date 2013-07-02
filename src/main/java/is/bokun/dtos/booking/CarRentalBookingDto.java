@@ -12,14 +12,17 @@ public class CarRentalBookingDto extends ProductBookingDto {
 
 	public Date startDate;
 	public Date endDate;
-	
-	public CarRentalLocationDto pickupLocation;
+    public int dayCount;
+
+
+    public CarRentalLocationDto pickupLocation;
 	public CarRentalLocationDto dropoffLocation;
 	
 	public ProductInfoDto carRental;
 
 	public List<CarBookingDto> carBookings = new ArrayList<>();
 
+    @JsonIgnore
 	public int getDayCount() {
 		return DateUtils.getRentalDayCount(startDate, endDate);
 	}
@@ -33,4 +36,8 @@ public class CarRentalBookingDto extends ProductBookingDto {
 	public VendorDto getVendor() {
 		return carRental.vendor;
 	}
+
+    public List<CarBookingDto> getCarBookings() {
+        return carBookings;
+    }
 }
