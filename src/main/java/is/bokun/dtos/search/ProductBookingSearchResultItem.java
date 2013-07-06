@@ -18,6 +18,8 @@ public class ProductBookingSearchResultItem {
 	public BookingItemInfoDto product;
 	public BookingItemInfoDto vendor;
 	public BookingItemInfoDto seller;
+	public BookingItemInfoDto agent;
+	public BookingItemInfoDto saleSource;
     public CustomerDto customer;
 	
 	public Date creationDate;
@@ -26,6 +28,7 @@ public class ProductBookingSearchResultItem {
 	public String currency;
     public Double paidAmount;
     public String paidType;
+    public Double discountPercentage;
     public boolean unconfirmedPayments;
 	public Date startDate, endDate;
 	public Map<String,Object> fields = new HashMap<>();

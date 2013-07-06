@@ -3,6 +3,17 @@ package is.bokun.queries;
 import java.util.*;
 
 public class BookingQuery {
+	
+    /**
+     * Number of the page to retrieve in the paginated result list.
+     * Default value is 1.
+     */
+    public int page = 1;
+    /**
+     * Number of result on each page in the paginated result list.
+     * Default value is 50.
+     */
+    public int pageSize = 50;
 
 	public String confirmationCode;
 	public String productType;
@@ -145,6 +156,18 @@ public class BookingQuery {
 	}
 	public void setAgentId(Long agentId) {
 		this.agentId = agentId;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
+	public int getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
 	}
 	private static List<Long> cleanList(List<Long> l) {
 		List<Long> list = new ArrayList<>();
