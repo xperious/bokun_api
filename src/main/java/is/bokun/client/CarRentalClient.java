@@ -25,6 +25,18 @@ public class CarRentalClient extends AbstractClient {
     }
     
     /**
+     * Get a list of all car rentals that this booking channel has access to.
+     * 
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return a list of car rentals
+     */
+    public CarRentalSearchResultsDto listCarRentals(String lang, String currency) {
+    	String uri = appendLangAndCurrency(BASE + "/list", lang, currency);
+    	return getAndValidate(uri, CarRentalSearchResultsDto.class);
+    }
+    
+    /**
      * Look up Car Rental by ID.
      *
      * @param carRentalId The ID of the Activity.

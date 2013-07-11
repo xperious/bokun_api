@@ -1,7 +1,8 @@
 package is.bokun.client;
 
+import is.bokun.queries.*;
+
 import com.google.inject.Inject;
-import is.bokun.queries.AccommodationQuery;
 
 /**
  * This client retrieves the HTML snippets available.
@@ -64,6 +65,21 @@ public class SnippetClient extends AbstractClient {
     public String getUpcomingActivityAvailabilities(Long id, int max, boolean includeSoldOut, String lang, String currency) {
         String uri = appendLangAndCurrency("/snippets/activity/" + id + "/upcoming/" + max + "/" + includeSoldOut, lang, currency);
         return getAndValidateStr(uri);
+    }
+    
+    public String getCarList(CarQuery query, boolean showFacets, String lang, String currency) {
+    	String uri = appendLangAndCurrency("/snippets/car-rental/car-list", lang, currency, new NVP("withFacets", showFacets));
+    	return postAndValidateStr(uri, query);
+    }
+    
+    public String getCarAvailabilityForm(Long carRentalId, CarQuery query, String lang, String currency) {
+    	String uri = appendLangAndCurrency("/snippets/car-rental/car-availability-form/" + carRentalId, lang, currency);
+    	return postAndValidateStr(uri, query);
+    }
+    
+    public String getCarBookingOptions(Long id, CarQuery query, String lang, String currency) {
+    	String uri = appendLangAndCurrency("/snippets/car-rental/car-details/" + id, lang, currency);
+    	return postAndValidateStr(uri, query);
     }
 
     public String getBookingQuestionsForGuest(String sessionId, String lang, String currency) {
