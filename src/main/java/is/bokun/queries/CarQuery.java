@@ -232,7 +232,7 @@ public class CarQuery extends AbstractDateRangeQuery {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(startDate);
 		
-		return new CarQueryTime(cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
+		return new CarQueryTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE));
 	}
 	
 	@JsonIgnore
@@ -244,7 +244,7 @@ public class CarQuery extends AbstractDateRangeQuery {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(endDate);
 		
-		return new CarQueryTime(cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
+		return new CarQueryTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE));
 	}
 
 	@JsonIgnore
