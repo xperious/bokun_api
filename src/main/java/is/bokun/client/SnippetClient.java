@@ -77,8 +77,8 @@ public class SnippetClient extends AbstractClient {
     	return postAndValidateStr(uri, query);
     }
     
-    public String getCarBookingOptions(Long id, CarQuery query, String lang, String currency) {
-    	String uri = appendLangAndCurrency("/snippets/car-rental/car-details/" + id, lang, currency);
+    public String getCarBookingOptions(Long id, CarQuery query, String lang, String currency, boolean showUnitsForIncludedExtras) {
+    	String uri = appendLangAndCurrency("/snippets/car-rental/car-details/" + id, lang, currency, new NVP("showUnitsForIncludedExtras", showUnitsForIncludedExtras));
     	return postAndValidateStr(uri, query);
     }
 
