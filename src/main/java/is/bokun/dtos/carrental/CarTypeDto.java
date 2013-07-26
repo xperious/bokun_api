@@ -107,6 +107,10 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 			CarRentalLocationDto pickup = getPickup(q);
 			CarRentalLocationDto dropoff = getDropoff(q);
 			
+			if ( pickup == null || dropoff == null ) {
+				return 0;
+			}
+			
 			if ( pickup.id.equals(dropoff.id) ) {
 				return pickup.priceForPickupAndDropoff;
 			} else {
