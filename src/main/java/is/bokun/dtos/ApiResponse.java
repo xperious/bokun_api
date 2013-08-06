@@ -2,9 +2,12 @@ package is.bokun.dtos;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 /**
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ApiResponse {
 
     public String message;

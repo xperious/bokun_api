@@ -2,10 +2,11 @@ package is.bokun.dtos.search;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 import is.bokun.dtos.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchResultItem implements SearchResult, WithPhotos {
 
 	public String id;

@@ -1,5 +1,8 @@
 package is.bokun.queries;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SortField {
 
 	public String name;

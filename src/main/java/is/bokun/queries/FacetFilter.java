@@ -2,7 +2,7 @@ package is.bokun.queries;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 import is.bokun.utils.StringUtils;
 
@@ -14,6 +14,7 @@ import is.bokun.utils.StringUtils;
  *
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FacetFilter {
 
     /**

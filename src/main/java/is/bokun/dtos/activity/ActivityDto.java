@@ -6,8 +6,9 @@ import is.bokun.utils.StringUtils;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ActivityDto extends ProductDto implements WithExtras {
 
     public String included;

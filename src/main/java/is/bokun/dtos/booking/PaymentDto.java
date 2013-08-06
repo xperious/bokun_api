@@ -2,9 +2,12 @@ package is.bokun.dtos.booking;
 
 import java.util.Date;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 /**
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PaymentDto {
 
     public Long id;

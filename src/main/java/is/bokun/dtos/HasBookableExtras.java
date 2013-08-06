@@ -2,8 +2,9 @@ package is.bokun.dtos;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class HasBookableExtras implements WithExtras {
 
 	public List<BookableExtraDto> extras = new ArrayList<>();

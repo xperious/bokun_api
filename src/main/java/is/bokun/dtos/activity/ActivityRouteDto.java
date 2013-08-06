@@ -4,6 +4,9 @@ import is.bokun.queries.GeoPoint;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ActivityRouteDto {
 
 	public GeoPoint center;

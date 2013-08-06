@@ -4,8 +4,9 @@ import is.bokun.dtos.carrental.CarRentalLocationDto;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CarRentalBookingQuestionsDto {
 
 	public BookingItemInfoDto carRental;

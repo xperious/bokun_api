@@ -2,8 +2,9 @@ package is.bokun.dtos.search;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TermsFacetDto extends AbstractFacet {
 
 	public String title;

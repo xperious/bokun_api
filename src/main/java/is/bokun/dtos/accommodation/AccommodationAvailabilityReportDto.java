@@ -3,8 +3,11 @@ package is.bokun.dtos.accommodation;
 import java.util.Date;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import is.bokun.utils.DateUtils;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AccommodationAvailabilityReportDto {
 
 	public Date checkInDate, checkOutDate;

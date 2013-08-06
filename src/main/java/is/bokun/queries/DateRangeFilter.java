@@ -1,6 +1,6 @@
 package is.bokun.queries;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 import java.util.Date;
 
@@ -9,6 +9,7 @@ import java.util.Date;
  *
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DateRangeFilter {
 
     /**

@@ -1,10 +1,13 @@
 package is.bokun.queries;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 /**
  * The available sort fields for Accommodation results.
  *
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public enum AccommodationSortField {
 
 	BEST_SELLING_GLOBAL,

@@ -2,7 +2,7 @@ package is.bokun.queries;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 /**
  * A filter allowing to include only hits that fall within a polygon of points.
@@ -10,6 +10,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  *
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GeoPolygonFilter {
 
     /**

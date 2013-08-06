@@ -1,10 +1,13 @@
 package is.bokun.dtos;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 /**
  * A DTO containing the title and ISO code of a Country.
  *
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CountryDto {
 
     public String isoCode;

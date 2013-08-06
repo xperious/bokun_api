@@ -4,8 +4,9 @@ import is.bokun.dtos.carrental.CarTypeInfoDto;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CarBookingDto {
 
 	public Long id;

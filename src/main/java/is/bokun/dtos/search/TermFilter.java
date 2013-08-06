@@ -1,6 +1,8 @@
 package is.bokun.dtos.search;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TermFilter {
 
 	public String facetName;

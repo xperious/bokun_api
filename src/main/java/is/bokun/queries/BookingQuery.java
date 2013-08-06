@@ -2,6 +2,9 @@ package is.bokun.queries;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingQuery {
 	
     /**

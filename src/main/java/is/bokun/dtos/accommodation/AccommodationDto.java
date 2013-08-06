@@ -2,9 +2,11 @@ package is.bokun.dtos.accommodation;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import is.bokun.dtos.*;
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AccommodationDto extends ProductDto {
 
 	public int rating;

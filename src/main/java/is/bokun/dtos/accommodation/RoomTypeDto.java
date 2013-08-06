@@ -4,6 +4,9 @@ import is.bokun.dtos.*;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 
 	public Long id;

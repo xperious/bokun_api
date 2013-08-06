@@ -1,6 +1,8 @@
 package is.bokun.dtos;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class QuestionDto {
 
     public Long id;

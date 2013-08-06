@@ -1,9 +1,10 @@
 package is.bokun.dtos.carrental;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import is.bokun.dtos.LocationDto;
 
-
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CarRentalLocationDto {
 
 	public Long id;	

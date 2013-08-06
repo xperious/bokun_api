@@ -2,10 +2,11 @@ package is.bokun.dtos;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 import is.bokun.utils.StringUtils;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ProductDto {
 
     public Long id;

@@ -1,10 +1,13 @@
 package is.bokun.queries;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 /**
  * The available sort fields for Rental Car results.
  *
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public enum CarSortField {
 
 	BEST_SELLING_GLOBAL,

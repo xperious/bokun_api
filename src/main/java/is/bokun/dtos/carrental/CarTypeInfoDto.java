@@ -1,5 +1,8 @@
 package is.bokun.dtos.carrental;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CarTypeInfoDto {
 
 	public Long id;

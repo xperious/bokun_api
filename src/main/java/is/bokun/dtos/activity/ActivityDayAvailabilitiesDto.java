@@ -2,6 +2,9 @@ package is.bokun.dtos.activity;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ActivityDayAvailabilitiesDto {
 
 	public Date date;

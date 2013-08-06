@@ -1,7 +1,10 @@
 package is.bokun.dtos;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import is.bokun.utils.StringUtils;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LocationDto {
 
 	public String address;

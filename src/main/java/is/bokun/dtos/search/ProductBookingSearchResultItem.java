@@ -6,8 +6,9 @@ import is.bokun.utils.StringUtils;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductBookingSearchResultItem {
 
 	public Long id;

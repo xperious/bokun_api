@@ -1,6 +1,6 @@
 package is.bokun.queries;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 /**
  * A filter allowing to filter hits based on a point location using a bounding box.
@@ -9,6 +9,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  *
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GeoBoundingBoxFilter {
 
     /**

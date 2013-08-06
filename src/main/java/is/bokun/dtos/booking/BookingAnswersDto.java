@@ -3,10 +3,11 @@ package is.bokun.dtos.booking;
 import is.bokun.dtos.CustomerDto;
 import is.bokun.utils.StringUtils;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 import java.util.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingAnswersDto {
 
 	public List<BookingAnswerDto> answers = new ArrayList<>();

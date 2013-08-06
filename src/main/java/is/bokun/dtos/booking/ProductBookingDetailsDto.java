@@ -3,11 +3,12 @@ package is.bokun.dtos.booking;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 /**
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductBookingDetailsDto {
 
     public Long bookingId;

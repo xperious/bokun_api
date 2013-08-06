@@ -5,6 +5,9 @@ import is.bokun.queries.CarQuery;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AvailableCarDto {
 
 	public Long id;

@@ -1,10 +1,13 @@
 package is.bokun.queries;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 /**
  * The available sort fields for Activity results.
  *
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public enum ActivitySortField {
 
 	BEST_SELLING_GLOBAL,

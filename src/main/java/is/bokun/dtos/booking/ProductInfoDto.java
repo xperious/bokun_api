@@ -1,8 +1,11 @@
 package is.bokun.dtos.booking;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import is.bokun.dtos.PhotoDto;
 import is.bokun.dtos.VendorDto;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductInfoDto extends BookingItemInfoDto {
 
 	public String slug;

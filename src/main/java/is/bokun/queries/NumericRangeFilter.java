@@ -1,12 +1,13 @@
 package is.bokun.queries;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 /**
  * For filtering results with fields that have values within a certain numeric range.
  *
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NumericRangeFilter {
 
     /**

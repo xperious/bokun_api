@@ -1,8 +1,11 @@
 package is.bokun.dtos;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 /**
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CustomerPasswordChangeDto {
 
     public String oldPassword, newPassword;

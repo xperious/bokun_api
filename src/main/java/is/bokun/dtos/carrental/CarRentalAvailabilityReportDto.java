@@ -4,6 +4,9 @@ import is.bokun.utils.DateUtils;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CarRentalAvailabilityReportDto {
 
 	public Date pickupDate, dropoffDate;

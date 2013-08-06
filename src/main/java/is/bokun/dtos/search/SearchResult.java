@@ -2,6 +2,9 @@ package is.bokun.dtos.search;
 
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public interface SearchResult {
 
 	public void setTitle(String title);

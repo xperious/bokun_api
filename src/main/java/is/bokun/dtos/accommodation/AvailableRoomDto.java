@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import is.bokun.dtos.AvailabilityInfoDto;
 import is.bokun.queries.AccommodationQuery;
 import is.bokun.queries.RoomQuery;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AvailableRoomDto {
 	
 	public Long id;

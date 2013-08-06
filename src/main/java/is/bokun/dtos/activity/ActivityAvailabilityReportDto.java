@@ -3,8 +3,9 @@ package is.bokun.dtos.activity;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ActivityAvailabilityReportDto {
 
 	public List<ActivityAvailabilityDto> availabilities = new ArrayList<ActivityAvailabilityDto>();

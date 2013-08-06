@@ -2,6 +2,9 @@ package is.bokun.dtos.search;
 
 import java.util.Date;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DateHistogramFacetEntryDto {
 
 	public Date time;

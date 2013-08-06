@@ -1,6 +1,6 @@
 package is.bokun.queries;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 /**
  * Represents a point in geographical coordinates: latitude and longitude.<br/>
@@ -9,6 +9,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * Longitude ranges between -180 and 180 degrees, inclusive.Values above or below this range will be
  * wrapped such that they fall within the range [-180, 180). For example, 480, 840 and 1200 will all be wrapped to 120 degrees.<br/>
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GeoPoint {
 
 	private double lat,lng;

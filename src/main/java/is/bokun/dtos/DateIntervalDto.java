@@ -1,5 +1,8 @@
 package is.bokun.dtos;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DateIntervalDto {
 
 	public Long start;

@@ -2,8 +2,11 @@ package is.bokun.dtos.activity;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import is.bokun.dtos.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AgendaItemDto {
 
     public Long id;

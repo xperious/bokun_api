@@ -2,8 +2,9 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class InsufficientAvailabilityDto {
 
 	public List<InsufficientAvailabilityItemDto> items = new ArrayList<>();

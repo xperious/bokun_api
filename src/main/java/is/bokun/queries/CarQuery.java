@@ -4,13 +4,14 @@ import is.bokun.utils.*;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 /**
  * Query object for searching rental cars.
  *
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CarQuery extends AbstractDateRangeQuery {
 	
 	public static final String[] DATE_FORMATS = {"yyyy-MM-dd HH:mm", "dd.MM.yy HH:mm", "dd.MM.yyyy HH:mm"};

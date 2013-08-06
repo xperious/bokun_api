@@ -2,11 +2,12 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 import is.bokun.utils.DateUtils;
 import is.bokun.utils.StringUtils;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AccommodationBookingRequestDto {
 
     public Long accommodationId;

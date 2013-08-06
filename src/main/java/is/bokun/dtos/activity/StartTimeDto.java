@@ -2,10 +2,11 @@ package is.bokun.dtos.activity;
 
 import java.util.Date;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 import is.bokun.dtos.PriceByMonthDto;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class StartTimeDto {
 
 	public Long id;

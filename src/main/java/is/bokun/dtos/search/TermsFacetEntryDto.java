@@ -3,6 +3,9 @@ package is.bokun.dtos.search;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TermsFacetEntryDto {
 
 	public String title;

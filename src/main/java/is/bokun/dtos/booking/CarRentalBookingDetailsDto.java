@@ -4,6 +4,9 @@ import is.bokun.dtos.carrental.CarRentalLocationDto;
 
 import java.util.*;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CarRentalBookingDetailsDto extends ProductBookingDetailsDto {
 
 	public Date startDate, endDate;

@@ -1,9 +1,10 @@
 package is.bokun.dtos.booking;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 import java.util.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ExtraBookingQuestionsDto {
 
 	public Long bookingId;

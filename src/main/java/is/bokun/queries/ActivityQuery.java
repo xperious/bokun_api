@@ -3,6 +3,8 @@ package is.bokun.queries;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import is.bokun.utils.StringUtils;
 
 /**
@@ -10,6 +12,7 @@ import is.bokun.utils.StringUtils;
  *
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ActivityQuery extends AbstractDateRangeQuery {
 
     /**

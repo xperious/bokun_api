@@ -3,9 +3,12 @@ package is.bokun.queries;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 /**
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CustomerQuery {
 
     public String firstName;

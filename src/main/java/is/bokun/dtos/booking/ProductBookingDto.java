@@ -3,8 +3,10 @@ package is.bokun.dtos.booking;
 import java.util.Date;
 
 import is.bokun.dtos.VendorDto;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
+import org.codehaus.jackson.annotate.*;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ProductBookingDto {
 
 	public Long id;

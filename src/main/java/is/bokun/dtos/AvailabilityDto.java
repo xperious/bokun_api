@@ -2,6 +2,9 @@ package is.bokun.dtos;
 
 import java.util.Date;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AvailabilityDto {
 
     public String id;

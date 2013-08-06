@@ -1,5 +1,8 @@
 package is.bokun.dtos.booking;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingAnswerWithIdDto extends BookingAnswerDto {
 
 	public Long questionId;

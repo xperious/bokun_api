@@ -1,12 +1,13 @@
 package is.bokun.queries;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.*;
 
 /**
  * Filters results that include only hits that exists within a specific distance from a geo point.
  *
  * @author Olafur Gauti Gudmundsson
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GeoDistanceFilter {
 
     /**
