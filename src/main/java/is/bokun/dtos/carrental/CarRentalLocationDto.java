@@ -1,5 +1,7 @@
 package is.bokun.dtos.carrental;
 
+import java.util.*;
+
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import is.bokun.dtos.LocationDto;
@@ -17,6 +19,8 @@ public class CarRentalLocationDto {
 	public int priceForPickup;
 	public int priceForDropoff;
 	public int priceForPickupAndDropoff;
+	
+	public List<String> flags = new ArrayList<>();
 	
 	public LocationDto location = new LocationDto();
 
