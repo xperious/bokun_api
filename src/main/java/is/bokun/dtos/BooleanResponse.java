@@ -7,6 +7,8 @@ public class BooleanResponse {
 
 	public boolean result;
 	
+	public BooleanResponse() {}
+	
 	public BooleanResponse(boolean result) {
 		this.result = result;
 	}
