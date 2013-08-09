@@ -1,6 +1,6 @@
 package is.bokun.dtos.search;
 
-import is.bokun.dtos.CustomerDto;
+import is.bokun.dtos.*;
 import is.bokun.dtos.booking.BookingItemInfoDto;
 import is.bokun.utils.StringUtils;
 
@@ -21,6 +21,7 @@ public class ProductBookingSearchResultItem {
 	public BookingItemInfoDto seller;
 	public BookingItemInfoDto agent;
 	public BookingItemInfoDto saleSource;
+	public ExtranetUserDto extranetUser;
     public CustomerDto customer;
 	
 	public Date creationDate;
@@ -30,6 +31,7 @@ public class ProductBookingSearchResultItem {
     public Double paidAmount;
     public String paidType;
     public Double discountPercentage;
+    public Double discountAmount;
     public boolean unconfirmedPayments;
 	public Date startDate, endDate;
 	public Map<String,Object> fields = new HashMap<>();
