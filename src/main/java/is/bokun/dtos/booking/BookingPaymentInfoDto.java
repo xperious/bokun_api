@@ -8,8 +8,6 @@ public class BookingPaymentInfoDto extends PaymentDto {
     public Long bookingId;
     public String productCategory;
     public String bookingPaidType;
-    public Integer depositPercentage;
-
 
     public String getProductCategory() {
         return productCategory;
@@ -31,11 +29,5 @@ public class BookingPaymentInfoDto extends PaymentDto {
     public void setBookingPaidType(String bookingPaidType) {
         this.bookingPaidType = bookingPaidType;
     }
-	public Integer getDepositPercentage() {
-		return depositPercentage;
-	}
-	public void setDepositPercentage(Integer depositPercentage) {
-		this.depositPercentage = depositPercentage;
-	}
 
 }
