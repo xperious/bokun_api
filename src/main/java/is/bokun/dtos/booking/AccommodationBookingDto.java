@@ -31,4 +31,9 @@ public class AccommodationBookingDto extends ProductBookingDto {
     public VendorDto getVendor() {
         return accommodation.vendor;
     }
+
+	@Override
+	public String getProductCategory() {
+		return "ACCOMMODATION";
+	}
 }

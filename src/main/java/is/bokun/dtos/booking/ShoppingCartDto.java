@@ -44,9 +44,9 @@ public class ShoppingCartDto {
 	}
 
     @JsonIgnore
-    public ProductBookingDto findProductBookingById(Long id) {
+    public ProductBookingDto findProductBookingById(String productCategory, Long id) {
         for (ProductBookingDto dto : getProductBookings()) {
-            if ( dto.id.equals(id) ) {
+            if ( dto.getProductCategory().equals(productCategory) && dto.id.equals(id) ) {
                 return dto;
             }
         }

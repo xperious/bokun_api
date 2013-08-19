@@ -37,6 +37,11 @@ public class CarRentalBookingDto extends ProductBookingDto {
 	public VendorDto getVendor() {
 		return carRental.vendor;
 	}
+	
+	@Override
+	public String getProductCategory() {
+		return "CAR_RENTALS";
+	}
 
     public List<CarBookingDto> getCarBookings() {
         return carBookings;

@@ -1,10 +1,11 @@
 package is.bokun.dtos.booking;
 
-import java.util.Date;
-
 import is.bokun.dtos.VendorDto;
 
-import org.codehaus.jackson.annotate.*;
+import java.util.Date;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ProductBookingDto {
@@ -25,4 +26,7 @@ public abstract class ProductBookingDto {
     
     @JsonIgnore
     public abstract Date getSortDate(); 
+    
+    @JsonIgnore
+    public abstract String getProductCategory();
 }

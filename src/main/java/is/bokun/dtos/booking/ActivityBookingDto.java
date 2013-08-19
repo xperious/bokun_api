@@ -41,4 +41,9 @@ public class ActivityBookingDto extends ProductBookingDto {
     public VendorDto getVendor() {
         return activity.vendor;
     }
+    
+	@Override
+	public String getProductCategory() {
+		return "ACTIVITIES";
+	}
 }
