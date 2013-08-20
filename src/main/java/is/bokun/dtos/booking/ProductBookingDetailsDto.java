@@ -15,6 +15,7 @@ public class ProductBookingDetailsDto {
     public String title;
     public int totalPrice;
     public String productCategory;
+    public PaymentPaidTypeEnum paidType;
 
     public List<BookingAnswerDto> answers = new ArrayList<>();
     public List<PaymentDto> payments = new ArrayList<>();
@@ -67,7 +68,15 @@ public class ProductBookingDetailsDto {
         this.payments = payments;
     }
     
-    @JsonIgnore
+    public PaymentPaidTypeEnum getPaidType() {
+		return paidType;
+	}
+
+	public void setPaidType(PaymentPaidTypeEnum paidType) {
+		this.paidType = paidType;
+	}
+
+	@JsonIgnore
     public BookingPaymentInfoDto createAmountPayment(PaymentPaidTypeEnum paidType, PaymentTypeEnum paymentType, Double amount, String currency) {
 		BookingPaymentInfoDto p = new BookingPaymentInfoDto();
 		p.bookingId = getBookingId();
