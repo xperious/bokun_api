@@ -22,6 +22,10 @@ public class ProductSupplierCapabilities {
 	public Set<ProductCategoryEnum> getSupportedProductCategories() {
 		return Collections.unmodifiableSet(supportedProductCategories);
 	}
+	
+	public boolean supports(ProductCategoryEnum cat) {
+		return supportedProductCategories.contains(cat);
+	}
 
 	public boolean isSuppliesProductInfo() {
 		return suppliesProductInfo;
