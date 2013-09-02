@@ -17,6 +17,7 @@ public class ProductBookingDetailsDto {
     public String productCategory;
     public PaymentPaidTypeEnum paidType;
     
+    public ProductInfoDto product = new ProductInfoDto();
     public Long productId;
     public String availabilityProductId;
 
