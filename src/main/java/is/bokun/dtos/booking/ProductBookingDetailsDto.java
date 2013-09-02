@@ -16,6 +16,9 @@ public class ProductBookingDetailsDto {
     public int totalPrice;
     public String productCategory;
     public PaymentPaidTypeEnum paidType;
+    
+    public Long productId;
+    public String availabilityProductId;
 
     public List<BookingAnswerDto> answers = new ArrayList<>();
     public List<PaymentDto> payments = new ArrayList<>();
@@ -74,6 +77,22 @@ public class ProductBookingDetailsDto {
 
 	public void setPaidType(PaymentPaidTypeEnum paidType) {
 		this.paidType = paidType;
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	public String getAvailabilityProductId() {
+		return availabilityProductId;
+	}
+
+	public void setAvailabilityProductId(String availabilityProductId) {
+		this.availabilityProductId = availabilityProductId;
 	}
 
 	@JsonIgnore
