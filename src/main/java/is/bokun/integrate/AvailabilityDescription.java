@@ -13,6 +13,8 @@ public class AvailabilityDescription {
     
     private Map<String,String> fields = new HashMap<>();
     
+    private List<PriceDescription> prices = new ArrayList<>();
+    
     public AvailabilityDescription() {}
     
     public AvailabilityDescription(Date date, int availabilityCount, boolean unlimitedAvailability, boolean closed) {
@@ -60,6 +62,17 @@ public class AvailabilityDescription {
 	}
 	public void setField(String name, String value) {
 		this.fields.put(name, value);
+	}
+
+	public List<PriceDescription> getPrices() {
+		return prices;
+	}
+
+	public void setPrices(List<PriceDescription> prices) {
+		this.prices = prices;
+	}
+	public void addPrice(PriceDescription pdesc) {
+		this.prices.add(pdesc);
 	}
 
 }
