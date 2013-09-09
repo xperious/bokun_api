@@ -13,7 +13,7 @@ public class ActivityBookingRequestDto {
 	public Long startTimeId;
 	public String date;
 	
-	public Map<Long,Integer> participantsByPricingCategory = new HashMap<>();
+	public List<ActivityPricingCategoryBookingDto> pricingCategoryBookings = new ArrayList<>();
 	
 	public List<ExtraBookingRequestDto> extras = new ArrayList<ExtraBookingRequestDto>();
 	
@@ -48,13 +48,13 @@ public class ActivityBookingRequestDto {
         return StringUtils.parseDate(date);
     }
 
-	public Map<Long, Integer> getParticipantsByPricingCategory() {
-		return participantsByPricingCategory;
+	public List<ActivityPricingCategoryBookingDto> getPricingCategoryBookings() {
+		return pricingCategoryBookings;
 	}
 
-	public void setParticipantsByPricingCategory(
-			Map<Long, Integer> participantsByPricingCategory) {
-		this.participantsByPricingCategory = participantsByPricingCategory;
+	public void setPricingCategoryBookings(
+			List<ActivityPricingCategoryBookingDto> pricingCategoryBookings) {
+		this.pricingCategoryBookings = pricingCategoryBookings;
 	}
 
 	public List<ExtraBookingRequestDto> getExtras() {
