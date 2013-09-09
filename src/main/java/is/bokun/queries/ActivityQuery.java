@@ -16,16 +16,16 @@ import is.bokun.utils.StringUtils;
 public class ActivityQuery extends AbstractDateRangeQuery {
 
     /**
-     * Number of adult participants.<br/>
+     * Number of participants.<br/>
      * Note: This is only relevant if date range is specified, else ignored.
      */
-    public int adults = 1;
+    public int participants = 1;
     /**
-     * Child participants. The list should contain one item for each
-     * child, and the item value should be the age of the child.<br/>
+     * Age specified participants. The list should contain one item for each
+     * participant, and the item value should be the age of the participant.<br/>
      * Note: This is only relevant if date range is specified, else ignored.
      */
-    public List<Integer> children = new ArrayList<>();
+    public List<Integer> participantsByAge = new ArrayList<>();
 
     /**
      * Filter the results by location of any point in the agenda.
@@ -59,16 +59,25 @@ public class ActivityQuery extends AbstractDateRangeQuery {
 		return sortField() != null && sortField() == ActivitySortField.PRICE;
 	}
 
-    public void setAdults(int adults) {
-		this.adults = adults;
+
+	public int getParticipants() {
+		return participants;
 	}
 
-	public void setChildren(List<Integer> children) {
-		this.children = children;
+	public void setParticipants(int participants) {
+		this.participants = participants;
+	}
+
+	public List<Integer> getParticipantsByAge() {
+		return participantsByAge;
+	}
+
+	public void setParticipantsByAge(List<Integer> participantsByAge) {
+		this.participantsByAge = participantsByAge;
 	}
 
 	public int totalPassengerCount() {
-        return adults + children.size();
+        return participants + participantsByAge.size();
     }
 
 	public void setAgendaLocationFilters(LocationFilters agendaLocationFilters) {
@@ -77,14 +86,6 @@ public class ActivityQuery extends AbstractDateRangeQuery {
 
 	public void setStartPointLocationFilters(LocationFilters startPointLocationFilters) {
 		this.startPointLocationFilters = startPointLocationFilters;
-	}
-
-	public int getAdults() {
-		return adults;
-	}
-
-	public List<Integer> getChildren() {
-		return children;
 	}
 
 	public LocationFilters getAgendaLocationFilters() {

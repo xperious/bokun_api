@@ -1,6 +1,6 @@
 package is.bokun.dtos.activity;
 
-import java.util.Date;
+import java.util.*;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
@@ -14,7 +14,9 @@ public class ActivityAvailabilityDto {
 	public String localizedDate;
     public int availabilityCount;
     public boolean unlimitedAvailability;
-    public int adultPrice;
+    
+    public double defaultPrice;
+    public Map<Long,Double> pricesByCategory = new HashMap<>();
     
     public ActivityAvailabilityDto() {}
 

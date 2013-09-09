@@ -15,20 +15,14 @@ public class ActivityBookingDto extends ProductBookingDto {
 	
 	public ProductInfoDto activity;
 	public StartTimeDto startTime;
-	
-	public int bookedPrice;
-	public int bookedChildDiscount;
-	public int bookedTeenDiscount;
 
     public Integer activityPrice;
     public Integer extrasPrice;
 	
-	public int adults;
-	public int teens;
-	public int children;
-	
 	public int maxBookableCount;
 	public boolean unlimitedAvailability;
+	
+	public List<ActivityPricingCategoryBookingDto> pricingCategoryBookings = new ArrayList<>();
 	
 	public List<ExtraBookingDto> extraBookings = new ArrayList<>();
 	
@@ -45,5 +39,14 @@ public class ActivityBookingDto extends ProductBookingDto {
 	@Override
 	public String getProductCategory() {
 		return "ACTIVITIES";
+	}
+	
+	@JsonIgnore
+	public Double getTotalParticipantPrice() {
+		double total = 0d;
+		for (ActivityPricingCategoryBookingDto pc : pricingCategoryBookings) {
+			total += (pc.bookedPrice * pc.quantity);
+		}
+		return total;
 	}
 }

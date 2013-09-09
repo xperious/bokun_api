@@ -12,9 +12,9 @@ public class ActivityBookingRequestDto {
 	public Long activityId;
 	public Long startTimeId;
 	public String date;
-	public int adults;
-	public int teens;
-	public int children;
+	
+	public Map<Long,Integer> participantsByPricingCategory = new HashMap<>();
+	
 	public List<ExtraBookingRequestDto> extras = new ArrayList<ExtraBookingRequestDto>();
 	
 	public ActivityBookingRequestDto() {}
@@ -48,28 +48,13 @@ public class ActivityBookingRequestDto {
         return StringUtils.parseDate(date);
     }
 
-	public int getAdults() {
-		return adults;
+	public Map<Long, Integer> getParticipantsByPricingCategory() {
+		return participantsByPricingCategory;
 	}
 
-	public void setAdults(int adults) {
-		this.adults = adults;
-	}
-
-	public int getTeens() {
-		return teens;
-	}
-
-	public void setTeens(int teens) {
-		this.teens = teens;
-	}
-
-	public int getChildren() {
-		return children;
-	}
-
-	public void setChildren(int children) {
-		this.children = children;
+	public void setParticipantsByPricingCategory(
+			Map<Long, Integer> participantsByPricingCategory) {
+		this.participantsByPricingCategory = participantsByPricingCategory;
 	}
 
 	public List<ExtraBookingRequestDto> getExtras() {

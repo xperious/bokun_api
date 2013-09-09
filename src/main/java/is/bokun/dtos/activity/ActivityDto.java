@@ -41,6 +41,8 @@ public class ActivityDto extends ProductDto implements WithExtras {
     
     public String difficultyLevel;
     
+    public List<PricingCategoryDto> pricingCategories = new ArrayList<>();
+    
     public List<AgendaItemDto> agendaItems = new ArrayList<>();
 
     public List<StartTimeDto> startTimes = new ArrayList<>();
@@ -68,6 +70,16 @@ public class ActivityDto extends ProductDto implements WithExtras {
 		for (BookableExtraDto dto : bookableExtras) {
 			if ( dto.id.equals(id) ) {
 				return dto;
+			}
+		}
+		return null;
+	}
+	
+	@JsonIgnore
+	public PricingCategoryDto findPricingCategory(Long id) {
+		for (PricingCategoryDto pcat : pricingCategories) {
+			if ( pcat.id.equals(id) ) {
+				return pcat;
 			}
 		}
 		return null;
@@ -122,35 +134,6 @@ public class ActivityDto extends ProductDto implements WithExtras {
 	public Date getSeasonEnd() throws Exception {
 		SimpleDateFormat parser = new SimpleDateFormat("dd.MM");
 		return parser.parse("" + seasonEndDate + "." + seasonEndMonth);
-	}
-	
-    @JsonIgnore
-    public int getLowestChildPrice() {
-    	return getPercentageOfPrice(findLowestPrice(), childDiscount);
-    }
-    
-    @JsonIgnore
-    public int getLowestTeenagerPrice() {
-    	return getPercentageOfPrice(findLowestPrice(), teenagerDiscount);
-    }
-    
-    @JsonIgnore
-    private int getPercentageOfPrice(int price, int discount) {
-        int multiplier = 100 - discount;
-        double base = price;
-        return (int)Math.floor(base * (((double)multiplier) / 100d) + 0.5d);
-    }
-	
-	@JsonIgnore
-	public int findLowestPrice() {
-		int lowestPrice = -1;
-		for (StartTimeDto st : startTimes) {
-			int startTimeLowest = st.prices.getLowestPrice();
-			if ( lowestPrice == -1 || startTimeLowest < lowestPrice ) {
-				lowestPrice = startTimeLowest;
-			}
-		}
-		return lowestPrice;
 	}
 
     @JsonIgnore
