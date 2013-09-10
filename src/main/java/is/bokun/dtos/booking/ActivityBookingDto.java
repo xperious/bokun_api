@@ -42,10 +42,10 @@ public class ActivityBookingDto extends ProductBookingDto {
 	}
 	
 	@JsonIgnore
-	public Double getTotalParticipantPrice() {
-		double total = 0d;
+	public int getTotalParticipants() {
+		int total = 0;
 		for (ActivityPricingCategoryBookingDto pc : pricingCategoryBookings) {
-			total += (pc.bookedPrice * pc.quantity);
+			total += pc.quantity;
 		}
 		return total;
 	}

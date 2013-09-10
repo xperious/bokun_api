@@ -17,17 +17,9 @@ public class ActivityDto extends ProductDto implements WithExtras {
     
     public String durationType;
     public int duration;
-
-    public String pricingType;
     
     public int minAge;
     public int maxChildrenPerAdult = 4;
-
-    public int childMaxAge = 11;
-    public int teenagerMaxAge = 17;
-    
-    public int childDiscount = 100;
-    public int teenagerDiscount = 50;
 
     public boolean seasonAllYear;
 
