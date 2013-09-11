@@ -1,16 +1,17 @@
 package is.bokun.client;
 
-import com.google.inject.Inject;
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Response;
 import is.bokun.dtos.activity.ActivityAvailabilityDto;
 import is.bokun.dtos.activity.ActivityDto;
 import is.bokun.dtos.search.SearchResultsDto;
 import is.bokun.queries.ActivityQuery;
-import org.codehaus.jackson.type.TypeReference;
 
 import java.util.Date;
 import java.util.List;
+
+import org.codehaus.jackson.type.TypeReference;
+
+import com.google.inject.Inject;
+import com.ning.http.client.Response;
 
 /**
  * Client for the Activity resource.
@@ -119,4 +120,29 @@ public class ActivityClient extends AbstractClient {
             throw wrapException(e);
         }
     }
+    
+    /**
+     * Asynchronous version of availabilities retrieval over a date range
+     * for an Activity. Note that both the start and end dates MUST be 
+     * supplied.
+     *
+     * @param activityId the ID of the Activity
+     * @param start the start date of the range
+     * @param end the end date of the range
+     * @param includeSoldOut whether to include availabilities that are sold out
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return
+     */
+    public AsyncResponse<List<ActivityAvailabilityDto>> getAvailabilitiesOnRangeAsync(Long activityId, Date start, Date end, boolean includeSoldOut, String lang, String currency) {
+        try {
+            String uri = appendLangAndCurrency(BASE + "/" + activityId + "/availabilities", lang, currency,
+                    new NVP("start", Long.toString(start.getTime())), new NVP("end", Long.toString(end.getTime())),
+                    new NVP("includeSoldOut", ""+includeSoldOut));
+            return new AsyncResponse<List<ActivityAvailabilityDto>>(prepareGet(uri).execute(), this);
+        } catch (Exception e) {
+            throw wrapException(e);
+        }
+    }
+    
 }
