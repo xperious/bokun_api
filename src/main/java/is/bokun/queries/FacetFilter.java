@@ -29,16 +29,33 @@ public class FacetFilter {
      */
 	public List<String> values = new ArrayList<>();
 	
+	/**
+	 * Specifies whether to negate this filter. 
+	 * If set to true, then will exclude all results matching this filter.
+	 * If set to false, then will include only results matching this filter.
+	 */
+	public boolean excluded;
+	
 	public FacetFilter() {}
 	
-	public FacetFilter(String name, String value) {
+	public FacetFilter(String name, String value, boolean excluded) {
 		this.name = name;
 		this.values.add(value);
+		this.excluded = excluded;
+	}
+	
+	public FacetFilter(String name, String value) {
+		this(name, value, false);
+	}
+
+	public FacetFilter(String name, List<String> values, boolean excluded) {
+		this.name = name;
+		this.values = values;
+		this.excluded = excluded;
 	}
 	
 	public FacetFilter(String name, List<String> values) {
-		this.name = name;
-		this.values = values;
+		this(name, values, false);
 	}
 	
 	public void setName(String name) {
@@ -56,6 +73,23 @@ public class FacetFilter {
 		return values;
 	}
 
+	public boolean isExcluded() {
+		return excluded;
+	}
+
+	public void setExcluded(boolean excluded) {
+		this.excluded = excluded;
+	}
+
+	@JsonIgnore
+	public String getSingleValue() {
+		if ( values.isEmpty() ) {
+			return "";
+		} else {
+			return values.iterator().next();
+		}
+	}
+	
 	@JsonIgnore
 	public Set<Long> getValuesAsSetOfLong() {
 		Set<Long> set = new HashSet<>();

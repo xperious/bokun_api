@@ -27,6 +27,13 @@ public class NumericRangeFilter {
      * Should the last "to" (if set) be inclusive or not. Defaults to true.
      */
     public boolean includeUpper = true;
+    
+	/**
+	 * Specifies whether to negate this filter. 
+	 * If set to true, then will exclude all results matching this filter.
+	 * If set to false, then will include only results matching this filter.
+	 */
+    public boolean excluded = false;
 	
 	public void setFrom(Integer f) {
 		this.from = f;
@@ -43,6 +50,13 @@ public class NumericRangeFilter {
 		this.includeUpper = includeUpper;
 	}
 
+	public boolean isExcluded() {
+		return excluded;
+	}
+	public void setExcluded(boolean excluded) {
+		this.excluded = excluded;
+	}
+	
 	@JsonIgnore
     public Integer validatedFrom() {
         return from == null ? 0 : from;

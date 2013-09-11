@@ -82,6 +82,11 @@ public class AccommodationQuery extends AbstractDateRangeQuery {
     }
 
 	@JsonIgnore
+    public FacetFilter typeFilterObject() {
+    	return findFacetFilter("type");
+    }
+	
+	@JsonIgnore
     public String typeFilter() {
     	if ( !hasTypeFilter() ) {
     		return null;
