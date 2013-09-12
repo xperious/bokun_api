@@ -5,7 +5,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.codehaus.jackson.type.TypeReference;
+import org.codehaus.jackson.type.JavaType;
 
 import com.ning.http.client.Response;
 
@@ -20,11 +20,18 @@ public class AsyncResponse<T> implements Future<T> {
 	private AbstractClient client;
 	
    	private Future<Response> future;
+   	
+   	private JavaType responseType;
 
-
-	public AsyncResponse(Future<Response> future, AbstractClient client) {
+   	/**
+   	 * @param future Async http client response 
+   	 * @param client Reference to the client that provides the response
+   	 * @param responseType Return type, required because of generic type erasure
+   	 */
+	public AsyncResponse(Future<Response> future, AbstractClient client, JavaType responseType) {
 		this.future = future;
 		this.client = client;
+		this.responseType = responseType;
 	}
 
 	@Override
@@ -55,7 +62,7 @@ public class AsyncResponse<T> implements Future<T> {
 	private T readValue(Response response) {
 		client.validateResponse(response);
 		try {
-			return AbstractClient.json.readValue(response.getResponseBody("UTF-8"), new TypeReference<T>(){});
+			return AbstractClient.json.readValue(response.getResponseBody("UTF-8"), responseType);
 		} catch (Exception e) {
             throw client.wrapException(e);
 		}
