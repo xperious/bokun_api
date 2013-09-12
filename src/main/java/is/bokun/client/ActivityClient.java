@@ -139,7 +139,7 @@ public class ActivityClient extends AbstractClient {
             String uri = appendLangAndCurrency(BASE + "/" + activityId + "/availabilities", lang, currency,
                     new NVP("start", Long.toString(start.getTime())), new NVP("end", Long.toString(end.getTime())),
                     new NVP("includeSoldOut", ""+includeSoldOut));
-            return new AsyncResponse<List<ActivityAvailabilityDto>>(prepareGet(uri).execute(), this);
+            return new AsyncResponse<List<ActivityAvailabilityDto>>(prepareGet(uri).execute(), this, json.getTypeFactory().constructCollectionType(List.class, ActivityAvailabilityDto.class));
         } catch (Exception e) {
             throw wrapException(e);
         }
