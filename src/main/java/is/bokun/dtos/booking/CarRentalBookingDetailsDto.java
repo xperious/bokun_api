@@ -4,9 +4,15 @@ import is.bokun.dtos.carrental.CarRentalLocationDto;
 
 import java.util.*;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement(name = "CarRentalBooking")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CarRentalBookingDetailsDto extends ProductBookingDetailsDto {
 
 	public Date startDate, endDate;

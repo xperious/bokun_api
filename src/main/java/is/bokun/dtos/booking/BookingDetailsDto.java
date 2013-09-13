@@ -2,23 +2,42 @@ package is.bokun.dtos.booking;
 
 import is.bokun.dtos.CustomerDto;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.codehaus.jackson.annotate.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement(name = "Booking")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BookingDetailsDto {
 
+	@XmlAttribute(name = "id")
 	public Long bookingId;
+	@XmlElement
     public String confirmationCode;
+	@XmlElement
     public String status;
+	@XmlElement
     public String qrCodeUrl;
     
+	@XmlElement
 	public int totalPrice;
+	@XmlElement
 	public int totalPriceConverted;
 
+	@XmlTransient
 	public PaymentProviderDetailsDto paymentProviderDetails;
 	
+	@XmlElement
 	public CustomerDto customer;
 	
 	public List<AccommodationBookingDetailsDto> accommodationBookings = new ArrayList<>(); 

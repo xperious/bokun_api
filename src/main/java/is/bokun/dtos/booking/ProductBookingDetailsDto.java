@@ -3,12 +3,16 @@ package is.bokun.dtos.booking;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
 import org.codehaus.jackson.annotate.*;
 
 /**
  * @author Olafur Gauti Gudmundsson
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ProductBookingDetailsDto {
 
     public Long bookingId;

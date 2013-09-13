@@ -1,8 +1,14 @@
 package is.bokun.dtos.booking;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlRootElement(name = "BookingAnswer")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BookingAnswerDto {
 
 	public String type;
