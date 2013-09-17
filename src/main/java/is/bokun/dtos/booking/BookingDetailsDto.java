@@ -2,25 +2,18 @@ package is.bokun.dtos.booking;
 
 import is.bokun.dtos.CustomerDto;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.*;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@XmlRootElement(name = "Booking")
+@XmlRootElement(name = "booking")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class BookingDetailsDto {
 
-	@XmlAttribute(name = "id")
+	@XmlElement(name = "id")
 	public Long bookingId;
 	@XmlElement
     public String confirmationCode;
@@ -40,8 +33,16 @@ public class BookingDetailsDto {
 	@XmlElement
 	public CustomerDto customer;
 	
-	public List<AccommodationBookingDetailsDto> accommodationBookings = new ArrayList<>(); 
-	public List<CarRentalBookingDetailsDto> carRentalBookings = new ArrayList<>(); 
+	@XmlElementWrapper
+	@XmlElement(name="accommodationBooking")
+	public List<AccommodationBookingDetailsDto> accommodationBookings = new ArrayList<>();
+	
+	@XmlElementWrapper
+	@XmlElement(name="carRentalBooking")
+	public List<CarRentalBookingDetailsDto> carRentalBookings = new ArrayList<>();
+	
+	@XmlElementWrapper
+	@XmlElement(name="activityBooking")
 	public List<ActivityBookingDetailsDto> activityBookings = new ArrayList<>();
 	
 	@JsonIgnore

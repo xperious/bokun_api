@@ -2,13 +2,21 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
+import javax.xml.bind.annotation.*;
+
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PaymentProviderDetailsDto {
 
 	public String url;
+	
+	@XmlElementWrapper
+	@XmlElement(name="supportedMethod")
 	public List<String> supportedMethods = new ArrayList<>();
+	
+	@XmlElementWrapper
+	@XmlElement(name="paymentProviderParam")
 	public List<PaymentProviderParam> parameters = new ArrayList<>();
 	
 	public PaymentProviderDetailsDto addParam(String name, String value) {

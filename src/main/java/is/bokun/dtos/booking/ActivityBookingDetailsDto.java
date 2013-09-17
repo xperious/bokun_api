@@ -2,9 +2,7 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
@@ -14,8 +12,15 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 	
 	public Date date;
+	
+	@XmlElementWrapper
+	@XmlElement(name="pricingCategoryBooking")
 	public List<ActivityPricingCategoryBookingDto> pricingCategoryBookings = new ArrayList<>();
+	
+	@XmlElementWrapper
+	@XmlElement(name="extra")
     public List<ExtraBookingDetailsDto> extras = new ArrayList<>();
+    
     public Map<String,String> fields = new HashMap<>();
 
     public Date getDate() {

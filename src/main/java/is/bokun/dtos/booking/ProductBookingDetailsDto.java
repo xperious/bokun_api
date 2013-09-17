@@ -3,8 +3,7 @@ package is.bokun.dtos.booking;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.*;
 
 import org.codehaus.jackson.annotate.*;
 
@@ -15,7 +14,12 @@ import org.codehaus.jackson.annotate.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProductBookingDetailsDto {
 
+	@XmlElement(name = "id")
     public Long bookingId;
+	public Long parentBookingId;
+	
+	public String confirmationCode;
+	
     public String title;
     public int totalPrice;
     public String productCategory;
@@ -25,7 +29,12 @@ public class ProductBookingDetailsDto {
     public Long productId;
     public String availabilityProductId;
 
+	@XmlElementWrapper
+	@XmlElement(name="answer")
     public List<BookingAnswerDto> answers = new ArrayList<>();
+    
+	@XmlElementWrapper
+	@XmlElement(name="payment")
     public List<PaymentDto> payments = new ArrayList<>();
 
     public Long getBookingId() {
@@ -36,7 +45,23 @@ public class ProductBookingDetailsDto {
         this.bookingId = bookingId;
     }
 
-    public String getTitle() {
+    public Long getParentBookingId() {
+		return parentBookingId;
+	}
+
+	public void setParentBookingId(Long parentBookingId) {
+		this.parentBookingId = parentBookingId;
+	}
+
+	public String getConfirmationCode() {
+		return confirmationCode;
+	}
+
+	public void setConfirmationCode(String confirmationCode) {
+		this.confirmationCode = confirmationCode;
+	}
+
+	public String getTitle() {
         return title;
     }
 

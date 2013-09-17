@@ -2,9 +2,13 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
+import javax.xml.bind.annotation.*;
+
 import org.codehaus.jackson.annotate.*;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
+@XmlRootElement(name = "ShoppingCart")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ShoppingCartDto {
 
 	public String sessionId;

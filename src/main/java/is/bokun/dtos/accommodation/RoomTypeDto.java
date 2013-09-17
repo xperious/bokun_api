@@ -32,9 +32,6 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 	public boolean shared = false;
 	
 	public String pricingType;
-
-	public boolean singleOccupancyDiscountEnabled = false;
-	public int singleOccupancyDiscount = 0;
 	
 	public List<TagGroupDto> tags = new ArrayList<>();
 	
