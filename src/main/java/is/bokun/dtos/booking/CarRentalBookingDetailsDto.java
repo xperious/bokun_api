@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.*;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@XmlRootElement(name = "CarRentalBooking")
+@XmlType(name = "carRentalBooking")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CarRentalBookingDetailsDto extends ProductBookingDetailsDto {
 

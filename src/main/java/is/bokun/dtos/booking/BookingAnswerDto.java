@@ -1,13 +1,11 @@
 package is.bokun.dtos.booking;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@XmlRootElement(name = "BookingAnswer")
+@XmlType(name = "bookingAnswer")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class BookingAnswerDto {
 
@@ -26,6 +24,11 @@ public class BookingAnswerDto {
 		this.group = group;
 		this.type = type;
 		this.answer = answer;
+	}
+	
+	public BookingAnswerDto(String group, String type, String answer, String question) {
+		this(group, type, answer);
+		this.question = question;
 	}
 	
 	public String getType() {

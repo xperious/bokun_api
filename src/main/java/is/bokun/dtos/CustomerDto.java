@@ -3,14 +3,12 @@ package is.bokun.dtos;
 
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@XmlRootElement(name = "Customer")
+@XmlType(name = "customer")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CustomerDto {
 

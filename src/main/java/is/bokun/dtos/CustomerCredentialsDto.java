@@ -1,9 +1,6 @@
 package is.bokun.dtos;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.*;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
@@ -11,7 +8,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  * @author Olafur Gauti Gudmundsson
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@XmlRootElement(name = "CustomerCredentials")
+@XmlType(name = "customerCredentials")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CustomerCredentialsDto {
 

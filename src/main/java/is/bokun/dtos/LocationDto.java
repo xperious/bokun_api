@@ -1,10 +1,14 @@
 package is.bokun.dtos;
 
+import javax.xml.bind.annotation.*;
+
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import is.bokun.utils.StringUtils;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlType(name = "location")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class LocationDto {
 
 	public String address;

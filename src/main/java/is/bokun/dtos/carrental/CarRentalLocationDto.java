@@ -1,15 +1,15 @@
 package is.bokun.dtos.carrental;
 
+import is.bokun.dtos.LocationDto;
+
 import java.util.*;
 
 import javax.xml.bind.annotation.*;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import is.bokun.dtos.LocationDto;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-@XmlRootElement(name = "CarRentalLocation")
+@XmlType(name = "carRentalLocation")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CarRentalLocationDto {
 

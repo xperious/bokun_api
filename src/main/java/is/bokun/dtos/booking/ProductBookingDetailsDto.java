@@ -11,6 +11,7 @@ import org.codehaus.jackson.annotate.*;
  * @author Olafur Gauti Gudmundsson
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlType(name = "productBooking")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProductBookingDetailsDto {
 
@@ -20,12 +21,19 @@ public class ProductBookingDetailsDto {
 	
 	public String confirmationCode;
 	
+	@XmlTransient
     public String title;
+	
     public int totalPrice;
+    
+    @XmlTransient
     public String productCategory;
+    
     public PaymentPaidTypeEnum paidType;
     
     public ProductInfoDto product = new ProductInfoDto();
+    
+    @XmlTransient
     public Long productId;
     public String availabilityProductId;
 

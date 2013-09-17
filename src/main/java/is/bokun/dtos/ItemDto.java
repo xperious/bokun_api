@@ -3,20 +3,32 @@ package is.bokun.dtos;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.*;
+
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlType(name = "item")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ItemDto {
 
 	public Long id;
 	public String title;
+	public String externalId;
 
     public List<String> flags = new ArrayList<>();
 	
 	public ItemDto() {}
 
     public ItemDto(Long id, String title) {
-        this(id, title, null);
+        this(id, title, "");
+    }
+    
+    public ItemDto(Long id, String title, String externalId) {
+        this.id = id;
+        this.title = title;
+        this.externalId = externalId;
+        this.flags = null;
     }
 	
 	public ItemDto(Long id, String title, List<String> flags) {

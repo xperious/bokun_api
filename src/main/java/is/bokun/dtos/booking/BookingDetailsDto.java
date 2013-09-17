@@ -10,6 +10,7 @@ import org.codehaus.jackson.annotate.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement(name = "booking")
+@XmlType(name = "booking")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class BookingDetailsDto {
 
@@ -18,7 +19,7 @@ public class BookingDetailsDto {
 	@XmlElement
     public String confirmationCode;
 	@XmlElement
-    public String status;
+    public BookingStatusEnum status;
 	@XmlElement
     public String qrCodeUrl;
     

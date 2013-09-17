@@ -2,9 +2,13 @@ package is.bokun.dtos;
 
 import java.util.*;
 
+import javax.xml.bind.annotation.*;
+
 import org.codehaus.jackson.annotate.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlType(name = "photo")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class PhotoDto {
 
 	public Long id;

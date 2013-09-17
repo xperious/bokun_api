@@ -1,8 +1,12 @@
 package is.bokun.dtos;
 
+import javax.xml.bind.annotation.*;
+
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlType(name = "vendor")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class VendorDto {
 
 	public Long id;

@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.*;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@XmlRootElement(name = "ActivityBooking")
+@XmlType(name = "activityBooking")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 	
@@ -17,8 +17,8 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 	@XmlElement(name="pricingCategoryBooking")
 	public List<ActivityPricingCategoryBookingDto> pricingCategoryBookings = new ArrayList<>();
 	
-	@XmlElementWrapper
-	@XmlElement(name="extra")
+	@XmlElementWrapper(name = "extraBookings")
+	@XmlElement(name="extraBooking")
     public List<ExtraBookingDetailsDto> extras = new ArrayList<>();
     
     public Map<String,String> fields = new HashMap<>();
