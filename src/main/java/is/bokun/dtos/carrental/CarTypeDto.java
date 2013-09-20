@@ -12,7 +12,7 @@ import org.codehaus.jackson.annotate.*;
 public class CarTypeDto extends HasBookableExtras implements SearchResult, WithPhotos {
 
 	public Long id;
-	public String title;
+	public String title;	
 	public String description;
 	public String exampleCarModel;
 	

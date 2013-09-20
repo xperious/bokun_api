@@ -17,6 +17,7 @@ public abstract class ProductDto {
     public String title;
     public String description;
     public List<String> keywords = new ArrayList<>();
+    public List<String> flags = new ArrayList<>();
     public String slug;
     
     public List<TagGroupDto> tagGroups = new ArrayList<>();

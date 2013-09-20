@@ -1,5 +1,7 @@
 package is.bokun.dtos.activity;
 
+import java.util.*;
+
 import org.codehaus.jackson.annotate.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -12,6 +14,8 @@ public class StartTimeDto {
 	
     public String durationType;
     public int duration = 1;
+    
+    public List<String> flags = new ArrayList<>();
     
     public StartTimeDto() {}
     

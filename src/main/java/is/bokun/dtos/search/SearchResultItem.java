@@ -18,6 +18,7 @@ public class SearchResultItem implements SearchResult, WithPhotos {
 	public ItemDto vendor;
 
     public List<String> keywords = new ArrayList<>();
+    public List<String> flags = new ArrayList<>();
 	
 	public List<PlaceDto> places = new ArrayList<>();
 	

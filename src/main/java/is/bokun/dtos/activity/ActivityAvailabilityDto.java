@@ -15,6 +15,8 @@ public class ActivityAvailabilityDto {
     public int availabilityCount;
     public boolean unlimitedAvailability;
     
+    public List<String> flags = new ArrayList<>();
+    
     public double defaultPrice;
     public Map<Long,Double> pricesByCategory = new HashMap<>();
     
