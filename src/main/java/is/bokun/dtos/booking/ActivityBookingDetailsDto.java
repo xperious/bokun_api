@@ -13,6 +13,9 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 	
 	public Date date;
 	
+	public String startTime;
+	public Long startTimeId;
+	
 	@XmlElementWrapper
 	@XmlElement(name="pricingCategoryBooking")
 	public List<ActivityPricingCategoryBookingDto> pricingCategoryBookings = new ArrayList<>();
@@ -21,7 +24,9 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 	@XmlElement(name="extraBooking")
     public List<ExtraBookingDetailsDto> extras = new ArrayList<>();
     
-    public Map<String,String> fields = new HashMap<>();
+	@XmlElementWrapper
+	@XmlElement(name="field")
+    public List<BookingFieldDto> bookingFields = new ArrayList<>();
 
     public Date getDate() {
         return date;
@@ -39,14 +44,6 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
         this.extras = extras;
     }
 
-	public Map<String, String> getFields() {
-		return fields;
-	}
-
-	public void setFields(Map<String, String> fields) {
-		this.fields = fields;
-	}
-
 	public List<ActivityPricingCategoryBookingDto> getPricingCategoryBookings() {
 		return pricingCategoryBookings;
 	}
@@ -54,6 +51,30 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 	public void setPricingCategoryBookings(
 			List<ActivityPricingCategoryBookingDto> pricingCategoryBookings) {
 		this.pricingCategoryBookings = pricingCategoryBookings;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public Long getStartTimeId() {
+		return startTimeId;
+	}
+
+	public void setStartTimeId(Long startTimeId) {
+		this.startTimeId = startTimeId;
+	}
+
+	public List<BookingFieldDto> getBookingFields() {
+		return bookingFields;
+	}
+
+	public void setBookingFields(List<BookingFieldDto> bookingFields) {
+		this.bookingFields = bookingFields;
 	}
 
 }

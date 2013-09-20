@@ -24,9 +24,13 @@ public class CarBookingDetailsDto {
 	
 	@XmlElementWrapper
 	@XmlElement(name="answer")
-	public List<BookingAnswerDto> answers = new ArrayList<BookingAnswerDto>();
+	public List<BookingAnswerDto> answers = new ArrayList<>();
 	
 	@XmlElementWrapper(name = "extraBookings")
 	@XmlElement(name="extraBooking")
-	public List<ExtraBookingDetailsDto> extras = new ArrayList<ExtraBookingDetailsDto>();
+	public List<ExtraBookingDetailsDto> extras = new ArrayList<>();
+	
+	@XmlElementWrapper
+	@XmlElement(name="field")
+    public List<BookingFieldDto> bookingFields = new ArrayList<>();
 }
