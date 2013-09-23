@@ -1,12 +1,15 @@
 package is.bokun.client;
 
-import com.google.inject.Inject;
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Response;
-import is.bokun.dtos.accommodation.AccommodationAvailabilityReportDto;
-import is.bokun.dtos.accommodation.AccommodationDto;
+import is.bokun.client.AbstractClient.NVP;
+import is.bokun.dtos.accommodation.*;
 import is.bokun.dtos.search.SearchResultsDto;
 import is.bokun.queries.AccommodationQuery;
+import is.bokun.utils.StringUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import com.google.inject.Inject;
 
 /**
  * Client for the Accommodation resource.
@@ -81,5 +84,25 @@ public class AccommodationClient extends AbstractClient {
     public AccommodationAvailabilityReportDto getAvailabilityReport(Long accommodationId, AccommodationQuery query, String lang, String currency) {
         String uri = appendLangAndCurrency(BASE + "/" + accommodationId + "/check-availability", lang, currency);
         return postAndValidate(uri, query, AccommodationAvailabilityReportDto.class);
+    }
+    
+    /**
+     * Get availabilities over a date range for an set of Accommodations.
+     * Note that both the start and end dates MUST be supplied.
+     *
+     * @param accommodationIds the IDs of the Accommodations for which to retrieve availabilities
+     * @param start the start date of the range
+     * @param end the end date of the range
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return
+     */
+    public AccommodationAvailabilitiesDto getAvailabilitiesOnRange(List<Long> accommodationIds, Date start, Date end, String lang, String currency) {
+    	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String uri = appendLangAndCurrency(BASE + "/availabilities", lang, currency,
+                new NVP("start", formatter.format(start)), new NVP("end", formatter.format(end)),
+                new NVP("accommodationIds", StringUtils.idListToCommaSeparated(accommodationIds)));
+        
+        return getAndValidate(uri, AccommodationAvailabilitiesDto.class);
     }
 }
