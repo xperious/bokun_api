@@ -15,6 +15,10 @@ public class PricingCategoryDto {
 	public boolean ageQualified;
 	public Integer minAge;
 	public Integer maxAge;
+	
+    public boolean dependent;
+    public Long masterCategoryId;
+    public int maxPerMaster;
 
 	public List<String> flags = new ArrayList<>();
 	

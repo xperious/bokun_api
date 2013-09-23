@@ -19,7 +19,6 @@ public class ActivityDto extends ProductDto implements WithExtras {
     public int duration;
     
     public int minAge;
-    public int maxChildrenPerAdult = 4;
     
     public Double nextDefaultPrice;
 
