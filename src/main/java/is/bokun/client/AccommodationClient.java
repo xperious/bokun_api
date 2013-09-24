@@ -1,6 +1,5 @@
 package is.bokun.client;
 
-import is.bokun.client.AbstractClient.NVP;
 import is.bokun.dtos.accommodation.*;
 import is.bokun.dtos.search.SearchResultsDto;
 import is.bokun.queries.AccommodationQuery;

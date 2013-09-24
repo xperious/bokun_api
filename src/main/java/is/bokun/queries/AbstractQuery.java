@@ -108,7 +108,15 @@ public abstract class AbstractQuery {
         }
         return pageSize;
     }
-    
+	
+	/**
+	 * Adds a Facet filter for the tag.
+	 * @param tagGroupFacetName The name of the facet defined for the Tag Group.
+	 * @param tagId The ID of the tag to filter by.
+	 */
+	public void addTagFilter(String tagGroupFacetName, Long tagId) {
+		this.facetFilters.add(new FacetFilter(tagGroupFacetName, tagId.toString()));
+	}
     
 	public void setFacetFilters(List<FacetFilter> facetFilters) {
 		this.facetFilters = facetFilters;

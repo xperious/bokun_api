@@ -35,7 +35,7 @@ public class ProductBookingDetailsDto {
     
     @XmlTransient
     public Long productId;
-    public String availabilityProductId;
+    public String externalProductId;
 
 	@XmlElementWrapper
 	@XmlElement(name="answer")
@@ -125,12 +125,12 @@ public class ProductBookingDetailsDto {
 		this.productId = productId;
 	}
 
-	public String getAvailabilityProductId() {
-		return availabilityProductId;
+	public String getExternalProductId() {
+		return externalProductId;
 	}
 
-	public void setAvailabilityProductId(String availabilityProductId) {
-		this.availabilityProductId = availabilityProductId;
+	public void setExternalProductId(String externalProductId) {
+		this.externalProductId = externalProductId;
 	}
 
 	@JsonIgnore
