@@ -15,6 +15,18 @@ public class ProductFilter {
 		return vendorFilters.isEmpty();
 	}
 	
+	public boolean isVendorAllowed(Long vendorId) {
+		if ( owningVendorId.equals(vendorId) ) {
+			return true;
+		}		
+		for (ProductFilter.VendorFilter v : vendorFilters.values()) {
+			if ( v.vendorId.equals(vendorId) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public boolean isAllowed(Long productVendorId, Long productGroupId, String productCategory) {
 		if ( owningVendorId.equals(productVendorId) ) {
 			return true;
