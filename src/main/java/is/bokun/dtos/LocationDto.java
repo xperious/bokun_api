@@ -16,10 +16,10 @@ public class LocationDto {
 	public String countryCode;
 	public String postCode;
 
-	public double latitude = 64.923542;
-	public double longitude = -19.511719;
+	public Double latitude = 64.923542;
+	public Double longitude = -19.511719;
 	
-	public int zoomLevel = 6;
+	public Integer zoomLevel = 6;
 	
 	public LocationDto() {}
 	
@@ -71,39 +71,37 @@ public class LocationDto {
 		this.postCode = postCode;
 	}
 
-
-
-	public double getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
 
 
-	public void setLatitude(double latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
 
 
-	public double getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
 
 
-	public void setLongitude(double longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
 
 
 
-	public int getZoomLevel() {
+	public Integer getZoomLevel() {
 		return zoomLevel;
 	}
 
 
 
-	public void setZoomLevel(int zoomLevel) {
+	public void setZoomLevel(Integer zoomLevel) {
 		this.zoomLevel = zoomLevel;
 	}
 
