@@ -25,6 +25,10 @@ public class ProductBookingDetailsDto {
     public String title;
 	
     public int totalPrice;
+    public Double priceWithDiscount;
+    
+	public Double discountPercentage;
+	public Double discountAmount;
     
     @XmlTransient
     public String productCategory;
@@ -85,7 +89,15 @@ public class ProductBookingDetailsDto {
         this.totalPrice = totalPrice;
     }
 
-    public String getProductCategory() {
+    public Double getPriceWithDiscount() {
+		return priceWithDiscount;
+	}
+
+	public void setPriceWithDiscount(Double priceWithDiscount) {
+		this.priceWithDiscount = priceWithDiscount;
+	}
+
+	public String getProductCategory() {
 		return productCategory;
 	}
 
@@ -131,6 +143,22 @@ public class ProductBookingDetailsDto {
 
 	public void setExternalProductId(String externalProductId) {
 		this.externalProductId = externalProductId;
+	}
+
+	public Double getDiscountPercentage() {
+		return discountPercentage;
+	}
+
+	public void setDiscountPercentage(Double discountPercentage) {
+		this.discountPercentage = discountPercentage;
+	}
+
+	public Double getDiscountAmount() {
+		return discountAmount;
+	}
+
+	public void setDiscountAmount(Double discountAmount) {
+		this.discountAmount = discountAmount;
 	}
 
 	@JsonIgnore

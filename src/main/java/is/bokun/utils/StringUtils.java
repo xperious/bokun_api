@@ -138,6 +138,17 @@ public class StringUtils {
     	}
     	return s.toString();
     }
+
+    public static String listToCommaSeparated(List<String> list) {
+    	StringBuilder s = new StringBuilder();
+        if (list != null) {
+            for ( String l : list ) {
+                if ( s.length() > 0 ) { s.append(','); }
+                s.append(l);
+            }
+        }
+        return s.toString();
+    }
     
     public static String setToCommaSeparated(Set<String> set) {
     	StringBuilder s = new StringBuilder();

@@ -1,5 +1,7 @@
 package is.bokun.dtos.booking;
 
+import java.util.*;
+
 import javax.xml.bind.annotation.*;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -13,6 +15,10 @@ public class ActivityPricingCategoryBookingDto {
 	public int quantity;
 	public Double bookedPrice;
 	public String bookedTitle;
+	
+	@XmlElementWrapper
+	@XmlElement(name="flag")
+	public List<String> flags = new ArrayList<>();
 	
 	public ActivityPricingCategoryBookingDto() {}
 	
