@@ -13,6 +13,9 @@ public class PickupPlaceDto {
 
 	public Long id;
 	public String title;
+	public Boolean askForRoomNumber;
+	
+	public String externalId;
 	
 	public LocationDto location = new LocationDto();
 	
@@ -26,6 +29,14 @@ public class PickupPlaceDto {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getExternalId() {
+		return externalId;
+	}
+
+	public void setExternalId(String externalId) {
+		this.externalId = externalId;
 	}
 
 	public String getTitle() {
@@ -50,6 +61,14 @@ public class PickupPlaceDto {
 
 	public void setFlags(List<String> flags) {
 		this.flags = flags;
+	}
+
+	public Boolean getAskForRoomNumber() {
+		return askForRoomNumber;
+	}
+
+	public void setAskForRoomNumber(Boolean askForRoomNumber) {
+		this.askForRoomNumber = askForRoomNumber;
 	}
 	
 	

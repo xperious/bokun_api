@@ -19,6 +19,11 @@ public class PricingCategoryDto {
     public boolean dependent;
     public Long masterCategoryId;
     public int maxPerMaster;
+    
+    public boolean internalUseOnly;
+    
+    public Double pickupPrice;
+    public Double dropoffPrice;
 
 	public List<String> flags = new ArrayList<>();
 	

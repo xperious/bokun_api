@@ -2,7 +2,7 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
-import is.bokun.dtos.VendorDto;
+import is.bokun.dtos.*;
 
 import org.codehaus.jackson.annotate.*;
 
@@ -18,6 +18,18 @@ public class ActivityBookingDto extends ProductBookingDto {
 
     public Integer activityPrice;
     public Integer extrasPrice;
+    
+	public PickupPlaceDto pickupPlace;
+	public String pickupPlaceDescription;
+	public String pickupPlaceRoomNumber;
+	public boolean pickup;
+	
+	public PickupPlaceDto dropoffPlace;
+	public String dropoffPlaceDescription;
+	public boolean dropoff;
+	
+	public Double pickupPrice;
+	public Double dropoffPrice;
 	
 	public int maxBookableCount;
 	public boolean unlimitedAvailability;
