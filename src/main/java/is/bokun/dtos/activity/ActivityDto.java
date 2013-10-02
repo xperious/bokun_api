@@ -89,6 +89,17 @@ public class ActivityDto extends ProductDto implements WithExtras {
 	}
 	
 	@JsonIgnore
+	public List<PricingCategoryDto> getPublicPricingCategories() {
+		List<PricingCategoryDto> list = new ArrayList<>();
+		for (PricingCategoryDto pcat : pricingCategories) {
+			if ( !pcat.internalUseOnly ) {
+				list.add(pcat);
+			}
+		}
+		return list;
+	}
+	
+	@JsonIgnore
 	public boolean hasAnyMapLocation() {
 		return countMapLocations() > 0;
 	}

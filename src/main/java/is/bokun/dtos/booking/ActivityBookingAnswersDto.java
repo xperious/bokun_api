@@ -9,6 +9,13 @@ public class ActivityBookingAnswersDto {
 
 	public Long bookingId;
 	
+	public Long pickupPlaceId;
+	public String pickupPlaceDescription;
+	public String pickupPlaceRoomNumber;
+	
+	public Long dropoffPlaceId;
+	public String dropoffPlaceDescription;
+	
 	public List<BookingAnswerGroupDto> answerGroups = new ArrayList<BookingAnswerGroupDto>();
 	public List<ExtraBookingAnswersDto> extraBookings = new ArrayList<ExtraBookingAnswersDto>();
 	

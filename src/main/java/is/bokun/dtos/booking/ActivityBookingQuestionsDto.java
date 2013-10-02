@@ -1,8 +1,10 @@
 package is.bokun.dtos.booking;
 
-import org.codehaus.jackson.annotate.*;
+import is.bokun.dtos.PickupPlaceDto;
 
 import java.util.*;
+
+import org.codehaus.jackson.annotate.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ActivityBookingQuestionsDto {
@@ -11,6 +13,11 @@ public class ActivityBookingQuestionsDto {
 	public Long bookingId;
 	public Date date;
 	public String time;
+	
+	public boolean askWhereToPickup;
+	public List<PickupPlaceDto> pickupPlaces = new ArrayList<>();
+	public boolean askWhereToDropoff;
+	public List<PickupPlaceDto> dropoffPlaces = new ArrayList<>();
 	
 	public List<BookingQuestionGroupDto> questionGroups = new ArrayList<>();
 	
