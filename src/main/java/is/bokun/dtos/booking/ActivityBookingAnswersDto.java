@@ -2,7 +2,7 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ActivityBookingAnswersDto {
@@ -38,5 +38,17 @@ public class ActivityBookingAnswersDto {
 		this.extraBookings = extraBookings;
 	}
 	
+	@JsonIgnore
+	public void setPickupInfo(Long pickupPlaceId, String pickupPlaceDescription, String pickupRoomNumber) {
+		this.pickupPlaceId = pickupPlaceId;
+		this.pickupPlaceDescription = pickupPlaceDescription;
+		this.pickupPlaceRoomNumber = pickupRoomNumber;
+	}
+	
+	@JsonIgnore
+	public void setDropoffInfo(Long dropoffPlaceId, String dropoffPlaceDescription) {
+		this.dropoffPlaceId = dropoffPlaceId;
+		this.dropoffPlaceDescription = dropoffPlaceDescription;
+	}
 	
 }
