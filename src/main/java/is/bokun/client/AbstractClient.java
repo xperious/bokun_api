@@ -161,7 +161,9 @@ public abstract class AbstractClient {
     protected String appendLangAndCurrency(String uri, String lang, String currency, NVP... params) {
         List<NVP> list = new ArrayList<NVP>();
         list.add(new NVP("lang",lang));
-        list.add(new NVP("currency",currency));
+        if ( currency != null ) {
+        	list.add(new NVP("currency",currency));
+        }
         if ( params != null ) {
             for (NVP p : params) {
             	if ( p != null ) {

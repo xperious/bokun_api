@@ -1,7 +1,6 @@
 package is.bokun.client;
 
-import is.bokun.dtos.activity.ActivityAvailabilityDto;
-import is.bokun.dtos.activity.ActivityDto;
+import is.bokun.dtos.activity.*;
 import is.bokun.dtos.search.SearchResultsDto;
 import is.bokun.queries.ActivityQuery;
 
@@ -58,6 +57,18 @@ public class ActivityClient extends AbstractClient {
     public ActivityDto findBySlug(String slug, String lang, String currency) {
         String uri = appendLangAndCurrency(BASE + "/slug/" + slug, lang, currency);
         return getAndValidate(uri, ActivityDto.class);
+    }
+    
+    /**
+     * Get the pickup and dropoff places for a particular Activity.
+     *
+     * @param activityId The ID of the Activity.
+     * @param lang The language the content should be in.
+     * @return the pickup and dropoff places for the Activity with the ID supplied
+     */
+    public ActivityPlacesDto getPickupAndDropoffPlaces(Long activityId, String lang) {
+    	String uri = appendLangAndCurrency(BASE + "/" + activityId + "/pickup-places", lang, null);
+    	return getAndValidate(uri, ActivityPlacesDto.class);
     }
 
     /**
