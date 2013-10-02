@@ -6,15 +6,21 @@ import com.ning.http.util.Base64;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import is.bokun.dtos.ApiResponse;
 import is.bokun.utils.StringUtils;
+import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.ObjectWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Contains common aspects of all the client classes.
@@ -22,6 +28,8 @@ import org.codehaus.jackson.map.ObjectMapper;
  * @author Olafur Gauti Gudmundsson
  */
 public abstract class AbstractClient {
+
+    protected static Logger LOG = LoggerFactory.getLogger(AbstractClient.class);
 
     private static final String HMAC_SHA1_ALGORITHM = "HmacSHA1";
 
@@ -50,6 +58,7 @@ public abstract class AbstractClient {
 
     protected String getAndValidateStr(String uri) {
         try {
+            System.out.println("~ ~~~ Calling: " + uri);
             Response r = prepareGet(uri).execute().get();
             validateResponse(r);
             return r.getResponseBody("UTF-8");
@@ -60,6 +69,7 @@ public abstract class AbstractClient {
 
     protected <T> T getAndValidate(String uri, Class<T> c)  {
         try {
+            System.out.println("~ ~~~ Calling: " + uri);
             Response r = prepareGet(uri).execute().get();
             validateResponse(r);
             return json.readValue(r.getResponseBody("UTF-8"), c);
@@ -72,12 +82,15 @@ public abstract class AbstractClient {
         AsyncHttpClient.BoundRequestBuilder r = config.getAsyncClient().preparePost(config.getHost() + uri);
         addSecurityHeaders(r, "POST", uri);
         r.setBodyEncoding("UTF-8");
-        r.setBody(json.writeValueAsString(body));
+        String json2 = json.writeValueAsString(body);
+        prettyPrint(json2, "post body", uri);
+        r.setBody(json2);
         return r;
     }
 
     protected String postAndValidateStr(String uri, Object body) {
         try {
+            System.out.println("~ ~~~ Calling: " + uri);
             Response r = preparePost(uri, body).execute().get();
             validateResponse(r);
             return r.getResponseBody("UTF-8");
@@ -88,6 +101,7 @@ public abstract class AbstractClient {
 
     protected <T> T postAndValidate(String uri, Object body, Class<T> c) {
         try {
+            System.out.println("~ ~~~ Calling: " + uri);
             Response r = preparePost(uri, body).execute().get();
             validateResponse(r);
             return json.readValue(r.getResponseBody("UTF-8"), c);
@@ -185,6 +199,12 @@ public abstract class AbstractClient {
      * @param r the response to be validated
      */
     protected void validateResponse(Response r) {
+        try {
+            prettyPrint(r.getResponseBody("UTF-8"), "response", "");
+        }
+        catch (IOException e) {
+        }
+
         if ( r.getStatusCode() != 200 ) {
             // try parsing an API response
             try {
@@ -194,6 +214,22 @@ public abstract class AbstractClient {
                 ApiResponse ar = new ApiResponse(r.getStatusText());
                 throw new RestServiceException(ar, e);
             }
+        }
+    }
+
+    private void prettyPrint(String json, String comment, String comment2) {
+        List<String> filter = Arrays.asList(new String[]{"/activity.json/search?lang=EN&currency=ISK"});
+        if (filter.contains(comment2)){
+            System.out.println("~~  " + comment + " | " + comment2 + " ~~~~~~~~~~~~~~~~~~~~~~~~");
+            try {
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode jsonNode = objectMapper.readTree(json);
+                ObjectWriter writer = objectMapper.writerWithDefaultPrettyPrinter();
+                System.out.println(writer.writeValueAsString(jsonNode));
+            }
+            catch (IOException swallow) {
+            }
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
         }
     }
 
