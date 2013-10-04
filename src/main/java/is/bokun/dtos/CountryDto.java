@@ -1,6 +1,6 @@
 package is.bokun.dtos;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * A DTO containing the title and ISO code of a Country.

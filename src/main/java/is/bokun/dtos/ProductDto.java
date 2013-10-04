@@ -2,7 +2,7 @@ package is.bokun.dtos;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 import is.bokun.utils.StringUtils;
 

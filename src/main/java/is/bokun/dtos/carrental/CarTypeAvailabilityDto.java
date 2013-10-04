@@ -2,7 +2,7 @@ package is.bokun.dtos.carrental;
 
 import is.bokun.dtos.*;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CarTypeAvailabilityDto extends AvailabilityDto {

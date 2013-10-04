@@ -2,7 +2,7 @@ package is.bokun.dtos;
 
 import is.bokun.utils.StringUtils;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ExtranetUserDto {

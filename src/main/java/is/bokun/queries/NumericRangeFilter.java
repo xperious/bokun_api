@@ -1,6 +1,6 @@
 package is.bokun.queries;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 /**
  * For filtering results with fields that have values within a certain numeric range.

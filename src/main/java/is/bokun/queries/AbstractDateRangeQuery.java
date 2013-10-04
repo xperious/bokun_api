@@ -2,7 +2,7 @@ package is.bokun.queries;
 
 import java.util.Date;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 import is.bokun.utils.StringUtils;
 

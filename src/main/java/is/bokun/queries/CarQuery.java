@@ -4,7 +4,7 @@ import is.bokun.utils.*;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 /**
  * Query object for searching rental cars.

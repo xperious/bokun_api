@@ -1,6 +1,6 @@
 package is.bokun.queries;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 /**
  * Filters results that include only hits that exists within a specific distance from a geo point.

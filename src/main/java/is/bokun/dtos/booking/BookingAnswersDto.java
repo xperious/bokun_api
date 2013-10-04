@@ -3,7 +3,7 @@ package is.bokun.dtos.booking;
 import is.bokun.dtos.CustomerDto;
 import is.bokun.utils.StringUtils;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 import java.util.*;
 

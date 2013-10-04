@@ -3,7 +3,7 @@ package is.bokun.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import is.bokun.utils.StringUtils;
 

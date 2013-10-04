@@ -5,7 +5,7 @@ import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 import is.bokun.dtos.CurrencyDto;
 import is.bokun.dtos.TranslationLanguageDto;
-import org.codehaus.jackson.type.TypeReference;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.List;
 

@@ -5,8 +5,8 @@ import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 
 import is.bokun.dtos.CountryDto;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.ArrayList;
 import java.util.List;

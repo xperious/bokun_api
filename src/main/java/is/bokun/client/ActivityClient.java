@@ -7,7 +7,7 @@ import is.bokun.queries.ActivityQuery;
 import java.util.Date;
 import java.util.List;
 
-import org.codehaus.jackson.type.TypeReference;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 import com.google.inject.Inject;
 import com.ning.http.client.Response;

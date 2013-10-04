@@ -3,7 +3,7 @@ package is.bokun.dtos.activity;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ActivityAvailabilityReportDto {

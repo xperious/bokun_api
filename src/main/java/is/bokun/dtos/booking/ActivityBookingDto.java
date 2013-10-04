@@ -4,7 +4,7 @@ import java.util.*;
 
 import is.bokun.dtos.*;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 import is.bokun.dtos.activity.*;
 

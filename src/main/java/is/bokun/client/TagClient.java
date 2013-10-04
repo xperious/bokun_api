@@ -5,7 +5,7 @@ import is.bokun.utils.StringUtils;
 
 import java.util.*;
 
-import org.codehaus.jackson.type.TypeReference;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 import com.google.inject.Inject;
 import com.ning.http.client.Response;

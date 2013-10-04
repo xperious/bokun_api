@@ -3,7 +3,7 @@ package is.bokun.queries;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author Olafur Gauti Gudmundsson

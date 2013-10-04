@@ -2,7 +2,7 @@ package is.bokun.queries;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 /**
  * A filter allowing to include only hits that fall within a polygon of points.

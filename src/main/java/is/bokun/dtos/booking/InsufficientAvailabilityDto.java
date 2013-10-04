@@ -2,7 +2,7 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class InsufficientAvailabilityDto {

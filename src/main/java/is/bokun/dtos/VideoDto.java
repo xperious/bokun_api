@@ -2,7 +2,7 @@ package is.bokun.dtos;
 
 import javax.xml.bind.annotation.*;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlType(name = "video")

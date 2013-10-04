@@ -1,6 +1,6 @@
 package is.bokun.dtos.accommodation;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import is.bokun.dtos.AvailabilityDto;
 

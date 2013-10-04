@@ -1,6 +1,6 @@
 package is.bokun.dtos.booking;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 import java.util.*;
 

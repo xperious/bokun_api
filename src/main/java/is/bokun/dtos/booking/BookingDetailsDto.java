@@ -6,7 +6,7 @@ import java.util.*;
 
 import javax.xml.bind.annotation.*;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement(name = "booking")

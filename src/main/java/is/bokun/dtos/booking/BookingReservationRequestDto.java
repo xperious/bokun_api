@@ -3,7 +3,7 @@ package is.bokun.dtos.booking;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author Olafur Gauti Gudmundsson

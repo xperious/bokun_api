@@ -3,7 +3,7 @@ package is.bokun.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 import is.bokun.utils.DateUtils;
 import is.bokun.utils.StringUtils;

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.*;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author Olafur Gauti Gudmundsson

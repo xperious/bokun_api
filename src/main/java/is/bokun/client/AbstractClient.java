@@ -14,7 +14,7 @@ import java.util.List;
 
 import is.bokun.dtos.ApiResponse;
 import is.bokun.utils.StringUtils;
-import org.codehaus.jackson.map.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Contains common aspects of all the client classes.

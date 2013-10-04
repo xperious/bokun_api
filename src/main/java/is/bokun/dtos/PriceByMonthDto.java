@@ -3,7 +3,7 @@ package is.bokun.dtos;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.codehaus.jackson.annotate.*;
+import com.fasterxml.jackson.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PriceByMonthDto {
