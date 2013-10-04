@@ -8,7 +8,7 @@ import is.bokun.utils.StringUtils;
 
 /**
  * Abstract query class for date ranges, extends the AbstractQuery superclass with start and end dates.
- * The dates can include time, although by default they are assumed not to.<br/>
+ * The dates can include time, although by default they are assumed not to.
  * The date strings are parsed using a list of formats, and the output of the first one that successfully parses the date string
  * is used. Implementing classes can provide their own date/time formats. The default list of formats is (in order of parsing):
  * "dd.MM.yy", "dd.MM.yyyy", "yyyy-MM-dd".
