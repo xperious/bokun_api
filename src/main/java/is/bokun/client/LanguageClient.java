@@ -1,12 +1,12 @@
 package is.bokun.client;
 
-import com.google.inject.Inject;
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Response;
 import is.bokun.dtos.TranslationLanguageDto;
-import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.List;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.inject.Inject;
+import com.ning.http.client.Response;
 
 /**
  * Client for the Language resource.

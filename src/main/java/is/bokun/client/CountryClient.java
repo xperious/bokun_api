@@ -1,16 +1,12 @@
 package is.bokun.client;
 
-import com.google.inject.Inject;
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.Response;
-
 import is.bokun.dtos.CountryDto;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.core.type.TypeReference;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Future;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.inject.Inject;
+import com.ning.http.client.Response;
 
 /**
  * Client for the country resource.
