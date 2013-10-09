@@ -44,6 +44,21 @@ public class BookingAnswersDto {
 	}
 	
 	@JsonIgnore
+	public void setSubscribeToEmailList(boolean subscribe) {
+		answers.add(new BookingAnswerDto("email-list-subscription", Boolean.toString(subscribe)));
+	}
+	
+	@JsonIgnore
+	public boolean isSubscribeToEmailList() {
+		for (BookingAnswerDto a : answers) {
+			if ( "email-list-subscription".equalsIgnoreCase(a.getType()) ) {
+				return "true".equalsIgnoreCase(a.getAnswer());
+			}
+		}
+		return false;
+	}
+	
+	@JsonIgnore
 	public void setCustomerInfo(CustomerDto c) {
 		answers.add(new BookingAnswerDto("first-name", c.getFirstName()));
 		answers.add(new BookingAnswerDto("last-name", c.getLastName()));
