@@ -30,6 +30,13 @@ public class ItemDto {
         this.externalId = externalId;
         this.flags = null;
     }
+    
+    public ItemDto(Long id, String title, String externalId, List<String> flags) {
+        this.id = id;
+        this.title = title;
+        this.externalId = externalId;
+        this.flags = flags;
+    }
 	
 	public ItemDto(Long id, String title, List<String> flags) {
 		this.id = id;

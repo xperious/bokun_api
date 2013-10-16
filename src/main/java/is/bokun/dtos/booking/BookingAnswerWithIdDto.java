@@ -1,5 +1,7 @@
 package is.bokun.dtos.booking;
 
+import java.util.*;
+
 import javax.xml.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -10,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class BookingAnswerWithIdDto extends BookingAnswerDto {
 
 	public Long questionId;
+	public List<String> flags = new ArrayList<>();
 
 	public BookingAnswerWithIdDto() {}
 	
@@ -34,6 +37,14 @@ public class BookingAnswerWithIdDto extends BookingAnswerDto {
 
 	public void setQuestionId(Long questionId) {
 		this.questionId = questionId;
+	}
+
+	public List<String> getFlags() {
+		return flags;
+	}
+
+	public void setFlags(List<String> flags) {
+		this.flags = flags;
 	}
 	
 }
