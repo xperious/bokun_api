@@ -60,6 +60,12 @@ public class DateUtils {
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
     }
+    
+    public static void nullifyMinutes(Calendar c) {
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+    }
 
     public static Date todayNullified() {
         Calendar cal = Calendar.getInstance();
