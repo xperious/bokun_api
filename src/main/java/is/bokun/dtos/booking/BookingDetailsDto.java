@@ -17,6 +17,8 @@ public class BookingDetailsDto {
 	@XmlElement(name = "id")
 	public Long bookingId;
 	@XmlElement
+	public String language;
+	@XmlElement
     public String confirmationCode;
 	@XmlElement
     public BookingStatusEnum status;
