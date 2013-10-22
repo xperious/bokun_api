@@ -20,6 +20,8 @@ public abstract class ProductDto {
     public List<String> flags = new ArrayList<>();
     public String slug;
     
+    public List<CustomFieldDto> customFields = new ArrayList<>();
+    
     public List<TagGroupDto> tagGroups = new ArrayList<>();
     
     public PhotoDto keyPhoto;
