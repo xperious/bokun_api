@@ -12,6 +12,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class BookingAnswerWithIdDto extends BookingAnswerDto {
 
 	public Long questionId;
+	
+	@XmlElementWrapper
+	@XmlElement(name="flag")
 	public List<String> flags = new ArrayList<>();
 
 	public BookingAnswerWithIdDto() {}
