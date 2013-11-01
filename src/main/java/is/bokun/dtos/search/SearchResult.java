@@ -10,6 +10,8 @@ public interface SearchResult {
 	public void setTitle(String title);
 	public String getTitle();
 	
+	public String getBaseLanguage();
+	
 	public void setSummary(String summary);
 	public String getSummary();
 	

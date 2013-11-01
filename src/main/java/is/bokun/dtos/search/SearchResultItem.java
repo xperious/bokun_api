@@ -20,6 +20,9 @@ public class SearchResultItem implements SearchResult, WithPhotos {
     public List<String> keywords = new ArrayList<>();
     public List<String> flags = new ArrayList<>();
     
+    public String baseLanguage;
+    public List<String> languages = new ArrayList<>();
+    
     public List<CustomFieldDto> customFields = new ArrayList<>();
 	
 	public List<PlaceDto> places = new ArrayList<>();
@@ -50,6 +53,10 @@ public class SearchResultItem implements SearchResult, WithPhotos {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public String getBaseLanguage() {
+		return baseLanguage;
 	}
 
 	public String getSummary() {

@@ -16,6 +16,9 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 	public String description;
 	public String exampleCarModel;
 	
+    public String baseLanguage;
+    public List<String> languages = new ArrayList<>();
+	
 	public ItemDto vendor;
 	public ItemDto carRental;
 	
@@ -63,6 +66,10 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public String getBaseLanguage() {
+		return baseLanguage;
 	}
 
 	public String getSummary() {

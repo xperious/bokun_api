@@ -20,6 +20,9 @@ public abstract class ProductDto {
     public List<String> flags = new ArrayList<>();
     public String slug;
     
+    public String baseLanguage;
+    public List<String> languages = new ArrayList<>();
+    
     public List<CustomFieldDto> customFields = new ArrayList<>();
     
     public List<TagGroupDto> tagGroups = new ArrayList<>();
