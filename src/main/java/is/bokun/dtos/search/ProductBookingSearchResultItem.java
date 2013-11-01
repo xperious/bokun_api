@@ -17,6 +17,7 @@ public class ProductBookingSearchResultItem {
 	
 	public BookingItemInfoDto channel;
 	public BookingItemInfoDto product;
+	public String productExternalId;
 	public BookingItemInfoDto vendor;
 	public BookingItemInfoDto seller;
 	public BookingItemInfoDto agent;
