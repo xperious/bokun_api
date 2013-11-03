@@ -13,6 +13,8 @@ public class ActivityAvailabilityDto {
 	public Date date;
 	public String localizedDate;
     public int availabilityCount;
+    public int bookedParticipants;
+    public int minParticipants;
     public boolean unlimitedAvailability;
     
     public List<String> flags = new ArrayList<>();
