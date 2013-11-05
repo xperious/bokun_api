@@ -31,5 +31,9 @@ public class ActivityAvailabilityDto {
     public boolean isSoldOut() {
     	return unlimitedAvailability == false && availabilityCount == 0;
     }
+    
+    public int minParticipantsToBookNow() {
+    	return (minParticipants - bookedParticipants) <= 0 ? 1 : (minParticipants - bookedParticipants);
+    }
 
 }
