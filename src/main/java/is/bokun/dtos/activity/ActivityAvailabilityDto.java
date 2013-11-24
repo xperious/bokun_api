@@ -16,6 +16,9 @@ public class ActivityAvailabilityDto {
     public int bookedParticipants;
     public int minParticipants;
     public boolean unlimitedAvailability;
+
+    public boolean comboActivity;
+    public List<ComboStartTimeInfoDto> comboStartTimes = new ArrayList<>();
     
     public List<String> flags = new ArrayList<>();
     

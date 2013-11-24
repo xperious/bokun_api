@@ -14,6 +14,8 @@ public class ActivityDto extends ProductDto implements WithExtras {
     public String included;
     public String requirements; 
     public String attention;
+
+    public boolean comboActivity;
     
     public String durationType;
     public int duration;
