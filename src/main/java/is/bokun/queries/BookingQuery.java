@@ -20,6 +20,8 @@ public class BookingQuery {
 
 	public String confirmationCode;
 	public String productType;
+
+    public boolean excludeComboBookings;
 	
 	public List<Long> bookingChannelIds = new ArrayList<>();
 	public List<Long> vendorIds = new ArrayList<>();
@@ -130,7 +132,15 @@ public class BookingQuery {
 		this.bookingChannelTitle = bookingChannelTitle;
 	}
 
-	public List<Long> getBookedExtrasIds() {
+    public boolean isExcludeComboBookings() {
+        return excludeComboBookings;
+    }
+
+    public void setExcludeComboBookings(boolean excludeComboBookings) {
+        this.excludeComboBookings = excludeComboBookings;
+    }
+
+    public List<Long> getBookedExtrasIds() {
 		return bookedExtrasIds;
 	}
 	public void setBookedExtrasIds(List<Long> bookedExtrasIds) {
