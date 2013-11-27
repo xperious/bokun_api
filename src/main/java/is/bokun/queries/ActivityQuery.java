@@ -20,6 +20,12 @@ public class ActivityQuery extends AbstractDateRangeQuery {
      * Note: This is only relevant if date range is specified, else ignored.
      */
     public int participants = 1;
+
+    /**
+     * Set to true if you only want combo activities in the search results.
+     */
+    public Boolean comboActivity;
+
     /**
      * Age specified participants. The list should contain one item for each
      * participant, and the item value should be the age of the participant.<br/>
@@ -95,4 +101,12 @@ public class ActivityQuery extends AbstractDateRangeQuery {
 	public LocationFilters getStartPointLocationFilters() {
 		return startPointLocationFilters;
 	}
+
+    public Boolean getComboActivity() {
+        return comboActivity;
+    }
+
+    public void setComboActivity(Boolean comboActivity) {
+        this.comboActivity = comboActivity;
+    }
 }
