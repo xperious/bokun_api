@@ -48,6 +48,14 @@ public class StringUtils {
         }
         return false;
     }
+
+    public static boolean allNullOrEmpty(String... s) {
+        boolean allEmpty = true;
+        for (String str : s) {
+            allEmpty = allEmpty && isNullOrEmpty(str);
+        }
+        return allEmpty;
+    }
     
     public static Set<String> commaSeparatedToSet(String s) {
     	Set<String> set = new HashSet<>();
