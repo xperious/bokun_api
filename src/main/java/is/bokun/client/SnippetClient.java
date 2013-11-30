@@ -33,7 +33,7 @@ public class SnippetClient extends AbstractClient {
 
     public String getActivityBookingOptions(Long id, String lang, String currency, boolean showCalendar, boolean showUpcoming,
     		boolean showActivityList, boolean hideExtras, boolean showWarningIfFewLeft, int warningThreshold,
-    		String displayOrder, int maxUpcoming, boolean includeSoldOut, boolean defaultCategoryMandatory, int year, int month, String containerId) {
+    		String displayOrder, int maxUpcoming, boolean includeSoldOut, boolean defaultCategoryMandatory, boolean showTimesAsDropdownBox, int year, int month, String containerId) {
         NVP[] params = new NVP[]{
                 new NVP("showCalendar", showCalendar),
                 new NVP("showUpcoming", showUpcoming),
@@ -47,7 +47,8 @@ public class SnippetClient extends AbstractClient {
                 new NVP("year", year),
                 new NVP("month", month),
                 new NVP("containerId", containerId),
-                new NVP("defaultCategoryMandatory", defaultCategoryMandatory)
+                new NVP("defaultCategoryMandatory", defaultCategoryMandatory),
+                new NVP("showTimesAsDropdownBox", showTimesAsDropdownBox)
         };
         String uri = appendLangAndCurrency("/snippets/activity/" + id + "/booking-options", lang, currency, params);
         return getAndValidateStr(uri);
