@@ -46,6 +46,7 @@ public class SendRequestDto {
 		public String from_name;
 		public String bcc_address;
 		public Boolean preserve_recipients = true;
+        public Boolean track_clicks = false;
 		
 		public List<Recipient> to = new ArrayList<>();
 		public List<Variable> global_merge_vars = new ArrayList<>();
@@ -99,6 +100,22 @@ public class SendRequestDto {
 		public void setGlobal_merge_vars(List<Variable> global_merge_vars) {
 			this.global_merge_vars = global_merge_vars;
 		}
+
+        public Boolean getTrack_clicks() {
+            return track_clicks;
+        }
+
+        public void setTrack_clicks(Boolean track_clicks) {
+            this.track_clicks = track_clicks;
+        }
+
+        public Boolean getPreserve_recipients() {
+            return preserve_recipients;
+        }
+
+        public void setPreserve_recipients(Boolean preserve_recipients) {
+            this.preserve_recipients = preserve_recipients;
+        }
 
         public List<Attachment> getAttachments() {
             return attachments;
