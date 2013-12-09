@@ -13,6 +13,8 @@ public class PartnerServiceBookingDto {
     public PartnerServiceBookingStatusEnum status;
     public Date replyDate;
 
+    public boolean unreadComments;
+
     public String serviceTitle;
     public Double price;
     public PartnerServicePricingTypeEnum pricingType;
