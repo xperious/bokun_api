@@ -14,6 +14,8 @@ public class BookingReservationRequestDto {
     public BookingAnswersDto answers;
     public boolean createPaymentsAutomatically;
     public List<BookingPaymentInfoDto> paymentInfos = new ArrayList<>();
+
+    public List<BookingFieldDto> bookingFields = new ArrayList<>();
     
     public Double discountPercentage;
     public Double discountAmount;
@@ -85,4 +87,12 @@ public class BookingReservationRequestDto {
 	public void setDiscountAmount(Double discountAmount) {
 		this.discountAmount = discountAmount;
 	}
+
+    public List<BookingFieldDto> getBookingFields() {
+        return bookingFields;
+    }
+
+    public void setBookingFields(List<BookingFieldDto> bookingFields) {
+        this.bookingFields = bookingFields;
+    }
 }
