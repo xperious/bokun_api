@@ -20,6 +20,12 @@ public abstract class AbstractQuery {
 	public TextFilter textFilter;
 
     /**
+     * Specifying this filter will filter the results by the external Id specified
+     * by the product owner.
+     */
+    public String externalId;
+
+    /**
      * Number of the page to retrieve in the paginated result list.
      * Default value is 1.
      */
@@ -58,7 +64,16 @@ public abstract class AbstractQuery {
 	public void setTextFilter(TextFilter textFilter) {
 		this.textFilter = textFilter;
 	}
-	public void setPage(int page) {
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
+    }
+
+    public void setPage(int page) {
 		this.page = page;
 	}
 	public void setPageSize(int pageSize) {
