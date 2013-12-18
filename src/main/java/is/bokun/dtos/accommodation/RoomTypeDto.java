@@ -30,6 +30,8 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 	public int sofaBedCount = 0;
 
 	public boolean shared = false;
+
+    public boolean internalUseOnly;
 	
 	public String pricingType;
 	

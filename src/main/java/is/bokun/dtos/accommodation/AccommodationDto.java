@@ -2,6 +2,7 @@ package is.bokun.dtos.accommodation;
 
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import is.bokun.dtos.*;
@@ -54,5 +55,16 @@ public class AccommodationDto extends ProductDto {
     		}
     	}
     	return null;
+    }
+
+    @JsonIgnore
+    public List<RoomTypeDto> getPublicRoomTypes() {
+        List<RoomTypeDto> list = new ArrayList<>();
+        for (RoomTypeDto r : roomTypes) {
+            if ( !r.internalUseOnly ) {
+                list.add(r);
+            }
+        }
+        return list;
     }
 }
