@@ -36,6 +36,10 @@ public class ProductBookingSearchResultItem {
     public boolean unconfirmedPayments;
 	public Date startDate, endDate;
 	public Map<String,Object> fields = new HashMap<>();
+
+    public boolean boxBooking;
+    public BookingItemInfoDto boxProduct;
+    public BookingItemInfoDto boxSupplier;
 	
 	@JsonIgnore
 	public int getIntField(String name) {
