@@ -65,6 +65,13 @@ public class AccommodationDto extends ProductDto {
                 list.add(r);
             }
         }
+
+        Collections.sort(list, new Comparator<RoomTypeDto>() {
+            @Override
+            public int compare(RoomTypeDto o1, RoomTypeDto o2) {
+                return o1.title.compareTo(o2.title);
+            }
+        });
         return list;
     }
 }
