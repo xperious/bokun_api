@@ -10,6 +10,7 @@ public class Paginator {
 
 	public static final int ADJACENTS = 3;
 
+    public boolean zeroBased;
 	public int currentPage;
 	public int pageSize;
 	public int startIndex;
@@ -18,11 +19,15 @@ public class Paginator {
 
 	public List<Item> items = new ArrayList<Item>();
 
-	public Paginator(int currentPage, int pageSize, long totalSize) {
+    public Paginator(int currentPage, int pageSize, long totalSize) {
+        this(currentPage, pageSize, totalSize, false);
+    }
+	public Paginator(int currentPage, int pageSize, long totalSize, boolean zeroBased) {
+        this.zeroBased = zeroBased;
 		this.currentPage = currentPage;
 		this.pageSize = pageSize;
 		this.totalSize = totalSize;
-		this.startIndex = calculateStartIndex(currentPage, pageSize);
+		this.startIndex = calculateStartIndex(currentPage, pageSize, zeroBased);
 		this.totalPages = calculateTotalPages(pageSize, totalSize);
 		prepareItems();
 	}
@@ -65,7 +70,7 @@ public class Paginator {
 	}
 	
 	public int rangeStart() {
-		return startIndex+1;
+        return startIndex+1;
 	}
 	
 	public int rangeEnd() {
@@ -85,11 +90,19 @@ public class Paginator {
 	}
 
 	public boolean hasPreviousPage() {
-		return currentPage > 1;
+        if ( zeroBased ) {
+            return currentPage > 0;
+        } else {
+		    return currentPage > 1;
+        }
 	}
 
 	public boolean hasNextPage() {
-		return currentPage < totalPages;
+        if ( zeroBased ) {
+            return currentPage < (totalPages-1);
+        } else {
+		    return currentPage < totalPages;
+        }
 	}
 
 	public static int calculateTotalPages(int pageSize, long totalSize) {
@@ -104,9 +117,17 @@ public class Paginator {
 		}
 	}
 
-	public static int calculateStartIndex(int page, int pageSize) {
-        if ( page < 1 ) { page = 1; }
-		return (page-1) * pageSize;
+    public static int calculateStartIndex(int page, int pageSize) {
+        return calculateStartIndex(page, pageSize, false);
+    }
+	public static int calculateStartIndex(int page, int pageSize, boolean zeroBased) {
+        if ( zeroBased ) {
+            if ( page < 0 ) { page = 0; }
+            return (page * pageSize);
+        } else {
+            if ( page < 1 ) { page = 1; }
+		    return (page-1) * pageSize;
+        }
 	}
 
 	public class Item {
@@ -121,5 +142,13 @@ public class Paginator {
 		public Item() {
 			this.separator = true;
 		}
+
+        public boolean isCurrentPage() {
+            if ( zeroBased ) {
+                return this.p == (currentPage+1);
+            } else {
+                return this.p == currentPage;
+            }
+        }
 	}
 }
