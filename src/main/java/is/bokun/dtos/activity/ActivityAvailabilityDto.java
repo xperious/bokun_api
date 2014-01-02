@@ -15,6 +15,8 @@ public class ActivityAvailabilityDto {
     public int availabilityCount;
     public int bookedParticipants;
     public int minParticipants;
+    public boolean pickupAllotment;
+    public int pickupAvailabilityCount;
     public boolean unlimitedAvailability;
 
     public boolean comboActivity;

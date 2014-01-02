@@ -28,6 +28,7 @@ public class ActivityDto extends ProductDto implements WithExtras {
     public Double nextDefaultPrice;
     
     public boolean pickupService;
+    public boolean pickupAllotment;
     public List<String> pickupFlags = new ArrayList<>();
     public PickupPricingTypeEnum pickupPricingType;
     public Double pickupPrice;
