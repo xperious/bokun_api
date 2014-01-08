@@ -26,6 +26,8 @@ public class ActivityAvailabilityDto {
     
     public double defaultPrice;
     public Map<Long,Double> pricesByCategory = new HashMap<>();
+
+    public Map<Long,Double> pickupPricesByCategory = new HashMap<>();
     
     public ActivityAvailabilityDto() {}
 
