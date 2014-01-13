@@ -224,6 +224,21 @@ public class ShoppingCartClient extends AbstractClient {
         String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/accommodation", lang, currency);
         return postAndGetCart(uri, bookingRequest);
     }
+
+    /**
+     * Add an accommodation booking to a guest's session cart.
+     *
+     * @param sessionId the guest's session ID
+     * @param bookingRequest the request describing the booking
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @param trackingCode Affiliate tracking code.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto addAccommodationToSessionCart(String sessionId, AccommodationBookingRequestDto bookingRequest, String lang, String currency, String trackingCode) {
+        String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/accommodation", lang, currency, new NVP("trackingCode",trackingCode));
+        return postAndGetCart(uri, bookingRequest);
+    }
     
     /**
      * Add a car rental booking to a guest's session cart.
@@ -236,6 +251,21 @@ public class ShoppingCartClient extends AbstractClient {
      */
     public ShoppingCartDto addCarRentalToSessionCart(String sessionId, CarRentalBookingRequestDto bookingRequest, String lang, String currency) {
         String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/car-rental", lang, currency);
+        return postAndGetCart(uri, bookingRequest);
+    }
+
+    /**
+     * Add a car rental booking to a guest's session cart.
+     *
+     * @param sessionId the guest's session ID
+     * @param bookingRequest the request describing the booking
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @param trackingCode Affiliate tracking code.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto addCarRentalToSessionCart(String sessionId, CarRentalBookingRequestDto bookingRequest, String lang, String currency, String trackingCode) {
+        String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/car-rental", lang, currency, new NVP("trackingCode",trackingCode));
         return postAndGetCart(uri, bookingRequest);
     }
 
@@ -254,6 +284,21 @@ public class ShoppingCartClient extends AbstractClient {
     }
 
     /**
+     * Add an activity booking to a guest's session cart.
+     *
+     * @param sessionId the guest's session ID
+     * @param bookingRequest the request describing the booking
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @param trackingCode Affiliate tracking code.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto addActivityToSessionCart(String sessionId, ActivityBookingRequestDto bookingRequest, String lang, String currency, String trackingCode) {
+        String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/activity", lang, currency, new NVP("trackingCode",trackingCode));
+        return postAndGetCart(uri, bookingRequest);
+    }
+
+    /**
      * Add an accommodation booking to a customer's shopping cart.
      *
      * @param securityToken the token received by the customer on authentication
@@ -264,6 +309,21 @@ public class ShoppingCartClient extends AbstractClient {
      */
     public ShoppingCartDto addAccommodationToCustomerCart(String securityToken, AccommodationBookingRequestDto bookingRequest, String lang, String currency) {
         String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/accommodation", lang, currency);
+        return postAndGetCart(uri, bookingRequest);
+    }
+
+    /**
+     * Add an accommodation booking to a customer's shopping cart.
+     *
+     * @param securityToken the token received by the customer on authentication
+     * @param bookingRequest the request describing the booking
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @param trackingCode Affiliate tracking code.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto addAccommodationToCustomerCart(String securityToken, AccommodationBookingRequestDto bookingRequest, String lang, String currency, String trackingCode) {
+        String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/accommodation", lang, currency, new NVP("trackingCode",trackingCode));
         return postAndGetCart(uri, bookingRequest);
     }
     
@@ -282,6 +342,21 @@ public class ShoppingCartClient extends AbstractClient {
     }
 
     /**
+     * Add a car rental booking to a customer's shopping cart.
+     *
+     * @param securityToken the token received by the customer on authentication
+     * @param bookingRequest the request describing the booking
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @param trackingCode Affiliate tracking code.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto addCarRentalToCustomerCart(String securityToken, CarRentalBookingRequestDto bookingRequest, String lang, String currency, String trackingCode) {
+        String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/car-rental", lang, currency, new NVP("trackingCode",trackingCode));
+        return postAndGetCart(uri, bookingRequest);
+    }
+
+    /**
      * Add an activity booking to a customer's shopping cart.
      *
      * @param securityToken the token received by the customer on authentication
@@ -292,6 +367,21 @@ public class ShoppingCartClient extends AbstractClient {
      */
     public ShoppingCartDto addActivityToCustomerCart(String securityToken, ActivityBookingRequestDto bookingRequest, String lang, String currency) {
         String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/activity", lang, currency);
+        return postAndGetCart(uri, bookingRequest);
+    }
+
+    /**
+     * Add an activity booking to a customer's shopping cart.
+     *
+     * @param securityToken the token received by the customer on authentication
+     * @param bookingRequest the request describing the booking
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @param trackingCode Affiliate tracking code.
+     * @return the updated shopping cart
+     */
+    public ShoppingCartDto addActivityToCustomerCart(String securityToken, ActivityBookingRequestDto bookingRequest, String lang, String currency, String trackingCode) {
+        String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/activity", lang, currency, new NVP("trackingCode",trackingCode));
         return postAndGetCart(uri, bookingRequest);
     }
 
