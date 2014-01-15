@@ -117,13 +117,13 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 			if ( pickup == null || dropoff == null ) {
 				return 0;
 			}
-			
+
 			if ( pickup.id.equals(dropoff.id) ) {
 				return pickup.priceForPickupAndDropoff;
 			} else {
 				return pickup.priceForPickup + dropoff.priceForDropoff;
 			}
-			
+
 		} else {
 			return 0;
 		}
