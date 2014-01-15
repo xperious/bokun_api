@@ -28,6 +28,8 @@ public class BookingQuery {
 	public List<Long> sellingVendorIds = new ArrayList<>();
 	public List<Long> productIds = new ArrayList<>();
 	public Long agentId;
+    public Long affiliateId;
+    public Long affiliateOwnerId;
 
     public String textFilter;
 
@@ -182,7 +184,24 @@ public class BookingQuery {
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
 	}
-	private static List<Long> cleanList(List<Long> l) {
+
+    public Long getAffiliateOwnerId() {
+        return affiliateOwnerId;
+    }
+
+    public void setAffiliateOwnerId(Long affiliateOwnerId) {
+        this.affiliateOwnerId = affiliateOwnerId;
+    }
+
+    public Long getAffiliateId() {
+        return affiliateId;
+    }
+
+    public void setAffiliateId(Long affiliateId) {
+        this.affiliateId = affiliateId;
+    }
+
+    private static List<Long> cleanList(List<Long> l) {
 		List<Long> list = new ArrayList<>();
 		for (Long lng : l) {
 			if ( lng != null ) {

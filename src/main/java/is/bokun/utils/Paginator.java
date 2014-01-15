@@ -70,7 +70,11 @@ public class Paginator {
 	}
 	
 	public int rangeStart() {
-        return startIndex+1;
+        if ( totalSize == 0 ) {
+            return 0;
+        } else {
+            return startIndex+1;
+        }
 	}
 	
 	public int rangeEnd() {

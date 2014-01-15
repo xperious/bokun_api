@@ -21,6 +21,7 @@ public class ProductBookingSearchResultItem {
 	public BookingItemInfoDto vendor;
 	public BookingItemInfoDto seller;
 	public BookingItemInfoDto agent;
+    public BookingItemInfoDto affiliate;
 	public BookingItemInfoDto saleSource;
 	public ExtranetUserDto extranetUser;
     public CustomerDto customer;
@@ -35,6 +36,9 @@ public class ProductBookingSearchResultItem {
     public Double discountAmount;
     public boolean unconfirmedPayments;
 	public Date startDate, endDate;
+
+    public Double affiliateCommission;
+
 	public Map<String,Object> fields = new HashMap<>();
 
     public boolean boxBooking;
@@ -45,6 +49,16 @@ public class ProductBookingSearchResultItem {
 	public int getIntField(String name) {
 		return (Integer) fields.get(name);
 	}
+
+    @JsonIgnore
+    public Double getAffiliateCommissionAmount() {
+        if ( affiliateCommission != null ) {
+            double base = (double) totalPrice;
+            return Math.floor(base * (affiliateCommission.doubleValue() / 100d) + 0.5d);
+        } else {
+            return 0d;
+        }
+    }
 	
 	public String getCurrency() {
 		if ( StringUtils.isNullOrEmpty(currency) ) {
