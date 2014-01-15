@@ -1,5 +1,6 @@
 package is.bokun.dtos;
 
+import java.text.Collator;
 import java.util.*;
 
 import com.fasterxml.jackson.annotation.*;
@@ -21,6 +22,7 @@ public class HasBookableExtras implements WithExtras {
     
     @JsonIgnore
     public List<BookableExtraDto> getSortedExtras() {
+        final Collator collator = Collator.getInstance(new Locale("is"));
     	Collections.sort(extras, new Comparator<BookableExtraDto>() {
 			@Override
 			public int compare(BookableExtraDto o1, BookableExtraDto o2) {
@@ -29,7 +31,7 @@ public class HasBookableExtras implements WithExtras {
 				} else if ( !o1.included && o2.included ) {
 					return 1;
 				} else {
-					return o1.title.compareTo(o2.title);
+					return collator.compare(o1.title, o2.title);
 				}
 			}
     	});

@@ -1,5 +1,6 @@
 package is.bokun.dtos.accommodation;
 
+import java.text.Collator;
 import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -66,10 +67,11 @@ public class AccommodationDto extends ProductDto {
             }
         }
 
+        final Collator collator = Collator.getInstance(new Locale("is"));
         Collections.sort(list, new Comparator<RoomTypeDto>() {
             @Override
             public int compare(RoomTypeDto o1, RoomTypeDto o2) {
-                return o1.title.compareTo(o2.title);
+                return collator.compare(o1.title, o2.title);
             }
         });
         return list;
