@@ -17,4 +17,12 @@ public class VideoDto {
 	public String providerName;
 	
 	public VideoDto() {}
+
+    public String getCleanThumbnailUrl() {
+        return thumbnailUrl.replace("http://", "//");
+    }
+
+    public String getCleanPreviewUrl() {
+        return previewUrl.replace("http://", "//");
+    }
 }

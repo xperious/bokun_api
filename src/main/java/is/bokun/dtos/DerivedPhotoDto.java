@@ -11,4 +11,8 @@ public class DerivedPhotoDto {
 
 	public String name;
 	public String url;
+
+    public String getCleanUrl() {
+        return url.replace("http://", "//");
+    }
 }
