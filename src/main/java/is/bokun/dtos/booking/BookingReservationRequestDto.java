@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import is.bokun.dtos.payments.CardDto;
+import is.bokun.dtos.payments.ChargeRequestDto;
 
 /**
  * @author Olafur Gauti Gudmundsson
@@ -25,7 +26,7 @@ public class BookingReservationRequestDto {
     public Double depositPercentage;
     public Double depositAmount;
 
-    public CardDto card;
+    public ChargeRequestDto chargeRequest;
 
     public BookingAnswersDto getAnswers() {
         return answers;
@@ -99,11 +100,11 @@ public class BookingReservationRequestDto {
         this.bookingFields = bookingFields;
     }
 
-    public CardDto getCard() {
-        return card;
+    public ChargeRequestDto getChargeRequest() {
+        return chargeRequest;
     }
 
-    public void setCard(CardDto card) {
-        this.card = card;
+    public void setChargeRequest(ChargeRequestDto chargeRequest) {
+        this.chargeRequest = chargeRequest;
     }
 }
