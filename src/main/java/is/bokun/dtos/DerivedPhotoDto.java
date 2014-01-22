@@ -3,6 +3,7 @@ package is.bokun.dtos;
 import javax.xml.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import is.bokun.utils.StringUtils;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlType(name = "derivedPhoto")
@@ -13,6 +14,6 @@ public class DerivedPhotoDto {
 	public String url;
 
     public String getCleanUrl() {
-        return url.replace("http://", "//");
+        return StringUtils.isNullOrEmpty(url) ? url :  url.replace("http://", "//");
     }
 }

@@ -3,6 +3,7 @@ package is.bokun.dtos;
 import javax.xml.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import is.bokun.utils.StringUtils;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlType(name = "video")
@@ -19,10 +20,10 @@ public class VideoDto {
 	public VideoDto() {}
 
     public String getCleanThumbnailUrl() {
-        return thumbnailUrl.replace("http://", "//");
+        return StringUtils.isNullOrEmpty(thumbnailUrl) ? thumbnailUrl : thumbnailUrl.replace("http://", "//");
     }
 
     public String getCleanPreviewUrl() {
-        return previewUrl.replace("http://", "//");
+        return StringUtils.isNullOrEmpty(previewUrl) ? previewUrl : previewUrl.replace("http://", "//");
     }
 }
