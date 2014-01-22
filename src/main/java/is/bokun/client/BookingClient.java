@@ -4,6 +4,8 @@ import com.google.inject.Inject;
 import is.bokun.dtos.ApiResponse;
 import is.bokun.dtos.ErrorDto;
 import is.bokun.dtos.booking.*;
+import is.bokun.dtos.payments.ChargeDto;
+import is.bokun.dtos.payments.ChargeRequestDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +112,19 @@ public class BookingClient extends AbstractClient {
 
     private BookingDetailsDto postBooking(String uri, Object body) {
         return postAndValidate(uri, body, BookingDetailsDto.class);
+    }
+
+    /**
+     * Charge a card to pay for a booking. The organization must have a
+     * valid payment gateway configured, or else this will return an error.
+     *
+     * @param bookingId The ID of the booking to pay for.
+     * @param chargeRequestDto Information about the card to be charged for the booking amount.
+     * @return Information about the charge that was authorized.
+     */
+    public ChargeDto chargeCardForBooking(Long bookingId, ChargeRequestDto chargeRequestDto) {
+        String uri = BASE + "/" + bookingId + "/charge-card";
+        return postAndValidate(uri, chargeRequestDto, ChargeDto.class);
     }
 
     /**
