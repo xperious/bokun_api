@@ -1,5 +1,6 @@
 package is.bokun.dtos.booking;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.PickupPlaceDto;
 import is.bokun.dtos.activity.PickupPricingTypeEnum;
 
@@ -10,6 +11,7 @@ import javax.xml.bind.annotation.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @XmlType(name = "activityBooking")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {

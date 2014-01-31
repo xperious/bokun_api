@@ -14,6 +14,9 @@ import com.fasterxml.jackson.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class BookingDetailsDto {
 
+    @XmlElement
+    public Date creationDate;
+
 	@XmlElement(name = "id")
 	public Long bookingId;
 	@XmlElement
@@ -47,6 +50,10 @@ public class BookingDetailsDto {
 	@XmlElementWrapper
 	@XmlElement(name="activityBooking")
 	public List<ActivityBookingDetailsDto> activityBookings = new ArrayList<>();
+
+    @XmlElementWrapper
+    @XmlElement(name="bookingField")
+    public List<BookingFieldDto> bookingFields = new ArrayList<>();
 	
 	@JsonIgnore
 	public List<ProductBookingDetailsDto> getProductBookings() {
