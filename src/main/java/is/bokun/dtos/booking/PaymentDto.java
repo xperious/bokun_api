@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.xml.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * @author Olafur Gauti Gudmundsson
@@ -12,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlType(name = "payment")
 @XmlAccessorType(XmlAccessType.FIELD)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class PaymentDto {
 
     public Long id;
