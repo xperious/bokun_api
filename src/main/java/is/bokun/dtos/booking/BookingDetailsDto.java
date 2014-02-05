@@ -1,5 +1,6 @@
 package is.bokun.dtos.booking;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.CustomerDto;
 
 import java.util.*;
@@ -9,6 +10,7 @@ import javax.xml.bind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @XmlRootElement(name = "booking")
 @XmlType(name = "booking")
 @XmlAccessorType(XmlAccessType.FIELD)

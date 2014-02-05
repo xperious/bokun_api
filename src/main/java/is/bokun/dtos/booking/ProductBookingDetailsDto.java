@@ -6,11 +6,13 @@ import java.util.List;
 import javax.xml.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * @author Olafur Gauti Gudmundsson
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @XmlType(name = "productBooking")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProductBookingDetailsDto {
