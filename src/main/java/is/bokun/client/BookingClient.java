@@ -1,8 +1,11 @@
 package is.bokun.client;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.inject.Inject;
+import com.ning.http.client.Response;
 import is.bokun.dtos.ApiResponse;
 import is.bokun.dtos.ErrorDto;
+import is.bokun.dtos.TranslationLanguageDto;
 import is.bokun.dtos.booking.*;
 import is.bokun.dtos.payments.ChargeDto;
 import is.bokun.dtos.payments.ChargeRequestDto;
@@ -236,5 +239,41 @@ public class BookingClient extends AbstractClient {
     public ApiResponse reportPaymentError(Long bookingId, ErrorDto errorDetails) {
         String uri = BASE + "/" + bookingId + "/payment-error";
         return postAndValidate(uri, errorDetails, ApiResponse.class);
+    }
+
+    /**
+     * Get a list of reserved bookings for the guest (if any exist).
+     *
+     * @param sessionId the guest's session ID
+     * @param currency The currency used for prices.
+     * @return a list of any reserved bookings for the guest
+     */
+    public List<BookingDetailsDto> getReservedBookingsForGuest(String sessionId, String currency) {
+        try {
+            String uri = appendQueryParams(BASE + "/guest/" + sessionId + "/reserved", new NVP("currency", currency));
+            Response r = prepareGet(uri).execute().get();
+            validateResponse(r);
+            return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<List<BookingDetailsDto>>(){});
+        } catch (Exception e) {
+            throw wrapException(e);
+        }
+    }
+
+    /**
+     * Get a list of reserved bookings for the customer (if any exist).
+     *
+     * @param securityToken the token received by the customer on authentication
+     * @param currency The currency used for prices.
+     * @return a list of any reserved bookings for the customer
+     */
+    public List<BookingDetailsDto> getReservedBookingsForCustomer(String securityToken, String currency) {
+        try {
+            String uri = appendQueryParams(BASE + "/customer/" + securityToken + "/reserved", new NVP("currency", currency));
+            Response r = prepareGet(uri).execute().get();
+            validateResponse(r);
+            return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<List<BookingDetailsDto>>(){});
+        } catch (Exception e) {
+            throw wrapException(e);
+        }
     }
 }
