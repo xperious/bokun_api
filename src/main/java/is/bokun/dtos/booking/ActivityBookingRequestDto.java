@@ -57,6 +57,15 @@ public class ActivityBookingRequestDto {
         return StringUtils.parseDate(date);
     }
 
+    @JsonIgnore
+    public int getTotalParticipants() {
+        int counter = 0;
+        for (ActivityPricingCategoryBookingDto pcb : pricingCategoryBookings) {
+            counter += pcb.quantity;
+        }
+        return counter;
+    }
+
 	public List<ActivityPricingCategoryBookingDto> getPricingCategoryBookings() {
 		return pricingCategoryBookings;
 	}

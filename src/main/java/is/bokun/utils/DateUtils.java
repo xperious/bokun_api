@@ -53,6 +53,31 @@ public class DateUtils {
 		}
 		return counter;
 	}
+
+    public static boolean isOverlap(Calendar start1, Calendar end1, Calendar start2, Calendar end2) {
+        if ( (start1 == null && start2 == null) || (end1 == null && end2 == null) ) {
+            return true;
+        }
+
+        if ( start1 == null ) {
+            return start2.before(end1);
+        } else if ( start2 == null ) {
+            return start1.before(end2);
+        } else if ( end1 == null ) {
+            return end2.after(start1);
+        } else if ( end2 == null ) {
+            return end1.after(start2);
+        } else {
+            return start1.before(end2) && end1.after(start2);
+        }
+    }
+
+    public static Calendar fromDateWithNullifiedTime(Date d) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(d);
+        nullifyTime(c);
+        return c;
+    }
     
     public static void nullifyTime(Calendar c) {
         c.set(Calendar.HOUR_OF_DAY, 0);
