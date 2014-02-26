@@ -10,6 +10,7 @@ public class CostGroupDto {
     public String title;
     public CostGroupTypeEnum parentType;
     public Long parentId;
+    public String externalId;
 
     public List<CostItemDto> items = new ArrayList<>();
 
@@ -19,6 +20,14 @@ public class CostGroupDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
     }
 
     public String getTitle() {

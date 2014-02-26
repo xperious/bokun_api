@@ -12,6 +12,7 @@ public class CostItemDto {
     public String title;
     public CostItemTypeEnum itemType;
     public Long itemId;
+    public int sortIndex;
 
     public List<ItemPriceDto> prices = new ArrayList<>();
 
@@ -21,6 +22,14 @@ public class CostItemDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getSortIndex() {
+        return sortIndex;
+    }
+
+    public void setSortIndex(int sortIndex) {
+        this.sortIndex = sortIndex;
     }
 
     public String getTitle() {
