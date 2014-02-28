@@ -1,5 +1,6 @@
 package is.bokun.dtos.pricing;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -46,5 +47,15 @@ public class PriceSheetDto {
 
     public void setCostGroups(List<CostGroupDto> costGroups) {
         this.costGroups = costGroups;
+    }
+
+    @JsonIgnore
+    public CostGroupDto findCostGroup(CostGroupTypeEnum parentType, Long parentId) {
+        for (CostGroupDto grp : getCostGroups()) {
+            if (grp.getParentType() == parentType && grp.getParentId().equals(parentId)) {
+                return grp;
+            }
+        }
+        return null;
     }
 }

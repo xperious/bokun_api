@@ -59,6 +59,26 @@ public class PriceCatalogDto {
         this.currencies = currencies;
     }
 
+    public List<CurrencySettingsDto> getDerivedCurrencies() {
+        List<CurrencySettingsDto> list = new ArrayList<>();
+        for (CurrencySettingsDto cs : getCurrencies()) {
+            if (cs.getCurrencyHandling() != CurrencyHandlingTypeEnum.SPECIFY_AMOUNTS) {
+                list.add(cs);
+            }
+        }
+        return list;
+    }
+
+    public List<CurrencySettingsDto> getSpecifiedCurrencies() {
+        List<CurrencySettingsDto> list = new ArrayList<>();
+        for (CurrencySettingsDto cs : getCurrencies()) {
+            if (cs.getCurrencyHandling() == CurrencyHandlingTypeEnum.SPECIFY_AMOUNTS) {
+                list.add(cs);
+            }
+        }
+        return list;
+    }
+
     public String getDefaultCurrency() {
         return defaultCurrency;
     }

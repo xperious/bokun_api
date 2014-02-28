@@ -1,11 +1,14 @@
 package is.bokun.dtos.pricing;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ogg on 21/2/14.
- */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class CostItemDto {
 
     public Long id;
@@ -15,6 +18,22 @@ public class CostItemDto {
     public int sortIndex;
 
     public List<ItemPriceDto> prices = new ArrayList<>();
+
+    @JsonIgnore
+    public ItemPriceDto findPriceByDateRange(Long dateRangeId, String currency) {
+        for (ItemPriceDto price : prices) {
+            if ( price.getDateRangeId().equals(dateRangeId) && price.getCurrency().equalsIgnoreCase(currency) ) {
+                return price;
+            }
+        }
+
+        ItemPriceDto price = new ItemPriceDto();
+        price.amount = 0d;
+        price.costItemId = id;
+        price.currency = currency;
+        price.dateRangeId = dateRangeId;
+        return price;
+    }
 
     public Long getId() {
         return id;
