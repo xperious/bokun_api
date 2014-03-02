@@ -1,5 +1,6 @@
 package is.bokun.dtos.pricing;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -34,5 +35,11 @@ public class PriceSheetDateRangeDto {
 
     public void setEnd(Date end) {
         this.end = end;
+    }
+
+    @JsonIgnore
+    public boolean matches(Date d) {
+        return (getStart() == null || d.getTime() >= getStart().getTime())
+                && (getEnd() == null || d.getTime() < getEnd().getTime());
     }
 }

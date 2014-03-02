@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -47,6 +48,16 @@ public class PriceSheetDto {
 
     public void setCostGroups(List<CostGroupDto> costGroups) {
         this.costGroups = costGroups;
+    }
+
+    @JsonIgnore
+    public PriceSheetDateRangeDto findDateRange(Date d) {
+        for (PriceSheetDateRangeDto dateRange : getDateRanges()) {
+            if (dateRange.matches(d)) {
+                return dateRange;
+            }
+        }
+        return null;
     }
 
     @JsonIgnore

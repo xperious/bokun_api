@@ -6,5 +6,6 @@ public enum CostItemTypeEnum {
     PRICING_CATEGORY,
     VEHICLE_TYPE,
     PICKUP,
+    DROPOFF,
     EXTRA
 }

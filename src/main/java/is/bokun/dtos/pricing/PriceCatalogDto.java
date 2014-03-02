@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -57,6 +58,24 @@ public class PriceCatalogDto {
 
     public void setCurrencies(List<CurrencySettingsDto> currencies) {
         this.currencies = currencies;
+    }
+
+    public ItemPriceDto findPrice(CostGroupTypeEnum groupType, Long groupParentId, CostItemTypeEnum itemType, Long itemId, String currency, Date date) {
+        for (PriceSheetDto sheet : getSheets()) {
+            CostGroupDto grp = sheet.findCostGroup(groupType, groupParentId);
+            if ( grp != null ) {
+                PriceSheetDateRangeDto dateRange = sheet.findDateRange(date);
+                if ( dateRange != null ) {
+                    CostItemDto item = grp.findCostItem(itemType, itemId);
+                    if ( item != null ) {
+                        return item.findPriceByDateRange(dateRange.id, currency);
+                    }
+                    return null;
+                }
+                return null;
+            }
+        }
+        return null;
     }
 
     public List<CurrencySettingsDto> getDerivedCurrencies() {
