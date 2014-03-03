@@ -15,6 +15,7 @@ public class ActivityAvailabilityDto {
     public int availabilityCount;
     public int bookedParticipants;
     public int minParticipants;
+
     public boolean pickupAllotment;
     public int pickupAvailabilityCount;
     public boolean unlimitedAvailability;
@@ -27,7 +28,11 @@ public class ActivityAvailabilityDto {
     public double defaultPrice;
     public Map<Long,Double> pricesByCategory = new HashMap<>();
 
+    public Double pickupPrice;
     public Map<Long,Double> pickupPricesByCategory = new HashMap<>();
+
+    public Double dropoffPrice;
+    public Map<Long,Double> dropoffPricesByCategory = new HashMap<>();
     
     public ActivityAvailabilityDto() {}
 

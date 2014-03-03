@@ -22,8 +22,6 @@ public class PricingCategoryDto {
     
     public boolean internalUseOnly;
 
-    public Double dropoffPrice;
-
 	public List<String> flags = new ArrayList<>();
 	
 	public boolean defaultCategory;
