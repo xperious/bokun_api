@@ -33,6 +33,8 @@ public class ActivityAvailabilityDto {
 
     public Double dropoffPrice;
     public Map<Long,Double> dropoffPricesByCategory = new HashMap<>();
+
+    public Map<Long,Double> extraPrices = new HashMap<>();
     
     public ActivityAvailabilityDto() {}
 
