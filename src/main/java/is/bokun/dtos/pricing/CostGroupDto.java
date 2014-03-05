@@ -21,7 +21,7 @@ public class CostGroupDto {
     public List<CostItemDto> items = new ArrayList<>();
 
     @JsonIgnore
-    public CostItemDto findCostItem(CostItemTypeEnum itemType, Long itemId) {
+    public CostItemDto findCostItem(CostItemTypeEnum itemType, String itemId) {
         for (CostItemDto item : getItems()) {
             if ( item.getItemType() == itemType && item.getItemId().equals(itemId) ) {
                 return item;

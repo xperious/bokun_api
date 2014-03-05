@@ -60,7 +60,8 @@ public class PriceCatalogDto {
         this.currencies = currencies;
     }
 
-    public ItemPriceDto findPrice(CostGroupTypeEnum groupType, Long groupParentId, CostItemTypeEnum itemType, Long itemId, String currency, Date date) {
+    @JsonIgnore
+    public ItemPriceDto findPrice(CostGroupTypeEnum groupType, Long groupParentId, CostItemTypeEnum itemType, String itemId, String currency, Date date) {
         for (PriceSheetDto sheet : getSheets()) {
             CostGroupDto grp = sheet.findCostGroup(groupType, groupParentId);
             if ( grp != null ) {
@@ -78,6 +79,7 @@ public class PriceCatalogDto {
         return null;
     }
 
+    @JsonIgnore
     public List<CurrencySettingsDto> getDerivedCurrencies() {
         List<CurrencySettingsDto> list = new ArrayList<>();
         for (CurrencySettingsDto cs : getCurrencies()) {
@@ -88,6 +90,7 @@ public class PriceCatalogDto {
         return list;
     }
 
+    @JsonIgnore
     public List<CurrencySettingsDto> getSpecifiedCurrencies() {
         List<CurrencySettingsDto> list = new ArrayList<>();
         for (CurrencySettingsDto cs : getCurrencies()) {
