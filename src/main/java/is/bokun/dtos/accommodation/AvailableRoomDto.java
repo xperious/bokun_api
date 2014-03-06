@@ -1,8 +1,6 @@
 package is.bokun.dtos.accommodation;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -14,21 +12,23 @@ import is.bokun.queries.RoomQuery;
 public class AvailableRoomDto {
 	
 	public Long id;
-	public int totalPrice;
+	public double totalPrice;
 	public int maxBookableCount;
 
-    public List<Integer> guestCounts = new ArrayList<Integer>();
+    public Map<Long,Double> extraPrices = new HashMap<>();
+
+    public List<Integer> guestCounts = new ArrayList<>();
 
 	public RoomTypeDto roomType;
-	public List<AvailabilityInfoDto> availabilities = new ArrayList<AvailabilityInfoDto>();
+	public List<AvailabilityInfoDto> availabilities = new ArrayList<>();
 	
 	public AvailableRoomDto() {}
 
-	public AvailableRoomDto(Long id, int totalPrice, int availableAcrossInterval, RoomTypeDto roomType, AccommodationQuery query) {
+	public AvailableRoomDto(Long id, double totalPrice, int availableAcrossInterval, RoomTypeDto roomType, AccommodationQuery query) {
         this(id, totalPrice, availableAcrossInterval, roomType, query, false);
     }
 
-    public AvailableRoomDto(Long id, int totalPrice, int availableAcrossInterval, RoomTypeDto roomType, AccommodationQuery query, boolean showFullAvailability) {
+    public AvailableRoomDto(Long id, double totalPrice, int availableAcrossInterval, RoomTypeDto roomType, AccommodationQuery query, boolean showFullAvailability) {
 		this.id = id;
 		this.totalPrice = totalPrice;
 		this.roomType = roomType;

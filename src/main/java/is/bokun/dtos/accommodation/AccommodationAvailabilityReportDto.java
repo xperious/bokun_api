@@ -18,16 +18,6 @@ public class AccommodationAvailabilityReportDto {
 		return DateUtils.getNightCount(checkInDate, checkOutDate);
 	}
 	
-	public int lowestTotalPrice() {
-		int price = -1;
-		for (AvailableRoomDto room : availableRooms) {
-			if ( price == -1 || room.totalPrice < price ) {
-				price = room.totalPrice;
-			}
-		}
-		return price;
-	}
-	
 	public AvailableRoomDto findAvailableRoom(Long roomTypeId) {
 		for (AvailableRoomDto room : availableRooms) {
 			if ( room.roomType.id.equals(roomTypeId) ) {

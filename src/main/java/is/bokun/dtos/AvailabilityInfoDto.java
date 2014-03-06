@@ -7,5 +7,5 @@ public class AvailabilityInfoDto {
 
 	public String day;
 	public int availableCount;
-	public int price;
+	public double price;
 }
