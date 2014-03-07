@@ -7,5 +7,6 @@ public enum CostItemTypeEnum {
     VEHICLE_TYPE,
     PICKUP,
     DROPOFF,
+    PICKUP_AND_DROPOFF,
     EXTRA
 }

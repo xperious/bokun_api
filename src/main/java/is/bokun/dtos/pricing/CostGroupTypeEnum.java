@@ -8,5 +8,6 @@ public enum CostGroupTypeEnum {
     ACCOMMODATION,
     ACTIVITY,
     CAR_RENTAL,
+    CAR_RENTAL_LOCATIONS,
     EXTRAS
 }
