@@ -19,11 +19,11 @@ public class CarRentalLocationDto {
 	public boolean allDay;
 	public int openingHour;
 	public int closingHour;
-	
+
 	public int priceForPickup;
 	public int priceForDropoff;
 	public int priceForPickupAndDropoff;
-	
+
 	@XmlElementWrapper
 	@XmlElement(name="flag")
 	public List<String> flags = new ArrayList<>();

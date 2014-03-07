@@ -97,6 +97,16 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 		}
 		return null;
 	}
+
+    @JsonIgnore
+    public CarRentalLocationDto findPickupLocation(Long id) {
+        for (CarRentalLocationDto l : pickupLocations) {
+            if ( id.equals(l.id) ) {
+                return l;
+            }
+        }
+        return null;
+    }
 	
 	@JsonIgnore
 	public CarRentalLocationDto getDropoff(CarQuery q) {
@@ -107,6 +117,16 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 		}
 		return null;
 	}
+
+    @JsonIgnore
+    public CarRentalLocationDto findDropoffLocation(Long id) {
+        for (CarRentalLocationDto l : dropoffLocations) {
+            if ( id.equals(l.id) ) {
+                return l;
+            }
+        }
+        return null;
+    }
 	
 	@JsonIgnore
 	public int getLocationPrice(CarQuery q) {

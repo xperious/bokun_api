@@ -1,6 +1,7 @@
 package is.bokun.dtos.carrental;
 
 import is.bokun.dtos.AvailabilityInfoDto;
+import is.bokun.dtos.pricing.CostItemTypeEnum;
 import is.bokun.queries.CarQuery;
 
 import java.util.*;
@@ -15,10 +16,10 @@ public class AvailableCarDto {
 	public int maxBookableCount;
 
     public Map<Long,Double> extraPrices = new HashMap<>();
-	
+
 	public CarTypeDto carType;
 	
-	public List<AvailabilityInfoDto> availabilities = new ArrayList<AvailabilityInfoDto>();
+	public List<AvailabilityInfoDto> availabilities = new ArrayList<>();
 	
 	public AvailableCarDto() {}
 
