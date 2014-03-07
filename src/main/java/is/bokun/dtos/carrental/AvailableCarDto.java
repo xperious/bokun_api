@@ -13,6 +13,8 @@ public class AvailableCarDto {
 	public Long id;
 	public int totalPrice;
 	public int maxBookableCount;
+
+    public Map<Long,Double> extraPrices = new HashMap<>();
 	
 	public CarTypeDto carType;
 	
