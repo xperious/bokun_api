@@ -10,6 +10,8 @@ public class ProductFilter {
 	public Long owningVendorId;
 	public Set<String> owningVendorCategories = new HashSet<>();
 	public Map<Long,VendorFilter> vendorFilters = new HashMap<>();
+
+    public Set<Long> priceCatalogIds = new HashSet<>();
 	
 	public boolean isEmpty() {
 		return vendorFilters.isEmpty();
