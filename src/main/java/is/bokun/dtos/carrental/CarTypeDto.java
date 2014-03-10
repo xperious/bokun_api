@@ -59,6 +59,8 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 	public List<CarRentalLocationDto> dropoffLocations = new ArrayList<>();
 	
 	public List<TagGroupDto> tagGroups = new ArrayList<>();
+
+    public List<String> paymentCurrencies = new ArrayList<>();
 	
 	public String getTitle() {
 		return title;

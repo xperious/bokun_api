@@ -22,6 +22,8 @@ public class SearchResultItem implements SearchResult, WithPhotos {
     
     public String baseLanguage;
     public List<String> languages = new ArrayList<>();
+
+    public List<String> paymentCurrencies = new ArrayList<>();
     
     public List<CustomFieldDto> customFields = new ArrayList<>();
 	
