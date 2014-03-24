@@ -56,6 +56,17 @@ public class StringUtils {
         }
         return allEmpty;
     }
+
+    public static List<String> lineBrSeparatedToList(String s) {
+        List<String> list = new ArrayList<>();
+        if ( s == null || s.trim().isEmpty() ) return list;
+        for ( String item : s.trim().split(",") ) {
+            if ( !item.trim().isEmpty() ) {
+                list.add(item);
+            }
+        }
+        return list;
+    }
     
     public static Set<String> commaSeparatedToSet(String s) {
     	Set<String> set = new HashSet<>();
