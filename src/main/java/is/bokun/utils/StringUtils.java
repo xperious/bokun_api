@@ -60,9 +60,9 @@ public class StringUtils {
     public static List<String> lineBrSeparatedToList(String s) {
         List<String> list = new ArrayList<>();
         if ( s == null || s.trim().isEmpty() ) return list;
-        for ( String item : s.trim().split(",") ) {
+        for ( String item : s.trim().split("\n") ) {
             if ( !item.trim().isEmpty() ) {
-                list.add(item);
+                list.add(item.trim());
             }
         }
         return list;
