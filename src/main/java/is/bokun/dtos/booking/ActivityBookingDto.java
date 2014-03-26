@@ -16,6 +16,9 @@ public class ActivityBookingDto extends ProductBookingDto {
 	public ProductInfoDto activity;
 	public StartTimeDto startTime;
 
+    public boolean flexible;
+    public String selectedFlexDayOption;
+
     public Integer activityPrice;
     public Integer extrasPrice;
     

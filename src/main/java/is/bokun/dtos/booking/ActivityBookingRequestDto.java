@@ -12,6 +12,7 @@ public class ActivityBookingRequestDto {
 	public Long activityId;
 	public Long startTimeId;
 	public String date;
+    public String flexibleDayOption;
 	
 	public boolean pickup;
 	public Long pickupPlaceId;
@@ -24,7 +25,7 @@ public class ActivityBookingRequestDto {
 	
 	public List<ActivityPricingCategoryBookingDto> pricingCategoryBookings = new ArrayList<>();
 	
-	public List<ExtraBookingRequestDto> extras = new ArrayList<ExtraBookingRequestDto>();
+	public List<ExtraBookingRequestDto> extras = new ArrayList<>();
 	
 	public ActivityBookingRequestDto() {}
 	
@@ -44,7 +45,31 @@ public class ActivityBookingRequestDto {
 		this.startTimeId = startTimeId;
 	}
 
-	public String getDate() {
+    public String getFlexibleDayOption() {
+        return flexibleDayOption;
+    }
+
+    public void setFlexibleDayOption(String flexibleDayOption) {
+        this.flexibleDayOption = flexibleDayOption;
+    }
+
+    public boolean isPickup() {
+        return pickup;
+    }
+
+    public void setPickup(boolean pickup) {
+        this.pickup = pickup;
+    }
+
+    public boolean isDropoff() {
+        return dropoff;
+    }
+
+    public void setDropoff(boolean dropoff) {
+        this.dropoff = dropoff;
+    }
+
+    public String getDate() {
 		return date;
 	}
 

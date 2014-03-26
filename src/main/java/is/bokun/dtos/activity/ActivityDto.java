@@ -19,6 +19,10 @@ public class ActivityDto extends ProductDto implements WithExtras {
     public Long boxedActivityId;
 
     public boolean comboActivity;
+
+    public boolean dayBasedAvailability;
+    public boolean selectFromDayOptions;
+    public List<String> dayOptions = new ArrayList<>();
     
     public String durationType;
     public int duration;

@@ -10,6 +10,7 @@ public class ActivityAvailabilityDto {
 	public String id;
 	public String startTime;
 	public Long startTimeId;
+    public boolean flexible;
 	public Date date;
 	public String localizedDate;
     public int availabilityCount;
