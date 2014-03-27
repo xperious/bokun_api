@@ -13,6 +13,9 @@ public class CarRentalDto extends ProductDto {
 	public List<CarRentalLocationDto> pickupLocations = new ArrayList<>();
 	public List<CarRentalLocationDto> dropoffLocations = new ArrayList<>();
 	public List<BookableExtraDto> bookableExtras = new ArrayList<>();
+
+    public Long defaultPickupLocationId;
+    public Long defaultDropoffLocationId;
 	
 	public CarRentalDto() {
 		super();
