@@ -20,6 +20,9 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 	
 	public String startTime;
 	public Long startTimeId;
+
+    public boolean flexible;
+    public String selectedFlexDayOption;
 	
 	@XmlElementWrapper
 	@XmlElement(name="pricingCategoryBooking")

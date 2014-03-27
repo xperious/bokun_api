@@ -1,6 +1,8 @@
 package is.bokun.dtos.booking;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import is.bokun.dtos.AffiliateDto;
+import is.bokun.dtos.BookingChannelDto;
 import is.bokun.dtos.CustomerDto;
 
 import java.util.*;
@@ -41,6 +43,12 @@ public class BookingDetailsDto {
 	
 	@XmlElement
 	public CustomerDto customer;
+
+    @XmlElement
+    public AffiliateDto affiliate;
+
+    @XmlElement
+    public BookingChannelDto bookingChannel;
 	
 	@XmlElementWrapper
 	@XmlElement(name="accommodationBooking")

@@ -24,7 +24,7 @@ public class ExtraBookingDetailsDto {
 	
 	@XmlElementWrapper
 	@XmlElement(name="answer")
-	public List<BookingAnswerWithIdDto> answers = new ArrayList<BookingAnswerWithIdDto>();
+	public List<BookingAnswerWithIdDto> answers = new ArrayList<>();
 	
 	public ExtraBookingDetailsDto() {}
 	
