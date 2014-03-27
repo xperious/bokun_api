@@ -84,6 +84,24 @@ public class BookingClient extends AbstractClient {
     }
 
     /**
+     * Reserve a booking for a guest, reserving availability for all products.
+     * Then try charging a card to pay for the booking.
+     * Finally confirm the booking.
+     *
+     * If it fails, the booking will be moved back to the shopping cart.
+     *
+     * @param sessionId the guest's session ID
+     * @param requestDto the reservation and charge requests
+     * @param lang The language the content should be in.
+     * @param currency The currency used for prices.
+     * @return the charge results, along with the booking details
+     */
+    public ChargeDto reserveAndChargeAndConfirmBookingForGuest(String sessionId, BookingReservationRequestDto requestDto, String lang, String currency) {
+        String uri = appendLangAndCurrency(BASE + "/guest/" + sessionId + "/reserve-pay-confirm", lang, currency);
+        return postAndValidate(uri, requestDto, ChargeDto.class);
+    }
+
+    /**
      * Reserve a booking for a customer, reserving availability for all products. Normally called before accepting payment.
      * Creates a Booking with the status RESERVED from the items
      * in the customer's shopping cart, applying the answers supplied.
