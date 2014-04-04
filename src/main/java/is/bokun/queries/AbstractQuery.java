@@ -37,6 +37,12 @@ public abstract class AbstractQuery {
     public int pageSize = 20;
 
     /**
+     * Filter only the products that have been published since the date
+     * specified here. Date format is yyyy-MM-dd HH:mm:ss.
+     */
+    public String publishedSince;
+
+    /**
      * The name of the field to sort the results by.
      */
 	public String sortField;
@@ -85,6 +91,14 @@ public abstract class AbstractQuery {
 	public void setSortOrder(String s) {
 		this.sortOrder = s;
 	}
+
+    public String getPublishedSince() {
+        return publishedSince;
+    }
+
+    public void setPublishedSince(String publishedSince) {
+        this.publishedSince = publishedSince;
+    }
 
     /**
      * Check whether we should filter using textual search.
