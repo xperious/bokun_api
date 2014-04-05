@@ -14,6 +14,8 @@ public abstract class ProductDto {
     public Long productGroupId;
     public String productCategory;
 
+    public String lastPublished;
+
     public String title;
     public String description;
     public List<String> keywords = new ArrayList<>();
