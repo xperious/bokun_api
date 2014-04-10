@@ -28,6 +28,8 @@ public class BookingDetailsDto {
 	public String language;
 	@XmlElement
     public String confirmationCode;
+    @XmlElement
+    public String externalBookingReference;
 	@XmlElement
     public BookingStatusEnum status;
 	@XmlElement

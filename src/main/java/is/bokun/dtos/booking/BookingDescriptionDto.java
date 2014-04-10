@@ -16,6 +16,7 @@ public class BookingDescriptionDto {
 
     public Long id;
     public String confirmationCode;
+    public String externalBookingReference;
     public String customerName;
 
     public List<ProductBookingDescriptionDto> activityBookings;
@@ -44,6 +45,14 @@ public class BookingDescriptionDto {
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
+    }
+
+    public String getExternalBookingReference() {
+        return externalBookingReference;
+    }
+
+    public void setExternalBookingReference(String externalBookingReference) {
+        this.externalBookingReference = externalBookingReference;
     }
 
     public List<ProductBookingDescriptionDto> getActivityBookings() {
