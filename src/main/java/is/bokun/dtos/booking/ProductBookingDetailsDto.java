@@ -51,6 +51,10 @@ public class ProductBookingDetailsDto {
 	@XmlElement(name="payment")
     public List<PaymentDto> payments = new ArrayList<>();
 
+    @XmlElementWrapper
+    @XmlElement(name="note")
+    public List<BookingNoteDto> notes = new ArrayList<>();
+
     public Long getBookingId() {
         return bookingId;
     }
@@ -163,7 +167,23 @@ public class ProductBookingDetailsDto {
 		this.discountAmount = discountAmount;
 	}
 
-	@JsonIgnore
+    public ProductInfoDto getProduct() {
+        return product;
+    }
+
+    public void setProduct(ProductInfoDto product) {
+        this.product = product;
+    }
+
+    public List<BookingNoteDto> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<BookingNoteDto> notes) {
+        this.notes = notes;
+    }
+
+    @JsonIgnore
     public BookingPaymentInfoDto createAmountPayment(PaymentPaidTypeEnum paidType, PaymentTypeEnum paymentType, Double amount, String currency) {
 		BookingPaymentInfoDto p = new BookingPaymentInfoDto();
 		p.bookingId = getBookingId();
