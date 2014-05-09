@@ -100,7 +100,7 @@ public class AccommodationClient extends AbstractClient {
     	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String uri = appendLangAndCurrency(BASE + "/availabilities", lang, currency,
                 new NVP("start", formatter.format(start)), new NVP("end", formatter.format(end)),
-                new NVP("accommodationIds", StringUtils.idListToCommaSeparated(accommodationIds)));
+                new NVP("ids", StringUtils.idListToCommaSeparated(accommodationIds)));
         
         return getAndValidate(uri, AccommodationAvailabilitiesDto.class);
     }
