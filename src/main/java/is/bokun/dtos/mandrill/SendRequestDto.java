@@ -1,5 +1,6 @@
 package is.bokun.dtos.mandrill;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.*;
@@ -26,10 +27,6 @@ public class SendRequestDto {
 
 	public void setMessage(Message message) {
 		this.message = message;
-	}
-
-	public boolean isAsync() {
-		return async;
 	}
 
 	public void setAsync(boolean async) {
@@ -129,12 +126,19 @@ public class SendRequestDto {
 	public static class Recipient {
 		
 		public String email;
+        public String type;
 		
 		public Recipient() {}
 		
 		public Recipient(String email) {
 			this.email = email;
+            this.type = "to";
 		}
+
+        public Recipient(String email, String type) {
+            this.email = email;
+            this.type = type;
+        }
 		
 		public String getEmail() {
 			return email;
@@ -143,7 +147,14 @@ public class SendRequestDto {
 			this.email = email;
 		}
 
-	}
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+    }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Variable {

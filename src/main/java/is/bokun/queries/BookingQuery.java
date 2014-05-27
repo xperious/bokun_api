@@ -1,8 +1,12 @@
 package is.bokun.queries;
 
-import java.util.*;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingQuery {
@@ -27,6 +31,7 @@ public class BookingQuery {
 	public List<Long> vendorIds = new ArrayList<>();
 	public List<Long> sellingVendorIds = new ArrayList<>();
 	public List<Long> productIds = new ArrayList<>();
+    public Long extranetUserId;
 	public Long agentId;
     public Long affiliateId;
     public Long affiliateOwnerId;
@@ -34,9 +39,11 @@ public class BookingQuery {
     public String textFilter;
 
 	public String productTitle;
+    public String productExternalId;
 	public String vendorTitle;
 	public String sellerTitle;
 	public String bookingChannelTitle;
+    public String noteQuery;
 	
 	public Map<String,Object> fields = new HashMap<>();
 	
@@ -134,6 +141,15 @@ public class BookingQuery {
 		this.bookingChannelTitle = bookingChannelTitle;
 	}
 
+    public String getProductExternalId() {
+        return productExternalId;
+    }
+
+    public void setProductExternalId(String productExternalId) {
+        this.productExternalId = productExternalId;
+    }
+
+    @JsonIgnore
     public boolean isExcludeComboBookings() {
         return excludeComboBookings;
     }
@@ -166,6 +182,9 @@ public class BookingQuery {
 	public void setSortFields(List<SortField> sortFields) {
 		this.sortFields = sortFields;
 	}
+    public Long getExtranetUserId() {
+        return extranetUserId;
+    }
 	public Long getAgentId() {
 		return agentId;
 	}
@@ -199,6 +218,14 @@ public class BookingQuery {
 
     public void setAffiliateId(Long affiliateId) {
         this.affiliateId = affiliateId;
+    }
+
+    public String getNoteQuery() {
+        return noteQuery;
+    }
+
+    public void setNoteQuery(String noteQuery) {
+        this.noteQuery = noteQuery;
     }
 
     private static List<Long> cleanList(List<Long> l) {

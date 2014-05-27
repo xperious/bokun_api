@@ -50,6 +50,7 @@ public class NumericRangeFilter {
 		this.includeUpper = includeUpper;
 	}
 
+    @JsonIgnore
 	public boolean isExcluded() {
 		return excluded;
 	}

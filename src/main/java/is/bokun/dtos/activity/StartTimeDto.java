@@ -11,6 +11,10 @@ public class StartTimeDto {
 	
 	public int hour = 12;
 	public int minute;
+
+    public boolean overrideTimeWhenPickup;
+    public int pickupHour;
+    public int pickupMinute;
 	
     public String durationType;
     public int duration = 1;
@@ -31,6 +35,24 @@ public class StartTimeDto {
             s.append(0);
         }
         s.append(minute);
+        return s.toString();
+    }
+
+    @JsonIgnore
+    public String getPickupTimeAsString() {
+        if ( !overrideTimeWhenPickup ) {
+            return getTimeAsString();
+        }
+        StringBuilder s = new StringBuilder();
+        if ( pickupHour < 10 ) {
+            s.append(0);
+        }
+        s.append(pickupHour);
+        s.append(':');
+        if ( pickupMinute < 10 ) {
+            s.append(0);
+        }
+        s.append(pickupMinute);
         return s.toString();
     }
 

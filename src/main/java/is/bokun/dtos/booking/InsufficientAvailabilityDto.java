@@ -16,7 +16,7 @@ public class InsufficientAvailabilityDto {
 	public void setItems(List<InsufficientAvailabilityItemDto> items) {
 		this.items = items;
 	}
-	
+
 	@JsonIgnore
 	public boolean isEmpty() {
 		return items.isEmpty();

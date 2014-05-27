@@ -59,6 +59,7 @@ public class SendResponseDto {
 		
 		public String email;
 		public String status;
+        public String reject_reason;
 		
 		public String getEmail() {
 			return email;
@@ -72,5 +73,13 @@ public class SendResponseDto {
 		public void setStatus(String status) {
 			this.status = status;
 		}
-	}
+
+        public String getReject_reason() {
+            return reject_reason;
+        }
+
+        public void setReject_reason(String reject_reason) {
+            this.reject_reason = reject_reason;
+        }
+    }
 }

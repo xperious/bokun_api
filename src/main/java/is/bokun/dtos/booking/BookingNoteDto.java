@@ -58,24 +58,12 @@ public class BookingNoteDto {
         this.body = body;
     }
 
-    public boolean isSentAsEmail() {
-        return sentAsEmail;
-    }
-
     public void setSentAsEmail(boolean sentAsEmail) {
         this.sentAsEmail = sentAsEmail;
     }
 
-    public boolean isVoucherAttached() {
-        return voucherAttached;
-    }
-
     public void setVoucherAttached(boolean voucherAttached) {
         this.voucherAttached = voucherAttached;
-    }
-
-    public boolean isVoucherPricesShown() {
-        return voucherPricesShown;
     }
 
     public void setVoucherPricesShown(boolean voucherPricesShown) {

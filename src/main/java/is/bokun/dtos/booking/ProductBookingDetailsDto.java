@@ -1,12 +1,12 @@
 package is.bokun.dtos.booking;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.xml.bind.annotation.*;
-
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Olafur Gauti Gudmundsson
@@ -22,6 +22,7 @@ public class ProductBookingDetailsDto {
 	public Long parentBookingId;
 	
 	public String confirmationCode;
+    public String productConfirmationCode;
 	
 	@XmlTransient
     public String title;
@@ -55,6 +56,8 @@ public class ProductBookingDetailsDto {
     @XmlElement(name="note")
     public List<BookingNoteDto> notes = new ArrayList<>();
 
+    public BookingDetailsDto parentBooking;
+
     public Long getBookingId() {
         return bookingId;
     }
@@ -79,7 +82,15 @@ public class ProductBookingDetailsDto {
 		this.confirmationCode = confirmationCode;
 	}
 
-	public String getTitle() {
+    public String getProductConfirmationCode() {
+        return productConfirmationCode;
+    }
+
+    public void setProductConfirmationCode(String productConfirmationCode) {
+        this.productConfirmationCode = productConfirmationCode;
+    }
+
+    public String getTitle() {
         return title;
     }
 
@@ -181,6 +192,14 @@ public class ProductBookingDetailsDto {
 
     public void setNotes(List<BookingNoteDto> notes) {
         this.notes = notes;
+    }
+
+    public BookingDetailsDto getParentBooking() {
+        return parentBooking;
+    }
+
+    public void setParentBooking(BookingDetailsDto parentBooking) {
+        this.parentBooking = parentBooking;
     }
 
     @JsonIgnore

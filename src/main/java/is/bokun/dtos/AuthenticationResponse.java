@@ -23,14 +23,6 @@ public class AuthenticationResponse {
 		return new AuthenticationResponse();
 	}
 
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
     public String getSecurityToken() {
         return securityToken;
     }

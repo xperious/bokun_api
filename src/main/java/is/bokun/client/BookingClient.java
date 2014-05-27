@@ -5,10 +5,10 @@ import com.google.inject.Inject;
 import com.ning.http.client.Response;
 import is.bokun.dtos.ApiResponse;
 import is.bokun.dtos.ErrorDto;
-import is.bokun.dtos.TranslationLanguageDto;
 import is.bokun.dtos.booking.*;
 import is.bokun.dtos.payments.ChargeDto;
 import is.bokun.dtos.payments.ChargeRequestDto;
+import is.bokun.dtos.payments.ChargeResponseDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,9 +96,9 @@ public class BookingClient extends AbstractClient {
      * @param currency The currency used for prices.
      * @return the charge results, along with the booking details
      */
-    public ChargeDto reserveAndChargeAndConfirmBookingForGuest(String sessionId, BookingReservationRequestDto requestDto, String lang, String currency) {
+    public ChargeResponseDto reserveAndChargeAndConfirmBookingForGuest(String sessionId, BookingReservationRequestDto requestDto, String lang, String currency) {
         String uri = appendLangAndCurrency(BASE + "/guest/" + sessionId + "/reserve-pay-confirm", lang, currency);
-        return postAndValidate(uri, requestDto, ChargeDto.class);
+        return postAndValidate(uri, requestDto, ChargeResponseDto.class);
     }
 
     /**

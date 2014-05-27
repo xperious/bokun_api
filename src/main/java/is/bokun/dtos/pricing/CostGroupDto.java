@@ -5,11 +5,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@XmlType(name = "CostGroup")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CostGroupDto {
 
     public Long id;
@@ -18,6 +24,7 @@ public class CostGroupDto {
     public Long parentId;
     public String externalId;
 
+    @XmlElement(name="costItem")
     public List<CostItemDto> items = new ArrayList<>();
 
     @JsonIgnore

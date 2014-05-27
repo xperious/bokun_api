@@ -12,7 +12,7 @@ import java.util.List;
 public class SendTemplateRequestDto extends SendRequestDto {
 
     public String template_name;
-    public List<Variable> template_content = new ArrayList<>();
+    public List<SendRequestDto.Variable> template_content = new ArrayList<>();
 
     public String getTemplate_name() {
         return template_name;
@@ -22,11 +22,11 @@ public class SendTemplateRequestDto extends SendRequestDto {
         this.template_name = template_name;
     }
 
-    public List<Variable> getTemplate_content() {
+    public List<SendRequestDto.Variable> getTemplate_content() {
         return template_content;
     }
 
-    public void setTemplate_content(List<Variable> template_content) {
+    public void setTemplate_content(List<SendRequestDto.Variable> template_content) {
         this.template_content = template_content;
     }
 }

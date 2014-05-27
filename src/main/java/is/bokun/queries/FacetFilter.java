@@ -73,6 +73,7 @@ public class FacetFilter {
 		return values;
 	}
 
+    @JsonIgnore
 	public boolean isExcluded() {
 		return excluded;
 	}

@@ -1,5 +1,6 @@
 package is.bokun.dtos.activity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import is.bokun.queries.GeoPoint;
 
 import java.util.*;
@@ -48,10 +49,6 @@ public class ActivityRouteDto {
 
 	public void setEnd(GeoPoint end) {
 		this.end = end;
-	}
-
-	public boolean isSameStartEnd() {
-		return sameStartEnd;
 	}
 
 	public void setSameStartEnd(boolean sameStartEnd) {

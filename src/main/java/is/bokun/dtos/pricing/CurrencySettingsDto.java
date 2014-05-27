@@ -3,7 +3,13 @@ package is.bokun.dtos.pricing;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlType(name = "CurrencySettings")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CurrencySettingsDto {
 
     public String currency;

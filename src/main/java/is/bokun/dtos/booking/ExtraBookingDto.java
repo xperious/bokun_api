@@ -2,6 +2,7 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -30,10 +31,6 @@ public class ExtraBookingDto {
 
     public String getDescription() {
         return description;
-    }
-
-    public boolean isIncluded() {
-        return included;
     }
 
     public int getUnitCount() {

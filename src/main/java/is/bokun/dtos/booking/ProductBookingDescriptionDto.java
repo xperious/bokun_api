@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 public class ProductBookingDescriptionDto {
 
     public Long id;
+    public String productConfirmationCode;
     public String description;
 
     public Long getId() {
@@ -22,6 +23,14 @@ public class ProductBookingDescriptionDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getProductConfirmationCode() {
+        return productConfirmationCode;
+    }
+
+    public void setProductConfirmationCode(String productConfirmationCode) {
+        this.productConfirmationCode = productConfirmationCode;
     }
 
     public String getDescription() {

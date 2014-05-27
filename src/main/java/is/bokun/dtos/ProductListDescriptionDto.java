@@ -16,4 +16,6 @@ public class ProductListDescriptionDto {
     public String slug;
     public List<String> flags = new ArrayList<>();
     public Integer size;
+    public ProductListDescriptionDto parent;
+    public List<ProductListDescriptionDto> children;
 }

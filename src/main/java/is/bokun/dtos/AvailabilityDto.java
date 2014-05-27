@@ -2,6 +2,7 @@ package is.bokun.dtos;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -34,17 +35,9 @@ public class AvailabilityDto {
 	public void setAvailabilityCount(int availabilityCount) {
 		this.availabilityCount = availabilityCount;
 	}
-	public boolean isUnlimitedAvailability() {
-		return unlimitedAvailability;
-	}
+
 	public void setUnlimitedAvailability(boolean unlimitedAvailability) {
 		this.unlimitedAvailability = unlimitedAvailability;
-	}
-	public boolean isClosed() {
-		return closed;
-	}
-	public void setClosed(boolean closed) {
-		this.closed = closed;
 	}
     
     
