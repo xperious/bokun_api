@@ -1,17 +1,17 @@
 package is.bokun.dtos.booking;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.AffiliateDto;
 import is.bokun.dtos.BookingAgentDto;
 import is.bokun.dtos.BookingChannelDto;
 import is.bokun.dtos.CustomerDto;
 
-import java.util.*;
-
 import javax.xml.bind.annotation.*;
-
-import com.fasterxml.jackson.annotation.*;
-import is.bokun.dtos.ItemDto;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
@@ -35,15 +35,15 @@ public class BookingDetailsDto {
     public BookingStatusEnum status;
 	@XmlElement
     public String qrCodeUrl;
-
+    
 	@XmlElement
-	public int totalPrice;
+	public Integer totalPrice;
 	@XmlElement
-	public int totalPriceConverted;
+	public Integer totalPriceConverted;
 
 	@XmlTransient
 	public PaymentProviderDetailsDto paymentProviderDetails;
-
+	
 	@XmlElement
 	public CustomerDto customer;
 
@@ -55,15 +55,15 @@ public class BookingDetailsDto {
 
     @XmlElement
     public BookingChannelDto bookingChannel;
-
+	
 	@XmlElementWrapper
 	@XmlElement(name="accommodationBooking")
 	public List<AccommodationBookingDetailsDto> accommodationBookings = new ArrayList<>();
-
+	
 	@XmlElementWrapper
 	@XmlElement(name="carRentalBooking")
 	public List<CarRentalBookingDetailsDto> carRentalBookings = new ArrayList<>();
-
+	
 	@XmlElementWrapper
 	@XmlElement(name="activityBooking")
 	public List<ActivityBookingDetailsDto> activityBookings = new ArrayList<>();
@@ -71,7 +71,7 @@ public class BookingDetailsDto {
     @XmlElementWrapper
     @XmlElement(name="bookingField")
     public List<BookingFieldDto> bookingFields = new ArrayList<>();
-
+	
 	@JsonIgnore
 	public List<ProductBookingDetailsDto> getProductBookings() {
 		List<ProductBookingDetailsDto> productBookings = new ArrayList<>();
@@ -80,7 +80,7 @@ public class BookingDetailsDto {
 		productBookings.addAll(activityBookings);
 		return productBookings;
 	}
-
+	
 	@JsonIgnore
 	public AccommodationBookingDetailsDto findAccommodationBooking(Long id) {
 		for (AccommodationBookingDetailsDto b : accommodationBookings) {
@@ -90,7 +90,7 @@ public class BookingDetailsDto {
 		}
 		return null;
 	}
-
+	
 	@JsonIgnore
 	public ActivityBookingDetailsDto findActivityBooking(Long id) {
 		for (ActivityBookingDetailsDto b : activityBookings) {
@@ -100,7 +100,7 @@ public class BookingDetailsDto {
 		}
 		return null;
 	}
-
+	
 	@JsonIgnore
 	public CarRentalBookingDetailsDto findCarRentalBooking(Long id) {
 		for (CarRentalBookingDetailsDto b : carRentalBookings) {
@@ -110,5 +110,5 @@ public class BookingDetailsDto {
 		}
 		return null;
 	}
-
+	
 }

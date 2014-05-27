@@ -4,11 +4,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@XmlType(name = "CostItem")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CostItemDto {
 
     public Long id;
@@ -17,6 +25,7 @@ public class CostItemDto {
     public String itemId;
     public int sortIndex;
 
+    @XmlElement(name="itemPrice")
     public List<ItemPriceDto> prices = new ArrayList<>();
 
     @JsonIgnore
@@ -27,12 +36,24 @@ public class CostItemDto {
             }
         }
 
+        /*
         ItemPriceDto price = new ItemPriceDto();
         price.amount = 0d;
         price.costItemId = id;
         price.currency = currency;
         price.dateRangeId = dateRangeId;
         return price;
+        */
+        return null;
+    }
+
+    @JsonIgnore
+    public Set<Long> getSheetIds() {
+        Set<Long> ids = new HashSet<>();
+        for (ItemPriceDto price : prices) {
+            ids.add(price.dateRangeId);
+        }
+        return ids;
     }
 
     public Long getId() {

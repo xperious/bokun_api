@@ -53,16 +53,8 @@ public class ActivityBookingRequestDto {
         this.flexibleDayOption = flexibleDayOption;
     }
 
-    public boolean isPickup() {
-        return pickup;
-    }
-
     public void setPickup(boolean pickup) {
         this.pickup = pickup;
-    }
-
-    public boolean isDropoff() {
-        return dropoff;
     }
 
     public void setDropoff(boolean dropoff) {

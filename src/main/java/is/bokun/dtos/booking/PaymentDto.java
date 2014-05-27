@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -81,10 +82,6 @@ public class PaymentDto {
 
     public void setCurrency(String currency) {
         this.currency = currency;
-    }
-
-    public boolean isConfirmed() {
-        return confirmed;
     }
 
     public void setConfirmed(boolean confirmed) {

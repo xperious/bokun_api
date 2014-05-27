@@ -68,24 +68,12 @@ public class TextFilter {
         this.operator = operator;
     }
 
-    public boolean isSearchTitle() {
-        return searchTitle;
-    }
-
     public void setSearchTitle(boolean searchTitle) {
         this.searchTitle = searchTitle;
     }
 
-    public boolean isSearchKeywords() {
-        return searchKeywords;
-    }
-
     public void setSearchKeywords(boolean searchKeywords) {
         this.searchKeywords = searchKeywords;
-    }
-
-    public boolean isSearchFullText() {
-        return searchFullText;
     }
 
     public void setSearchFullText(boolean searchFullText) {

@@ -1,5 +1,7 @@
 package is.bokun.utils;
 
+import org.apache.commons.lang.WordUtils;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -24,6 +26,10 @@ public class StringUtils {
             } catch (ParseException ignored) {}
         }
         return null;
+    }
+
+    public static String capitalizeFirstLetterInEachWord(String s) {
+        return WordUtils.capitalizeFully(s);
     }
     
     public static String formatTime(int hour, int minute) {

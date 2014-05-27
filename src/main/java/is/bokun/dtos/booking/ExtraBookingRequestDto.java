@@ -10,7 +10,7 @@ public class ExtraBookingRequestDto {
 	public Long extraId;
 	public int unitCount;
 	
-	public List<BookingAnswerWithIdGroupDto> answers = new ArrayList<BookingAnswerWithIdGroupDto>();
+	public List<BookingAnswerWithIdGroupDto> answers = new ArrayList<>();
 	
 	public ExtraBookingRequestDto() {}
 

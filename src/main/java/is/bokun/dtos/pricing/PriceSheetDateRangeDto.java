@@ -4,14 +4,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@XmlType(name = "PriceSheetDateRange")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class PriceSheetDateRangeDto {
 
     public Long id;
     public Date start;
-    public Date end;
 
     public Long getId() {
         return id;
@@ -29,17 +34,11 @@ public class PriceSheetDateRangeDto {
         this.start = start;
     }
 
-    public Date getEnd() {
-        return end;
-    }
-
-    public void setEnd(Date end) {
-        this.end = end;
-    }
-
+/*
     @JsonIgnore
     public boolean matches(Date d) {
         return (getStart() == null || d.getTime() >= getStart().getTime())
                 && (getEnd() == null || d.getTime() < getEnd().getTime());
     }
+    */
 }

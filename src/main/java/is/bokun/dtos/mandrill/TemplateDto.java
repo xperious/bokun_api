@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TemplateDto {
 
-	public Long id;
 	public String name;
 	public String code;
 	public String slug;
@@ -15,7 +14,7 @@ public class TemplateDto {
 	public String published_at;
 	public String created_at;
 	public String updated_at;
-	
+
 	public String getName() {
 		return name;
 	}

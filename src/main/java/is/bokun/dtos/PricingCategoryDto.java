@@ -19,6 +19,9 @@ public class PricingCategoryDto {
     public boolean dependent;
     public Long masterCategoryId;
     public int maxPerMaster;
+
+    public boolean sumDependentCategories;
+    public int maxDependentSum;
     
     public boolean internalUseOnly;
 

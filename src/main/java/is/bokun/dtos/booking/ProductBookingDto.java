@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.*;
 public abstract class ProductBookingDto {
 
 	public Long id;
+    public String productConfirmationCode;
 	
 	public Date creationDate;
 	public Date lastModifedDate;

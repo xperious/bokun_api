@@ -1,5 +1,6 @@
 package is.bokun.dtos.payments;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -10,8 +11,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class ChargeRequestDto {
 
-    private CardDto card;
-    private boolean confirmBookingOnSuccess;
+    public CardDto card;
+    public boolean confirmBookingOnSuccess;
 
     public CardDto getCard() {
         return card;
@@ -19,10 +20,6 @@ public class ChargeRequestDto {
 
     public void setCard(CardDto card) {
         this.card = card;
-    }
-
-    public boolean isConfirmBookingOnSuccess() {
-        return confirmBookingOnSuccess;
     }
 
     public void setConfirmBookingOnSuccess(boolean confirmBookingOnSuccess) {

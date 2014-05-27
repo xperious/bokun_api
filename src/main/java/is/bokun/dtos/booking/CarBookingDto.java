@@ -39,7 +39,4 @@ public class CarBookingDto {
         return list;
     }
 
-    public List<ExtraBookingDto> getExtraBookings() {
-        return extraBookings;
-    }
 }

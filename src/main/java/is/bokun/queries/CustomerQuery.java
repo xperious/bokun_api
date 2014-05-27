@@ -3,6 +3,7 @@ package is.bokun.queries;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -88,6 +89,7 @@ public class CustomerQuery {
         this.sortField = sortField;
     }
 
+    @JsonIgnore
     public boolean isSortAsc() {
         return sortAsc;
     }

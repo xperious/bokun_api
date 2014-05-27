@@ -1,5 +1,6 @@
 package is.bokun.dtos.booking;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.PickupPlaceDto;
 import is.bokun.dtos.activity.PickupPricingTypeEnum;
@@ -124,10 +125,6 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 		this.pickupPlaceRoomNumber = pickupPlaceRoomNumber;
 	}
 
-	public boolean isPickup() {
-		return pickup;
-	}
-
 	public void setPickup(boolean pickup) {
 		this.pickup = pickup;
 	}
@@ -146,10 +143,6 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 
 	public void setDropoffPlaceDescription(String dropoffPlaceDescription) {
 		this.dropoffPlaceDescription = dropoffPlaceDescription;
-	}
-
-	public boolean isDropoff() {
-		return dropoff;
 	}
 
 	public void setDropoff(boolean dropoff) {
@@ -190,4 +183,15 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 		this.bookedDropoffPricingType = bookedDropoffPricingType;
 	}
 
+    public void setFlexible(boolean flexible) {
+        this.flexible = flexible;
+    }
+
+    public String getSelectedFlexDayOption() {
+        return selectedFlexDayOption;
+    }
+
+    public void setSelectedFlexDayOption(String selectedFlexDayOption) {
+        this.selectedFlexDayOption = selectedFlexDayOption;
+    }
 }
