@@ -3,7 +3,6 @@ package is.bokun.dtos.pricing;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import models.pricing.ItemPrice;
 import org.joda.time.DateTime;
 
 import javax.xml.bind.annotation.*;
