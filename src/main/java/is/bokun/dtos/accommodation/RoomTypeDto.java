@@ -1,12 +1,19 @@
 package is.bokun.dtos.accommodation;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.*;
 
 import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlType(name = "roomType")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 
 	public Long id;

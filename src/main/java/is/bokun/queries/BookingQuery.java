@@ -26,6 +26,9 @@ public class BookingQuery {
 	public String productType;
 
     public boolean excludeComboBookings;
+    public Long excludeComboBookingsBySupplierId;
+
+    public boolean supplierAndSellerAreDifferent;
 	
 	public List<Long> bookingChannelIds = new ArrayList<>();
 	public List<Long> vendorIds = new ArrayList<>();
@@ -140,6 +143,18 @@ public class BookingQuery {
 	public void setBookingChannelTitle(String bookingChannelTitle) {
 		this.bookingChannelTitle = bookingChannelTitle;
 	}
+
+    public Long getExcludeComboBookingsBySupplierId() {
+        return excludeComboBookingsBySupplierId;
+    }
+
+    public void setExcludeComboBookingsBySupplierId(Long excludeComboBookingsBySupplierId) {
+        this.excludeComboBookingsBySupplierId = excludeComboBookingsBySupplierId;
+    }
+
+    public void setExtranetUserId(Long extranetUserId) {
+        this.extranetUserId = extranetUserId;
+    }
 
     public String getProductExternalId() {
         return productExternalId;

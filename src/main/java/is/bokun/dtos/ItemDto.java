@@ -1,12 +1,13 @@
 package is.bokun.dtos;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.annotation.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlType(name = "item")
@@ -66,5 +67,8 @@ public class ItemDto {
     public void setFlags(List<String> flags) {
         this.flags = flags;
     }
-	
+
+    public boolean getGroup() {
+        return false;
+    }
 }

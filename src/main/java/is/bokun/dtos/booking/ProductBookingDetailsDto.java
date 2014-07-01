@@ -3,6 +3,7 @@ package is.bokun.dtos.booking;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import is.bokun.utils.PriceUtils;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
@@ -23,7 +24,9 @@ public class ProductBookingDetailsDto {
 	
 	public String confirmationCode;
     public String productConfirmationCode;
-	
+
+    public String barcodeUrl;
+
 	@XmlTransient
     public String title;
 	
@@ -213,6 +216,35 @@ public class ProductBookingDetailsDto {
 		p.amount = amount;
 		p.confirmed = true;
 		return p;
+    }
+
+    @JsonIgnore
+    public BookingAnswerDto getAnswer(String type) {
+        for (BookingAnswerDto a : getAnswers()) {
+            if( a.getType().equals(type) ) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    @JsonIgnore
+    public Double getSavedAmount() {
+        double saved = 0;
+        saved = totalPrice - PriceUtils.calculatePriceWithDiscount(totalPrice, discountPercentage, discountAmount);
+
+        return saved;
+    }
+
+    @JsonIgnore
+    public Double getPaidAmount() {
+        double paidAmount = 0;
+        for (PaymentDto p : payments) {
+            if ( p.getAmount() != null ) {
+                paidAmount += p.getAmount();
+            }
+        }
+        return paidAmount;
     }
     
 }

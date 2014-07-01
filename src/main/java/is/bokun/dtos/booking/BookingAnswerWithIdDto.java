@@ -33,6 +33,11 @@ public class BookingAnswerWithIdDto extends BookingAnswerDto {
 		this(group, type, answer);
 		this.question = question;
 	}
+
+    public BookingAnswerWithIdDto(String group, String type, String answer, String question, Long id) {
+        this(group, type, answer, question);
+        this.questionId = id;
+    }
 	
 	public Long getQuestionId() {
 		return questionId;

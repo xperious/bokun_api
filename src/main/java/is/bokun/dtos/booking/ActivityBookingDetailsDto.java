@@ -3,6 +3,7 @@ package is.bokun.dtos.booking;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.PickupPlaceDto;
+import is.bokun.dtos.activity.ActivityDto;
 import is.bokun.dtos.activity.PickupPricingTypeEnum;
 
 import java.util.*;
@@ -22,8 +23,12 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 	public String startTime;
 	public Long startTimeId;
 
+    public ActivityDto activity;
+
     public boolean flexible;
     public String selectedFlexDayOption;
+
+    public boolean customized;
 	
 	@XmlElementWrapper
 	@XmlElement(name="pricingCategoryBooking")
@@ -193,5 +198,13 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 
     public void setSelectedFlexDayOption(String selectedFlexDayOption) {
         this.selectedFlexDayOption = selectedFlexDayOption;
+    }
+
+    public int getBookedPriceForAll() {
+        int price = 0;
+        for (ActivityPricingCategoryBookingDto pcatBooking : pricingCategoryBookings) {
+            price += (pcatBooking.quantity * pcatBooking.bookedPrice);
+        }
+        return price;
     }
 }

@@ -5,7 +5,13 @@ import java.util.*;
 
 import com.fasterxml.jackson.annotation.*;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlType(name = "hasBookableExtra")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class HasBookableExtras implements WithExtras {
 
 	public List<BookableExtraDto> extras = new ArrayList<>();

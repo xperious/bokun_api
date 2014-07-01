@@ -7,8 +7,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TermsStatsFacetDto extends AbstractFacet {
 
-	public List<StatisticalFacetDto> entries = new ArrayList<>();
-	
+	//public List<StatisticalFacetDto> entries = new ArrayList<>();
+	public List<TermsStatsFacetEntryDto> entries = new ArrayList<>();
+
 	public TermsStatsFacetDto() {}
 	
 	public TermsStatsFacetDto(String name) {

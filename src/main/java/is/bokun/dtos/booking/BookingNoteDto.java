@@ -20,6 +20,8 @@ public class BookingNoteDto {
     public String author;
     public String subject;
     public String body;
+    public BookingNoteTypeEnum type;
+    public Long ownerId;
 
     public boolean sentAsEmail;
     public boolean voucherAttached;
@@ -76,5 +78,21 @@ public class BookingNoteDto {
 
     public void setRecipient(String recipient) {
         this.recipient = recipient;
+    }
+
+    public BookingNoteTypeEnum getType() {
+        return type;
+    }
+
+    public void setType(BookingNoteTypeEnum type) {
+        this.type = type;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
     }
 }
