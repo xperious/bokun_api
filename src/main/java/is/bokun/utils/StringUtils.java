@@ -57,6 +57,15 @@ public class StringUtils {
         return allEmpty;
     }
 
+    public static boolean containsIgnoreCase(Collection<String> collection, String value) {
+        for (String s : collection) {
+            if ( s.equalsIgnoreCase(value) ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static List<String> lineBrSeparatedToList(String s) {
         List<String> list = new ArrayList<>();
         if ( s == null || s.trim().isEmpty() ) return list;
@@ -77,6 +86,19 @@ public class StringUtils {
 			}
 		}
     	return set;
+    }
+
+    public static Set<Long> arrayToIds(String[] arr) {
+        Set<Long> ids = new HashSet<>();
+        if ( arr == null || arr.length == 0 ) {
+            return ids;
+        }
+        for (String s : arr) {
+            try {
+                ids.add(Long.parseLong(s));
+            } catch ( Throwable ignored ) {}
+        }
+        return ids;
     }
 
 	public static Set<Long> commaSeparatedStringToIds( String s ) {

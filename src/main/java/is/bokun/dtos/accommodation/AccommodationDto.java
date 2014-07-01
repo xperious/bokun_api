@@ -6,9 +6,17 @@ import java.util.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.*;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@XmlType(name = "accommodation")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class AccommodationDto extends ProductDto {
 
 	public int rating;

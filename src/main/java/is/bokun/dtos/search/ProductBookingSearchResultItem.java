@@ -1,15 +1,14 @@
 package is.bokun.dtos.search;
 
-import is.bokun.dtos.*;
-import is.bokun.dtos.booking.AgentBookingDetailsDto;
-import is.bokun.dtos.booking.BookingAgentUserDto;
-import is.bokun.dtos.booking.BookingItemInfoDto;
-import is.bokun.dtos.booking.BookingNoteDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import is.bokun.dtos.CustomerDto;
+import is.bokun.dtos.ExtranetUserDto;
+import is.bokun.dtos.ProductCategoryEnum;
+import is.bokun.dtos.booking.*;
 import is.bokun.utils.StringUtils;
 
 import java.util.*;
-
-import com.fasterxml.jackson.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductBookingSearchResultItem {
@@ -47,6 +46,7 @@ public class ProductBookingSearchResultItem {
     public boolean unconfirmedPayments;
 	public Date startDate, endDate;
 
+    public Double sellerCommission;
     public Double affiliateCommission;
     public Double agentCommission;
 
@@ -57,8 +57,10 @@ public class ProductBookingSearchResultItem {
     public boolean boxBooking;
     public BookingItemInfoDto boxProduct;
     public BookingItemInfoDto boxSupplier;
-	
-	@JsonIgnore
+
+    public boolean arrived;
+
+    @JsonIgnore
 	public int getIntField(String name) {
 		return (Integer) fields.get(name);
 	}
@@ -74,12 +76,27 @@ public class ProductBookingSearchResultItem {
     }
 
     @JsonIgnore
+    public Double getSupplierRevenueAmount() {
+        return getRevenueAmount(sellerCommission);
+    }
+
+    @JsonIgnore
     private Double getCommissionAmount(Double comm) {
         if ( comm != null ) {
             double base = (double) totalPrice;
             return Math.floor(base * (comm.doubleValue() / 100d) + 0.5d);
         } else {
             return 0d;
+        }
+    }
+
+    @JsonIgnore
+    private Double getRevenueAmount(Double comm) {
+        if ( comm != null ) {
+            double base = (double) totalPrice;
+            return Math.floor(base*(1 - comm.doubleValue() / 100d) + 0.5d);
+        } else {
+            return (double) totalPrice;
         }
     }
 
@@ -101,6 +118,26 @@ public class ProductBookingSearchResultItem {
         } else {
             return defaultValue;
         }
+    }
+
+    @JsonIgnore
+    public boolean hasNotesByVendor(Long vendorId) {
+        for (BookingNoteDto note : notes) {
+            if (note.ownerId != null && note.ownerId.equals(vendorId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @JsonIgnore
+    public boolean hasNotesByVendorAndType(Long vendorId, BookingNoteTypeEnum type) {
+        for (BookingNoteDto note : notes) {
+            if (note.ownerId != null && note.ownerId.equals(vendorId) && note.type.equals(type)) {
+                return true;
+            }
+        }
+        return false;
     }
 	
 	public String getCurrency() {

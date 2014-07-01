@@ -7,6 +7,7 @@ import is.bokun.queries.CarQuery;
 import java.util.*;
 
 import com.fasterxml.jackson.annotation.*;
+import is.bokun.utils.StringUtils;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CarTypeDto extends HasBookableExtras implements SearchResult, WithPhotos {
@@ -61,6 +62,13 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
     public Long defaultPickupLocationId;
     public Long defaultDropoffLocationId;
 
+    public CarTypeDto() {}
+
+    public CarTypeDto(Long id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
 	public List<TagGroupDto> tagGroups = new ArrayList<>();
 
     public List<String> paymentCurrencies = new ArrayList<>();
@@ -92,6 +100,7 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 	public void setKeywords(List<String> keywords) {
 		this.keywords = keywords;
 	}
+
 	
 	@JsonIgnore
 	public CarRentalLocationDto getPickup(CarQuery q) {

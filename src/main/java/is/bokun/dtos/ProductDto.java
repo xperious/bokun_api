@@ -6,7 +6,13 @@ import com.fasterxml.jackson.annotation.*;
 
 import is.bokun.utils.StringUtils;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlType(name = "product")
+@XmlAccessorType(XmlAccessType.FIELD)
 public abstract class ProductDto {
 
     public Long id;
@@ -38,7 +44,20 @@ public abstract class ProductDto {
     public VendorDto vendor;
 
     public ProductDto() {}
-    
+
+    @JsonIgnore
+    public List<CustomFieldDto> findCustomFieldsByFlag(String flag) {
+        List<CustomFieldDto> list = new ArrayList<>();
+        if (customFields != null) {
+            for (CustomFieldDto dto : customFields) {
+                if ( dto.flags != null && StringUtils.containsIgnoreCase(dto.flags, flag) ) {
+                    list.add(dto);
+                }
+            }
+        }
+        return list;
+    }
+
     @JsonIgnore
     public TagGroupDto findTagGroup(String facetName) {
     	for (TagGroupDto group : tagGroups) {

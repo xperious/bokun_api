@@ -1,6 +1,7 @@
 package is.bokun.dtos.booking;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import is.bokun.dtos.carrental.CarRentalDto;
 import is.bokun.dtos.carrental.CarRentalLocationDto;
 
 import java.util.*;
@@ -16,7 +17,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class CarRentalBookingDetailsDto extends ProductBookingDetailsDto {
 
 	public Date startDate, endDate;
-	public CarRentalLocationDto pickupLocation, dropoffLocation; 
+	public CarRentalLocationDto pickupLocation, dropoffLocation;
+    public CarRentalDto carRental;
 	
 	@XmlElementWrapper(name="carBookings")
 	@XmlElement(name="carBooking")
