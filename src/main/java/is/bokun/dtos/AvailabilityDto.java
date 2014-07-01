@@ -5,7 +5,13 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
+@XmlType(name = "availability")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class AvailabilityDto {
 
     public String id;

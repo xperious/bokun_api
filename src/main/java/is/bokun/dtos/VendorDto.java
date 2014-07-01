@@ -15,6 +15,12 @@ public class VendorDto {
 	
 	public String currencyCode;
 
+    public String phoneNumber;
+    public String emailAddress;
+    public String website;
+    public String logoStyle;
+    public PhotoDto logo;
+
     public VendorDto() {}
 
     public VendorDto(Long id, String title, String currencyCode) {

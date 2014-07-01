@@ -3,10 +3,7 @@ package is.bokun.dtos.booking;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import is.bokun.dtos.AffiliateDto;
-import is.bokun.dtos.BookingAgentDto;
-import is.bokun.dtos.BookingChannelDto;
-import is.bokun.dtos.CustomerDto;
+import is.bokun.dtos.*;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
@@ -54,9 +51,13 @@ public class BookingDetailsDto {
     public BookingAgentDto agent;
 
     @XmlElement
+    public VendorDto seller;
+
+    @XmlElement
     public BookingChannelDto bookingChannel;
-	
-	@XmlElementWrapper
+
+
+    @XmlElementWrapper
 	@XmlElement(name="accommodationBooking")
 	public List<AccommodationBookingDetailsDto> accommodationBookings = new ArrayList<>();
 	
@@ -110,5 +111,52 @@ public class BookingDetailsDto {
 		}
 		return null;
 	}
-	
+
+    @JsonIgnore
+    public Double calculateTotalDiscountedPrice() {
+        double total = 0;
+        for (ProductBookingDetailsDto b : getProductBookings()) {
+            total += b.getPriceWithDiscount();
+        }
+        return total;
+    }
+
+    @JsonIgnore
+    public Double calculateSavedAmount() {
+        double saved = 0;
+        for (ProductBookingDetailsDto b : getProductBookings()) {
+            saved += b.getSavedAmount();
+        }
+        return saved;
+    }
+
+    @JsonIgnore
+    public Double calculatePaidAmount() {
+        double paidAmount = 0;
+        for (PaymentDto p : getPayments()) {
+            if ( p.getAmount() != null) {
+                paidAmount += p.getAmount();
+            }
+        }
+        return paidAmount;
+    }
+
+    @JsonIgnore
+    public List<PaymentDto> getPayments() {
+        List<PaymentDto> list = new ArrayList<>();
+        for (ProductBookingDetailsDto pb : getProductBookings()) {
+            list.addAll(pb.getPayments());
+        }
+        return list;
+    }
+
+    @JsonIgnore
+    public int calculateTotalPrice() {
+        int total = 0;
+        for (ProductBookingDetailsDto b : getProductBookings()) {
+            total += b.totalPrice;
+        }
+        return total;
+    }
+
 }

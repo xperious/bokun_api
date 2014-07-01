@@ -22,6 +22,23 @@ public class BookingChannelDto {
     public String uuid;
     @XmlElement
     public String title;
+    @XmlElement
+    public boolean backend;
+    @XmlElement
+    public boolean overrideVoucherHeader;
+    @XmlElement
+    public String voucherName;
+    @XmlElement
+    public String voucherPhoneNumber;
+    @XmlElement
+    public String voucherEmailAddress;
+    @XmlElement
+    public String voucherLogoStyle;
+    @XmlElement
+    public String voucherWebsite;
+    @XmlElement
+    public PhotoDto voucherLogo;
+
 
     @XmlElementWrapper
     @XmlElement(name="flag")

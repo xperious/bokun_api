@@ -1,28 +1,27 @@
 package is.bokun.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TagGroupDto extends ItemDto {
 
 	public List<ItemDto> tags = new ArrayList<>();
-	public String facetName;
+    public boolean group;
+    public String facetName;
 	public Long ownerId;
     public List<String> flags = new ArrayList<>();
-    
-    public ItemDto parentTag;
-	
-	public TagGroupDto() {}
 
-	public TagGroupDto(Long id, String title, String facetName, Long ownerId, List<String> flags, ItemDto parentTag) {
+    public TagGroupDto(){}
+
+	public TagGroupDto(boolean group, Long id, String title, String facetName, Long ownerId, List<String> flags) {
 		super(id, title, flags);
-		this.facetName = facetName;
+        this.group = group;
+        this.facetName = facetName;
 		this.ownerId = ownerId;
         this.flags = flags;
-        this.parentTag = parentTag;
 	}
 
 	public List<ItemDto> getTags() {
@@ -55,11 +54,7 @@ public class TagGroupDto extends ItemDto {
 		this.flags = flags;
 	}
 
-	public ItemDto getParentTag() {
-		return parentTag;
-	}
-
-	public void setParentTag(ItemDto parentTag) {
-		this.parentTag = parentTag;
-	}
+    public boolean getGroup() {
+        return group;
+    }
 }

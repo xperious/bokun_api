@@ -12,4 +12,6 @@ public class AbstractFacet {
 	public AbstractFacet(String name) {
 		this.name = name;
 	}
+
+
 }

@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import is.bokun.dtos.accommodation.AccommodationDto;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
@@ -14,6 +15,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class AccommodationBookingDetailsDto extends ProductBookingDetailsDto {
 
 	public Date startDate, endDate;
+    public AccommodationDto accommodation;
+
 	public List<RoomBookingDetailsDto> rooms = new ArrayList<>();
 
     public Date getStartDate() {

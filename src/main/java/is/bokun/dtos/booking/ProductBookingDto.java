@@ -13,7 +13,7 @@ public abstract class ProductBookingDto {
     public String productConfirmationCode;
 	
 	public Date creationDate;
-	public Date lastModifedDate;
+	public Date lastModifiedDate;
     
     public String customerUuid;
     
