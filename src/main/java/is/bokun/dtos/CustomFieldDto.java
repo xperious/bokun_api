@@ -7,9 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(
@@ -24,7 +22,9 @@ import javax.xml.bind.annotation.XmlType;
         @JsonSubTypes.Type(value = CustomFieldDateValueDto.class, name = "date")
 })
 @XmlType(name = "customField")
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({CustomFieldIntValueDto.class, CustomFieldDoubleValueDto.class, CustomFieldBooleanValueDto.class, CustomFieldTextValueDto.class, CustomFieldDateValueDto.class})
 public abstract class CustomFieldDto {
 	
 	public List<String> flags = new ArrayList<>();

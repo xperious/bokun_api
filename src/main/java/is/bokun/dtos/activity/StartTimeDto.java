@@ -21,10 +21,23 @@ public class StartTimeDto {
     public boolean overrideTimeWhenPickup;
     public int pickupHour;
     public int pickupMinute;
-	
+
+    /**
+     * @deprecated use duration minutes, hours, days and weeks
+     */
+    @Deprecated
     public String durationType;
+    /**
+     * @deprecated use duration minutes, hours, days and weeks
+     */
+    @Deprecated
     public int duration = 1;
-    
+
+    public int durationMinutes = 0;
+    public int durationHours = 1;
+    public int durationDays = 0;
+    public int durationWeeks = 0;
+
     public List<String> flags = new ArrayList<>();
     
     public StartTimeDto() {}

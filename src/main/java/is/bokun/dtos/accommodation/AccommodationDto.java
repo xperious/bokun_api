@@ -25,6 +25,8 @@ public class AccommodationDto extends ProductDto {
     public int checkInMinute = 0;
     public int checkOutHour = 12;
     public int checkOutMinute = 0;
+
+    public Long boxedAccommodationId;
 	 
 	public Set<String> types = new HashSet<>();
 	

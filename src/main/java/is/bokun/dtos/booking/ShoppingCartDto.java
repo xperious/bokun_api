@@ -21,6 +21,7 @@ public class ShoppingCartDto {
 	public List<AccommodationBookingDto> accommodationBookings = new ArrayList<>();
 	public List<CarRentalBookingDto> carRentalBookings = new ArrayList<>();
 	public List<ActivityBookingDto> activityBookings = new ArrayList<>();
+    public List<RouteBookingDto> routeBookings = new ArrayList<>();
 
 	
 	public ShoppingCartDto() {}
@@ -36,6 +37,7 @@ public class ShoppingCartDto {
 		bookings.addAll(accommodationBookings);
 		bookings.addAll(carRentalBookings);
 		bookings.addAll(activityBookings);
+        bookings.addAll(routeBookings);
 		
 		Collections.sort(bookings, new Comparator<ProductBookingDto>() {
 			@Override
@@ -59,7 +61,7 @@ public class ShoppingCartDto {
 	
 	@JsonIgnore
     public boolean isEmpty() {
-        return accommodationBookings.isEmpty() && activityBookings.isEmpty() && carRentalBookings.isEmpty();
+        return getProductBookings().isEmpty();
     }
 
     public List<CarRentalBookingDto> getCarRentalBookings() {

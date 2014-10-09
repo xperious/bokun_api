@@ -20,6 +20,7 @@ public class ProductBookingSearchResultItem {
     public String status;
     public String externalBookingReference;
     public ProductCategoryEnum productCategory;
+    public boolean resold;
 
     public boolean hasNotes;
 	
@@ -37,13 +38,19 @@ public class ProductBookingSearchResultItem {
 	
 	public Date creationDate;
 	public String productType;
+
+    public InvoiceDto customerInvoice;
+    public InvoiceDto resellerInvoice;
+
 	public int totalPrice;
 	public String currency;
     public Double paidAmount;
     public String paidType;
+    public String resellerPaidType;
     public Double discountPercentage;
     public Double discountAmount;
     public boolean unconfirmedPayments;
+
 	public Date startDate, endDate;
 
     public Double sellerCommission;
@@ -58,46 +65,25 @@ public class ProductBookingSearchResultItem {
     public BookingItemInfoDto boxProduct;
     public BookingItemInfoDto boxSupplier;
 
-    public boolean arrived;
-
     @JsonIgnore
 	public int getIntField(String name) {
 		return (Integer) fields.get(name);
 	}
 
     @JsonIgnore
-    public Double getAffiliateCommissionAmount() {
-        return getCommissionAmount(affiliateCommission);
+    public Double getAgentSalesRevenue() {
+        return customerInvoice.totalCommission;
     }
 
     @JsonIgnore
-    public Double getAgentCommissionAmount() {
-        return getCommissionAmount(agentCommission);
+    public Double getSupplierRevenue() {
+        return resellerInvoice.totalSansCommission;
     }
 
     @JsonIgnore
-    public Double getSupplierRevenueAmount() {
-        return getRevenueAmount(sellerCommission);
-    }
-
-    @JsonIgnore
-    private Double getCommissionAmount(Double comm) {
-        if ( comm != null ) {
-            double base = (double) totalPrice;
-            return Math.floor(base * (comm.doubleValue() / 100d) + 0.5d);
-        } else {
-            return 0d;
-        }
-    }
-
-    @JsonIgnore
-    private Double getRevenueAmount(Double comm) {
-        if ( comm != null ) {
-            double base = (double) totalPrice;
-            return Math.floor(base*(1 - comm.doubleValue() / 100d) + 0.5d);
-        } else {
-            return (double) totalPrice;
-        }
+    public String getString(String fieldName, String defaultValue) {
+        String value = (String) fields.get(fieldName);
+        return value != null ? value : defaultValue;
     }
 
     @JsonIgnore

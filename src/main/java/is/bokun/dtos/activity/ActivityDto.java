@@ -21,7 +21,6 @@ public class ActivityDto extends ProductDto implements WithExtras {
     public String requirements; 
     public String attention;
 
-    public boolean box;
     public Long boxedActivityId;
 
     public boolean comboActivity;
@@ -29,10 +28,23 @@ public class ActivityDto extends ProductDto implements WithExtras {
     public boolean dayBasedAvailability;
     public boolean selectFromDayOptions;
     public List<String> dayOptions = new ArrayList<>();
-    
+
+    /**
+     * @deprecated use duration minutes, hours, days and weeks
+     */
+    @Deprecated()
     public String durationType;
+    /**
+     * @deprecated use duration minutes, hours, days and weeks
+     */
+    @Deprecated()
     public int duration;
-    
+
+    public int durationMinutes;
+    public int durationHours;
+    public int durationDays;
+    public int durationWeeks;
+
     public int minAge;
     
     public Double nextDefaultPrice;

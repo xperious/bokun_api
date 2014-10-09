@@ -17,10 +17,10 @@ public class ActivityPricingCategoryBookingDto {
 	public int quantity;
 	public Double bookedPrice;
 	public String bookedTitle;
-	
+
 	public Double bookedPickupPrice;
 	public Double bookedDropoffPrice;
-	
+
 	@XmlElementWrapper
 	@XmlElement(name="flag")
 	public List<String> flags = new ArrayList<>();
@@ -32,11 +32,8 @@ public class ActivityPricingCategoryBookingDto {
 		this.quantity = quantity;		
 	}
 	
-	public ActivityPricingCategoryBookingDto(Long pricingCategoryId, int quantity, Double bookedPrice, String bookedTitle, Double bookedPickupPrice, Double bookedDropoffPrice) {
+	public ActivityPricingCategoryBookingDto(Long pricingCategoryId, int quantity, String bookedTitle) {
 		this(pricingCategoryId, quantity);
-		this.bookedPrice = bookedPrice;
 		this.bookedTitle = bookedTitle;
-		this.bookedPickupPrice = bookedPickupPrice;
-		this.bookedDropoffPrice = bookedDropoffPrice;
 	}
 }

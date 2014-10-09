@@ -11,5 +11,4 @@ public class CarTypeAvailabilityBookingDto {
 	
 	public CarTypeAvailabilityDto availability;
 	
-	public int bookedPrice;
 }

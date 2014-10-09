@@ -1,6 +1,10 @@
 package is.bokun.utils;
 
-import org.apache.commons.lang.WordUtils;
+import com.google.common.base.Predicates;
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
+import com.google.common.collect.Collections2;
+import com.google.common.collect.Lists;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,10 +31,6 @@ public class StringUtils {
         }
         return null;
     }
-
-    public static String capitalizeFirstLetterInEachWord(String s) {
-        return WordUtils.capitalizeFully(s);
-    }
     
     public static String formatTime(int hour, int minute) {
         StringBuilder s = new StringBuilder();
@@ -46,9 +46,13 @@ public class StringUtils {
         return s.toString();
     }
 
+    public static boolean noe(String... s) {
+        return isNullOrEmpty(s);
+    }
+
     public static boolean isNullOrEmpty(String... s) {
         for (String str : s) {
-            if ( str == null || str.trim().isEmpty() ) {
+            if ( Strings.nullToEmpty(str).trim().isEmpty() ) {
                 return true;
             }
         }
@@ -73,25 +77,21 @@ public class StringUtils {
     }
 
     public static List<String> lineBrSeparatedToList(String s) {
-        List<String> list = new ArrayList<>();
-        if ( s == null || s.trim().isEmpty() ) return list;
-        for ( String item : s.trim().split("\n") ) {
-            if ( !item.trim().isEmpty() ) {
-                list.add(item.trim());
-            }
-        }
-        return list;
+        return Splitter.on('\n')
+                .trimResults()
+                .omitEmptyStrings()
+                .splitToList(Strings.nullToEmpty(s));
     }
     
     public static Set<String> commaSeparatedToSet(String s) {
-    	Set<String> set = new HashSet<>();
-		if ( s == null || s.trim().isEmpty() ) return set;
-		for ( String id : s.trim().split(",") ) {
-			if ( !id.trim().isEmpty() ) {
-				set.add(id.trim());
-			}
-		}
-    	return set;
+        return new HashSet<>(commaSeparatedToList(s));
+    }
+
+    public static List<String> commaSeparatedToList(String s) {
+        return Splitter.on(',')
+                .trimResults()
+                .omitEmptyStrings()
+                .splitToList(Strings.nullToEmpty(s));
     }
 
     public static Set<Long> arrayToIds(String[] arr) {
@@ -121,16 +121,8 @@ public class StringUtils {
 	}
 	
 	public static List<Long> commaSeparatedStringToIdList( String s ) {
-		List<Long> ids = new ArrayList<>();
-		if ( s == null || s.trim().isEmpty() ) return ids;
-		for ( String id : s.trim().split(",") ) {
-			if ( !id.trim().isEmpty() ) {
-				try {
-					ids.add(Long.parseLong(id.trim()));
-				} catch ( Throwable ignored ) {}
-			}
-		}
-		return ids;
+        List<String> strings = commaSeparatedToList(s);
+        return new ArrayList<Long>(Collections2.filter(Lists.transform(strings, Numbers.parseLongFunction()), Predicates.notNull()));
 	}
 
     public static Set<Integer> commaSeparatedToInts(String s) {

@@ -32,6 +32,8 @@ public class BookingDetailsDto {
     public BookingStatusEnum status;
 	@XmlElement
     public String qrCodeUrl;
+    @XmlElement
+    public String currency;
     
 	@XmlElement
 	public Integer totalPrice;
@@ -48,7 +50,7 @@ public class BookingDetailsDto {
     public AffiliateDto affiliate;
 
     @XmlElement
-    public BookingAgentDto agent;
+    public BookingAgentWithLinksDto agent;
 
     @XmlElement
     public VendorDto seller;
@@ -56,6 +58,8 @@ public class BookingDetailsDto {
     @XmlElement
     public BookingChannelDto bookingChannel;
 
+    @XmlElement
+    public IntegratedSystemConfigDto systemConfig;
 
     @XmlElementWrapper
 	@XmlElement(name="accommodationBooking")
@@ -70,15 +74,30 @@ public class BookingDetailsDto {
 	public List<ActivityBookingDetailsDto> activityBookings = new ArrayList<>();
 
     @XmlElementWrapper
+    @XmlElement(name="routeBooking")
+    public List<RouteBookingDetailsDto> routeBookings = new ArrayList<>();
+
+    @XmlElementWrapper
     @XmlElement(name="bookingField")
     public List<BookingFieldDto> bookingFields = new ArrayList<>();
-	
-	@JsonIgnore
+
+
+
+    @JsonIgnore
 	public List<ProductBookingDetailsDto> getProductBookings() {
 		List<ProductBookingDetailsDto> productBookings = new ArrayList<>();
-		productBookings.addAll(accommodationBookings);
-		productBookings.addAll(carRentalBookings);
-		productBookings.addAll(activityBookings);
+        if ( accommodationBookings != null ) {
+            productBookings.addAll(accommodationBookings);
+        }
+        if ( carRentalBookings != null ) {
+            productBookings.addAll(carRentalBookings);
+        }
+        if ( activityBookings != null ) {
+            productBookings.addAll(activityBookings);
+        }
+        if ( routeBookings != null ) {
+            productBookings.addAll(routeBookings);
+        }
 		return productBookings;
 	}
 	
@@ -113,6 +132,16 @@ public class BookingDetailsDto {
 	}
 
     @JsonIgnore
+    public RouteBookingDetailsDto findRouteBooking(Long id) {
+        for (RouteBookingDetailsDto b : routeBookings) {
+            if ( b.bookingId.equals(id) ) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    @JsonIgnore
     public Double calculateTotalDiscountedPrice() {
         double total = 0;
         for (ProductBookingDetailsDto b : getProductBookings()) {
@@ -145,7 +174,7 @@ public class BookingDetailsDto {
     public List<PaymentDto> getPayments() {
         List<PaymentDto> list = new ArrayList<>();
         for (ProductBookingDetailsDto pb : getProductBookings()) {
-            list.addAll(pb.getPayments());
+            list.addAll(pb.invoice.payments);
         }
         return list;
     }

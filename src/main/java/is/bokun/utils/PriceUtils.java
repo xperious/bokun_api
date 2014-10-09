@@ -9,7 +9,7 @@ public class PriceUtils {
         if ( discountPercentage != null && discountPercentage > 0 ) {
             double perc = 100d - discountPercentage;
             return percentage(total, perc);
-        } else if ( discountAmount != null && discountAmount > 0 ) {
+        } else if ( discountAmount != null && discountAmount != 0 ) {
             Double amount = total - discountAmount;
             if ( amount.doubleValue() < 0 ) {
                 return 0d;

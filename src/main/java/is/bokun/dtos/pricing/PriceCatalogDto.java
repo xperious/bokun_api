@@ -3,7 +3,7 @@ package is.bokun.dtos.pricing;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import models.pricing.ItemPrice;
+import is.bokun.utils.PriceUtils;
 import org.joda.time.DateTime;
 
 import javax.xml.bind.annotation.*;
@@ -69,6 +69,15 @@ public class PriceCatalogDto {
         this.currencies = currencies;
     }
 
+    public boolean hasCostGroup(Long costGroupId) {
+        for (PriceSheetDto sheet : sheets) {
+            if ( sheet.findCostGroupById(costGroupId) != null ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static ItemPriceDto findFirstExistingPreviousPrice(PriceSheetDateRangeDto current, List<PriceSheetDateRangeDto> dateRanges, CostItemDto item, String currency, int index) {
         ItemPriceDto price = null;
         int a = index-1;
@@ -86,6 +95,126 @@ public class PriceCatalogDto {
         price.currency = currency;
         price.dateRangeId = current.getId();
         return price;
+    }
+
+    public static CellPriceDto findFirstExistingPreviousPrice(PriceSheetDateRangeDto current, List<PriceSheetDateRangeDto> dateRanges, CostMatrixCellDto cell, String currency, int index) {
+        CellPriceDto price = null;
+        int a = index-1;
+        while ( a >= 0 ) {
+            PriceSheetDateRangeDto prev = dateRanges.get(a);
+            price = cell.findPriceByDateRange(prev.id, currency);
+            if ( price != null ) {
+                return price;
+            }
+            a--;
+        }
+        return null;
+        /*
+        price = new CellPriceDto();
+        price.amount = null;
+        price.cellId = cell.id;
+        price.currency = currency;
+        price.dateRangeId = current.getId();
+        return price;*/
+    }
+
+    @JsonIgnore
+    public CellPriceDto findMatrixPrice(CostGroupTypeEnum groupType, Long groupParentId, Long matrixId1, Long matrixId2, Long matrixId3,
+                                        Long axisFromItemId, Long axisToItemId, String currency, Date date) {
+
+        for (PriceSheetDto sheet : getSheets()) {
+            CostGroupDto grp = sheet.findCostGroup(groupType, groupParentId);
+            if (grp != null) {
+                DateTime dateTime = new DateTime(date);
+                List<PriceSheetDateRangeDto> dateRanges = sheet.getDateRanges();
+                for (int i = 0; i < dateRanges.size(); i++) {
+                    PriceSheetDateRangeDto current = dateRanges.get(i);
+                    PriceSheetDateRangeDto next = null;
+                    if (i < dateRanges.size() - 1) {
+                        next = dateRanges.get(i + 1);
+                    }
+
+                    boolean isEqualOrAfterThisRange = dateTime.isEqual(current.getStart().getTime()) || dateTime.isAfter(current.getStart().getTime());
+                    if (isEqualOrAfterThisRange && (next == null || dateTime.isBefore(next.getStart().getTime()))) {
+
+                        CostMatrixDto costMatrix = grp.findCostMatrix(matrixId1, matrixId2, matrixId3);
+                        if ( costMatrix != null ) {
+                            CostMatrixDto masterMatrix = null;
+                            if ( costMatrix.getDependent() ) {
+                                masterMatrix = grp.findCostMatrixById(costMatrix.masterId);
+                            }
+
+                            CellPriceDto cellPrice = findCellPrice(costMatrix, current, dateRanges, axisFromItemId, axisToItemId, currency, i);
+                            if ( masterMatrix != null ) {
+                                if ( cellPrice != null ) {
+                                    cellPrice = cellPrice.clone(); // so we don't change the original object in the catalog
+                                } else {
+                                    CostMatrixCellDto costCell = costMatrix.findCell(axisFromItemId, axisToItemId);
+                                    cellPrice = new CellPriceDto();
+                                    cellPrice.amount = null;
+                                    cellPrice.cellId = costCell != null ? costCell.id : 0;
+                                    cellPrice.currency = currency;
+                                    cellPrice.dateRangeId = current.id;
+                                }
+
+                                // price is calculated from another matrix
+                                CellPriceDto masterCellPrice = findCellPrice(masterMatrix, current, dateRanges, axisFromItemId, axisToItemId, currency, i);
+                                if ( masterCellPrice != null ) {
+                                    // apply price change
+                                    Double amount = masterCellPrice.amount;
+                                    if ( costMatrix.priceChangeType != null ) {
+                                        switch (costMatrix.priceChangeType) {
+                                            case AMOUNT:
+                                                if ( costMatrix.amount != null ) {
+                                                    amount += costMatrix.amount;
+                                                }
+                                                break;
+                                            case PERCENTAGE:
+                                                if ( costMatrix.amount != null ) {
+                                                    double perc = costMatrix.amount;
+                                                    if (perc > 0) {
+                                                        amount += PriceUtils.percentage(amount, perc);
+                                                    } else if (perc < 0) {
+                                                        amount -= PriceUtils.percentage(amount, perc);
+                                                    }
+                                                    if (amount < 0) {
+                                                        amount = 0d;
+                                                    }
+                                                }
+                                                break;
+                                        }
+                                    }
+                                    cellPrice.amount = amount;
+                                    return cellPrice;
+                                }
+
+                            } else {
+                                if ( cellPrice != null ) {
+                                    return cellPrice;
+                                }
+                            }
+                        }
+                        return null;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private CellPriceDto findCellPrice(CostMatrixDto costMatrix, PriceSheetDateRangeDto current, List<PriceSheetDateRangeDto> dateRanges, Long axisFromItemId, Long axisToItemId, String currency, int i) {
+        CostMatrixCellDto costCell = costMatrix.findCell(axisFromItemId, axisToItemId);
+        if (costCell != null) {
+            CellPriceDto cellPrice = costCell.findPriceByDateRange(current.id, currency);
+            if (cellPrice != null) {
+                return cellPrice;
+            } else {
+                // try to get price from earlier date range
+                return findFirstExistingPreviousPrice(current, dateRanges, costCell, currency, i);
+            }
+        } else {
+            return null;
+        }
     }
 
     @JsonIgnore
@@ -142,6 +271,16 @@ public class PriceCatalogDto {
             }
         }
         return list;
+    }
+
+    @JsonIgnore
+    public CurrencySettingsDto findDerivedCurrency(String currencyCode) {
+        for (CurrencySettingsDto cs : getDerivedCurrencies()) {
+            if ( cs.currency.equalsIgnoreCase(currencyCode) ) {
+                return cs;
+            }
+        }
+        return null;
     }
 
     @JsonIgnore

@@ -1,5 +1,6 @@
 package is.bokun.dtos.carrental;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.*;
 import is.bokun.dtos.search.SearchResult;
 import is.bokun.queries.CarQuery;
@@ -10,6 +11,7 @@ import com.fasterxml.jackson.annotation.*;
 import is.bokun.utils.StringUtils;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class CarTypeDto extends HasBookableExtras implements SearchResult, WithPhotos {
 
 	public Long id;
@@ -25,6 +27,7 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 	
 	public Integer rentalPrice;
 	public Integer avgRentalPricePerDay;
+    public Integer maxBookableCount;
 	
 	public int passengerCapacity = 5;
 	public int luggageCapacity = 2;

@@ -34,6 +34,16 @@ public class NumericRangeFilter {
 	 * If set to false, then will include only results matching this filter.
 	 */
     public boolean excluded = false;
+
+    public NumericRangeFilter() {}
+
+    public NumericRangeFilter(Integer from, Integer to, boolean includeLower, boolean includeUpper, boolean excluded) {
+        this.from = from;
+        this.to = to;
+        this.includeLower = includeLower;
+        this.includeUpper = includeUpper;
+        this.excluded = excluded;
+    }
 	
 	public void setFrom(Integer f) {
 		this.from = f;

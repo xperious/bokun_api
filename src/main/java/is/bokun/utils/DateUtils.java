@@ -1,5 +1,8 @@
 package is.bokun.utils;
 
+import org.joda.time.DateTime;
+import org.joda.time.Interval;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -70,6 +73,28 @@ public class DateUtils {
         } else {
             return start1.before(end2) && end1.after(start2);
         }
+    }
+
+    public static Interval toInterval(int startDay, int startMonth, int endDay, int endMonth, Date d) {
+        Calendar start = Calendar.getInstance();
+        start.setTime(d);
+        nullifyTime(start);
+
+        start.set(Calendar.MONTH, startMonth);
+        start.set(Calendar.DATE, startDay);
+
+        Calendar end = Calendar.getInstance();
+        end.setTime(start.getTime());
+        end.set(Calendar.MONTH, endMonth);
+        end.set(Calendar.DATE, endDay);
+        nullifyTime(end);
+
+        if ( end.before(start) ) {
+            end.add(Calendar.YEAR, 1);
+        }
+
+        Interval interval = new Interval(new DateTime(start.getTimeInMillis()), new DateTime(end.getTimeInMillis()));
+        return interval;
     }
 
     public static Calendar fromDateWithNullifiedTime(Date d) {

@@ -92,4 +92,14 @@ public class PriceSheetDto {
         }
         return null;
     }
+
+    @JsonIgnore
+    public CostGroupDto findCostGroupById(Long groupId) {
+        for (CostGroupDto grp : getCostGroups()) {
+            if (grp.id.equals(groupId)) {
+                return grp;
+            }
+        }
+        return null;
+    }
 }

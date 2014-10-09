@@ -11,5 +11,7 @@ public enum BookingStatusEnum {
     TIMEOUT,
     ABORTED,
     CANCELLED,
-    ERROR
+    ERROR,
+    ARRIVED,
+    NO_SHOW
 }

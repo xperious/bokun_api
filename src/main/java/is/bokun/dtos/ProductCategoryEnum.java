@@ -7,5 +7,6 @@ public enum ProductCategoryEnum {
 
 	ACCOMMODATION,
 	ACTIVITIES,
-	CAR_RENTALS
+	CAR_RENTALS,
+    TRANSPORT
 }

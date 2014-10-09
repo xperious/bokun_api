@@ -9,6 +9,8 @@ import is.bokun.dtos.booking.*;
 import is.bokun.dtos.payments.ChargeDto;
 import is.bokun.dtos.payments.ChargeRequestDto;
 import is.bokun.dtos.payments.ChargeResponseDto;
+import is.bokun.dtos.search.ProductBookingSearchResultItem;
+import is.bokun.queries.BookingQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -293,5 +295,46 @@ public class BookingClient extends AbstractClient {
         } catch (Exception e) {
             throw wrapException(e);
         }
+    }
+
+    public List<ProductBookingSearchResultItem> productBookingSearch(BookingQuery q) {
+        try {
+            String uri = appendQueryParams(BASE + "/product-booking-search");
+            Response r = preparePost(uri, q).execute().get();
+            validateResponse(r);
+            return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<List<ProductBookingSearchResultItem>>(){});
+        } catch (Exception e) {
+            throw wrapException(e);
+        }
+    }
+
+    public ActivityBookingDetailsDto getActivityBooking(String productConfirmationCode) {
+        String uri = appendQueryParams(BASE + "/activity-booking/" + productConfirmationCode);
+        return getAndValidate(uri, ActivityBookingDetailsDto.class);
+    }
+
+    public AccommodationBookingDetailsDto getAccommodationBooking(String productConfirmationCode) {
+        String uri = appendQueryParams(BASE + "/accommodation-booking/" + productConfirmationCode);
+        return getAndValidate(uri, AccommodationBookingDetailsDto.class);
+    }
+
+    public CarRentalBookingDetailsDto getCarRentalBooking(String productConfirmationCode) {
+        String uri = appendQueryParams(BASE + "/car-rental-booking/" + productConfirmationCode);
+        return getAndValidate(uri, CarRentalBookingDetailsDto.class);
+    }
+
+    public ActivityBookingDetailsDto setActivityBookingCustomerStatus(String productConfirmationCode, CustomerStatusEnum customerStatus) {
+        String uri = appendQueryParams(BASE + "/activity-booking/" + productConfirmationCode + "/customer-status/" + customerStatus.name());
+        return getAndValidate(uri, ActivityBookingDetailsDto.class);
+    }
+
+    public AccommodationBookingDetailsDto setAccommodationBookingCustomerStatus(String productConfirmationCode, CustomerStatusEnum customerStatus) {
+        String uri = appendQueryParams(BASE + "/accommodation-booking/" + productConfirmationCode + "/customer-status/" + customerStatus.name());
+        return getAndValidate(uri, AccommodationBookingDetailsDto.class);
+    }
+
+    public CarRentalBookingDetailsDto setCarRentalBookingCustomerStatus(String productConfirmationCode, CustomerStatusEnum customerStatus) {
+        String uri = appendQueryParams(BASE + "/car-rental-booking/" + productConfirmationCode + "/customer-status/" + customerStatus.name());
+        return getAndValidate(uri, CarRentalBookingDetailsDto.class);
     }
 }

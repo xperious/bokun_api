@@ -11,6 +11,8 @@ import java.util.List;
 public class PriceUpdateDto {
 
     public List<ItemPriceDto> itemPrices = new ArrayList<>();
+    public List<CellPriceDto> cellPrices = new ArrayList<>();
+    public List<CostMatrixDto> changedMatrices = new ArrayList<>();
 
 
     public List<ItemPriceDto> getItemPrices() {
@@ -19,5 +21,21 @@ public class PriceUpdateDto {
 
     public void setItemPrices(List<ItemPriceDto> itemPrices) {
         this.itemPrices = itemPrices;
+    }
+
+    public List<CellPriceDto> getCellPrices() {
+        return cellPrices;
+    }
+
+    public void setCellPrices(List<CellPriceDto> cellPrices) {
+        this.cellPrices = cellPrices;
+    }
+
+    public List<CostMatrixDto> getChangedMatrices() {
+        return changedMatrices;
+    }
+
+    public void setChangedMatrices(List<CostMatrixDto> changedMatrices) {
+        this.changedMatrices = changedMatrices;
     }
 }
