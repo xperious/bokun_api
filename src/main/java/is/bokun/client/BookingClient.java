@@ -297,20 +297,19 @@ public class BookingClient extends AbstractClient {
         }
     }
 
-    public List<ProductBookingSearchResultItem> productBookingSearch(BookingQuery q) {
-        try {
-            String uri = appendQueryParams(BASE + "/product-booking-search");
-            Response r = preparePost(uri, q).execute().get();
-            validateResponse(r);
-            return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<List<ProductBookingSearchResultItem>>(){});
-        } catch (Exception e) {
-            throw wrapException(e);
-        }
+    public ProductBookingSearchResultsDto productBookingSearch(BookingQuery q) {
+        String uri = appendQueryParams(BASE + "/product-booking-search");
+        return postAndValidate(uri, q, ProductBookingSearchResultsDto.class);
     }
 
     public ActivityBookingDetailsDto getActivityBooking(String productConfirmationCode) {
         String uri = appendQueryParams(BASE + "/activity-booking/" + productConfirmationCode);
         return getAndValidate(uri, ActivityBookingDetailsDto.class);
+    }
+
+    public RouteBookingDetailsDto getRouteBooking(String productConfirmationCode) {
+        String uri = appendQueryParams(BASE + "/route-booking/" + productConfirmationCode);
+        return getAndValidate(uri, RouteBookingDetailsDto.class);
     }
 
     public AccommodationBookingDetailsDto getAccommodationBooking(String productConfirmationCode) {
@@ -323,18 +322,23 @@ public class BookingClient extends AbstractClient {
         return getAndValidate(uri, CarRentalBookingDetailsDto.class);
     }
 
-    public ActivityBookingDetailsDto setActivityBookingArrivedStatus(String productConfirmationCode, boolean arrived) {
-        String uri = appendQueryParams(BASE + "/activity-booking/" + productConfirmationCode + "/arrived/" + arrived);
+    public ActivityBookingDetailsDto setActivityBookingCustomerStatus(String productConfirmationCode, CustomerStatusEnum customerStatus) {
+        String uri = appendQueryParams(BASE + "/activity-booking/" + productConfirmationCode + "/customer-status/" + customerStatus.name());
         return getAndValidate(uri, ActivityBookingDetailsDto.class);
     }
 
-    public AccommodationBookingDetailsDto setAccommodationBookingArrivedStatus(String productConfirmationCode, boolean arrived) {
-        String uri = appendQueryParams(BASE + "/accommodation-booking/" + productConfirmationCode + "/arrived/" + arrived);
+    public AccommodationBookingDetailsDto setAccommodationBookingCustomerStatus(String productConfirmationCode, CustomerStatusEnum customerStatus) {
+        String uri = appendQueryParams(BASE + "/accommodation-booking/" + productConfirmationCode + "/customer-status/" + customerStatus.name());
         return getAndValidate(uri, AccommodationBookingDetailsDto.class);
     }
 
-    public CarRentalBookingDetailsDto setCarRentalBookingArrivedStatus(String productConfirmationCode, boolean arrived) {
-        String uri = appendQueryParams(BASE + "/car-rental-booking/" + productConfirmationCode + "/arrived/" + arrived);
+    public CarRentalBookingDetailsDto setCarRentalBookingCustomerStatus(String productConfirmationCode, CustomerStatusEnum customerStatus) {
+        String uri = appendQueryParams(BASE + "/car-rental-booking/" + productConfirmationCode + "/customer-status/" + customerStatus.name());
         return getAndValidate(uri, CarRentalBookingDetailsDto.class);
+    }
+
+    public RouteBookingDetailsDto setRouteBookingCustomerStatus(String productConfirmationCode, CustomerStatusEnum customerStatus) {
+        String uri = appendQueryParams(BASE + "/route-booking/" + productConfirmationCode + "/customer-status/" + customerStatus.name());
+        return getAndValidate(uri, RouteBookingDetailsDto.class);
     }
 }

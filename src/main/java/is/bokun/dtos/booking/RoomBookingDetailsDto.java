@@ -21,7 +21,6 @@ public class RoomBookingDetailsDto {
 	public ItemDto roomType;
 	
 	public int unitCount;
-	public int unitPrice;
     public int nightCount;
 	
 	@XmlElementWrapper

@@ -1,7 +1,7 @@
 package is.bokun.queries;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class BookingQuery {
 	
     /**
@@ -29,13 +30,17 @@ public class BookingQuery {
     public Long excludeComboBookingsBySupplierId;
 
     public boolean supplierAndSellerAreDifferent;
-	
+    public boolean soldByAgent;
+    public boolean soldByAgentOrReseller;
+    public boolean soldByAffiliateOrAsReseller;
+
 	public List<Long> bookingChannelIds = new ArrayList<>();
 	public List<Long> vendorIds = new ArrayList<>();
 	public List<Long> sellingVendorIds = new ArrayList<>();
 	public List<Long> productIds = new ArrayList<>();
     public Long extranetUserId;
 	public Long agentId;
+    public List<Long> agentIds = new ArrayList<>();
     public Long affiliateId;
     public Long affiliateOwnerId;
 
@@ -49,6 +54,7 @@ public class BookingQuery {
     public String noteQuery;
 	
 	public Map<String,Object> fields = new HashMap<>();
+    public Map<String,NumericRangeFilter> rangeFilters = new HashMap<>();
 	
 	public List<SortField> sortFields = new ArrayList<>();
 	
@@ -144,6 +150,14 @@ public class BookingQuery {
 		this.bookingChannelTitle = bookingChannelTitle;
 	}
 
+    public Map<String, NumericRangeFilter> getRangeFilters() {
+        return rangeFilters;
+    }
+
+    public void setRangeFilters(Map<String, NumericRangeFilter> rangeFilters) {
+        this.rangeFilters = rangeFilters;
+    }
+
     public Long getExcludeComboBookingsBySupplierId() {
         return excludeComboBookingsBySupplierId;
     }
@@ -162,15 +176,6 @@ public class BookingQuery {
 
     public void setProductExternalId(String productExternalId) {
         this.productExternalId = productExternalId;
-    }
-
-    @JsonIgnore
-    public boolean isExcludeComboBookings() {
-        return excludeComboBookings;
-    }
-
-    public void setExcludeComboBookings(boolean excludeComboBookings) {
-        this.excludeComboBookings = excludeComboBookings;
     }
 
     public List<Long> getBookedExtrasIds() {
@@ -243,13 +248,23 @@ public class BookingQuery {
         this.noteQuery = noteQuery;
     }
 
+    public List<Long> getAgentIds() {
+        return agentIds;
+    }
+
+    public void setAgentIds(List<Long> agentIds) {
+        this.agentIds = agentIds;
+    }
+
     private static List<Long> cleanList(List<Long> l) {
 		List<Long> list = new ArrayList<>();
-		for (Long lng : l) {
-			if ( lng != null ) {
-				list.add(lng);
-			}
-		}
+        if ( l != null ) {
+            for (Long lng : l) {
+                if (lng != null) {
+                    list.add(lng);
+                }
+            }
+        }
 		return list;
 	}
 }

@@ -13,13 +13,13 @@ import javax.xml.bind.annotation.XmlType;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlType(name = "product")
 @XmlAccessorType(XmlAccessType.FIELD)
-public abstract class ProductDto {
+public abstract class ProductDto extends AbstractIdDto {
 
-    public Long id;
     public String externalId;
     public Long productGroupId;
     public String productCategory;
 
+    public boolean box;
     public String lastPublished;
 
     public String title;
@@ -84,4 +84,5 @@ public abstract class ProductDto {
     	}
     	return filtered;
     }
+
 }

@@ -1,6 +1,5 @@
 package is.bokun.dtos.booking;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.PickupPlaceDto;
 import is.bokun.dtos.activity.ActivityDto;
@@ -29,7 +28,13 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
     public String selectedFlexDayOption;
 
     public boolean customized;
-	
+
+    @XmlElementWrapper
+    @XmlElement(name="comboBooking")
+    public List<ProductBookingBasicsDto> comboChildBookings;
+
+    public ProductBookingBasicsDto comboParentBooking;
+
 	@XmlElementWrapper
 	@XmlElement(name="pricingCategoryBooking")
 	public List<ActivityPricingCategoryBookingDto> pricingCategoryBookings = new ArrayList<>();
@@ -46,13 +51,11 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 	public String pickupPlaceDescription;
 	public String pickupPlaceRoomNumber;
 	public boolean pickup;
+    public String pickupTime;
 	
 	public PickupPlaceDto dropoffPlace;
 	public String dropoffPlaceDescription;
 	public boolean dropoff;
-	
-	public Double bookedPriceForPickup;
-	public Double bookedPriceForDropoff;
 	
 	public PickupPricingTypeEnum bookedPickupPricingType;
 	public PickupPricingTypeEnum bookedDropoffPricingType;
@@ -154,22 +157,6 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
 		this.dropoff = dropoff;
 	}
 
-	public Double getBookedPriceForPickup() {
-		return bookedPriceForPickup;
-	}
-
-	public void setBookedPriceForPickup(Double bookedPriceForPickup) {
-		this.bookedPriceForPickup = bookedPriceForPickup;
-	}
-
-	public Double getBookedPriceForDropoff() {
-		return bookedPriceForDropoff;
-	}
-
-	public void setBookedPriceForDropoff(Double bookedPriceForDropoff) {
-		this.bookedPriceForDropoff = bookedPriceForDropoff;
-	}
-
 	public PickupPricingTypeEnum getBookedPickupPricingType() {
 		return bookedPickupPricingType;
 	}
@@ -200,11 +187,36 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
         this.selectedFlexDayOption = selectedFlexDayOption;
     }
 
-    public int getBookedPriceForAll() {
-        int price = 0;
-        for (ActivityPricingCategoryBookingDto pcatBooking : pricingCategoryBookings) {
-            price += (pcatBooking.quantity * pcatBooking.bookedPrice);
-        }
-        return price;
+    public List<ProductBookingBasicsDto> getComboChildBookings() {
+        return comboChildBookings;
     }
+
+    public void setComboChildBookings(List<ProductBookingBasicsDto> comboChildBookings) {
+        this.comboChildBookings = comboChildBookings;
+    }
+
+    public ProductBookingBasicsDto getComboParentBooking() {
+        return comboParentBooking;
+    }
+
+    public void setComboParentBooking(ProductBookingBasicsDto comboParentBooking) {
+        this.comboParentBooking = comboParentBooking;
+    }
+
+    public ActivityDto getActivity() {
+        return activity;
+    }
+
+    public void setActivity(ActivityDto activity) {
+        this.activity = activity;
+    }
+
+    public String getPickupTime() {
+        return pickupTime;
+    }
+
+    public void setPickupTime(String pickupTime) {
+        this.pickupTime = pickupTime;
+    }
+
 }

@@ -50,6 +50,11 @@ public class BookableExtraDto {
         this.flags = flags;
     }
 
+    public BookableExtraDto(String externalId, List<String> flags) {
+        this.externalId = externalId;
+        this.flags = flags;
+    }
+
     public BookableExtraDto(Long id, String title, List<String> flags) {
         this.id = id;
         this.title = title;

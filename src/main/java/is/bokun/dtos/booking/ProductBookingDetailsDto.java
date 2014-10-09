@@ -3,6 +3,8 @@ package is.bokun.dtos.booking;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import is.bokun.dtos.IntegratedSystemProductLinkDto;
+import is.bokun.dtos.VendorWithLinksDto;
 import is.bokun.utils.PriceUtils;
 
 import javax.xml.bind.annotation.*;
@@ -27,14 +29,21 @@ public class ProductBookingDetailsDto {
 
     public String barcodeUrl;
 
+    @XmlElement
+    public BookingStatusEnum status;
+
 	@XmlTransient
     public String title;
 	
-    public int totalPrice;
+    public Double totalPrice;
     public Double priceWithDiscount;
     
 	public Double discountPercentage;
 	public Double discountAmount;
+
+    public Double sellerCommission;
+    public Double agentCommission;
+    public Double affiliateCommission;
     
     @XmlTransient
     public String productCategory;
@@ -42,22 +51,33 @@ public class ProductBookingDetailsDto {
     public PaymentPaidTypeEnum paidType;
     
     public ProductInfoDto product = new ProductInfoDto();
+
+    public VendorWithLinksDto supplier, seller;
     
     @XmlTransient
     public Long productId;
-    public String externalProductId;
+
+    @XmlElementWrapper
+    @XmlElement(name="externalProductLink")
+    public List<IntegratedSystemProductLinkDto> linksToExternalProducts = new ArrayList<>();
 
 	@XmlElementWrapper
 	@XmlElement(name="answer")
     public List<BookingAnswerDto> answers = new ArrayList<>();
-    
-	@XmlElementWrapper
-	@XmlElement(name="payment")
-    public List<PaymentDto> payments = new ArrayList<>();
+
+    public InvoiceDto invoice;
 
     @XmlElementWrapper
     @XmlElement(name="note")
     public List<BookingNoteDto> notes = new ArrayList<>();
+
+    @XmlElementWrapper
+    @XmlElement(name="flag")
+    public List<String> supplierContractFlags = new ArrayList<>();
+
+    @XmlElementWrapper
+    @XmlElement(name="flag")
+    public List<String> sellerContractFlags = new ArrayList<>();
 
     public BookingDetailsDto parentBooking;
 
@@ -85,6 +105,14 @@ public class ProductBookingDetailsDto {
 		this.confirmationCode = confirmationCode;
 	}
 
+    public BookingStatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(BookingStatusEnum status) {
+        this.status = status;
+    }
+
     public String getProductConfirmationCode() {
         return productConfirmationCode;
     }
@@ -101,11 +129,11 @@ public class ProductBookingDetailsDto {
         this.title = title;
     }
 
-    public int getTotalPrice() {
+    public Double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -125,7 +153,39 @@ public class ProductBookingDetailsDto {
 		this.productCategory = productCategory;
 	}
 
-	public List<BookingAnswerDto> getAnswers() {
+    public List<IntegratedSystemProductLinkDto> getLinksToExternalProducts() {
+        return linksToExternalProducts;
+    }
+
+    public void setLinksToExternalProducts(List<IntegratedSystemProductLinkDto> linksToExternalProducts) {
+        this.linksToExternalProducts = linksToExternalProducts;
+    }
+
+    public Double getSellerCommission() {
+        return sellerCommission;
+    }
+
+    public void setSellerCommission(Double sellerCommission) {
+        this.sellerCommission = sellerCommission;
+    }
+
+    public Double getAgentCommission() {
+        return agentCommission;
+    }
+
+    public void setAgentCommission(Double agentCommission) {
+        this.agentCommission = agentCommission;
+    }
+
+    public Double getAffiliateCommission() {
+        return affiliateCommission;
+    }
+
+    public void setAffiliateCommission(Double affiliateCommission) {
+        this.affiliateCommission = affiliateCommission;
+    }
+
+    public List<BookingAnswerDto> getAnswers() {
         return answers;
     }
 
@@ -133,14 +193,6 @@ public class ProductBookingDetailsDto {
         this.answers = answers;
     }
 
-    public List<PaymentDto> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(List<PaymentDto> payments) {
-        this.payments = payments;
-    }
-    
     public PaymentPaidTypeEnum getPaidType() {
 		return paidType;
 	}
@@ -155,14 +207,6 @@ public class ProductBookingDetailsDto {
 
 	public void setProductId(Long productId) {
 		this.productId = productId;
-	}
-
-	public String getExternalProductId() {
-		return externalProductId;
-	}
-
-	public void setExternalProductId(String externalProductId) {
-		this.externalProductId = externalProductId;
 	}
 
 	public Double getDiscountPercentage() {
@@ -205,17 +249,36 @@ public class ProductBookingDetailsDto {
         this.parentBooking = parentBooking;
     }
 
-    @JsonIgnore
-    public BookingPaymentInfoDto createAmountPayment(PaymentPaidTypeEnum paidType, PaymentTypeEnum paymentType, Double amount, String currency) {
-		BookingPaymentInfoDto p = new BookingPaymentInfoDto();
-		p.bookingId = getBookingId();
-		p.productCategory = getProductCategory();
-		p.bookingPaidType = paidType.name();
-		p.paymentType = paymentType.name();
-		p.currency = currency;
-		p.amount = amount;
-		p.confirmed = true;
-		return p;
+    public VendorWithLinksDto getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(VendorWithLinksDto supplier) {
+        this.supplier = supplier;
+    }
+
+    public VendorWithLinksDto getSeller() {
+        return seller;
+    }
+
+    public void setSeller(VendorWithLinksDto seller) {
+        this.seller = seller;
+    }
+
+    public List<String> getSupplierContractFlags() {
+        return supplierContractFlags;
+    }
+
+    public void setSupplierContractFlags(List<String> supplierContractFlags) {
+        this.supplierContractFlags = supplierContractFlags;
+    }
+
+    public List<String> getSellerContractFlags() {
+        return sellerContractFlags;
+    }
+
+    public void setSellerContractFlags(List<String> sellerContractFlags) {
+        this.sellerContractFlags = sellerContractFlags;
     }
 
     @JsonIgnore
@@ -228,18 +291,20 @@ public class ProductBookingDetailsDto {
         return null;
     }
 
-    @JsonIgnore
     public Double getSavedAmount() {
-        double saved = 0;
-        saved = totalPrice - PriceUtils.calculatePriceWithDiscount(totalPrice, discountPercentage, discountAmount);
-
-        return saved;
+        if ( totalPrice == null) {
+            return 0d;
+        }
+        if ( priceWithDiscount == null ) {
+            return totalPrice;
+        }
+        return totalPrice - priceWithDiscount;
     }
 
     @JsonIgnore
     public Double getPaidAmount() {
         double paidAmount = 0;
-        for (PaymentDto p : payments) {
+        for (PaymentDto p : invoice.payments) {
             if ( p.getAmount() != null ) {
                 paidAmount += p.getAmount();
             }

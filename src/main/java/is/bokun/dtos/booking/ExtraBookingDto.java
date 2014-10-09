@@ -15,7 +15,6 @@ public class ExtraBookingDto {
 
     public boolean included;
     public int unitCount;
-    public int bookedPrice;
     public String pricingType;
     public String pricingTypeLabel;
     
@@ -35,10 +34,6 @@ public class ExtraBookingDto {
 
     public int getUnitCount() {
         return unitCount;
-    }
-
-    public int getBookedPrice() {
-        return bookedPrice;
     }
 
     public String getPricingType() {

@@ -24,8 +24,7 @@ public class ExtraBookingDetailsDto {
     public BookableExtraDto extra;
 	
 	public int unitCount;
-	public int unitPrice;
-	
+
 	@XmlElementWrapper
 	@XmlElement(name="answer")
 	public List<BookingAnswerWithIdDto> answers = new ArrayList<>();
@@ -36,10 +35,9 @@ public class ExtraBookingDetailsDto {
         return extra;
     }
 
-    public ExtraBookingDetailsDto(Long bookingId, int unitCount, int unitPrice, BookableExtraDto extra) {
+    public ExtraBookingDetailsDto(Long bookingId, int unitCount, BookableExtraDto extra) {
 		this.bookingId = bookingId;
 		this.unitCount = unitCount;
-		this.unitPrice = unitPrice;
 		this.extra = extra;
 		if ( extra != null ) {
 			this.title = extra.title;

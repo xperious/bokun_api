@@ -33,6 +33,8 @@ public class TextFilter {
      * Specifies whether to search the product title. Double boosting is applied to title matches.
      */
     public boolean searchTitle = true;
+
+    public boolean searchExternalId = true;
     /**
      * Specifies whether to search the product keywords. Triple boosting is applied to keyword matches.
      */
@@ -44,7 +46,7 @@ public class TextFilter {
 
     @JsonIgnore
     public boolean isActive() {
-        return !StringUtils.isNullOrEmpty(text) && (searchTitle || searchKeywords || searchFullText);
+        return !StringUtils.isNullOrEmpty(text) && (searchTitle || searchExternalId || searchKeywords || searchFullText);
     }
 
     @JsonIgnore
@@ -78,5 +80,9 @@ public class TextFilter {
 
     public void setSearchFullText(boolean searchFullText) {
         this.searchFullText = searchFullText;
+    }
+
+    public void setSearchExternalId(boolean searchExternalId) {
+        this.searchExternalId = searchExternalId;
     }
 }

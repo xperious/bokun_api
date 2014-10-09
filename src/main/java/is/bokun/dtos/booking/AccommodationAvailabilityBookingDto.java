@@ -17,5 +17,4 @@ public class AccommodationAvailabilityBookingDto {
 	
 	public AccommodationAvailabilityDto availability;
 	
-	public int bookedPrice;
 }

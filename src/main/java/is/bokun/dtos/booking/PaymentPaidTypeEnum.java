@@ -5,5 +5,5 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public enum PaymentPaidTypeEnum {
 
-	PAID_IN_FULL, DEPOSIT, FREE, NOT_PAID;
+	PAID_IN_FULL, DEPOSIT, FREE, NOT_PAID, OVERPAID, REFUND;
 }

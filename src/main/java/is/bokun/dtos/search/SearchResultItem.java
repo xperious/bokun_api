@@ -9,13 +9,14 @@ import is.bokun.dtos.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchResultItem implements SearchResult, WithPhotos {
 
-	public String id;
+	public String id, externalId;
 	public String title;
 	public String summary;
 	public String slug;
 	public Integer price;
 	public LocationDto location;
 	public ItemDto vendor;
+    public boolean box;
 
     public List<String> keywords = new ArrayList<>();
     public List<String> flags = new ArrayList<>();

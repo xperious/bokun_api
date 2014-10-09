@@ -22,11 +22,8 @@ public class CarBookingDetailsDto {
 	public CarTypeDto carType;
 	
 	public int unitCount;
-	public int unitPrice;
     public int dayCount;
 
-    public int locationPrice;
-	
 	@XmlElementWrapper
 	@XmlElement(name="answer")
 	public List<BookingAnswerDto> answers = new ArrayList<>();
