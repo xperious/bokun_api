@@ -44,6 +44,8 @@ public class TextFilter {
      */
     public boolean searchFullText = true;
 
+    public boolean wildcard = false;
+
     @JsonIgnore
     public boolean isActive() {
         return !StringUtils.isNullOrEmpty(text) && (searchTitle || searchExternalId || searchKeywords || searchFullText);
@@ -84,5 +86,9 @@ public class TextFilter {
 
     public void setSearchExternalId(boolean searchExternalId) {
         this.searchExternalId = searchExternalId;
+    }
+
+    public boolean isWildcard() {
+        return wildcard;
     }
 }

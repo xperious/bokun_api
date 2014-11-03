@@ -66,10 +66,7 @@ public class AccommodationQuery extends AbstractDateRangeQuery {
 			}
 		}
 	}
-	@JsonIgnore
-	public boolean sortingByPrice() {
-		return sortField() != null && sortField() == AccommodationSortField.PRICE;
-	}
+
 	@JsonIgnore
 	public boolean sortingByDistance() {
 		return sortField() != null && sortField() == AccommodationSortField.DISTANCE;

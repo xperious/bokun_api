@@ -8,7 +8,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class ActivityAvailabilityDto {
 
 	public String id;
-	public String startTime;
+    public long activityId;
+    public long activityOwnerId;
+    public String startTime;
 	public Long startTimeId;
     public boolean flexible;
 	public Date date;
@@ -26,7 +28,7 @@ public class ActivityAvailabilityDto {
     
     public List<String> flags = new ArrayList<>();
     
-    public double defaultPrice;
+    public Double defaultPrice;
     public Map<Long,Double> pricesByCategory = new HashMap<>();
 
     public Double pickupPrice;
@@ -36,15 +38,15 @@ public class ActivityAvailabilityDto {
     public Map<Long,Double> dropoffPricesByCategory = new HashMap<>();
 
     public Map<Long,Double> extraPrices = new HashMap<>();
-    
+
     public ActivityAvailabilityDto() {}
 
     public boolean isUnavailable() {
-    	return !(availabilityCount > 0 || unlimitedAvailability == true);
+    	return !(availabilityCount > 0 || unlimitedAvailability);
     }
     
     public boolean isSoldOut() {
-    	return unlimitedAvailability == false && availabilityCount == 0;
+    	return !unlimitedAvailability && availabilityCount == 0;
     }
     
     public int minParticipantsToBookNow() {

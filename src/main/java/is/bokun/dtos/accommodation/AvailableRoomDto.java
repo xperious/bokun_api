@@ -12,7 +12,7 @@ import is.bokun.queries.RoomQuery;
 public class AvailableRoomDto {
 	
 	public Long id;
-	public double totalPrice;
+	public Double totalPrice;
 	public int maxBookableCount;
 
     public Map<Long,Double> extraPrices = new HashMap<>();
@@ -24,11 +24,11 @@ public class AvailableRoomDto {
 	
 	public AvailableRoomDto() {}
 
-	public AvailableRoomDto(Long id, double totalPrice, int availableAcrossInterval, RoomTypeDto roomType, AccommodationQuery query) {
+	public AvailableRoomDto(Long id, Double totalPrice, int availableAcrossInterval, RoomTypeDto roomType, AccommodationQuery query) {
         this(id, totalPrice, availableAcrossInterval, roomType, query, false);
     }
 
-    public AvailableRoomDto(Long id, double totalPrice, int availableAcrossInterval, RoomTypeDto roomType, AccommodationQuery query, boolean showFullAvailability) {
+    public AvailableRoomDto(Long id, Double totalPrice, int availableAcrossInterval, RoomTypeDto roomType, AccommodationQuery query, boolean showFullAvailability) {
 		this.id = id;
 		this.totalPrice = totalPrice;
 		this.roomType = roomType;

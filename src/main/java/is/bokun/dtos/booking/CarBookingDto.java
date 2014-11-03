@@ -20,7 +20,7 @@ public class CarBookingDto {
 	
 	public boolean unavailable;
 	public int availabilityCount;
-	public int carPrice;
+	public double carPrice;
 	public int extrasPrice;
 	public int locationPrice;
 	

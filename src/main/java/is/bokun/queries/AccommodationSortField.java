@@ -12,7 +12,6 @@ public enum AccommodationSortField {
 
 	BEST_SELLING_GLOBAL,
 	BEST_SELLING_IN_CHANNEL,
-	PRICE,
 	DISTANCE,
 	ALPHABETIC,
 	RANDOM;
@@ -25,8 +24,6 @@ public enum AccommodationSortField {
 				return "booking_count_channel_";
 			case DISTANCE:
 				return "distance";
-			case PRICE:
-				return "_score";
 			default:
 				return "_score";
 		}

@@ -335,6 +335,16 @@ public class ShoppingCartClient extends AbstractClient {
         return postAndGetCart(uri, bookingRequests);
     }
 
+    public ShoppingCartDto addRouteToSessionCart(String sessionId, TransportBookingRequestDto bookingRequest, String lang, String currency, String trackingCode) {
+        String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/route", lang, currency, new NVP("trackingCode",trackingCode));
+        return postAndGetCart(uri, bookingRequest);
+    }
+
+    public ShoppingCartDto addRouteToSessionCart(String sessionId, List<TransportBookingRequestDto> bookingRequests, String lang, String currency, String trackingCode) {
+        String uri = appendLangAndCurrency(BASE + "/session/" + sessionId + "/route", lang, currency, new NVP("trackingCode",trackingCode));
+        return postAndGetCart(uri, bookingRequests);
+    }
+
     /**
      * Add an accommodation booking to a customer's shopping cart.
      *
@@ -429,6 +439,16 @@ public class ShoppingCartClient extends AbstractClient {
 
     public ShoppingCartDto addActivityToCustomerCart(String securityToken, List<ActivityBookingRequestDto> bookingRequests, String lang, String currency) {
         String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/activity", lang, currency);
+        return postAndGetCart(uri, bookingRequests);
+    }
+
+    public ShoppingCartDto addRouteToCustomerCart(String securityToken, TransportBookingRequestDto bookingRequest, String lang, String currency) {
+        String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/route", lang, currency);
+        return postAndGetCart(uri, bookingRequest);
+    }
+
+    public ShoppingCartDto addRouteToCustomerCart(String securityToken, List<TransportBookingRequestDto> bookingRequests, String lang, String currency) {
+        String uri = appendLangAndCurrency(BASE + "/customer/" + securityToken + "/route", lang, currency);
         return postAndGetCart(uri, bookingRequests);
     }
 

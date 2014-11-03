@@ -23,6 +23,7 @@ import java.util.Set;
 public class RouteStationDto extends AbstractIdDto {
 
     public String title, shortTitle;
+    public boolean airportStation;
     public boolean pickupStation;
     public Long pickupPlaceId;
     public LocationDto location;
@@ -90,6 +91,10 @@ public class RouteStationDto extends AbstractIdDto {
 
     public void setPickupStation(boolean pickupStation) {
         this.pickupStation = pickupStation;
+    }
+
+    public void setAirportStation(boolean airportStation) {
+        this.airportStation = airportStation;
     }
 
     public Long getPickupPlaceId() {

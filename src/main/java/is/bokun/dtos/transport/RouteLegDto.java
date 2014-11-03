@@ -20,6 +20,7 @@ public class RouteLegDto extends AbstractIdDto {
 
     public int distance;
     public DistanceUnitEnum distanceUnit;
+    public boolean flexibleSchedule;
 
     public RouteStationDto from;
     public RouteStationDto to;
@@ -113,5 +114,9 @@ public class RouteLegDto extends AbstractIdDto {
 
     public void setFlags(List<String> flags) {
         this.flags = flags;
+    }
+
+    public void setFlexibleSchedule(boolean flexibleSchedule) {
+        this.flexibleSchedule = flexibleSchedule;
     }
 }
