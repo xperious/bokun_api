@@ -7,6 +7,7 @@ import is.bokun.dtos.AvailabilityClosureDto;
 import is.bokun.dtos.AvailabilityExpressionDto;
 import is.bokun.dtos.PricingCategoryDto;
 import is.bokun.dtos.ProductDto;
+import is.bokun.dtos.AvailabilityItemDescription;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -27,6 +28,9 @@ public class RouteDto extends ProductDto {
     public boolean returnPricing;
     public boolean flexibleTickets;
     public boolean timeSelectionRequired;
+
+    public String stationGroups;
+    public Long defaultSourceStationId, defaultDestStationId;
 
     public List<String> flags = new ArrayList<>();
     public List<RouteLegDto> legs = new ArrayList<>();
@@ -61,6 +65,30 @@ public class RouteDto extends ProductDto {
 
     public void setTimeSelectionRequired(boolean timeSelectionRequired) {
         this.timeSelectionRequired = timeSelectionRequired;
+    }
+
+    public String getStationGroups() {
+        return stationGroups;
+    }
+
+    public void setStationGroups(String stationGroups) {
+        this.stationGroups = stationGroups;
+    }
+
+    public Long getDefaultSourceStationId() {
+        return defaultSourceStationId;
+    }
+
+    public void setDefaultSourceStationId(Long defaultSourceStationId) {
+        this.defaultSourceStationId = defaultSourceStationId;
+    }
+
+    public Long getDefaultDestStationId() {
+        return defaultDestStationId;
+    }
+
+    public void setDefaultDestStationId(Long defaultDestStationId) {
+        this.defaultDestStationId = defaultDestStationId;
     }
 
     public List<String> getFlags() {
@@ -117,6 +145,20 @@ public class RouteDto extends ProductDto {
 
     public void setClosures(List<AvailabilityClosureDto> closures) {
         this.closures = closures;
+    }
+
+
+    @JsonIgnore
+    public List<AvailabilityItemDescription> getAvailabilityItemDescriptions() {
+        List<AvailabilityItemDescription> list = new ArrayList<>();
+        if ( fareClassCapacity ) {
+            for (FareClassDto fareClass : fareClasses) {
+                list.add(new AvailabilityItemDescription("fareclass_" + fareClass.getId(), fareClass.getTitle()));
+            }
+        } else {
+            list.add(new AvailabilityItemDescription("passengers", ""));
+        }
+        return list;
     }
 
     @JsonIgnore

@@ -10,10 +10,11 @@ import is.bokun.dtos.*;
 public class SearchResultItem implements SearchResult, WithPhotos {
 
 	public String id, externalId;
+    public Long productGroupId;
 	public String title;
 	public String summary;
 	public String slug;
-	public Integer price;
+	public Double price;
 	public LocationDto location;
 	public ItemDto vendor;
     public boolean box;

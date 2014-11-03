@@ -42,6 +42,7 @@ public abstract class ProductDto extends AbstractIdDto {
     public List<VideoDto> videos = new ArrayList<>();
     
     public VendorDto vendor;
+    public VendorDto boxedVendor;
 
     public ProductDto() {}
 
@@ -85,4 +86,7 @@ public abstract class ProductDto extends AbstractIdDto {
     	return filtered;
     }
 
+    public VendorDto getActualVendor() {
+        return box ? boxedVendor : vendor;
+    }
 }

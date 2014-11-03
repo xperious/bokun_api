@@ -96,7 +96,9 @@ public class AvailableDepartureReturnPathPairDto {
             segmentSpec.fareClassId = fareClassId;
             for (PricingCategoryPassengerSpecificationDto pspec : query.pricingCategories) {
                 if ( route.hasPricingCategory(pspec.categoryId) ) {
-                    segmentSpec.passengerSpecifications.add(new PricingCategoryPassengerSpecificationDto(pspec.categoryId, Math.max(1, pspec.passengers)));
+                    if ( pspec.passengers > 0 ) {
+                        segmentSpec.passengerSpecifications.add(new PricingCategoryPassengerSpecificationDto(pspec.categoryId, Math.max(1, pspec.passengers)));
+                    }
                 }
             }
 

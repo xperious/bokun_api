@@ -15,6 +15,7 @@ public class BookingAnswersDto {
 	public List<AccommodationBookingAnswersDto> accommodationsBookings = new ArrayList<>();
 	public List<CarRentalBookingAnswersDto> carRentalBookings = new ArrayList<>();
 	public List<ActivityBookingAnswersDto> activityBookings = new ArrayList<>();
+    public List<RouteBookingAnswersDto> routeBookings = new ArrayList<>();
 	
 	public List<BookingAnswerDto> getAnswers() {
 		return answers;
@@ -42,8 +43,16 @@ public class BookingAnswersDto {
 			List<CarRentalBookingAnswersDto> carRentalBookings) {
 		this.carRentalBookings = carRentalBookings;
 	}
-	
-	@JsonIgnore
+
+    public List<RouteBookingAnswersDto> getRouteBookings() {
+        return routeBookings;
+    }
+
+    public void setRouteBookings(List<RouteBookingAnswersDto> routeBookings) {
+        this.routeBookings = routeBookings;
+    }
+
+    @JsonIgnore
 	public void setSubscribeToEmailList(boolean subscribe) {
 		answers.add(new BookingAnswerDto("email-list-subscription", Boolean.toString(subscribe)));
 	}

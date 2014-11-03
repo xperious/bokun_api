@@ -18,8 +18,8 @@ public class RoomBookingDto {
 	
 	public boolean unavailable;
 	public int availabilityCount;
-	public int roomPrice;
-	public int extrasPrice;
+	public Double roomPrice;
+	public Double extrasPrice;
 	
 	public List<ExtraBookingDto> extraBookings = new ArrayList<>();
 	

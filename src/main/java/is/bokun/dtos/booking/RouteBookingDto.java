@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.collect.Iterables;
 import is.bokun.dtos.VendorDto;
+import is.bokun.dtos.transport.RouteLegDto;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,6 +49,17 @@ public class RouteBookingDto extends ProductBookingDto {
     @Override
     public String getProductCategory() {
         return "TRANSPORT";
+    }
+
+    @JsonIgnore
+    public List<RouteLegDto> getBookedLegs() {
+        List<RouteLegDto> list = new ArrayList<>();
+        for (RouteLegBookingDto legBooking : legBookings) {
+            if ( !list.contains(legBooking.leg) ) {
+                list.add(legBooking.leg);
+            }
+        }
+        return list;
     }
 
 }

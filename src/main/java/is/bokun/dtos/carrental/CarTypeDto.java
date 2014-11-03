@@ -8,7 +8,6 @@ import is.bokun.queries.CarQuery;
 import java.util.*;
 
 import com.fasterxml.jackson.annotation.*;
-import is.bokun.utils.StringUtils;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
@@ -25,8 +24,8 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 	public ItemDto vendor;
 	public ItemDto carRental;
 	
-	public Integer rentalPrice;
-	public Integer avgRentalPricePerDay;
+	public Double rentalPrice;
+	public Double avgRentalPricePerDay;
     public Integer maxBookableCount;
 	
 	public int passengerCapacity = 5;
@@ -146,23 +145,25 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
     }
 	
 	@JsonIgnore
-	public int getLocationPrice(CarQuery q) {
+	public Double getLocationPrice(CarQuery q) {
 		if ( q.isAvailabilityQuery() ) {
 			CarRentalLocationDto pickup = getPickup(q);
 			CarRentalLocationDto dropoff = getDropoff(q);
 			
 			if ( pickup == null || dropoff == null ) {
-				return 0;
+				return 0d;
 			}
 
 			if ( pickup.id.equals(dropoff.id) ) {
 				return pickup.priceForPickupAndDropoff;
-			} else {
+			} else if ( pickup.priceForPickup != null && dropoff.priceForDropoff != null ) {
 				return pickup.priceForPickup + dropoff.priceForDropoff;
-			}
+			} else {
+                return null;
+            }
 
 		} else {
-			return 0;
+			return 0d;
 		}
 	}
 

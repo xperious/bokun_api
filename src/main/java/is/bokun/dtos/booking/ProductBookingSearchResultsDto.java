@@ -1,6 +1,7 @@
 package is.bokun.dtos.booking;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import is.bokun.dtos.search.ProductBookingSearchResultItem;
 import is.bokun.queries.BookingQuery;
 import is.bokun.queries.ProductBookingQuery;
 
@@ -18,7 +19,7 @@ public class ProductBookingSearchResultsDto {
 
     public ProductBookingQuery query;
 
-    public List<ProductBookingDetailsDto> results = new ArrayList<>();
+    public List<ProductBookingSearchResultItem> results = new ArrayList<>();
 
     public Long getTookInMillis() {
         return tookInMillis;
@@ -44,11 +45,11 @@ public class ProductBookingSearchResultsDto {
         this.query = query;
     }
 
-    public List<ProductBookingDetailsDto> getResults() {
+    public List<ProductBookingSearchResultItem> getResults() {
         return results;
     }
 
-    public void setResults(List<ProductBookingDetailsDto> results) {
+    public void setResults(List<ProductBookingSearchResultItem> results) {
         this.results = results;
     }
 }

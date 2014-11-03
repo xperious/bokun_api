@@ -60,10 +60,6 @@ public class ActivityQuery extends AbstractDateRangeQuery {
 			}
 		}
 	}
-	
-	public boolean sortingByPrice() {
-		return sortField() != null && sortField() == ActivitySortField.PRICE;
-	}
 
 
 	public int getParticipants() {
