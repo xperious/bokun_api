@@ -7,9 +7,7 @@ import is.bokun.utils.PriceUtils;
 import org.joda.time.DateTime;
 
 import javax.xml.bind.annotation.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
@@ -20,6 +18,7 @@ public class PriceCatalogDto {
 
     public Long id;
     public String title;
+    public Long ownerId;
     public Long defaultSheetId;
     public String defaultCurrency;
 
@@ -28,6 +27,8 @@ public class PriceCatalogDto {
 
     @XmlElement(name="sheet")
     public List<PriceSheetDto> sheets = new ArrayList<>();
+    public Map<String, PriceConversionDto> conversions = new HashMap<>();
+    public String supplierCurrency;
 
     public Long getId() {
         return id;
@@ -89,12 +90,15 @@ public class PriceCatalogDto {
             }
             a--;
         }
+        return null;
+        /*
         price = new ItemPriceDto();
         price.amount = 0d;
         price.costItemId = item.id;
         price.currency = currency;
         price.dateRangeId = current.getId();
         return price;
+        */
     }
 
     public static CellPriceDto findFirstExistingPreviousPrice(PriceSheetDateRangeDto current, List<PriceSheetDateRangeDto> dateRanges, CostMatrixCellDto cell, String currency, int index) {
@@ -175,7 +179,7 @@ public class PriceCatalogDto {
                                                     if (perc > 0) {
                                                         amount += PriceUtils.percentage(amount, perc);
                                                     } else if (perc < 0) {
-                                                        amount -= PriceUtils.percentage(amount, perc);
+                                                        amount -= PriceUtils.percentage(amount, -1d*perc);
                                                     }
                                                     if (amount < 0) {
                                                         amount = 0d;
@@ -276,6 +280,16 @@ public class PriceCatalogDto {
     @JsonIgnore
     public CurrencySettingsDto findDerivedCurrency(String currencyCode) {
         for (CurrencySettingsDto cs : getDerivedCurrencies()) {
+            if ( cs.currency.equalsIgnoreCase(currencyCode) ) {
+                return cs;
+            }
+        }
+        return null;
+    }
+
+    @JsonIgnore
+    public CurrencySettingsDto findCurrency(String currencyCode) {
+        for (CurrencySettingsDto cs : getCurrencies()) {
             if ( cs.currency.equalsIgnoreCase(currencyCode) ) {
                 return cs;
             }

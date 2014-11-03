@@ -15,11 +15,11 @@ public class BookingAgentDto {
     @XmlElement
     public Long id;
     @XmlElement
-    private String title;
+    public String title;
     @XmlElement
-    private String idNumber;
+    public String idNumber;
     @XmlElement
-    private String referenceCode;
+    public String referenceCode;
 
     public Long getId() {
         return id;

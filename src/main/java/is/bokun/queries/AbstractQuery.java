@@ -56,14 +56,6 @@ public abstract class AbstractQuery {
      */
 	public List<FacetFilter> facetFilters = new ArrayList<>();
 
-    /**
-     * Specifying this filter will filter the results by price.
-     * Note: for date-related products (e.g. Accommodation, Activity), the price is only calculated
-     * when searching for availability. For such products his filter is therefore only
-     * applied during availability search (using start date and end date).
-     */
-	public NumericRangeFilter priceRangeFilter;
-    
     public AbstractQuery() {
     }
     
@@ -158,7 +150,7 @@ public abstract class AbstractQuery {
 				return f.values;
 			}
 		}
-		return new ArrayList<String>();
+		return new ArrayList<>();
 	}
 
     /**
@@ -201,18 +193,6 @@ public abstract class AbstractQuery {
 		return "";
 	}
 
-	
-	public void setPriceRangeFilter(NumericRangeFilter priceRangeFilter) {
-		this.priceRangeFilter = priceRangeFilter;
-	}
-	
-	@JsonIgnore
-	public boolean hasPriceRangeFilter() {
-		if ( priceRangeFilter == null ) {
-			return false;
-		}
-		return priceRangeFilter.isActive();
-	}
 
 	public TextFilter getTextFilter() {
 		return textFilter;
@@ -236,10 +216,6 @@ public abstract class AbstractQuery {
 
 	public List<FacetFilter> getFacetFilters() {
 		return facetFilters;
-	}
-
-	public NumericRangeFilter getPriceRangeFilter() {
-		return priceRangeFilter;
 	}
 
 }

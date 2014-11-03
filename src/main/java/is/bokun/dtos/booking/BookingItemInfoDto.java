@@ -15,7 +15,7 @@ public class BookingItemInfoDto {
 
 	public Long id;
 	public String title;
-    public Integer price;
+    public Double price;
     
     public List<String> flags = new ArrayList<>();
 	
@@ -40,7 +40,7 @@ public class BookingItemInfoDto {
         return title;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 

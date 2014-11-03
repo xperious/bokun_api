@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class AvailableCarDto {
 
 	public Long id;
-	public int totalPrice;
+	public double totalPrice;
 	public int maxBookableCount;
 
     public Map<Long,Double> extraPrices = new HashMap<>();
@@ -23,7 +23,7 @@ public class AvailableCarDto {
 	
 	public AvailableCarDto() {}
 
-    public AvailableCarDto(Long id, int totalPrice, int availableAcrossInterval, CarTypeDto carType, CarQuery query) {
+    public AvailableCarDto(Long id, double totalPrice, int availableAcrossInterval, CarTypeDto carType, CarQuery query) {
 		this.id = id;
 		this.totalPrice = totalPrice;
 		this.carType = carType;

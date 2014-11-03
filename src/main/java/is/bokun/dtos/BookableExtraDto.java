@@ -22,7 +22,7 @@ public class BookableExtraDto {
 
     public String pricingType;
     public String pricingTypeLabel;
-    public Integer price;
+    public Double price;
 
     public int maxPerBooking;
 
@@ -62,8 +62,8 @@ public class BookableExtraDto {
     }
 
     @JsonIgnore
-    public int price() {
-        return price != null ? price.intValue() : 0;
+    public double price() {
+        return price != null ? price : 0;
     }
     
     @JsonIgnore

@@ -20,9 +20,9 @@ public class CarRentalLocationDto {
 	public int openingHour;
 	public int closingHour;
 
-	public int priceForPickup;
-	public int priceForDropoff;
-	public int priceForPickupAndDropoff;
+	public Double priceForPickup;
+	public Double priceForDropoff;
+	public Double priceForPickupAndDropoff;
 
 	@XmlElementWrapper
 	@XmlElement(name="flag")

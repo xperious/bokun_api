@@ -8,10 +8,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
@@ -27,6 +24,7 @@ public class CostItemDto {
 
     @XmlElement(name="itemPrice")
     public List<ItemPriceDto> prices = new ArrayList<>();
+    public Map<String, Double> supplierPrices = new HashMap<>();
 
     @JsonIgnore
     public ItemPriceDto findPriceByDateRange(Long dateRangeId, String currency) {

@@ -17,8 +17,8 @@ public class CarRentalAvailabilityReportDto {
 		return DateUtils.getRentalDayCount(pickupDate, dropoffDate);
 	}
 	
-	public int lowestTotalPrice() {
-		int price = -1;
+	public double lowestTotalPrice() {
+		double price = -1;
 		for (AvailableCarDto car : availableCars) {
 			if ( price == -1 || car.totalPrice < price ) {
 				price = car.totalPrice;

@@ -12,7 +12,6 @@ public enum ActivitySortField {
 
 	BEST_SELLING_GLOBAL,
 	BEST_SELLING_IN_CHANNEL,
-	PRICE,
 	ALPHABETIC,
 	RANDOM;
 	
@@ -22,8 +21,6 @@ public enum ActivitySortField {
 				return "booking_count";
 			case BEST_SELLING_IN_CHANNEL:
 				return "booking_count_channel_";
-			case PRICE:
-				return "_score";
 			default:
 				return "_score";
 		}

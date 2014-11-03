@@ -12,7 +12,7 @@ public enum CarSortField {
 
 	BEST_SELLING_GLOBAL,
 	BEST_SELLING_IN_CHANNEL,
-	PRICE,
+	SIZE,
 	DISTANCE,
 	ALPHABETIC,
 	RANDOM;
@@ -23,8 +23,8 @@ public enum CarSortField {
 				return "booking_count";
 			case BEST_SELLING_IN_CHANNEL:
 				return "booking_count_channel_";
-			case PRICE:
-				return "_score";
+			case SIZE:
+				return "acrissSizeIndex";
 			default:
 				return "_score";
 		}
