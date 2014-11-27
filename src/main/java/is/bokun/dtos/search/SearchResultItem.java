@@ -18,6 +18,8 @@ public class SearchResultItem implements SearchResult, WithPhotos {
 	public LocationDto location;
 	public ItemDto vendor;
     public boolean box;
+    public Long boxedProductId;
+    public Long boxedSupplierId;
 
     public List<String> keywords = new ArrayList<>();
     public List<String> flags = new ArrayList<>();
@@ -37,8 +39,8 @@ public class SearchResultItem implements SearchResult, WithPhotos {
 	public List<VideoDto> videos = new ArrayList<>();
 	
 	public Map<String,Object> fields = new HashMap<>();
-	
-	@JsonIgnore
+
+    @JsonIgnore
 	public Long getLongId() {
 		return Long.parseLong(id);
 	}

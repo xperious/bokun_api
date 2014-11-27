@@ -16,10 +16,12 @@ public class ActivityBookingQuestionsDto {
 	
 	public boolean askWhereToPickup;
 	public List<PickupPlaceDto> pickupPlaces = new ArrayList<>();
+    public boolean customPickupAllowed;
 	public boolean askWhereToDropoff;
 	public List<PickupPlaceDto> dropoffPlaces = new ArrayList<>();
-	
-	public List<BookingQuestionGroupDto> questionGroups = new ArrayList<>();
+    public boolean customDropoffAllowed;
+
+    public List<BookingQuestionGroupDto> questionGroups = new ArrayList<>();
 	
 	public List<ExtraBookingQuestionsDto> extraBookings = new ArrayList<>();
 

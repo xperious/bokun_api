@@ -8,13 +8,20 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TagGroupDto extends ItemDto {
 
-	public List<ItemDto> tags = new ArrayList<>();
+	public List<TagDto> tags = new ArrayList<>();
     public boolean group;
     public String facetName;
 	public Long ownerId;
     public List<String> flags = new ArrayList<>();
 
     public TagGroupDto(){}
+
+    public TagGroupDto(TagGroupDto other){
+        this.group = other.group;
+        this.facetName = other.facetName;
+        this.ownerId = other.ownerId;
+        this.flags.addAll(other.flags);
+    }
 
 	public TagGroupDto(boolean group, Long id, String title, String facetName, Long ownerId, List<String> flags) {
 		super(id, title, flags);
@@ -24,10 +31,10 @@ public class TagGroupDto extends ItemDto {
         this.flags = flags;
 	}
 
-	public List<ItemDto> getTags() {
+	public List<TagDto> getTags() {
 		return tags;
 	}
-	public void setTags(List<ItemDto> tags) {
+	public void setTags(List<TagDto> tags) {
 		this.tags = tags;
 	}
 	

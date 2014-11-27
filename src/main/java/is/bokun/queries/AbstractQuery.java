@@ -56,6 +56,8 @@ public abstract class AbstractQuery {
      */
 	public List<FacetFilter> facetFilters = new ArrayList<>();
 
+    public boolean excludeBoxes = false;
+
     public AbstractQuery() {
     }
     
@@ -83,6 +85,10 @@ public abstract class AbstractQuery {
 	public void setSortOrder(String s) {
 		this.sortOrder = s;
 	}
+
+    public void setExcludeBoxes(boolean excludeBoxes) {
+        this.excludeBoxes = excludeBoxes;
+    }
 
     public String getPublishedSince() {
         return publishedSince;

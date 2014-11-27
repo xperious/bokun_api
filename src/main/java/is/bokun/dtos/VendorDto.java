@@ -19,6 +19,7 @@ public class VendorDto {
     public String emailAddress;
     public String website;
     public String logoStyle;
+    public String invoiceIdNumber;
     public PhotoDto logo;
 
     public VendorDto() {}

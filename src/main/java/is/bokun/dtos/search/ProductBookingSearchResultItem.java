@@ -39,6 +39,10 @@ public class ProductBookingSearchResultItem {
 	public Date creationDate;
 	public String productType;
 
+    public Date cancellationDate;
+    public String cancelledBy;
+    public String cancelNote;
+
     public InvoiceDto customerInvoice;
     public InvoiceDto resellerInvoice;
 
@@ -109,7 +113,7 @@ public class ProductBookingSearchResultItem {
     @JsonIgnore
     public boolean hasNotesByVendor(Long vendorId) {
         for (BookingNoteDto note : notes) {
-            if (note.ownerId != null && note.ownerId.equals(vendorId)) {
+            if (note.type == BookingNoteTypeEnum.GENERAL || (note.ownerId != null && note.ownerId.equals(vendorId))) {
                 return true;
             }
         }

@@ -53,6 +53,7 @@ public class ActivityDto extends ProductDto implements WithExtras {
     public boolean pickupAllotment;
     public boolean useComponentPickupAllotments;
     public List<String> pickupFlags = new ArrayList<>();
+    public boolean customPickupAllowed;
     public PickupPricingTypeEnum pickupPricingType;
     public Integer pickupMinutesBefore;
     public String noPickupMsg;
@@ -61,6 +62,7 @@ public class ActivityDto extends ProductDto implements WithExtras {
     
     public boolean dropoffService;
     public List<String> dropoffFlags = new ArrayList<>();
+    public boolean customDropoffAllowed;
     public PickupPricingTypeEnum dropoffPricingType;
 
     public boolean seasonAllYear;
@@ -84,7 +86,7 @@ public class ActivityDto extends ProductDto implements WithExtras {
     public List<BookableExtraDto> bookableExtras = new ArrayList<>();
     
     public ActivityRouteDto route;
-	
+
 	public ActivityDto() {
 		super();
 	}
