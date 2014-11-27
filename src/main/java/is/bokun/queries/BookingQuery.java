@@ -34,6 +34,9 @@ public class BookingQuery {
     public boolean soldByAgentOrReseller;
     public boolean soldByAffiliateOrAsReseller;
 
+    public String retailCurrency;
+    public String resellerCurrency;
+
 	public List<Long> bookingChannelIds = new ArrayList<>();
 	public List<Long> vendorIds = new ArrayList<>();
 	public List<Long> sellingVendorIds = new ArrayList<>();
@@ -176,6 +179,22 @@ public class BookingQuery {
 
     public void setProductExternalId(String productExternalId) {
         this.productExternalId = productExternalId;
+    }
+
+    public String getRetailCurrency() {
+        return retailCurrency;
+    }
+
+    public void setRetailCurrency(String retailCurrency) {
+        this.retailCurrency = retailCurrency;
+    }
+
+    public String getResellerCurrency() {
+        return resellerCurrency;
+    }
+
+    public void setResellerCurrency(String resellerCurrency) {
+        this.resellerCurrency = resellerCurrency;
     }
 
     public List<Long> getBookedExtrasIds() {

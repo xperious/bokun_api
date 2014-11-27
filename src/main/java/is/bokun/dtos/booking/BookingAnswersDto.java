@@ -109,16 +109,18 @@ public class BookingAnswersDto {
                 dto.setPhoneNumber(a.getAnswer());
             } else if ( "nationality".equalsIgnoreCase(a.getType()) ) {
                 dto.setNationality(a.getAnswer());
-            } else if ( "address".equalsIgnoreCase(a.getType()) ) {
+            } else if ( "address-street".equalsIgnoreCase(a.getType()) ) {
                 dto.setAddress(a.getAnswer());
-            } else if ( "post-code".equalsIgnoreCase(a.getType()) ) {
+            } else if ( "address-postcode".equalsIgnoreCase(a.getType()) ) {
                 dto.setPostCode(a.getAnswer());
-            } else if ( "place".equalsIgnoreCase(a.getType()) ) {
+            } else if ( "address-place".equalsIgnoreCase(a.getType()) ) {
                 dto.setPlace(a.getAnswer());
-            } else if ( "country".equalsIgnoreCase(a.getType()) ) {
+            } else if ( "address-country".equalsIgnoreCase(a.getType()) ) {
                 dto.setCountry(a.getAnswer());
             } else if ( "organization".equalsIgnoreCase(a.getType()) ) {
                 dto.setOrganization(a.getAnswer());
+            } else if ( "gender".equalsIgnoreCase(a.getType()) ) {
+                dto.setSex(a.getAnswer());
             }
         }
         return dto;

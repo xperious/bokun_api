@@ -9,6 +9,7 @@ import is.bokun.utils.PriceUtils;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,6 +32,13 @@ public class ProductBookingDetailsDto {
 
     @XmlElement
     public BookingStatusEnum status;
+
+    @XmlElement
+    public Date cancellationDate;
+    @XmlElement
+    public String cancelledBy;
+    @XmlElement
+    public String cancelNote;
 
 	@XmlTransient
     public String title;

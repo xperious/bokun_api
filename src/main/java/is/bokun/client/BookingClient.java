@@ -9,9 +9,9 @@ import is.bokun.dtos.booking.*;
 import is.bokun.dtos.payments.ChargeDto;
 import is.bokun.dtos.payments.ChargeRequestDto;
 import is.bokun.dtos.payments.ChargeResponseDto;
-import is.bokun.dtos.search.ProductBookingSearchResultItem;
 import is.bokun.queries.BookingQuery;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,14 +21,15 @@ import java.util.Map;
  *
  * @author Olafur Gauti Gudmundsson
  */
+@SuppressWarnings("UnusedDeclaration")
 public class BookingClient extends AbstractClient {
 
     private static final String BASE = "/booking.json";
 
     /**
-     * @see AbstractClient#()
+     * @see AbstractClient#AbstractClient(ClientConfiguration)
      *
-     * @param config
+     * @param config for this instance.
      */
     @Inject
     public BookingClient(ClientConfiguration config) {
@@ -156,10 +157,10 @@ public class BookingClient extends AbstractClient {
      * @param bookingId the ID of the Booking
      * @param lang The language the content should be in.
      * @param currency The currency used for prices.
-     * @return
+     * @return Booking details for the confirmed booking.
      */
     public BookingDetailsDto confirmBooking(Long bookingId, String lang, String currency) {
-    	return confirmBooking(bookingId, new ArrayList<BookingPaymentInfoDto>(), lang, currency);
+    	return confirmBooking(bookingId, new ArrayList<>(), lang, currency);
     }
     
     /**
@@ -169,7 +170,7 @@ public class BookingClient extends AbstractClient {
      * @param payments a list of payment infos, each describing how a payment was made for a product booking
      * @param lang The language the content should be in.
      * @param currency The currency used for prices.
-     * @return
+     * @return Booking details for the confirmed booking.
      */
     public BookingDetailsDto confirmBooking(Long bookingId, List<BookingPaymentInfoDto> payments, String lang, String currency) {
     	BookingConfirmationDto confirmation = new BookingConfirmationDto();
@@ -184,7 +185,7 @@ public class BookingClient extends AbstractClient {
      * @param confirmation the confirmation object, with data relating to the confirmation
      * @param lang The language the content should be in.
      * @param currency The currency used for prices.
-     * @return
+     * @return Booking details for the confirmed booking.
      */
     public BookingDetailsDto confirmBooking(Long bookingId, BookingConfirmationDto confirmation, String lang, String currency) {
         String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/confirm", lang, currency);
@@ -340,5 +341,64 @@ public class BookingClient extends AbstractClient {
     public RouteBookingDetailsDto setRouteBookingCustomerStatus(String productConfirmationCode, CustomerStatusEnum customerStatus) {
         String uri = appendQueryParams(BASE + "/route-booking/" + productConfirmationCode + "/customer-status/" + customerStatus.name());
         return getAndValidate(uri, RouteBookingDetailsDto.class);
+    }
+
+    /**
+     * Get PDF ticket for an accommodation booking.
+     * @param id of the accommodation booking
+     * @return InputStream with PDF contents
+     */
+    public InputStream getAccommodationTicket(Long id) {
+        String uri = appendQueryParams(BASE + "/accommodation-booking/" + id + "/ticket");
+        return getPDFBytes(uri);
+    }
+
+    /**
+     * Get PDF ticket for an activity booking.
+     * @param id of the activity booking
+     * @return InputStream with PDF contents
+     */
+    public InputStream getActivityTicket(Long id) {
+        String uri = appendQueryParams(BASE + "/activity-booking/" + id + "/ticket");
+        return getPDFBytes(uri);
+    }
+
+    /**
+     * Get PDF ticket for an car rental booking.
+     * @param id of the car rental booking
+     * @return InputStream with PDF contents
+     */
+    public InputStream getCarRentalTicket(Long id) {
+        String uri = appendQueryParams(BASE + "/car-rental-booking/" + id + "/ticket");
+        return getPDFBytes(uri);
+    }
+
+    /**
+     * Get PDF ticket for an route booking.
+     * @param id of the route booking
+     * @return InputStream with PDF contents
+     */
+    public InputStream getRouteTicket(Long id) {
+        String uri = appendQueryParams(BASE + "/route-booking/" + id + "/ticket");
+        return getPDFBytes(uri);
+    }
+
+    /**
+     * Get PDF summary of a booking.
+     * @param id of the accommodation booking
+     * @return InputStream with PDF contents
+     */
+    public InputStream getBookingSummary(Long id) {
+        String uri = appendQueryParams(BASE + id + "/summary");
+        return getPDFBytes(uri);
+    }
+
+    private InputStream getPDFBytes(String uri) {
+        try {
+            Response r = prepareGet(uri).execute().get();
+            return r.getResponseBodyAsStream();
+        } catch (Exception e) {
+            throw wrapException(e);
+        }
     }
 }
