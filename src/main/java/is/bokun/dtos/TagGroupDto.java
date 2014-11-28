@@ -17,6 +17,8 @@ public class TagGroupDto extends ItemDto {
     public TagGroupDto(){}
 
     public TagGroupDto(TagGroupDto other){
+        this.id = other.id;
+        this.title = other.title;
         this.group = other.group;
         this.facetName = other.facetName;
         this.ownerId = other.ownerId;

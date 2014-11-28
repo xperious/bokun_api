@@ -2,6 +2,7 @@ package is.bokun.dtos.booking;
 
 import java.util.*;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.*;
 
 import com.fasterxml.jackson.annotation.*;
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.annotation.*;
 import is.bokun.dtos.activity.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class ActivityBookingDto extends ProductBookingDto {
 
 	public Date date;

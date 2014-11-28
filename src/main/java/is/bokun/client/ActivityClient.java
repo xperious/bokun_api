@@ -1,6 +1,8 @@
 package is.bokun.client;
 
 import is.bokun.dtos.activity.*;
+import is.bokun.dtos.booking.ActivityBookingDto;
+import is.bokun.dtos.booking.ActivityBookingRequestDto;
 import is.bokun.dtos.search.SearchResultsDto;
 import is.bokun.queries.ActivityQuery;
 
@@ -101,6 +103,24 @@ public class ActivityClient extends AbstractClient {
             Response r = prepareGet(uri).execute().get();
             validateResponse(r);
             return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<List<ActivityAvailabilityDto>>(){});
+        } catch (Exception e) {
+            throw wrapException(e);
+        }
+    }
+
+    /**
+     * Check the price for a number of activity booking requests.
+     * @param bookingRequests
+     * @param lang
+     * @param currency
+     * @return
+     */
+    public List<ActivityBookingDto> checkPrices(List<ActivityBookingRequestDto> bookingRequests, String lang, String currency) {
+        try {
+            String uri = appendLangAndCurrency(BASE + "/check-prices", lang, currency);
+            Response r = prepareGet(uri).execute().get();
+            validateResponse(r);
+            return json.readValue(r.getResponseBody("UTF-8"), new TypeReference<List<ActivityBookingDto>>(){});
         } catch (Exception e) {
             throw wrapException(e);
         }

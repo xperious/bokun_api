@@ -29,6 +29,8 @@ public class BookingQuery {
     public boolean excludeComboBookings;
     public Long excludeComboBookingsBySupplierId;
 
+    public boolean customizedBookingsOnly = false;
+
     public boolean supplierAndSellerAreDifferent;
     public boolean soldByAgent;
     public boolean soldByAgentOrReseller;
@@ -152,6 +154,10 @@ public class BookingQuery {
 	public void setBookingChannelTitle(String bookingChannelTitle) {
 		this.bookingChannelTitle = bookingChannelTitle;
 	}
+
+    public void setCustomizedBookingsOnly(boolean customizedBookingsOnly) {
+        this.customizedBookingsOnly = customizedBookingsOnly;
+    }
 
     public Map<String, NumericRangeFilter> getRangeFilters() {
         return rangeFilters;

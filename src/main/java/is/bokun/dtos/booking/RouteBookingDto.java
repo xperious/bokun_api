@@ -2,6 +2,7 @@ package is.bokun.dtos.booking;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.collect.Iterables;
 import is.bokun.dtos.VendorDto;
 import is.bokun.dtos.transport.RouteLegDto;
@@ -14,6 +15,7 @@ import java.util.List;
  * Created by ogg on 24.9.2014.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class RouteBookingDto extends ProductBookingDto {
 
     public Date date;
