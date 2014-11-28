@@ -1,5 +1,6 @@
 package is.bokun.dtos.booking;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.VendorDto;
 
 import java.util.Date;
@@ -7,6 +8,7 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public abstract class ProductBookingDto {
 
 	public Long id;
