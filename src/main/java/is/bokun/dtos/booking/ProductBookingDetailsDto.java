@@ -299,6 +299,17 @@ public class ProductBookingDetailsDto {
         return null;
     }
 
+    @JsonIgnore
+    public List<BookingAnswerDto> getAnswers(String type) {
+        List<BookingAnswerDto> list = new ArrayList<>();
+        for (BookingAnswerDto a : getAnswers()) {
+            if( a.getType().equals(type) ) {
+                list.add(a);
+            }
+        }
+        return list;
+    }
+
     public Double getSavedAmount() {
         if ( totalPrice == null) {
             return 0d;

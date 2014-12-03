@@ -26,6 +26,7 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 	
 	public Double rentalPrice;
 	public Double avgRentalPricePerDay;
+    public Double deliveryFee;
     public Integer maxBookableCount;
 	
 	public int passengerCapacity = 5;
@@ -63,6 +64,11 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 
     public Long defaultPickupLocationId;
     public Long defaultDropoffLocationId;
+
+    public int defaultPickupHour;
+    public int defaultPickupMinute;
+    public int defaultDropoffHour;
+    public int defaultDropoffMinute;
 
     public CarTypeDto() {}
 
@@ -103,8 +109,11 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 		this.keywords = keywords;
 	}
 
-	
-	@JsonIgnore
+    public Double getDeliveryFee() {
+        return deliveryFee;
+    }
+
+    @JsonIgnore
 	public CarRentalLocationDto getPickup(CarQuery q) {
 		for (CarRentalLocationDto l : pickupLocations) {
 			if ( q.getPickupLocationIds().contains(l.id) ) {
@@ -123,7 +132,7 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
         }
         return null;
     }
-	
+
 	@JsonIgnore
 	public CarRentalLocationDto getDropoff(CarQuery q) {
 		for (CarRentalLocationDto l : dropoffLocations) {
@@ -143,9 +152,16 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
         }
         return null;
     }
-	
-	@JsonIgnore
+
+    /**
+     * @deprecated  Use the deliveryFee field instead.
+     * @param q
+     * @return
+     */
+	@JsonIgnore @Deprecated
 	public Double getLocationPrice(CarQuery q) {
+        return deliveryFee;
+        /*
 		if ( q.isAvailabilityQuery() ) {
 			CarRentalLocationDto pickup = getPickup(q);
 			CarRentalLocationDto dropoff = getDropoff(q);
@@ -164,7 +180,7 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 
 		} else {
 			return 0d;
-		}
+		}*/
 	}
 
 	@Override
