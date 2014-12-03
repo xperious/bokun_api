@@ -16,6 +16,11 @@ public class CarRentalDto extends ProductDto {
 
     public Long defaultPickupLocationId;
     public Long defaultDropoffLocationId;
+
+    public int defaultPickupHour;
+    public int defaultPickupMinute;
+    public int defaultDropoffHour;
+    public int defaultDropoffMinute;
 	
 	public CarRentalDto() {
 		super();

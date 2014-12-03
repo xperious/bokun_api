@@ -31,7 +31,7 @@ public class StringUtils {
         }
         return null;
     }
-    
+
     public static String formatTime(int hour, int minute) {
         StringBuilder s = new StringBuilder();
         if ( hour < 10 ) {

@@ -18,7 +18,7 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 
 	public Long id;
 	public String externalId;
-	public String title;
+	public String title, description;
 	
     public String accommodationType;
 	
