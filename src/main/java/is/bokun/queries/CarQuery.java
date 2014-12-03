@@ -1,5 +1,6 @@
 package is.bokun.queries;
 
+import is.bokun.dtos.carrental.CarRentalDto;
 import is.bokun.utils.*;
 
 import java.util.*;
@@ -235,16 +236,38 @@ public class CarQuery extends AbstractDateRangeQuery {
 		
 		return new CarQueryTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE));
 	}
-	
-	@JsonIgnore
-	public CarQueryTime getEndTime() {
+
+    @JsonIgnore
+    public CarQueryTime getStartTime(CarRentalDto c) {
+        Date startDate = parseStartDate();
+        if ( startDate == null ) {
+            return new CarQueryTime(c.defaultPickupHour,c.defaultPickupMinute);
+        }
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(startDate);
+
+        return new CarQueryTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE));
+    }
+
+    @JsonIgnore
+    public CarQueryTime getEndTime() {
+        Date endDate = parseEndDate();
+        if ( endDate == null ) {
+            return new CarQueryTime(14,0);
+        }
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(endDate);
+        return new CarQueryTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE));
+    }
+
+    @JsonIgnore
+	public CarQueryTime getEndTime(CarRentalDto c) {
 		Date endDate = parseEndDate();
 		if ( endDate == null ) {
-			return new CarQueryTime(14,0);
+			return new CarQueryTime(c.defaultDropoffHour,c.defaultDropoffMinute);
 		}
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(endDate);
-		
 		return new CarQueryTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE));
 	}
 

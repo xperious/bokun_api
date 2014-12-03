@@ -22,7 +22,7 @@ public class CostMatrixCellDto {
 
     public Long id;
     public Long fromAxisItemId, toAxisItemId;
-    public Long itemId;
+    public String itemId;
     public String externalId;
 
     @XmlElement(name="cellPrice")
