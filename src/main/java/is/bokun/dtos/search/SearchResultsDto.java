@@ -8,5 +8,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class SearchResultsDto extends AbstractSearchResultsDto {
 	
 	public List<SearchResultItem> items = new ArrayList<>();
-	
+
+	public List<SearchResultItem> getItems() {
+		return items;
+	}
+
+	public void setItems(List<SearchResultItem> items) {
+		this.items = items;
+	}
 }

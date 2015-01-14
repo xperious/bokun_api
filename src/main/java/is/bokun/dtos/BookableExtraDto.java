@@ -87,5 +87,91 @@ public class BookableExtraDto {
         return null;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getInformation() {
+        return information;
+    }
+
+    public void setInformation(String information) {
+        this.information = information;
+    }
+
+    public boolean isIncluded() {
+        return included;
+    }
+
+    public void setIncluded(boolean included) {
+        this.included = included;
+    }
+
+    public String getPricingType() {
+        return pricingType;
+    }
+
+    public void setPricingType(String pricingType) {
+        this.pricingType = pricingType;
+    }
+
+    public String getPricingTypeLabel() {
+        return pricingTypeLabel;
+    }
+
+    public void setPricingTypeLabel(String pricingTypeLabel) {
+        this.pricingTypeLabel = pricingTypeLabel;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public int getMaxPerBooking() {
+        return maxPerBooking;
+    }
+
+    public void setMaxPerBooking(int maxPerBooking) {
+        this.maxPerBooking = maxPerBooking;
+    }
+
+    public List<String> getFlags() {
+        return flags;
+    }
+
+    public void setFlags(List<String> flags) {
+        this.flags = flags;
+    }
+
+    public List<QuestionDto> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<QuestionDto> questions) {
+        this.questions = questions;
+    }
 }

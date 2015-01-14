@@ -69,6 +69,156 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 	public PhotoDto getKeyPhoto() {
 		return keyPhoto;
 	}
-	
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getExternalId() {
+		return externalId;
+	}
+
+	public void setExternalId(String externalId) {
+		this.externalId = externalId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getAccommodationType() {
+		return accommodationType;
+	}
+
+	public void setAccommodationType(String accommodationType) {
+		this.accommodationType = accommodationType;
+	}
+
+	public String getSpaceType() {
+		return spaceType;
+	}
+
+	public void setSpaceType(String spaceType) {
+		this.spaceType = spaceType;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public boolean isStayRestrictions() {
+		return stayRestrictions;
+	}
+
+	public void setStayRestrictions(boolean stayRestrictions) {
+		this.stayRestrictions = stayRestrictions;
+	}
+
+	public int getMinNightsStay() {
+		return minNightsStay;
+	}
+
+	public void setMinNightsStay(int minNightsStay) {
+		this.minNightsStay = minNightsStay;
+	}
+
+	public int getMaxNightsStay() {
+		return maxNightsStay;
+	}
+
+	public void setMaxNightsStay(int maxNightsStay) {
+		this.maxNightsStay = maxNightsStay;
+	}
+
+	public int getRoomCount() {
+		return roomCount;
+	}
+
+	public void setRoomCount(int roomCount) {
+		this.roomCount = roomCount;
+	}
+
+	public int getSingleBedCount() {
+		return singleBedCount;
+	}
+
+	public void setSingleBedCount(int singleBedCount) {
+		this.singleBedCount = singleBedCount;
+	}
+
+	public int getDoubleBedCount() {
+		return doubleBedCount;
+	}
+
+	public void setDoubleBedCount(int doubleBedCount) {
+		this.doubleBedCount = doubleBedCount;
+	}
+
+	public int getSofaBedCount() {
+		return sofaBedCount;
+	}
+
+	public void setSofaBedCount(int sofaBedCount) {
+		this.sofaBedCount = sofaBedCount;
+	}
+
+	public boolean isShared() {
+		return shared;
+	}
+
+	public void setShared(boolean shared) {
+		this.shared = shared;
+	}
+
+	public boolean isInternalUseOnly() {
+		return internalUseOnly;
+	}
+
+	public void setInternalUseOnly(boolean internalUseOnly) {
+		this.internalUseOnly = internalUseOnly;
+	}
+
+	public String getPricingType() {
+		return pricingType;
+	}
+
+	public void setPricingType(String pricingType) {
+		this.pricingType = pricingType;
+	}
+
+	public List<TagGroupDto> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<TagGroupDto> tags) {
+		this.tags = tags;
+	}
+
+	public List<String> getFlags() {
+		return flags;
+	}
+
+	public void setFlags(List<String> flags) {
+		this.flags = flags;
+	}
 }

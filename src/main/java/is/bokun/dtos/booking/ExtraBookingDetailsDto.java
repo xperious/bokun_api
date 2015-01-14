@@ -59,4 +59,44 @@ public class ExtraBookingDetailsDto {
         }
         return new ArrayList<>(map.values());
     }
+
+    public Long getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(Long bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public BookableExtraDto getExtra() {
+        return extra;
+    }
+
+    public void setExtra(BookableExtraDto extra) {
+        this.extra = extra;
+    }
+
+    public int getUnitCount() {
+        return unitCount;
+    }
+
+    public void setUnitCount(int unitCount) {
+        this.unitCount = unitCount;
+    }
+
+    public List<BookingAnswerWithIdDto> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<BookingAnswerWithIdDto> answers) {
+        this.answers = answers;
+    }
 }

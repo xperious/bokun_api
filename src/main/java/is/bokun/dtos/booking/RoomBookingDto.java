@@ -36,4 +36,91 @@ public class RoomBookingDto {
         return list;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public BookingItemInfoDto getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(BookingItemInfoDto roomType) {
+        this.roomType = roomType;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public int getUnitCount() {
+        return unitCount;
+    }
+
+    public void setUnitCount(int unitCount) {
+        this.unitCount = unitCount;
+    }
+
+    public boolean isUnavailable() {
+        return unavailable;
+    }
+
+    public void setUnavailable(boolean unavailable) {
+        this.unavailable = unavailable;
+    }
+
+    public int getAvailabilityCount() {
+        return availabilityCount;
+    }
+
+    public void setAvailabilityCount(int availabilityCount) {
+        this.availabilityCount = availabilityCount;
+    }
+
+    public Double getRoomPrice() {
+        return roomPrice;
+    }
+
+    public void setRoomPrice(Double roomPrice) {
+        this.roomPrice = roomPrice;
+    }
+
+    public Double getExtrasPrice() {
+        return extrasPrice;
+    }
+
+    public void setExtrasPrice(Double extrasPrice) {
+        this.extrasPrice = extrasPrice;
+    }
+
+    public List<ExtraBookingDto> getExtraBookings() {
+        return extraBookings;
+    }
+
+    public void setExtraBookings(List<ExtraBookingDto> extraBookings) {
+        this.extraBookings = extraBookings;
+    }
+
+    public List<AccommodationAvailabilityBookingDto> getAvailabilityBookings() {
+        return availabilityBookings;
+    }
+
+    public void setAvailabilityBookings(List<AccommodationAvailabilityBookingDto> availabilityBookings) {
+        this.availabilityBookings = availabilityBookings;
+    }
 }

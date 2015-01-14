@@ -45,4 +45,52 @@ public class BookingQuestionDto {
 	public Long getId() {
 		return null;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public boolean isSelectFromOptions() {
+		return selectFromOptions;
+	}
+
+	public void setSelectFromOptions(boolean selectFromOptions) {
+		this.selectFromOptions = selectFromOptions;
+	}
+
+	public String getDefaultAnswer() {
+		return defaultAnswer;
+	}
+
+	public void setDefaultAnswer(String defaultAnswer) {
+		this.defaultAnswer = defaultAnswer;
+	}
+
+	public boolean isAnswerRequired() {
+		return answerRequired;
+	}
+
+	public void setAnswerRequired(boolean answerRequired) {
+		this.answerRequired = answerRequired;
+	}
+
+	public List<String> getOptions() {
+		return options;
+	}
+
+	public void setOptions(List<String> options) {
+		this.options = options;
+	}
 }

@@ -42,4 +42,12 @@ public class AccommodationBookingDetailsDto extends ProductBookingDetailsDto {
     public void setRooms(List<RoomBookingDetailsDto> rooms) {
         this.rooms = rooms;
     }
+
+    public AccommodationDto getAccommodation() {
+        return accommodation;
+    }
+
+    public void setAccommodation(AccommodationDto accommodation) {
+        this.accommodation = accommodation;
+    }
 }

@@ -56,4 +56,68 @@ public class CarBookingDetailsDto {
         }
         return map;
     }
+
+    public Long getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(Long bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public CarTypeDto getCarType() {
+        return carType;
+    }
+
+    public void setCarType(CarTypeDto carType) {
+        this.carType = carType;
+    }
+
+    public int getUnitCount() {
+        return unitCount;
+    }
+
+    public void setUnitCount(int unitCount) {
+        this.unitCount = unitCount;
+    }
+
+    public int getDayCount() {
+        return dayCount;
+    }
+
+    public void setDayCount(int dayCount) {
+        this.dayCount = dayCount;
+    }
+
+    public List<BookingAnswerDto> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<BookingAnswerDto> answers) {
+        this.answers = answers;
+    }
+
+    public List<ExtraBookingDetailsDto> getExtras() {
+        return extras;
+    }
+
+    public void setExtras(List<ExtraBookingDetailsDto> extras) {
+        this.extras = extras;
+    }
+
+    public List<BookingFieldDto> getBookingFields() {
+        return bookingFields;
+    }
+
+    public void setBookingFields(List<BookingFieldDto> bookingFields) {
+        this.bookingFields = bookingFields;
+    }
 }

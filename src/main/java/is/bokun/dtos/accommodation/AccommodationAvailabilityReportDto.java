@@ -26,4 +26,36 @@ public class AccommodationAvailabilityReportDto {
 		}
 		return null;
 	}
+
+	public Date getCheckInDate() {
+		return checkInDate;
+	}
+
+	public void setCheckInDate(Date checkInDate) {
+		this.checkInDate = checkInDate;
+	}
+
+	public Date getCheckOutDate() {
+		return checkOutDate;
+	}
+
+	public void setCheckOutDate(Date checkOutDate) {
+		this.checkOutDate = checkOutDate;
+	}
+
+	public List<AvailableRoomDto> getAvailableRooms() {
+		return availableRooms;
+	}
+
+	public void setAvailableRooms(List<AvailableRoomDto> availableRooms) {
+		this.availableRooms = availableRooms;
+	}
+
+	public int getNightCount() {
+		return nightCount;
+	}
+
+	public void setNightCount(int nightCount) {
+		this.nightCount = nightCount;
+	}
 }

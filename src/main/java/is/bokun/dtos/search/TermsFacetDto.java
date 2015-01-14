@@ -28,5 +28,28 @@ public class TermsFacetDto extends AbstractFacet {
 		}
 		return false;
 	}
-	
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public List<TermsFacetEntryDto> getEntries() {
+		return entries;
+	}
+
+	public void setEntries(List<TermsFacetEntryDto> entries) {
+		this.entries = entries;
+	}
+
+	public List<String> getFlags() {
+		return flags;
+	}
+
+	public void setFlags(List<String> flags) {
+		this.flags = flags;
+	}
 }

@@ -219,4 +219,23 @@ public class ActivityBookingDetailsDto extends ProductBookingDetailsDto {
         this.pickupTime = pickupTime;
     }
 
+	public boolean isFlexible() {
+		return flexible;
+	}
+
+	public boolean isCustomized() {
+		return customized;
+	}
+
+	public void setCustomized(boolean customized) {
+		this.customized = customized;
+	}
+
+	public boolean isPickup() {
+		return pickup;
+	}
+
+	public boolean isDropoff() {
+		return dropoff;
+	}
 }

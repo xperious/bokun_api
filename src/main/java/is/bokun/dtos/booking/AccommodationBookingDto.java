@@ -38,4 +38,36 @@ public class AccommodationBookingDto extends ProductBookingDto {
 	public String getProductCategory() {
 		return "ACCOMMODATION";
 	}
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public ProductInfoDto getAccommodation() {
+        return accommodation;
+    }
+
+    public void setAccommodation(ProductInfoDto accommodation) {
+        this.accommodation = accommodation;
+    }
+
+    public List<RoomBookingDto> getRoomBookings() {
+        return roomBookings;
+    }
+
+    public void setRoomBookings(List<RoomBookingDto> roomBookings) {
+        this.roomBookings = roomBookings;
+    }
 }

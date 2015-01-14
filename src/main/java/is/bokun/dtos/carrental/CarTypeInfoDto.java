@@ -20,4 +20,36 @@ public class CarTypeInfoDto {
 		this.title = title;
 		this.flags = flags;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getExampleCarModel() {
+		return exampleCarModel;
+	}
+
+	public void setExampleCarModel(String exampleCarModel) {
+		this.exampleCarModel = exampleCarModel;
+	}
+
+	public List<String> getFlags() {
+		return flags;
+	}
+
+	public void setFlags(List<String> flags) {
+		this.flags = flags;
+	}
 }

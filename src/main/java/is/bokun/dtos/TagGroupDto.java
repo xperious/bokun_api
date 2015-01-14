@@ -63,7 +63,11 @@ public class TagGroupDto extends ItemDto {
 		this.flags = flags;
 	}
 
-    public boolean getGroup() {
-        return group;
-    }
+	public boolean isGroup() {
+		return group;
+	}
+
+	public void setGroup(boolean group) {
+		this.group = group;
+	}
 }

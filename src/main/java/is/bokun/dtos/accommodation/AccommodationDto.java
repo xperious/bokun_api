@@ -86,4 +86,84 @@ public class AccommodationDto extends ProductDto {
         });
         return list;
     }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public int getCheckInHour() {
+        return checkInHour;
+    }
+
+    public void setCheckInHour(int checkInHour) {
+        this.checkInHour = checkInHour;
+    }
+
+    public int getCheckInMinute() {
+        return checkInMinute;
+    }
+
+    public void setCheckInMinute(int checkInMinute) {
+        this.checkInMinute = checkInMinute;
+    }
+
+    public int getCheckOutHour() {
+        return checkOutHour;
+    }
+
+    public void setCheckOutHour(int checkOutHour) {
+        this.checkOutHour = checkOutHour;
+    }
+
+    public int getCheckOutMinute() {
+        return checkOutMinute;
+    }
+
+    public void setCheckOutMinute(int checkOutMinute) {
+        this.checkOutMinute = checkOutMinute;
+    }
+
+    public Long getBoxedAccommodationId() {
+        return boxedAccommodationId;
+    }
+
+    public void setBoxedAccommodationId(Long boxedAccommodationId) {
+        this.boxedAccommodationId = boxedAccommodationId;
+    }
+
+    public Set<String> getTypes() {
+        return types;
+    }
+
+    public void setTypes(Set<String> types) {
+        this.types = types;
+    }
+
+    public LocationDto getLocation() {
+        return location;
+    }
+
+    public void setLocation(LocationDto location) {
+        this.location = location;
+    }
+
+    public List<RoomTypeDto> getRoomTypes() {
+        return roomTypes;
+    }
+
+    public void setRoomTypes(List<RoomTypeDto> roomTypes) {
+        this.roomTypes = roomTypes;
+    }
+
+    public List<BookableExtraDto> getBookableExtras() {
+        return bookableExtras;
+    }
+
+    public void setBookableExtras(List<BookableExtraDto> bookableExtras) {
+        this.bookableExtras = bookableExtras;
+    }
 }

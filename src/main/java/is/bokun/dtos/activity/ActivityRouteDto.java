@@ -68,6 +68,8 @@ public class ActivityRouteDto {
 	public void setWaypoints(List<GeoPoint> waypoints) {
 		this.waypoints = waypoints;
 	}
-	
-	
+
+	public boolean isSameStartEnd() {
+		return sameStartEnd;
+	}
 }
