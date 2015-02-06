@@ -3,9 +3,7 @@ package is.bokun.dtos;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +17,8 @@ public class ItemDto {
 	public String title;
 	public String externalId;
 
+    @XmlElementWrapper
+    @XmlElement(name="flag")
     public List<String> flags = new ArrayList<>();
 	
 	public ItemDto() {}
@@ -31,7 +31,6 @@ public class ItemDto {
         this.id = id;
         this.title = title;
         this.externalId = externalId;
-        this.flags = null;
     }
     
     public ItemDto(Long id, String title, String externalId, List<String> flags) {

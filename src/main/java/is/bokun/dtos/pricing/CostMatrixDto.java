@@ -2,7 +2,6 @@ package is.bokun.dtos.pricing;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -28,6 +27,7 @@ public class CostMatrixDto {
     public List<CostMatrixAxisItemDto> axisItems = new ArrayList<>();
 
     public List<CostMatrixCellDto> cells = new ArrayList<>();
+    public List<PriceModulatorConfigDto> priceModulators = new ArrayList<>();
 
     public boolean getDependent() {
         return masterId != null && masterId > 0;

@@ -13,7 +13,6 @@ public abstract class AbstractSearchResultsDto {
 	public List<TermFilter> tagFilters = new ArrayList<>();
 	
 	public List<TermsFacetDto> tagFacets = new ArrayList<>();
-	public StatisticalFacetDto priceFacet;
 	public Map<String,TermsFacetDto> termFacets = new HashMap<>();
 
     @JsonIgnore

@@ -2,9 +2,7 @@ package is.bokun.dtos.search;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import is.bokun.dtos.CustomerDto;
-import is.bokun.dtos.ExtranetUserDto;
-import is.bokun.dtos.ProductCategoryEnum;
+import is.bokun.dtos.*;
 import is.bokun.dtos.booking.*;
 import is.bokun.utils.StringUtils;
 
@@ -23,6 +21,8 @@ public class ProductBookingSearchResultItem {
     public boolean resold;
 
     public boolean hasNotes;
+
+    public List<ResourceDto> assignedResources = new ArrayList<>();
 	
 	public BookingItemInfoDto channel;
 	public BookingItemInfoDto product;
@@ -88,6 +88,19 @@ public class ProductBookingSearchResultItem {
     public String getString(String fieldName, String defaultValue) {
         String value = (String) fields.get(fieldName);
         return value != null ? value : defaultValue;
+    }
+
+    @JsonIgnore
+    public ResourceDto findAssignedResource(ResourceTypeEnum type) {
+        if ( assignedResources == null ) {
+            return null;
+        }
+        for (ResourceDto r : assignedResources) {
+            if ( r.type == type ) {
+                return r;
+            }
+        }
+        return null;
     }
 
     @JsonIgnore

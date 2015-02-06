@@ -36,6 +36,11 @@ public class BookingQuery {
     public boolean soldByAgentOrReseller;
     public boolean soldByAffiliateOrAsReseller;
 
+	public Long supplierOrSellerId;
+
+	public List<Long> assignedResourceIds = new ArrayList<>();
+	public Map<String,List<Long>> assignedResourcesByType = new HashMap<>();
+
     public String retailCurrency;
     public String resellerCurrency;
 
@@ -70,7 +75,23 @@ public class BookingQuery {
     public DateRangeFilter creationDateRange = new DateRangeFilter();
     public DateRangeFilter startDateRange = new DateRangeFilter();
 
-    public boolean hasCreationDateRange() {
+	public List<Long> getAssignedResourceIds() {
+		return assignedResourceIds;
+	}
+
+	public void setAssignedResourceIds(List<Long> assignedResourceIds) {
+		this.assignedResourceIds = assignedResourceIds;
+	}
+
+	public Map<String, List<Long>> getAssignedResourcesByType() {
+		return assignedResourcesByType;
+	}
+
+	public void setAssignedResourcesByType(Map<String, List<Long>> assignedResourcesByType) {
+		this.assignedResourcesByType = assignedResourcesByType;
+	}
+
+	public boolean hasCreationDateRange() {
         return creationDateRange != null && creationDateRange.isActive();
     }
     public DateRangeFilter getCreationDateRange() {
@@ -249,7 +270,15 @@ public class BookingQuery {
 		this.pageSize = pageSize;
 	}
 
-    public Long getAffiliateOwnerId() {
+	public Long getSupplierOrSellerId() {
+		return supplierOrSellerId;
+	}
+
+	public void setSupplierOrSellerId(Long supplierOrSellerId) {
+		this.supplierOrSellerId = supplierOrSellerId;
+	}
+
+	public Long getAffiliateOwnerId() {
         return affiliateOwnerId;
     }
 

@@ -32,6 +32,6 @@ public class InvoiceDto {
     public String currency;
 
     @XmlElementWrapper
-    @XmlElement(name="payment")
-    public List<PaymentDto> payments = new ArrayList<>();
+    @XmlElement(name="settlement")
+    public List<SettlementDto> settlements = new ArrayList<>();
 }

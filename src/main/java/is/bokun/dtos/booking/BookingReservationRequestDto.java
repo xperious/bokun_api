@@ -3,9 +3,7 @@ package is.bokun.dtos.booking;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import is.bokun.dtos.payments.CardDto;
 import is.bokun.dtos.payments.ChargeRequestDto;
 
 /**
@@ -16,7 +14,7 @@ public class BookingReservationRequestDto {
 
     public BookingAnswersDto answers;
     public boolean createPaymentsAutomatically;
-    public List<BookingPaymentInfoDto> paymentInfos = new ArrayList<>();
+    public BookingPaymentInfoDto paymentInfo;
 
     public List<BookingFieldDto> bookingFields = new ArrayList<>();
     
@@ -37,12 +35,12 @@ public class BookingReservationRequestDto {
         this.answers = answers;
     }
 
-    public List<BookingPaymentInfoDto> getPaymentInfos() {
-        return paymentInfos;
+    public BookingPaymentInfoDto getPaymentInfo() {
+        return paymentInfo;
     }
 
-    public void setPaymentInfos(List<BookingPaymentInfoDto> paymentInfos) {
-        this.paymentInfos = paymentInfos;
+    public void setPaymentInfo(BookingPaymentInfoDto paymentInfo) {
+        this.paymentInfo = paymentInfo;
     }
 
 	public void setCreatePaymentsAutomatically(boolean createPaymentsAutomatically) {

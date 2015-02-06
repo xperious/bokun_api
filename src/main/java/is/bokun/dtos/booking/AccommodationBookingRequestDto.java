@@ -12,7 +12,7 @@ public class AccommodationBookingRequestDto {
 
     public Long accommodationId;
     public String checkinDate, checkoutDate;
-    public List<RoomBookingRequestDto> rooms = new ArrayList<RoomBookingRequestDto>();
+    public List<RoomBookingRequestDto> rooms = new ArrayList<>();
 
     public AccommodationBookingRequestDto() {}
     
@@ -62,7 +62,6 @@ public class AccommodationBookingRequestDto {
     public static class RoomBookingRequestDto {
 
         public Long roomTypeId;
-        public int unitCount;
         public List<ExtraBookingRequestDto> extras = new ArrayList<>();
 
         public RoomBookingRequestDto() {}
@@ -73,14 +72,6 @@ public class AccommodationBookingRequestDto {
 
 		public void setRoomTypeId(Long roomTypeId) {
 			this.roomTypeId = roomTypeId;
-		}
-
-		public int getUnitCount() {
-			return unitCount;
-		}
-
-		public void setUnitCount(int unitCount) {
-			this.unitCount = unitCount;
 		}
 
 		public List<ExtraBookingRequestDto> getExtras() {

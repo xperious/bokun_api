@@ -162,9 +162,9 @@ public class RouteDto extends ProductDto {
     }
 
     @JsonIgnore
-    public RouteLegDto findLegById(Long legId) {
+    public RouteLegDto findLeg(Long sourceStationId, Long destinationStationId) {
         for (RouteLegDto legDto : legs) {
-            if ( legDto.id.equals(legId) ) {
+            if ( legDto.from.id.equals(sourceStationId) && legDto.to.id.equals(destinationStationId) ) {
                 return legDto;
             }
         }
@@ -195,6 +195,16 @@ public class RouteDto extends ProductDto {
             }
         }
         return list;
+    }
+
+    @JsonIgnore
+    public FareClassDto findDefaultFareClass() {
+        for (FareClassDto pcat : getFareClasses()) {
+            if ( pcat.defaultClass ) {
+                return pcat;
+            }
+        }
+        return null;
     }
 
     @JsonIgnore

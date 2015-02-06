@@ -1,6 +1,7 @@
 package is.bokun.dtos.transport;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
 import java.util.concurrent.TimeUnit;
@@ -13,6 +14,27 @@ public class AvailableLegDto {
     public RouteDto route;
     public RouteLegDto leg;
     public AvailableScheduleDto departure;
+    public DateTime departureDate;
+
+    @JsonIgnore
+    public DateTime getDepartureDateTime() {
+        return departure.schedule != null
+                ? departure.schedule.getDepartureTime().toDateTime(departureDate)
+                : departureDate
+                ;
+    }
+
+    @JsonIgnore
+    public DateTime getArrivalDateTime() {
+        if ( departure.schedule == null ) {
+            return departureDate;
+        }
+        if ( departure.schedule.getArrivalTime().isBefore(departure.schedule.getDepartureTime()) ) {
+            return departure.schedule.getArrivalTime().toDateTime(departureDate.plusDays(1));
+        } else {
+            return departure.schedule.getArrivalTime().toDateTime(departureDate);
+        }
+    }
 
     @JsonIgnore
     public long getDuration(TimeUnit timeUnit) {

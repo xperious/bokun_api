@@ -21,6 +21,7 @@ public class LinkedExternalCustomerDto {
     public List<String> flags = new ArrayList<>();
 
     public String externalCustomerId;
+    public String externalDepartmentId;
     public String externalCustomerTitle;
 
     public Long getSystemConfigId() {
@@ -53,6 +54,14 @@ public class LinkedExternalCustomerDto {
 
     public void setExternalCustomerId(String externalCustomerId) {
         this.externalCustomerId = externalCustomerId;
+    }
+
+    public String getExternalDepartmentId() {
+        return externalDepartmentId;
+    }
+
+    public void setExternalDepartmentId(String externalDepartmentId) {
+        this.externalDepartmentId = externalDepartmentId;
     }
 
     public String getExternalCustomerTitle() {

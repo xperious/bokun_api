@@ -13,6 +13,7 @@ import java.util.List;
 public class RoutePathSegmentBookingRequest {
 
     public Long routeId;
+    public boolean returning; // specifies whether this segment is part of a return path
     public List<RouteScheduleBookingRequestDto> departureSchedules = new ArrayList<>();
     public List<RouteScheduleBookingRequestDto> returnSchedules = new ArrayList<>();
 

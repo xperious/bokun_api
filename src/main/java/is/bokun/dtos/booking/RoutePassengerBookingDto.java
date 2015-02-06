@@ -10,29 +10,39 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * Created by ogg on 24.9.2014.
+ * Created by ogg on 09/01/15.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-@XmlType(name = "PassengerSpecification")
+@XmlType(name = "RoutePassengerBooking")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class RouteBookingLineItemSpecDto {
+public class RoutePassengerBookingDto {
 
-    public FareClassDto fareClass;
+    public Long id;
     public PricingCategoryDto pricingCategory;
-    public Double pricePerPassenger;
-    public int quantity;
+    public FareClassDto fareClass;
 
-    public RouteBookingLineItemSpecDto() {}
+    public Long getId() {
+        return id;
+    }
 
-    public RouteBookingLineItemSpecDto(PricingCategoryDto pricingCategory, FareClassDto fareClass, int quantity) {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public PricingCategoryDto getPricingCategory() {
+        return pricingCategory;
+    }
+
+    public void setPricingCategory(PricingCategoryDto pricingCategory) {
         this.pricingCategory = pricingCategory;
+    }
+
+    public FareClassDto getFareClass() {
+        return fareClass;
+    }
+
+    public void setFareClass(FareClassDto fareClass) {
         this.fareClass = fareClass;
-        this.quantity = quantity;
     }
-
-    public double getTotalPrice() {
-        return quantity * pricePerPassenger;
-    }
-
 }

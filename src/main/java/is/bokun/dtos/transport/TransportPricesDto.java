@@ -1,21 +1,36 @@
 package is.bokun.dtos.transport;
 
-import is.bokun.queries.TransportQuery;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by ogg on 3.9.2014.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@XmlType(name = "TransportPrices")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class TransportPricesDto {
 
+    @XmlElementWrapper
+    @XmlElement(name="passengerCategoryPrices")
     public List<PassengerCategoryPricesDto> priceList = new ArrayList<>();
 
     public Double getTotalPrice(SegmentPassengerSpecificationDto segmentPassengerSpec, boolean peak, boolean returnTicket) {
-        Double total = 0d;
+        Double total = null;
         for (PassengerPriceSpecificationDto p : getPrices(segmentPassengerSpec, peak, returnTicket)) {
-            total += p.getTotalPrice();
+            if ( p.getTotalPrice() != null ) {
+                if ( total == null ) {
+                    total = 0d;
+                }
+                total += p.getTotalPrice();
+            } else {
+                return null;
+            }
         }
         return total;
     }

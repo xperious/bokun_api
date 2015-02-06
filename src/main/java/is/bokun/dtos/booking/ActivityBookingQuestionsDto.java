@@ -17,9 +17,17 @@ public class ActivityBookingQuestionsDto {
 	public boolean askWhereToPickup;
 	public List<PickupPlaceDto> pickupPlaces = new ArrayList<>();
     public boolean customPickupAllowed;
+
+    public PickupPlaceDto pickupPlace;
+    public String pickupPlaceDescription;
+    public String pickupPlaceRoomNumber;
+
 	public boolean askWhereToDropoff;
 	public List<PickupPlaceDto> dropoffPlaces = new ArrayList<>();
     public boolean customDropoffAllowed;
+
+    public PickupPlaceDto dropoffPlace;
+    public String dropoffPlaceDescription;
 
     public List<BookingQuestionGroupDto> questionGroups = new ArrayList<>();
 	

@@ -1,10 +1,21 @@
 package is.bokun.dtos.transport;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.PricingCategoryDto;
+import is.bokun.dtos.pricing.PriceModulationOutput;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  * Created by ogg on 4/9/14.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@XmlType(name = "PassengerCategoryPrices")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class PassengerCategoryPricesDto {
 
     public PricingCategoryDto pricingCategory;
@@ -12,25 +23,11 @@ public class PassengerCategoryPricesDto {
     public boolean peak;
     public boolean returnTicket;
 
-    public Double price;
+    public PriceModulationOutput price;
 
     public PassengerCategoryPricesDto() {}
 
-    public PassengerCategoryPricesDto(PricingCategoryDto pricingCategory, Double price) {
-        this.pricingCategory = pricingCategory;
-        this.price = price;
-        this.peak = false;
-        this.returnTicket = false;
-    }
-
-    public PassengerCategoryPricesDto(PricingCategoryDto pricingCategory, FareClassDto fareClass, Double price) {
-        this.pricingCategory = pricingCategory;
-        this.fareClass = fareClass;
-        this.price = price;
-        this.peak = false;
-    }
-
-    public PassengerCategoryPricesDto(PricingCategoryDto pricingCategory, FareClassDto fareClass, boolean peak, boolean returnTicket, Double price) {
+    public PassengerCategoryPricesDto(PricingCategoryDto pricingCategory, FareClassDto fareClass, boolean peak, boolean returnTicket, PriceModulationOutput price) {
         this.pricingCategory = pricingCategory;
         this.fareClass = fareClass;
         this.price = price;
@@ -38,27 +35,4 @@ public class PassengerCategoryPricesDto {
         this.returnTicket = returnTicket;
     }
 
-    public static PassengerCategoryPricesDto returnTicket(PricingCategoryDto pricingCategory, Double price) {
-        return new PassengerCategoryPricesDto(pricingCategory, null, false, true, price);
-    }
-
-    public static PassengerCategoryPricesDto returnTicket(PricingCategoryDto pricingCategory, FareClassDto fareClass, Double price) {
-        return new PassengerCategoryPricesDto(pricingCategory, fareClass, false, true, price);
-    }
-
-    public static PassengerCategoryPricesDto peak(PricingCategoryDto pricingCategory, Double price) {
-        return new PassengerCategoryPricesDto(pricingCategory, null, true, false, price);
-    }
-
-    public static PassengerCategoryPricesDto peak(PricingCategoryDto pricingCategory, FareClassDto fareClass, Double price) {
-        return new PassengerCategoryPricesDto(pricingCategory, fareClass, true, false, price);
-    }
-
-    public static PassengerCategoryPricesDto peakReturn(PricingCategoryDto pricingCategory, Double price) {
-        return new PassengerCategoryPricesDto(pricingCategory, null, true, true, price);
-    }
-
-    public static PassengerCategoryPricesDto peakReturn(PricingCategoryDto pricingCategory, FareClassDto fareClass, Double price) {
-        return new PassengerCategoryPricesDto(pricingCategory, fareClass, true, true, price);
-    }
 }

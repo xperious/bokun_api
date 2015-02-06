@@ -5,23 +5,18 @@ package is.bokun.utils;
  */
 public class PriceUtils {
 
-    public static Double calculatePriceWithDiscount(double total, Double discountPercentage, Double discountAmount) {
-        if ( discountPercentage != null && discountPercentage > 0 ) {
+    public static double calculatePriceWithDiscount(double total, Double discountPercentage, Double discountAmount) {
+        if ( discountPercentage != null && discountPercentage != 0 ) {
             double perc = 100d - discountPercentage;
             return percentage(total, perc);
         } else if ( discountAmount != null && discountAmount != 0 ) {
-            Double amount = total - discountAmount;
-            if ( amount.doubleValue() < 0 ) {
-                return 0d;
-            } else {
-                return amount;
-            }
+            return total - discountAmount;
         } else {
             return total;
         }
     }
 
     public static double percentage(double base, double perc) {
-        return (int)Math.floor(base * (((double)perc) / 100d) + 0.5d);
+        return (int)Math.floor(base * (perc / 100d) + 0.5d);
     }
 }

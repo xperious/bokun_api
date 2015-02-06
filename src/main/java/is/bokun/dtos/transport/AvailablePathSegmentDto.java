@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Sets;
 import is.bokun.dtos.CapacityDto;
 import is.bokun.dtos.CapacityTypeEnum;
+import is.bokun.queries.TransportQuery;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,13 +17,11 @@ import java.util.Set;
 public class AvailablePathSegmentDto {
 
     public RouteDto route;
-    public boolean returning;
+    public boolean returning; // specifies whether this segment is part of a return path
     public List<AvailableLegDto> departurePath = new ArrayList<>();
-    public List<AvailableLegDto> returnPath = new ArrayList<>();
+    public List<AvailableLegDto> returnPath = null;
 
     public SegmentPassengerSpecificationDto passengerSpecification;
-
-    public AvailablePathSegmentDto() {}
 
     public AvailablePathSegmentDto(RouteDto route, boolean returning, SegmentPassengerSpecificationDto passengerSpecification) {
         this.route = route;
@@ -41,8 +40,21 @@ public class AvailablePathSegmentDto {
     }
 
     @JsonIgnore
+    public CapacityDto findMinimumCapacity(TransportQuery query) {
+        if ( route.fareClassCapacity ) {
+            if (query.hasFareClass() && route.findFareClassById(query.fareClassId) != null ) {
+                return findMinimumCapacity(query.fareClassId);
+            } else {
+                return findMinimumCapacity(route.findDefaultFareClass().id);
+            }
+        } else {
+            return findMinimumCapacity();
+        }
+    }
+
+    @JsonIgnore
     public CapacityDto findMinimumCapacity() {
-        return findMinimumCapacity(null);
+        return findMinimumCapacity((Long)null);
     }
 
     @JsonIgnore
@@ -72,6 +84,9 @@ public class AvailablePathSegmentDto {
         if ( c == null ) {
             return new CapacityDto(CapacityTypeEnum.LIMITED, 0);
         } else {
+            if ( c.capacityType == CapacityTypeEnum.UNLIMITED ) {
+                c.capacity = 25;
+            }
             return c;
         }
     }
@@ -98,11 +113,13 @@ public class AvailablePathSegmentDto {
             }
         }
 
-        Set<String> fareClassIds = Sets.intersection(departureFareClassIds, returnFareClassIds);
+        Set<String> fareClassIds = (!returning && returnPath != null)
+                ? Sets.intersection(departureFareClassIds, returnFareClassIds)
+                : departureFareClassIds
+                ;
 
-        List<FareClassDto> unfiltered = route.fareClasses;
         List<FareClassDto> list = new ArrayList<>();
-        for (FareClassDto fc : unfiltered) {
+        for (FareClassDto fc : route.fareClasses) {
             if ( fareClassIds.contains("fareclass_" + fc.id) ) {
                 list.add(fc);
             }
@@ -129,10 +146,10 @@ public class AvailablePathSegmentDto {
             boolean usePeakPricing = leg.departure.schedule.peak && route.peakPricing;
             TransportPricesDto prices = leg.departure.getPrices();
             PassengerPriceSpecificationDto price = prices.getPrice(1, pricingCategoryId, fareClassId, usePeakPricing, useReturnPricing);
-            if ( price != null ) {
-                totalPrice += price.price;
+            if ( price != null && price.price.foundPrice ) {
+                totalPrice += price.price.getPriceWithDiscount();
             } else {
-                throw new RuntimeException("Could not find price");
+                return null;
             }
         }
         return totalPrice;
@@ -140,11 +157,19 @@ public class AvailablePathSegmentDto {
 
     @JsonIgnore
     public Double getTotalPrice() {
-        Double total = 0d;
+        Double total = null;
         for (AvailableLegDto leg : departurePath) {
             boolean useReturnPricing = returnPath != null && !returnPath.isEmpty() && route.returnPricing;
             boolean usePeakPricing = leg.departure.schedule.peak && route.peakPricing;
-            total += leg.departure.getPrices().getTotalPrice(passengerSpecification, usePeakPricing, useReturnPricing);
+            Double legPrice = leg.departure.getPrices().getTotalPrice(passengerSpecification, usePeakPricing, useReturnPricing);
+            if ( legPrice != null ) {
+                if ( total == null ) {
+                    total = 0d;
+                }
+                total += leg.departure.getPrices().getTotalPrice(passengerSpecification, usePeakPricing, useReturnPricing);
+            } else {
+                return null;
+            }
         }
         return total;
     }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import is.bokun.dtos.transport.PricingCategoryPassengerSpecificationDto;
+import is.bokun.dtos.transport.RouteDto;
 import is.bokun.utils.StringUtils;
 import org.joda.time.Duration;
 import org.joda.time.LocalDate;
@@ -40,6 +41,24 @@ public class TransportQuery {
 
     public RouteWeightType weightType = RouteWeightType.PRICE;
 
+    public void validate() {
+        if ( passengers <= 0 ) {
+            passengers = 1;
+        }
+        if ( pricingCategories != null && !pricingCategories.isEmpty() ) {
+            boolean allEmpty = true;
+            for (PricingCategoryPassengerSpecificationDto p : pricingCategories) {
+                if (p.passengers > 0) {
+                    allEmpty = false;
+                    break;
+                }
+            }
+            if (allEmpty) {
+                pricingCategories.iterator().next().passengers = 1;
+            }
+        }
+    }
+
     @JsonIgnore
     public boolean hasFareClass() {
         return fareClassId != null && fareClassId > 0;
@@ -64,7 +83,7 @@ public class TransportQuery {
     @JsonIgnore
     public PricingCategoryPassengerSpecificationDto getPricingCategorySpec(Long pricingCategoryId) {
         for (PricingCategoryPassengerSpecificationDto spec : pricingCategories) {
-            if ( spec.categoryId.equals(pricingCategoryId) ) {
+            if ( spec.categoryId != null && spec.categoryId.equals(pricingCategoryId) ) {
                 return spec;
             }
         }

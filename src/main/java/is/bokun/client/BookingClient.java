@@ -160,21 +160,21 @@ public class BookingClient extends AbstractClient {
      * @return Booking details for the confirmed booking.
      */
     public BookingDetailsDto confirmBooking(Long bookingId, String lang, String currency) {
-    	return confirmBooking(bookingId, new ArrayList<>(), lang, currency);
+    	return confirmBooking(bookingId, new BookingConfirmationDto(), lang, currency);
     }
     
     /**
      * Confirm a RESERVED booking. Normally called after processing payment.
      *
      * @param bookingId the ID of the Booking
-     * @param payments a list of payment infos, each describing how a payment was made for a product booking
+     * @param payment a payment info with a list of settlements, each describing how a payment was made for a product booking
      * @param lang The language the content should be in.
      * @param currency The currency used for prices.
      * @return Booking details for the confirmed booking.
      */
-    public BookingDetailsDto confirmBooking(Long bookingId, List<BookingPaymentInfoDto> payments, String lang, String currency) {
+    public BookingDetailsDto confirmBooking(Long bookingId, BookingPaymentInfoDto payment, String lang, String currency) {
     	BookingConfirmationDto confirmation = new BookingConfirmationDto();
-    	confirmation.payments = payments;
+    	confirmation.payment = payment;
     	return confirmBooking(bookingId, confirmation, lang, currency);
     }
     

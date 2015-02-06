@@ -9,8 +9,6 @@ public class PassengerPriceSpecificationDto extends PassengerCategoryPricesDto {
 
     public int passengers;
 
-    public PassengerPriceSpecificationDto() {}
-
     public PassengerPriceSpecificationDto(PassengerCategoryPricesDto catPrices, int passengers) {
         this.passengers = passengers;
         this.pricingCategory = catPrices.pricingCategory;
@@ -22,6 +20,6 @@ public class PassengerPriceSpecificationDto extends PassengerCategoryPricesDto {
 
     @JsonIgnore
     public Double getTotalPrice() {
-        return passengers * price;
+        return price.foundPrice ? passengers * price.getPriceWithDiscount() : null;
     }
 }

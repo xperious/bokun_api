@@ -29,6 +29,10 @@ public class RouteBookingDetailsDto extends ProductBookingDetailsDto {
     @XmlElement(name="legBooking")
     public List<RouteLegBookingDto> legBookings = new ArrayList<>();
 
+    @XmlElementWrapper
+    @XmlElement(name="passengerBooking")
+    public List<RoutePassengerBookingDto> passengerBookings = new ArrayList<>();
+
     public RouteBookingDetailsDto returnBooking;
 
     @XmlElementWrapper
@@ -69,6 +73,14 @@ public class RouteBookingDetailsDto extends ProductBookingDetailsDto {
 
     public void setReturnBooking(RouteBookingDetailsDto returnBooking) {
         this.returnBooking = returnBooking;
+    }
+
+    public List<RoutePassengerBookingDto> getPassengerBookings() {
+        return passengerBookings;
+    }
+
+    public void setPassengerBookings(List<RoutePassengerBookingDto> passengerBookings) {
+        this.passengerBookings = passengerBookings;
     }
 
     public List<RouteBookingLineItemSpecDto> getLineItemSpecs() {

@@ -7,16 +7,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingConfirmationDto {
 
-	public List<BookingPaymentInfoDto> payments = new ArrayList<>();
+	public BookingPaymentInfoDto payment;
 	
 	public List<BookingFieldDto> bookingFields = new ArrayList<>();
 
-	public List<BookingPaymentInfoDto> getPayments() {
-		return payments;
+	public BookingPaymentInfoDto getPayment() {
+		return payment;
 	}
 
-	public void setPayments(List<BookingPaymentInfoDto> payments) {
-		this.payments = payments;
+	public void setPayment(BookingPaymentInfoDto payment) {
+		this.payment = payment;
 	}
 
 	public List<BookingFieldDto> getBookingFields() {

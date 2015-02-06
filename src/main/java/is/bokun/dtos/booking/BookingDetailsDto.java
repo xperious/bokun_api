@@ -162,7 +162,7 @@ public class BookingDetailsDto {
     @JsonIgnore
     public Double calculatePaidAmount() {
         double paidAmount = 0;
-        for (PaymentDto p : getPayments()) {
+        for (SettlementDto p : getSettlements()) {
             if ( p.getAmount() != null) {
                 paidAmount += p.getAmount();
             }
@@ -171,10 +171,10 @@ public class BookingDetailsDto {
     }
 
     @JsonIgnore
-    public List<PaymentDto> getPayments() {
-        List<PaymentDto> list = new ArrayList<>();
+    public List<SettlementDto> getSettlements() {
+        List<SettlementDto> list = new ArrayList<>();
         for (ProductBookingDetailsDto pb : getProductBookings()) {
-            list.addAll(pb.invoice.payments);
+            list.addAll(pb.invoice.settlements);
         }
         return list;
     }

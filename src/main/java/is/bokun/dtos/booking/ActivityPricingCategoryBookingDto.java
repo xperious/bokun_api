@@ -6,6 +6,8 @@ import javax.xml.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import is.bokun.dtos.PricingCategoryDto;
+import is.bokun.utils.StringUtils;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
@@ -14,6 +16,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class ActivityPricingCategoryBookingDto {
 
 	public Long pricingCategoryId;
+	public PricingCategoryDto pricingCategory;
 	public int quantity;
 	public Double bookedPrice;
 	public String bookedTitle;
@@ -35,5 +38,10 @@ public class ActivityPricingCategoryBookingDto {
 	public ActivityPricingCategoryBookingDto(Long pricingCategoryId, int quantity, String bookedTitle) {
 		this(pricingCategoryId, quantity);
 		this.bookedTitle = bookedTitle;
+	}
+
+	public ActivityPricingCategoryBookingDto(Long pricingCategoryId, int quantity, PricingCategoryDto pricingCategory) {
+		this(pricingCategoryId, quantity, !StringUtils.isNullOrEmpty(pricingCategory.title) ? pricingCategory.title : "");
+		this.pricingCategory = pricingCategory;
 	}
 }

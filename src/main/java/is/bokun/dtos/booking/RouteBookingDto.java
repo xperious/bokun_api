@@ -7,6 +7,9 @@ import com.google.common.collect.Iterables;
 import is.bokun.dtos.VendorDto;
 import is.bokun.dtos.transport.RouteLegDto;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +19,8 @@ import java.util.List;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@XmlType(name = "RouteBooking")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class RouteBookingDto extends ProductBookingDto {
 
     public Date date;
@@ -23,6 +28,7 @@ public class RouteBookingDto extends ProductBookingDto {
 
     public ProductInfoDto route;
     public List<RouteLegBookingDto> legBookings = new ArrayList<>();
+    public List<RoutePassengerBookingDto> passengerBookings = new ArrayList<>();
 
     public RouteBookingDto returnBooking;
 

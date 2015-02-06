@@ -27,7 +27,5 @@ public class RouteLegBookingDto {
     public RouteLegDto leg;
     public RouteScheduleDto departure;
 
-    public PricingCategoryDto pricingCategory;
-    public FareClassDto fareClass;
     public boolean peak;
 }

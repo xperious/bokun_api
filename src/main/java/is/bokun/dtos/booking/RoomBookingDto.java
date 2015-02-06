@@ -13,9 +13,7 @@ public class RoomBookingDto {
 
     public Date startDate;
     public Date endDate;
-	
-    public int unitCount;
-	
+
 	public boolean unavailable;
 	public int availabilityCount;
 	public Double roomPrice;

@@ -2,32 +2,19 @@ package is.bokun.dtos.booking;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingPaymentInfoDto extends PaymentDto {
 
-    public Long bookingId;
-    public String productCategory;
-    public String bookingPaidType;
+    public List<SettlementDto> settlements = new ArrayList<>();
 
-    public String getProductCategory() {
-        return productCategory;
-    }
-    public void setProductCategory(String productCategory) {
-        this.productCategory = productCategory;
+    public List<SettlementDto> getSettlements() {
+        return settlements;
     }
 
-    public Long getBookingId() {
-        return bookingId;
+    public void setSettlements(List<SettlementDto> settlements) {
+        this.settlements = settlements;
     }
-    public void setBookingId(Long bookingId) {
-        this.bookingId = bookingId;
-    }
-
-    public String getBookingPaidType() {
-        return bookingPaidType;
-    }
-    public void setBookingPaidType(String bookingPaidType) {
-        this.bookingPaidType = bookingPaidType;
-    }
-
 }

@@ -54,8 +54,6 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
     public List<String> keywords = new ArrayList<>();
     public List<String> flags = new ArrayList<>();
     
-    public List<Long> priceModulatorIds = new ArrayList<>();
-		
 	public PhotoDto keyPhoto;
 	public List<PhotoDto> photos = new ArrayList<>();
 	

@@ -70,11 +70,16 @@ public class AvailableDepartureReturnPathPairDto {
             if ( currentReturnSegment != null ) {
                 if (currentReturnSegment.route.returnPricing) {
                     // check if this return segment has a corresponding departure segment
+                    boolean foundMatchingSegment = false;
                     for (AvailablePathSegmentDto departureSegment : departureSegments) {
                         if (Lists.reverse(departureSegment.getDepartureStationIds()).equals(currentReturnSegment.getDepartureStationIds())) {
                             departureSegment.returnPath = currentReturnSegment.departurePath;
+                            foundMatchingSegment = true;
                             break;
                         }
+                    }
+                    if ( !foundMatchingSegment ) {
+                        returnSegments.add(currentReturnSegment);
                     }
                 } else {
                     returnSegments.add(currentReturnSegment);
@@ -131,9 +136,16 @@ public class AvailableDepartureReturnPathPairDto {
 
     @JsonIgnore
     public Double getTotalPrice(TransportQuery query) {
-        Double total = 0d;
+        Double total = null;
         for (AvailablePathSegmentDto segment : getRouteSegments(query)) {
-            total += segment.getTotalPrice();
+            if ( segment.getTotalPrice() != null ) {
+                if ( total == null ) {
+                    total = 0d;
+                }
+                total += segment.getTotalPrice();
+            } else {
+                return null;
+            }
         }
         return total;
     }

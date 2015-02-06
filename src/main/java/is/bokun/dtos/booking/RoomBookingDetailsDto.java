@@ -4,10 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import is.bokun.dtos.ItemDto;
 
 import java.util.*;
+import java.util.function.Function;
 
 import javax.xml.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlType(name = "roomBooking")
@@ -20,7 +24,6 @@ public class RoomBookingDetailsDto {
 	public String title;
 	public ItemDto roomType;
 	
-	public int unitCount;
     public int nightCount;
 	
 	@XmlElementWrapper
@@ -39,22 +42,18 @@ public class RoomBookingDetailsDto {
 
     @JsonIgnore
     public BookingAnswerDto getAnswer(String type) {
-        for (BookingAnswerDto a : answers) {
-            if( a.getType().equals(type) ) {
-                return a;
-            }
-        }
-        return null;
+        return answers.stream().filter(a -> a.getType().equals(type)).findFirst().orElse(null);
     }
 
     @JsonIgnore
     public Map<String,BookingAnswerDto> getAnswerInGroup(String group) {
-        Map<String,BookingAnswerDto> map = new HashMap<>();
-        for (BookingAnswerDto a : answers) {
-            if ( a.getGroup().equals(group) ) {
-                map.put(a.getType(), a);
-            }
-        }
-        return map;
+        return answers.stream().filter(a -> a.getGroup().equals(group)).collect(toMap(BookingAnswerDto::getType, Function.<BookingAnswerDto>identity()));
     }
+
+    @JsonIgnore
+    public List<BookingAnswerDto> getAnswers(String type){
+        return answers.stream().filter(a -> a.getType().equals(type)).collect(toList());
+    }
+
+
 }

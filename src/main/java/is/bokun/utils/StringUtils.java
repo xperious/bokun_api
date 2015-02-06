@@ -151,6 +151,19 @@ public class StringUtils {
         return ints;
     }
     
+    public static List<Long> commaSeparatedToLongList(String s) {
+    	List<Long> ints = new ArrayList<>();
+        if ( s == null || s.trim().isEmpty() ) return ints;
+        for ( String i : s.trim().split(",") ) {
+            if ( !i.trim().isEmpty() ) {
+                try {
+                    ints.add(Long.parseLong(i.trim()));
+                } catch ( Throwable ignored ) {}
+            }
+        }
+        return ints;
+    }
+
     public static String idSetToCommaSeparated(Set<Long> set) {
     	StringBuilder s = new StringBuilder();
     	for ( Long l : set ) {

@@ -3,8 +3,10 @@ package is.bokun.dtos.pricing;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import is.bokun.dtos.ItemDto;
 import is.bokun.utils.PriceUtils;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 
 import javax.xml.bind.annotation.*;
 import java.util.*;
@@ -23,12 +25,17 @@ public class PriceCatalogDto {
     public String defaultCurrency;
 
     @XmlElement(name="currency")
-    public List<CurrencySettingsDto> currencies = new ArrayList<>();
+    public List<String> currencies = new ArrayList<>();
+
+    @XmlElement(name="currencySettings")
+    public List<CurrencySettingsDto> currencySettings = new ArrayList<>();
 
     @XmlElement(name="sheet")
     public List<PriceSheetDto> sheets = new ArrayList<>();
     public Map<String, PriceConversionDto> conversions = new HashMap<>();
     public String supplierCurrency;
+    public List<String> parentCurrencies = new ArrayList<>();
+    public boolean convertUsingBookingDate;
 
     public Long getId() {
         return id;
@@ -62,12 +69,36 @@ public class PriceCatalogDto {
         this.sheets = sheets;
     }
 
-    public List<CurrencySettingsDto> getCurrencies() {
+    public List<String> getCurrencies() {
         return currencies;
     }
 
-    public void setCurrencies(List<CurrencySettingsDto> currencies) {
+    public void setCurrencies(List<String> currencies) {
         this.currencies = currencies;
+    }
+
+    public List<CurrencySettingsDto> getCurrencySettings() {
+        return currencySettings;
+    }
+
+    public void setCurrencySettings(List<CurrencySettingsDto> currencySettings) {
+        this.currencySettings = currencySettings;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public Map<String, PriceConversionDto> getConversions() {
+        return conversions;
+    }
+
+    public void setConversions(Map<String, PriceConversionDto> conversions) {
+        this.conversions = conversions;
     }
 
     public boolean hasCostGroup(Long costGroupId) {
@@ -121,6 +152,34 @@ public class PriceCatalogDto {
         price.dateRangeId = current.getId();
         return price;*/
     }
+
+    @JsonIgnore
+    public CostMatrixDto findMatrix(CostGroupTypeEnum groupType, Long groupParentId, Long matrixId1, Long matrixId2, Long matrixId3, Date date) {
+
+        for (PriceSheetDto sheet : getSheets()) {
+            CostGroupDto grp = sheet.findCostGroup(groupType, groupParentId);
+            if (grp != null) {
+                DateTime dateTime = new DateTime(date);
+                List<PriceSheetDateRangeDto> dateRanges = sheet.getDateRanges();
+                for (int i = 0; i < dateRanges.size(); i++) {
+                    PriceSheetDateRangeDto current = dateRanges.get(i);
+                    PriceSheetDateRangeDto next = null;
+                    if (i < dateRanges.size() - 1) {
+                        next = dateRanges.get(i + 1);
+                    }
+
+                    boolean isEqualOrAfterThisRange = dateTime.isEqual(current.getStart().getTime()) || dateTime.isAfter(current.getStart().getTime());
+                    if (isEqualOrAfterThisRange && (next == null || dateTime.isBefore(next.getStart().getTime()))) {
+
+                        CostMatrixDto costMatrix = grp.findCostMatrix(matrixId1, matrixId2, matrixId3);
+                        return costMatrix;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
 
     @JsonIgnore
     public CellPriceDto findMatrixPrice(CostGroupTypeEnum groupType, Long groupParentId, Long matrixId1, Long matrixId2, Long matrixId3,
@@ -267,45 +326,45 @@ public class PriceCatalogDto {
     }
 
     @JsonIgnore
-    public List<CurrencySettingsDto> getDerivedCurrencies() {
-        List<CurrencySettingsDto> list = new ArrayList<>();
-        for (CurrencySettingsDto cs : getCurrencies()) {
-            if (cs.getCurrencyHandling() != CurrencyHandlingTypeEnum.SPECIFY_AMOUNTS) {
-                list.add(cs);
-            }
-        }
-        return list;
-    }
+    public CostItemDto findItem(CostGroupTypeEnum groupType, Long groupParentId, CostItemTypeEnum itemType, String itemId, Date date) {
+        for (PriceSheetDto sheet : getSheets()) {
+            CostGroupDto grp = sheet.findCostGroup(groupType, groupParentId);
+            if ( grp != null ) {
+                DateTime dateTime = new DateTime(date);
+                List<PriceSheetDateRangeDto> dateRanges = sheet.getDateRanges();
+                for (int i = 0; i < dateRanges.size(); i++) {
+                    PriceSheetDateRangeDto current = dateRanges.get(i);
+                    PriceSheetDateRangeDto next = null;
+                    if (i < dateRanges.size() - 1) {
+                        next = dateRanges.get(i + 1);
+                    }
 
-    @JsonIgnore
-    public CurrencySettingsDto findDerivedCurrency(String currencyCode) {
-        for (CurrencySettingsDto cs : getDerivedCurrencies()) {
-            if ( cs.currency.equalsIgnoreCase(currencyCode) ) {
-                return cs;
+                    boolean isEqualOrAfterThisRange = dateTime.isEqual(current.getStart().getTime()) || dateTime.isAfter(current.getStart().getTime());
+                    if ( isEqualOrAfterThisRange && (next == null || dateTime.isBefore(next.getStart().getTime())) ) {
+                        CostItemDto item = grp.findCostItem(itemType, itemId);
+                        return item;
+                    }
+                }
+
+
+                PriceSheetDateRangeDto dateRange = sheet.findDateRange(date);
+                if ( dateRange != null ) {
+                    CostItemDto item = grp.findCostItem(itemType, itemId);
+                    return item;
+                }
+                return null;
             }
         }
         return null;
     }
 
-    @JsonIgnore
-    public CurrencySettingsDto findCurrency(String currencyCode) {
-        for (CurrencySettingsDto cs : getCurrencies()) {
-            if ( cs.currency.equalsIgnoreCase(currencyCode) ) {
-                return cs;
+    public CurrencySettingsDto findCurrencySetting(LocalDate date, String fromCurrency, String toCurrency) {
+        for(CurrencySettingsDto dto: currencySettings){
+            if(LocalDate.parse(dto.startDate).compareTo(date) <= 0 && toCurrency.equals(dto.currency) && fromCurrency.equals(dto.parentCurrency)){
+                return dto;
             }
         }
         return null;
-    }
-
-    @JsonIgnore
-    public List<CurrencySettingsDto> getSpecifiedCurrencies() {
-        List<CurrencySettingsDto> list = new ArrayList<>();
-        for (CurrencySettingsDto cs : getCurrencies()) {
-            if (cs.getCurrencyHandling() == CurrencyHandlingTypeEnum.SPECIFY_AMOUNTS) {
-                list.add(cs);
-            }
-        }
-        return list;
     }
 
     public String getDefaultCurrency() {
@@ -325,4 +384,5 @@ public class PriceCatalogDto {
         }
         return null;
     }
+
 }

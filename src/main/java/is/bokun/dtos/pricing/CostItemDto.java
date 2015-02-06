@@ -26,6 +26,8 @@ public class CostItemDto {
     public List<ItemPriceDto> prices = new ArrayList<>();
     public Map<String, Double> supplierPrices = new HashMap<>();
 
+    public List<PriceModulatorConfigDto> priceModulators = new ArrayList<>();
+
     @JsonIgnore
     public ItemPriceDto findPriceByDateRange(Long dateRangeId, String currency) {
         for (ItemPriceDto price : prices) {
@@ -33,15 +35,6 @@ public class CostItemDto {
                 return price;
             }
         }
-
-        /*
-        ItemPriceDto price = new ItemPriceDto();
-        price.amount = 0d;
-        price.costItemId = id;
-        price.currency = currency;
-        price.dateRangeId = dateRangeId;
-        return price;
-        */
         return null;
     }
 

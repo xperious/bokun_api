@@ -323,7 +323,7 @@ public class ProductBookingDetailsDto {
     @JsonIgnore
     public Double getPaidAmount() {
         double paidAmount = 0;
-        for (PaymentDto p : invoice.payments) {
+        for (SettlementDto p : invoice.settlements) {
             if ( p.getAmount() != null ) {
                 paidAmount += p.getAmount();
             }
