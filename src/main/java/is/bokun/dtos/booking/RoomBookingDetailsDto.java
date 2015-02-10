@@ -41,7 +41,7 @@ public class RoomBookingDetailsDto {
     public List<AccommodationAvailabilityBookingDto> availabilityBookings = new ArrayList<>();
 
     @JsonIgnore
-    public BookingAnswerDto getAnswer(String type) {
+    public BookingAnswerDto getAnswerByType(String type) {
         return answers.stream().filter(a -> a.getType().equals(type)).findFirst().orElse(null);
     }
 
@@ -51,7 +51,7 @@ public class RoomBookingDetailsDto {
     }
 
     @JsonIgnore
-    public List<BookingAnswerDto> getAnswers(String type){
+    public List<BookingAnswerDto> getAnswersByType(String type){
         return answers.stream().filter(a -> a.getType().equals(type)).collect(toList());
     }
 
