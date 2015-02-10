@@ -34,4 +34,68 @@ public class CarRentalBookingQuestionsDto {
 
         return false;
     }
+
+    public BookingItemInfoDto getCarRental() {
+        return carRental;
+    }
+
+    public void setCarRental(BookingItemInfoDto carRental) {
+        this.carRental = carRental;
+    }
+
+    public Long getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(Long bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public CarRentalLocationDto getPickupLocation() {
+        return pickupLocation;
+    }
+
+    public void setPickupLocation(CarRentalLocationDto pickupLocation) {
+        this.pickupLocation = pickupLocation;
+    }
+
+    public CarRentalLocationDto getDropoffLocation() {
+        return dropoffLocation;
+    }
+
+    public void setDropoffLocation(CarRentalLocationDto dropoffLocation) {
+        this.dropoffLocation = dropoffLocation;
+    }
+
+    public List<BookingQuestionGroupDto> getQuestionGroups() {
+        return questionGroups;
+    }
+
+    public void setQuestionGroups(List<BookingQuestionGroupDto> questionGroups) {
+        this.questionGroups = questionGroups;
+    }
+
+    public List<CarBookingQuestionsDto> getCarBookings() {
+        return carBookings;
+    }
+
+    public void setCarBookings(List<CarBookingQuestionsDto> carBookings) {
+        this.carBookings = carBookings;
+    }
 }

@@ -48,5 +48,60 @@ public class AvailableRoomDto {
         }
         Collections.sort(this.guestCounts);
 	}
-    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public int getMaxBookableCount() {
+        return maxBookableCount;
+    }
+
+    public void setMaxBookableCount(int maxBookableCount) {
+        this.maxBookableCount = maxBookableCount;
+    }
+
+    public Map<Long, Double> getExtraPrices() {
+        return extraPrices;
+    }
+
+    public void setExtraPrices(Map<Long, Double> extraPrices) {
+        this.extraPrices = extraPrices;
+    }
+
+    public List<Integer> getGuestCounts() {
+        return guestCounts;
+    }
+
+    public void setGuestCounts(List<Integer> guestCounts) {
+        this.guestCounts = guestCounts;
+    }
+
+    public RoomTypeDto getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(RoomTypeDto roomType) {
+        this.roomType = roomType;
+    }
+
+    public List<AvailabilityInfoDto> getAvailabilities() {
+        return availabilities;
+    }
+
+    public void setAvailabilities(List<AvailabilityInfoDto> availabilities) {
+        this.availabilities = availabilities;
+    }
 }

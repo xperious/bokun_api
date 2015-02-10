@@ -31,4 +31,52 @@ public class AccommodationBookingQuestionsDto {
 
         return false;
     }
+
+    public BookingItemInfoDto getAccommodation() {
+        return accommodation;
+    }
+
+    public void setAccommodation(BookingItemInfoDto accommodation) {
+        this.accommodation = accommodation;
+    }
+
+    public Long getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(Long bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public List<BookingQuestionGroupDto> getQuestionGroups() {
+        return questionGroups;
+    }
+
+    public void setQuestionGroups(List<BookingQuestionGroupDto> questionGroups) {
+        this.questionGroups = questionGroups;
+    }
+
+    public List<RoomBookingQuestionsDto> getRoomBookings() {
+        return roomBookings;
+    }
+
+    public void setRoomBookings(List<RoomBookingQuestionsDto> roomBookings) {
+        this.roomBookings = roomBookings;
+    }
 }

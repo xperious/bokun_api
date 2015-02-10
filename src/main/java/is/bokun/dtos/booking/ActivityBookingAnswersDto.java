@@ -50,5 +50,44 @@ public class ActivityBookingAnswersDto {
 		this.dropoffPlaceId = dropoffPlaceId;
 		this.dropoffPlaceDescription = dropoffPlaceDescription;
 	}
-	
+
+	public Long getPickupPlaceId() {
+		return pickupPlaceId;
+	}
+
+	public void setPickupPlaceId(Long pickupPlaceId) {
+		this.pickupPlaceId = pickupPlaceId;
+	}
+
+	public String getPickupPlaceDescription() {
+		return pickupPlaceDescription;
+	}
+
+	public void setPickupPlaceDescription(String pickupPlaceDescription) {
+		this.pickupPlaceDescription = pickupPlaceDescription;
+	}
+
+	public String getPickupPlaceRoomNumber() {
+		return pickupPlaceRoomNumber;
+	}
+
+	public void setPickupPlaceRoomNumber(String pickupPlaceRoomNumber) {
+		this.pickupPlaceRoomNumber = pickupPlaceRoomNumber;
+	}
+
+	public Long getDropoffPlaceId() {
+		return dropoffPlaceId;
+	}
+
+	public void setDropoffPlaceId(Long dropoffPlaceId) {
+		this.dropoffPlaceId = dropoffPlaceId;
+	}
+
+	public String getDropoffPlaceDescription() {
+		return dropoffPlaceDescription;
+	}
+
+	public void setDropoffPlaceDescription(String dropoffPlaceDescription) {
+		this.dropoffPlaceDescription = dropoffPlaceDescription;
+	}
 }

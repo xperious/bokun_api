@@ -55,5 +55,68 @@ public class RoomBookingDetailsDto {
         return answers.stream().filter(a -> a.getType().equals(type)).collect(toList());
     }
 
+    public Long getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(Long bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public ItemDto getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(ItemDto roomType) {
+        this.roomType = roomType;
+    }
+
+    public int getNightCount() {
+        return nightCount;
+    }
+
+    public void setNightCount(int nightCount) {
+        this.nightCount = nightCount;
+    }
+
+    public List<BookingAnswerDto> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<BookingAnswerDto> answers) {
+        this.answers = answers;
+    }
+
+    public List<ExtraBookingDetailsDto> getExtras() {
+        return extras;
+    }
+
+    public void setExtras(List<ExtraBookingDetailsDto> extras) {
+        this.extras = extras;
+    }
+
+    public List<BookingFieldDto> getBookingFields() {
+        return bookingFields;
+    }
+
+    public void setBookingFields(List<BookingFieldDto> bookingFields) {
+        this.bookingFields = bookingFields;
+    }
+
+    public List<AccommodationAvailabilityBookingDto> getAvailabilityBookings() {
+        return availabilityBookings;
+    }
+
+    public void setAvailabilityBookings(List<AccommodationAvailabilityBookingDto> availabilityBookings) {
+        this.availabilityBookings = availabilityBookings;
+    }
 
 }

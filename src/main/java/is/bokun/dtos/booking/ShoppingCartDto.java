@@ -67,4 +67,72 @@ public class ShoppingCartDto {
     public List<CarRentalBookingDto> getCarRentalBookings() {
         return carRentalBookings;
     }
+
+	public String getSessionId() {
+		return sessionId;
+	}
+
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
+
+	public String getCustomerUUID() {
+		return customerUUID;
+	}
+
+	public void setCustomerUUID(String customerUUID) {
+		this.customerUUID = customerUUID;
+	}
+
+	public Date getLastAccessDate() {
+		return lastAccessDate;
+	}
+
+	public void setLastAccessDate(Date lastAccessDate) {
+		this.lastAccessDate = lastAccessDate;
+	}
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public int getTotalPriceInInvoiceCurrency() {
+		return totalPriceInInvoiceCurrency;
+	}
+
+	public void setTotalPriceInInvoiceCurrency(int totalPriceInInvoiceCurrency) {
+		this.totalPriceInInvoiceCurrency = totalPriceInInvoiceCurrency;
+	}
+
+	public List<AccommodationBookingDto> getAccommodationBookings() {
+		return accommodationBookings;
+	}
+
+	public void setAccommodationBookings(List<AccommodationBookingDto> accommodationBookings) {
+		this.accommodationBookings = accommodationBookings;
+	}
+
+	public void setCarRentalBookings(List<CarRentalBookingDto> carRentalBookings) {
+		this.carRentalBookings = carRentalBookings;
+	}
+
+	public List<ActivityBookingDto> getActivityBookings() {
+		return activityBookings;
+	}
+
+	public void setActivityBookings(List<ActivityBookingDto> activityBookings) {
+		this.activityBookings = activityBookings;
+	}
+
+	public List<RouteBookingDto> getRouteBookings() {
+		return routeBookings;
+	}
+
+	public void setRouteBookings(List<RouteBookingDto> routeBookings) {
+		this.routeBookings = routeBookings;
+	}
 }

@@ -30,4 +30,44 @@ public class CarBookingQuestionsDto {
         }
         return false;
     }
+
+    public CarTypeInfoDto getCarType() {
+        return carType;
+    }
+
+    public void setCarType(CarTypeInfoDto carType) {
+        this.carType = carType;
+    }
+
+    public Long getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(Long bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public int getUnitCount() {
+        return unitCount;
+    }
+
+    public void setUnitCount(int unitCount) {
+        this.unitCount = unitCount;
+    }
+
+    public List<BookingQuestionGroupDto> getQuestionGroups() {
+        return questionGroups;
+    }
+
+    public void setQuestionGroups(List<BookingQuestionGroupDto> questionGroups) {
+        this.questionGroups = questionGroups;
+    }
+
+    public List<ExtraBookingQuestionsDto> getExtraBookings() {
+        return extraBookings;
+    }
+
+    public void setExtraBookings(List<ExtraBookingQuestionsDto> extraBookings) {
+        this.extraBookings = extraBookings;
+    }
 }

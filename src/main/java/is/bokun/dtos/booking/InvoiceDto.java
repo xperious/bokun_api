@@ -34,4 +34,69 @@ public class InvoiceDto {
     @XmlElementWrapper
     @XmlElement(name="settlement")
     public List<SettlementDto> settlements = new ArrayList<>();
+
+    public List<LineItemDto> getItems() {
+        return items;
+    }
+
+    public void setItems(List<LineItemDto> items) {
+        this.items = items;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getTotalDiscount() {
+        return totalDiscount;
+    }
+
+    public void setTotalDiscount(double totalDiscount) {
+        this.totalDiscount = totalDiscount;
+    }
+
+    public double getTotalSansDiscount() {
+        return totalSansDiscount;
+    }
+
+    public void setTotalSansDiscount(double totalSansDiscount) {
+        this.totalSansDiscount = totalSansDiscount;
+    }
+
+    public double getTotalSansCommission() {
+        return totalSansCommission;
+    }
+
+    public void setTotalSansCommission(double totalSansCommission) {
+        this.totalSansCommission = totalSansCommission;
+    }
+
+    public double getTotalCommission() {
+        return totalCommission;
+    }
+
+    public void setTotalCommission(double totalCommission) {
+        this.totalCommission = totalCommission;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public List<SettlementDto> getSettlements() {
+        return settlements;
+    }
+
+    public void setSettlements(List<SettlementDto> settlements) {
+        this.settlements = settlements;
+    }
+
 }

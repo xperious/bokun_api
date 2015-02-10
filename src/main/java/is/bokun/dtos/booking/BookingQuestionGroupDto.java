@@ -11,4 +11,27 @@ public class BookingQuestionGroupDto {
 	public int answersNeeded;
 	public List<BookingQuestionDto> questions = new ArrayList<>();
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAnswersNeeded() {
+		return answersNeeded;
+	}
+
+	public void setAnswersNeeded(int answersNeeded) {
+		this.answersNeeded = answersNeeded;
+	}
+
+	public List<BookingQuestionDto> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(List<BookingQuestionDto> questions) {
+		this.questions = questions;
+	}
 }

@@ -50,4 +50,44 @@ public abstract class AbstractSearchResultsDto {
 		}
  		return set;
 	}
+
+	public Long getTookInMillis() {
+		return tookInMillis;
+	}
+
+	public void setTookInMillis(Long tookInMillis) {
+		this.tookInMillis = tookInMillis;
+	}
+
+	public Long getTotalHits() {
+		return totalHits;
+	}
+
+	public void setTotalHits(Long totalHits) {
+		this.totalHits = totalHits;
+	}
+
+	public List<TermFilter> getTagFilters() {
+		return tagFilters;
+	}
+
+	public void setTagFilters(List<TermFilter> tagFilters) {
+		this.tagFilters = tagFilters;
+	}
+
+	public List<TermsFacetDto> getTagFacets() {
+		return tagFacets;
+	}
+
+	public void setTagFacets(List<TermsFacetDto> tagFacets) {
+		this.tagFacets = tagFacets;
+	}
+
+	public Map<String, TermsFacetDto> getTermFacets() {
+		return termFacets;
+	}
+
+	public void setTermFacets(Map<String, TermsFacetDto> termFacets) {
+		this.termFacets = termFacets;
+	}
 }

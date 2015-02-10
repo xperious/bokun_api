@@ -330,5 +330,44 @@ public class ProductBookingDetailsDto {
         }
         return paidAmount;
     }
-    
+
+    public String getBarcodeUrl() {
+        return barcodeUrl;
+    }
+
+    public void setBarcodeUrl(String barcodeUrl) {
+        this.barcodeUrl = barcodeUrl;
+    }
+
+    public Date getCancellationDate() {
+        return cancellationDate;
+    }
+
+    public void setCancellationDate(Date cancellationDate) {
+        this.cancellationDate = cancellationDate;
+    }
+
+    public String getCancelledBy() {
+        return cancelledBy;
+    }
+
+    public void setCancelledBy(String cancelledBy) {
+        this.cancelledBy = cancelledBy;
+    }
+
+    public String getCancelNote() {
+        return cancelNote;
+    }
+
+    public void setCancelNote(String cancelNote) {
+        this.cancelNote = cancelNote;
+    }
+
+    public InvoiceDto getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(InvoiceDto invoice) {
+        this.invoice = invoice;
+    }
 }

@@ -31,4 +31,60 @@ public abstract class ProductBookingDto {
     
     @JsonIgnore
     public abstract String getProductCategory();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getProductConfirmationCode() {
+        return productConfirmationCode;
+    }
+
+    public void setProductConfirmationCode(String productConfirmationCode) {
+        this.productConfirmationCode = productConfirmationCode;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Date getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
+    }
+
+    public String getCustomerUuid() {
+        return customerUuid;
+    }
+
+    public void setCustomerUuid(String customerUuid) {
+        this.customerUuid = customerUuid;
+    }
+
+    public String getBookingStatus() {
+        return bookingStatus;
+    }
+
+    public void setBookingStatus(String bookingStatus) {
+        this.bookingStatus = bookingStatus;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 }

@@ -22,5 +22,36 @@ public class ExtraBookingQuestionsDto {
         }
         return false;
     }
-	
+
+    public Long getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(Long bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public BookingItemInfoDto getExtra() {
+        return extra;
+    }
+
+    public void setExtra(BookingItemInfoDto extra) {
+        this.extra = extra;
+    }
+
+    public int getUnitCount() {
+        return unitCount;
+    }
+
+    public void setUnitCount(int unitCount) {
+        this.unitCount = unitCount;
+    }
+
+    public List<BookingQuestionWithIdGroupDto> getQuestionGroups() {
+        return questionGroups;
+    }
+
+    public void setQuestionGroups(List<BookingQuestionWithIdGroupDto> questionGroups) {
+        this.questionGroups = questionGroups;
+    }
 }

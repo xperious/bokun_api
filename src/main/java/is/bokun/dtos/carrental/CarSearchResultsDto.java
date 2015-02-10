@@ -10,4 +10,12 @@ import is.bokun.dtos.search.*;
 public class CarSearchResultsDto extends AbstractSearchResultsDto {
 
 	public List<CarTypeDto> items = new ArrayList<>();
+
+	public List<CarTypeDto> getItems() {
+		return items;
+	}
+
+	public void setItems(List<CarTypeDto> items) {
+		this.items = items;
+	}
 }

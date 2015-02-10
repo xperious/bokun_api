@@ -8,4 +8,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class CarRentalSearchResultsDto {
 
 	public List<CarRentalDto> carRentals = new ArrayList<>();
+
+	public List<CarRentalDto> getCarRentals() {
+		return carRentals;
+	}
+
+	public void setCarRentals(List<CarRentalDto> carRentals) {
+		this.carRentals = carRentals;
+	}
 }

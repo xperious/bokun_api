@@ -53,4 +53,109 @@ public class PricingCategoryDto {
             return "";
         }
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean isAgeQualified() {
+        return ageQualified;
+    }
+
+    public void setAgeQualified(boolean ageQualified) {
+        this.ageQualified = ageQualified;
+    }
+
+    public Integer getMinAge() {
+        return minAge;
+    }
+
+    public void setMinAge(Integer minAge) {
+        this.minAge = minAge;
+    }
+
+    public Integer getMaxAge() {
+        return maxAge;
+    }
+
+    public void setMaxAge(Integer maxAge) {
+        this.maxAge = maxAge;
+    }
+
+    public boolean isDependent() {
+        return dependent;
+    }
+
+    public void setDependent(boolean dependent) {
+        this.dependent = dependent;
+    }
+
+    public Long getMasterCategoryId() {
+        return masterCategoryId;
+    }
+
+    public void setMasterCategoryId(Long masterCategoryId) {
+        this.masterCategoryId = masterCategoryId;
+    }
+
+    public int getMaxPerMaster() {
+        return maxPerMaster;
+    }
+
+    public void setMaxPerMaster(int maxPerMaster) {
+        this.maxPerMaster = maxPerMaster;
+    }
+
+    public boolean isSumDependentCategories() {
+        return sumDependentCategories;
+    }
+
+    public void setSumDependentCategories(boolean sumDependentCategories) {
+        this.sumDependentCategories = sumDependentCategories;
+    }
+
+    public int getMaxDependentSum() {
+        return maxDependentSum;
+    }
+
+    public void setMaxDependentSum(int maxDependentSum) {
+        this.maxDependentSum = maxDependentSum;
+    }
+
+    public boolean isInternalUseOnly() {
+        return internalUseOnly;
+    }
+
+    public void setInternalUseOnly(boolean internalUseOnly) {
+        this.internalUseOnly = internalUseOnly;
+    }
+
+    public List<String> getFlags() {
+        return flags;
+    }
+
+    public void setFlags(List<String> flags) {
+        this.flags = flags;
+    }
+
+    public boolean isDefaultCategory() {
+        return defaultCategory;
+    }
+
+    public void setDefaultCategory(boolean defaultCategory) {
+        this.defaultCategory = defaultCategory;
+    }
+
 }

@@ -70,4 +70,12 @@ public class ItemDto {
     public boolean getGroup() {
         return false;
     }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
+    }
 }

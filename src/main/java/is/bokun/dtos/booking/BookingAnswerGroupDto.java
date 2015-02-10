@@ -21,4 +21,36 @@ public class BookingAnswerGroupDto {
     public List<QuestionAnswerPairDto> getQandA() {
         return questionsAndAnswers;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public List<BookingAnswerDto> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<BookingAnswerDto> answers) {
+        this.answers = answers;
+    }
+
+    public List<QuestionAnswerPairDto> getQuestionsAndAnswers() {
+        return questionsAndAnswers;
+    }
+
+    public void setQuestionsAndAnswers(List<QuestionAnswerPairDto> questionsAndAnswers) {
+        this.questionsAndAnswers = questionsAndAnswers;
+    }
 }
