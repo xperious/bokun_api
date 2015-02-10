@@ -9,6 +9,9 @@ import java.util.*;
 
 import com.fasterxml.jackson.annotation.*;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class CarTypeDto extends HasBookableExtras implements SearchResult, WithPhotos {
@@ -19,6 +22,8 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 	public String exampleCarModel;
 	
     public String baseLanguage;
+    @XmlElementWrapper
+    @XmlElement(name="language")
     public List<String> languages = new ArrayList<>();
 	
 	public ItemDto vendor;
@@ -51,13 +56,24 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
 	public String fuelType;
 	public boolean airConditioning;
 
+    @XmlElementWrapper
+    @XmlElement(name="keyword")
     public List<String> keywords = new ArrayList<>();
+
+    @XmlElementWrapper
+    @XmlElement(name="flag")
     public List<String> flags = new ArrayList<>();
     
 	public PhotoDto keyPhoto;
+    @XmlElementWrapper
+    @XmlElement(name="photo")
 	public List<PhotoDto> photos = new ArrayList<>();
-	
+
+    @XmlElementWrapper
+    @XmlElement(name="pickupLocation")
 	public List<CarRentalLocationDto> pickupLocations = new ArrayList<>();
+    @XmlElementWrapper
+    @XmlElement(name="dropoffLocation")
 	public List<CarRentalLocationDto> dropoffLocations = new ArrayList<>();
 
     public Long defaultPickupLocationId;
@@ -75,8 +91,12 @@ public class CarTypeDto extends HasBookableExtras implements SearchResult, WithP
         this.title = title;
     }
 
+    @XmlElementWrapper
+    @XmlElement(name="tagGroup")
 	public List<TagGroupDto> tagGroups = new ArrayList<>();
 
+    @XmlElementWrapper
+    @XmlElement(name="currency")
     public List<String> paymentCurrencies = new ArrayList<>();
 	
 	public String getTitle() {

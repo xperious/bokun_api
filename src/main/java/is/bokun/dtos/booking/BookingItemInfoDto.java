@@ -16,7 +16,9 @@ public class BookingItemInfoDto {
 	public Long id;
 	public String title;
     public Double price;
-    
+
+    @XmlElementWrapper
+    @XmlElement(name="flag")
     public List<String> flags = new ArrayList<>();
 	
 	public BookingItemInfoDto() {}

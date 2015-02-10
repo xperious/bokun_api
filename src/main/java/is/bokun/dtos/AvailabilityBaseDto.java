@@ -6,10 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +28,9 @@ public class AvailabilityBaseDto {
     public boolean cronConditionActive;
     public String cron;
     public boolean flagConditionActive;
+
+    @XmlElementWrapper
+    @XmlElement(name="flag")
     public List<String> flags = new ArrayList<>();
     public String comment;
 

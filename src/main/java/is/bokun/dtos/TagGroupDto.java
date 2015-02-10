@@ -2,17 +2,21 @@ package is.bokun.dtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TagGroupDto extends ItemDto {
 
+    @XmlElementWrapper
+    @XmlElement(name="tag")
 	public List<TagDto> tags = new ArrayList<>();
+
     public boolean group;
     public String facetName;
 	public Long ownerId;
-    public List<String> flags = new ArrayList<>();
 
     public TagGroupDto(){}
 

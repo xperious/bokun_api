@@ -4,9 +4,7 @@ import java.util.*;
 
 import com.fasterxml.jackson.annotation.*;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlType(name = "startTime")
@@ -38,6 +36,8 @@ public class StartTimeDto {
     public int durationDays = 0;
     public int durationWeeks = 0;
 
+    @XmlElementWrapper
+    @XmlElement(name="flag")
     public List<String> flags = new ArrayList<>();
     
     public StartTimeDto() {}

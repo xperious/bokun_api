@@ -8,9 +8,7 @@ import is.bokun.dtos.LocationDto;
 import is.bokun.dtos.RegionDto;
 import is.bokun.utils.StringUtils;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -28,10 +26,16 @@ public class RouteStationDto extends AbstractIdDto {
     public Long pickupPlaceId;
     public LocationDto location;
 
+    @XmlElementWrapper
+    @XmlElement(name="region")
     public List<RegionDto> regions = new ArrayList<>();
 
+    @XmlElementWrapper
+    @XmlElement(name="flag")
     public List<String> flags = new ArrayList<>();
 
+    @XmlElementWrapper
+    @XmlElement(name="pickupFlag")
     public List<String> pickupFlags = new ArrayList<>();
 
     public RouteStationDto(){}

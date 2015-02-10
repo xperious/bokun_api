@@ -26,7 +26,9 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso({CustomFieldIntValueDto.class, CustomFieldDoubleValueDto.class, CustomFieldBooleanValueDto.class, CustomFieldTextValueDto.class, CustomFieldDateValueDto.class})
 public abstract class CustomFieldDto {
-	
+
+    @XmlElementWrapper
+    @XmlElement(name="flag")
 	public List<String> flags = new ArrayList<>();
 
     @JsonIgnore

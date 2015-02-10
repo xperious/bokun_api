@@ -25,7 +25,7 @@ public class RouteScheduleDto extends AbstractIdDto {
     public Boolean peak;
 
     @XmlElementWrapper
-    @XmlElement(name="flags")
+    @XmlElement(name="flag")
     public List<String> flags = new ArrayList<>();
 
     public RouteScheduleDto() {}

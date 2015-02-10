@@ -7,9 +7,7 @@ import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlType(name = "roomType")
@@ -41,12 +39,19 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
     public boolean internalUseOnly;
 	
 	public String pricingType;
-	
+
+    @XmlElementWrapper
+    @XmlElement(name="tag")
 	public List<TagGroupDto> tags = new ArrayList<>();
 	
 	public PhotoDto keyPhoto;
+
+    @XmlElementWrapper
+    @XmlElement(name="photo")
 	public List<PhotoDto> photos = new ArrayList<>();
-	
+
+    @XmlElementWrapper
+    @XmlElement(name="flag")
 	public List<String> flags = new ArrayList<>();
 	
 	@Override

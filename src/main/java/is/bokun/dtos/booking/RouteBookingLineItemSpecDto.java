@@ -31,8 +31,12 @@ public class RouteBookingLineItemSpecDto {
         this.quantity = quantity;
     }
 
-    public double getTotalPrice() {
-        return quantity * pricePerPassenger;
+    public Double getTotalPrice() {
+        if ( pricePerPassenger == null ) {
+            return null;
+        } else {
+            return quantity * pricePerPassenger;
+        }
     }
 
 }

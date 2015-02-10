@@ -9,9 +9,7 @@ import is.bokun.dtos.PricingCategoryDto;
 import is.bokun.dtos.ProductDto;
 import is.bokun.dtos.AvailabilityItemDescription;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -32,13 +30,28 @@ public class RouteDto extends ProductDto {
     public String stationGroups;
     public Long defaultSourceStationId, defaultDestStationId;
 
-    public List<String> flags = new ArrayList<>();
+    @XmlElementWrapper
+    @XmlElement(name="leg")
     public List<RouteLegDto> legs = new ArrayList<>();
+
+    @XmlElementWrapper
+    @XmlElement(name="pricingCategory")
     public List<PricingCategoryDto> pricingCategories = new ArrayList<>();
+
+    @XmlElementWrapper
+    @XmlElement(name="fareClass")
     public List<FareClassDto> fareClasses;
+
+    @XmlElementWrapper
+    @XmlElement(name="endStationId")
     public List<Long> endStationIds;
 
+    @XmlElementWrapper
+    @XmlElement(name="availabilityExpression")
     public List<AvailabilityExpressionDto> availabilityExpressions = new ArrayList<>();
+
+    @XmlElementWrapper
+    @XmlElement(name="closure")
     public List<AvailabilityClosureDto> closures = new ArrayList<>();
 
     public RouteDto() {}

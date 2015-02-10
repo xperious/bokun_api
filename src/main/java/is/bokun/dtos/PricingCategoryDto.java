@@ -5,9 +5,7 @@ import java.util.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlType(name = "pricingCategory")
@@ -30,6 +28,8 @@ public class PricingCategoryDto {
     
     public boolean internalUseOnly;
 
+    @XmlElementWrapper
+    @XmlElement(name="flag")
 	public List<String> flags = new ArrayList<>();
 	
 	public boolean defaultCategory;

@@ -16,9 +16,13 @@ public class PhotoDto {
     
 	public String description;
 	public String alternateText;
-	
+
+    @XmlElementWrapper
+    @XmlElement(name="flag")
 	public List<String> flags = new ArrayList<>();
 
+    @XmlElementWrapper
+    @XmlElement(name="derivedPhoto")
 	public List<DerivedPhotoDto> derived = new ArrayList<>();
 	
 	public PhotoDto() {}

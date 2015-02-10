@@ -6,9 +6,7 @@ import com.fasterxml.jackson.annotation.*;
 
 import is.bokun.utils.StringUtils;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlType(name = "product")
@@ -24,21 +22,43 @@ public abstract class ProductDto extends AbstractIdDto {
 
     public String title;
     public String description;
+
+    @XmlElementWrapper
+    @XmlElement(name="keyword")
     public List<String> keywords = new ArrayList<>();
+
+    @XmlElementWrapper
+    @XmlElement(name="flag")
     public List<String> flags = new ArrayList<>();
+
     public String slug;
     
     public String baseLanguage;
+
+    @XmlElementWrapper
+    @XmlElement(name="language")
     public List<String> languages = new ArrayList<>();
 
+    @XmlElementWrapper
+    @XmlElement(name="currency")
     public List<String> paymentCurrencies = new ArrayList<>();
-    
+
+    @XmlElementWrapper
+    @XmlElement(name="customField")
     public List<CustomFieldDto> customFields = new ArrayList<>();
-    
+
+    @XmlElementWrapper
+    @XmlElement(name="tagGroup")
     public List<TagGroupDto> tagGroups = new ArrayList<>();
     
     public PhotoDto keyPhoto;
+
+    @XmlElementWrapper
+    @XmlElement(name="photo")
     public List<PhotoDto> photos = new ArrayList<>();
+
+    @XmlElementWrapper
+    @XmlElement(name="video")
     public List<VideoDto> videos = new ArrayList<>();
     
     public VendorDto vendor;

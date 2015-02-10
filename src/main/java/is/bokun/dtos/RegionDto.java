@@ -2,9 +2,7 @@ package is.bokun.dtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +12,9 @@ import java.util.List;
 public class RegionDto extends AbstractIdDto {
 
     public String title;
+
+    @XmlElementWrapper
+    @XmlElement(name="flag")
     public List<String> flags = new ArrayList<>();
 
     public RegionDto(){}

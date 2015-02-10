@@ -2,9 +2,7 @@ package is.bokun.dtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +16,9 @@ public class LinkedExternalCustomerDto {
 
     public Long systemConfigId;
     public String systemType;
+
+    @XmlElementWrapper
+    @XmlElement(name="flag")
     public List<String> flags = new ArrayList<>();
 
     public String externalCustomerId;
