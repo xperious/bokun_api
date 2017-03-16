@@ -89,6 +89,14 @@ public class ActivityDto extends ProductDto implements WithExtras {
 
     public LocationCodeDto locationCode;
 
+	public int bookingCutoffDays;
+
+	public int bookingCutoffHours;
+
+	public int bookingCutoffMinutes;
+
+	public int bookingCutoffWeeks;
+
 	public ActivityDto() {
 		super();
 	}

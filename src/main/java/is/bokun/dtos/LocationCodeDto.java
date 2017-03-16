@@ -15,7 +15,7 @@ public class LocationCodeDto {
     public Integer date;
     public String function;
     public String iata;
-    public Long id;
+    public long id;
     public String location;
     public String name;
     public String nameWoDiacritics;
