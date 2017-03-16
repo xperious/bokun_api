@@ -87,6 +87,8 @@ public class ActivityDto extends ProductDto implements WithExtras {
     
     public ActivityRouteDto route;
 
+    public LocationCodeDto locationCode;
+
 	public ActivityDto() {
 		super();
 	}
