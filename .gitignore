@@ -7,3 +7,4 @@ bokun-api.iml
 target
 .DS_STORE
 .idea/
+/src/main/resources/rebel.xml
