@@ -3,17 +3,25 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>is.bokun</groupId>
     <artifactId>bokun-api</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
     <repositories>
         <repository>
             <id>sonatype</id>
             <name>Sonatype</name>
             <url>http://oss.sonatype.org/service/local/repositories/snapshots/content</url>
         </repository>
+
     </repositories>
     <packaging>jar</packaging>
     <name>bokun-api</name>
     <url>http://bokun.is</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <url>http://nexus.xperious.com/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -51,6 +59,16 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.3</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>nexus-snapshots</serverId>
+                    <nexusUrl>http://nexus.xperious.com/nexus</nexusUrl>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -106,4 +124,5 @@
             <version>1.0.9</version>
         </dependency>
     </dependencies>
+
 </project>
