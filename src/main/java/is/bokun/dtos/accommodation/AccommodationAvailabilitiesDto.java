@@ -43,6 +43,8 @@ public class AccommodationAvailabilitiesDto {
 		public RoomTypeDto room;
 		
 		public List<RoomAvailabilityReport> availabilities = new ArrayList<>();
+
+		public Integer minimumAvailability;
 		
 		public RoomReport() {}
 		
@@ -58,5 +60,16 @@ public class AccommodationAvailabilitiesDto {
 		
 		public int available;
 		public Double price;
+
+		public List<RatePrice> ratePrices = new ArrayList<>();
 	}
+
+	public static class RatePrice {
+		public Long rateId;
+		public Double price;
+		public Boolean closed;
+		public Boolean closedForArrival;
+		public Boolean closedForDeparture;
+	}
+
 }
