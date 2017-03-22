@@ -169,6 +169,7 @@ public class AccommodationDto extends ProductDto {
         this.bookableExtras = bookableExtras;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class PenaltyRule {
 	    public long id;
 	    public int cutoffHours;
@@ -176,6 +177,7 @@ public class AccommodationDto extends ProductDto {
 	    public String chargeType;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Tax {
 	    public long id;
 	    public boolean included;
@@ -183,6 +185,7 @@ public class AccommodationDto extends ProductDto {
 	    public String title;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class CancellationPolicy {
 	    public long id;
 	    public String title;

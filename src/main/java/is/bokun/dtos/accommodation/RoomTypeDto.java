@@ -229,6 +229,7 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 		this.flags = flags;
 	}
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
 	public static class RoomRate {
 		public long id;
 		public String title;
