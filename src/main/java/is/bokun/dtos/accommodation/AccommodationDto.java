@@ -166,4 +166,26 @@ public class AccommodationDto extends ProductDto {
     public void setBookableExtras(List<BookableExtraDto> bookableExtras) {
         this.bookableExtras = bookableExtras;
     }
+
+    public static class PenaltyRule {
+	    public long id;
+	    public int cutoffHours;
+	    public double charge;
+	    public String chargeType;
+    }
+
+    public static class Tax {
+	    public long id;
+	    public boolean included;
+	    public double percentage;
+	    public String title;
+    }
+
+    public static class CancellationPolicy {
+	    public long id;
+	    public String title;
+	    public List<PenaltyRule> penaltyRules;
+	    public Tax tax;
+    }
+
 }
