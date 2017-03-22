@@ -1,6 +1,6 @@
 package is.bokun.dtos.accommodation;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import is.bokun.dtos.*;
 
 import java.util.*;
@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.xml.bind.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreType()
 @XmlType(name = "roomType")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
@@ -23,8 +24,7 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
     public String spaceType;
 	
 	public int capacity = 1;
-
-    public boolean stayRestrictions = false;
+	
 	public int minNightsStay = 1;
 	public int maxNightsStay = 30;
 	
@@ -129,14 +129,6 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
-	}
-
-	public boolean isStayRestrictions() {
-		return stayRestrictions;
-	}
-
-	public void setStayRestrictions(boolean stayRestrictions) {
-		this.stayRestrictions = stayRestrictions;
 	}
 
 	public int getMinNightsStay() {
