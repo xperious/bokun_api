@@ -35,6 +35,8 @@ public class AccommodationDto extends ProductDto {
 	public List<RoomTypeDto> roomTypes = new ArrayList<>();
 	
 	public List<BookableExtraDto> bookableExtras = new ArrayList<>();
+
+	public CancellationPolicy cancellationPolicy;
 	
 	public AccommodationDto() {
 		super();
