@@ -97,6 +97,8 @@ public class ActivityDto extends ProductDto implements WithExtras {
 
 	public int bookingCutoffWeeks;
 
+	public List<ActivityStartPoint> startPoints = new ArrayList<>();
+
 	public ActivityDto() {
 		super();
 	}
