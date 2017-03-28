@@ -35,6 +35,8 @@ public class AccommodationDto extends ProductDto {
 	public List<RoomTypeDto> roomTypes = new ArrayList<>();
 	
 	public List<BookableExtraDto> bookableExtras = new ArrayList<>();
+
+	public CancellationPolicy cancellationPolicy;
 	
 	public AccommodationDto() {
 		super();
@@ -166,4 +168,29 @@ public class AccommodationDto extends ProductDto {
     public void setBookableExtras(List<BookableExtraDto> bookableExtras) {
         this.bookableExtras = bookableExtras;
     }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class PenaltyRule {
+	    public long id;
+	    public int cutoffHours;
+	    public double charge;
+	    public String chargeType;
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Tax {
+	    public long id;
+	    public boolean included;
+	    public double percentage;
+	    public String title;
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class CancellationPolicy {
+	    public long id;
+	    public String title;
+	    public List<PenaltyRule> penaltyRules;
+	    public Tax tax;
+    }
+
 }

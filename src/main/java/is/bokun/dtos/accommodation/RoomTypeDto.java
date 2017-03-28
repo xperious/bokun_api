@@ -53,6 +53,8 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
     @XmlElementWrapper
     @XmlElement(name="flag")
 	public List<String> flags = new ArrayList<>();
+
+    public List<RoomRate> roomRates = new ArrayList<>();
 	
 	@Override
 	public void addPhoto(PhotoDto p) {
@@ -218,4 +220,16 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 	public void setFlags(List<String> flags) {
 		this.flags = flags;
 	}
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+	public static class RoomRate {
+		public long id;
+		public String title;
+		public int maxOccupants;
+		public boolean stayRestriction;
+		public int minNightsStay;
+		public int maxNightsStay;
+		public String cancellationPolicy;
+	}
+
 }
