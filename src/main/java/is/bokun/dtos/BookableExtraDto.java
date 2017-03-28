@@ -23,6 +23,7 @@ public class BookableExtraDto {
     public String pricingType;
     public String pricingTypeLabel;
     public Double price;
+    public boolean free;
 
     public int maxPerBooking;
 
@@ -173,5 +174,13 @@ public class BookableExtraDto {
 
     public void setQuestions(List<QuestionDto> questions) {
         this.questions = questions;
+    }
+
+    public boolean isFree() {
+        return free;
+    }
+
+    public void setFree(boolean free) {
+        this.free = free;
     }
 }
