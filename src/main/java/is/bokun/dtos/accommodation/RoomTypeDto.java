@@ -1,6 +1,5 @@
 package is.bokun.dtos.accommodation;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import is.bokun.dtos.*;
 
 import java.util.*;
@@ -10,23 +9,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.xml.bind.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonIgnoreType()
 @XmlType(name = "roomType")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 
 	public Long id;
 	public String externalId;
-	public String title, description;
-	
-    //public String accommodationType;
-	
-    public String spaceType;
+	public String title;
+	public String description;
 	
 	public int capacity = 1;
-	
-//	public int minNightsStay = 1;
-//	public int maxNightsStay = 30;
 	
 	public int roomCount = 1;
 	
@@ -37,8 +29,6 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 	public boolean shared = false;
 
     public boolean internalUseOnly;
-	
-	//public String pricingType;
 
     @XmlElementWrapper
     @XmlElement(name="tag")
@@ -109,22 +99,6 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 		this.description = description;
 	}
 
-//	public String getAccommodationType() {
-//		return accommodationType;
-//	}
-//
-//	public void setAccommodationType(String accommodationType) {
-//		this.accommodationType = accommodationType;
-//	}
-
-	public String getSpaceType() {
-		return spaceType;
-	}
-
-	public void setSpaceType(String spaceType) {
-		this.spaceType = spaceType;
-	}
-
 	public int getCapacity() {
 		return capacity;
 	}
@@ -132,22 +106,6 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-
-//	public int getMinNightsStay() {
-//		return minNightsStay;
-//	}
-//
-//	public void setMinNightsStay(int minNightsStay) {
-//		this.minNightsStay = minNightsStay;
-//	}
-//
-//	public int getMaxNightsStay() {
-//		return maxNightsStay;
-//	}
-//
-//	public void setMaxNightsStay(int maxNightsStay) {
-//		this.maxNightsStay = maxNightsStay;
-//	}
 
 	public int getRoomCount() {
 		return roomCount;
@@ -197,14 +155,6 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 		this.internalUseOnly = internalUseOnly;
 	}
 
-//	public String getPricingType() {
-//		return pricingType;
-//	}
-//
-//	public void setPricingType(String pricingType) {
-//		this.pricingType = pricingType;
-//	}
-
 	public List<TagGroupDto> getTags() {
 		return tags;
 	}
@@ -226,7 +176,7 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 		public long id;
 		public String title;
 		public int maxOccupants;
-		public boolean stayRestriction;
+		public boolean stayRestrictions;
 		public int minNightsStay;
 		public int maxNightsStay;
 		public String cancellationPolicy;
