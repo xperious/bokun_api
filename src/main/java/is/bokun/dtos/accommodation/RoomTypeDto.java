@@ -19,7 +19,7 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 	public String externalId;
 	public String title, description;
 	
-    public String accommodationType;
+    //public String accommodationType;
 	
     public String spaceType;
 	
@@ -38,7 +38,7 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 
     public boolean internalUseOnly;
 	
-	public String pricingType;
+	//public String pricingType;
 
     @XmlElementWrapper
     @XmlElement(name="tag")
@@ -109,13 +109,13 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 		this.description = description;
 	}
 
-	public String getAccommodationType() {
-		return accommodationType;
-	}
-
-	public void setAccommodationType(String accommodationType) {
-		this.accommodationType = accommodationType;
-	}
+//	public String getAccommodationType() {
+//		return accommodationType;
+//	}
+//
+//	public void setAccommodationType(String accommodationType) {
+//		this.accommodationType = accommodationType;
+//	}
 
 	public String getSpaceType() {
 		return spaceType;
@@ -197,13 +197,13 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 		this.internalUseOnly = internalUseOnly;
 	}
 
-	public String getPricingType() {
-		return pricingType;
-	}
-
-	public void setPricingType(String pricingType) {
-		this.pricingType = pricingType;
-	}
+//	public String getPricingType() {
+//		return pricingType;
+//	}
+//
+//	public void setPricingType(String pricingType) {
+//		this.pricingType = pricingType;
+//	}
 
 	public List<TagGroupDto> getTags() {
 		return tags;
