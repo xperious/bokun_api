@@ -25,8 +25,8 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 	
 	public int capacity = 1;
 	
-	public int minNightsStay = 1;
-	public int maxNightsStay = 30;
+//	public int minNightsStay = 1;
+//	public int maxNightsStay = 30;
 	
 	public int roomCount = 1;
 	
@@ -133,21 +133,21 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 		this.capacity = capacity;
 	}
 
-	public int getMinNightsStay() {
-		return minNightsStay;
-	}
-
-	public void setMinNightsStay(int minNightsStay) {
-		this.minNightsStay = minNightsStay;
-	}
-
-	public int getMaxNightsStay() {
-		return maxNightsStay;
-	}
-
-	public void setMaxNightsStay(int maxNightsStay) {
-		this.maxNightsStay = maxNightsStay;
-	}
+//	public int getMinNightsStay() {
+//		return minNightsStay;
+//	}
+//
+//	public void setMinNightsStay(int minNightsStay) {
+//		this.minNightsStay = minNightsStay;
+//	}
+//
+//	public int getMaxNightsStay() {
+//		return maxNightsStay;
+//	}
+//
+//	public void setMaxNightsStay(int maxNightsStay) {
+//		this.maxNightsStay = maxNightsStay;
+//	}
 
 	public int getRoomCount() {
 		return roomCount;
