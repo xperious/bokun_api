@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CustomerPaymentDto {
 
+    public CustomerPaymentDto() {}
+
     public CustomerPaymentDto(Double amount, String currency, String paymentReferenceId, PaymentTypeEnum paymentType) {
         this.amount = amount;
         this.currency = currency;
