@@ -160,7 +160,7 @@ public class BookingClient extends AbstractClient {
      * @return Booking details for the confirmed booking.
      */
     public BookingDetailsDto confirmBooking(Long bookingId, String lang, String currency) {
-    	return confirmBooking(bookingId, new BookingConfirmationDto(), lang, currency);
+    	return confirmBooking(bookingId, new CustomerPaymentDto(), lang, currency);
     }
     
     /**
@@ -172,7 +172,7 @@ public class BookingClient extends AbstractClient {
      * @param currency The currency used for prices.
      * @return Booking details for the confirmed booking.
      */
-    public BookingDetailsDto confirmBooking(Long bookingId, BookingPaymentInfoDto payment, String lang, String currency) {
+    public BookingDetailsDto confirmBooking(Long bookingId, CustomerPaymentDto payment, String lang, String currency) {
     	BookingConfirmationDto confirmation = new BookingConfirmationDto();
     	confirmation.payment = payment;
     	return confirmBooking(bookingId, confirmation, lang, currency);
