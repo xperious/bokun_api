@@ -159,8 +159,8 @@ public class BookingClient extends AbstractClient {
      * @param currency The currency used for prices.
      * @return Booking details for the confirmed booking.
      */
-    public BookingDetailsDto confirmBooking(Long bookingId, String lang, String currency) {
-    	return confirmBooking(bookingId, new CustomerPaymentDto(), lang, currency);
+    public BookingDetailsDto confirmBooking(Long bookingId, String lang, String currency, boolean sendCustomerConfirmation) {
+    	return confirmBooking(bookingId, new CustomerPaymentDto(), lang, currency, sendCustomerConfirmation);
     }
     
     /**
@@ -172,10 +172,10 @@ public class BookingClient extends AbstractClient {
      * @param currency The currency used for prices.
      * @return Booking details for the confirmed booking.
      */
-    public BookingDetailsDto confirmBooking(Long bookingId, CustomerPaymentDto payment, String lang, String currency) {
+    public BookingDetailsDto confirmBooking(Long bookingId, CustomerPaymentDto payment, String lang, String currency, boolean sendCustomerConfirmation) {
     	BookingConfirmationDto confirmation = new BookingConfirmationDto();
     	confirmation.payment = payment;
-    	return confirmBooking(bookingId, confirmation, lang, currency);
+    	return confirmBooking(bookingId, confirmation, lang, currency, sendCustomerConfirmation);
     }
     
     /**
@@ -187,8 +187,8 @@ public class BookingClient extends AbstractClient {
      * @param currency The currency used for prices.
      * @return Booking details for the confirmed booking.
      */
-    public BookingDetailsDto confirmBooking(Long bookingId, BookingConfirmationDto confirmation, String lang, String currency) {
-        String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/confirm", lang, currency);
+    public BookingDetailsDto confirmBooking(Long bookingId, BookingConfirmationDto confirmation, String lang, String currency, boolean sendCustomerConfirmation) {
+        String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/confirm", lang, currency, new NVP("sendCustomerConfirmation", sendCustomerConfirmation));
         return postBooking(uri, confirmation);
     }
 
