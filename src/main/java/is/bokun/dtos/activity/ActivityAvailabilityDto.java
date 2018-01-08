@@ -39,6 +39,11 @@ public class ActivityAvailabilityDto {
 
     public Map<Long,Double> extraPrices = new HashMap<>();
 
+    public int defaultRateId;
+    public List<ActivityRateDto> rates;
+    public List<ActivityRatePrices> pricesByRate;
+
+
     public ActivityAvailabilityDto() {}
 
     public boolean isUnavailable() {
@@ -243,5 +248,29 @@ public class ActivityAvailabilityDto {
 
     public void setExtraPrices(Map<Long, Double> extraPrices) {
         this.extraPrices = extraPrices;
+    }
+
+    public int getDefaultRateId() {
+        return defaultRateId;
+    }
+
+    public void setDefaultRateId(int defaultRateId) {
+        this.defaultRateId = defaultRateId;
+    }
+
+    public List<ActivityRateDto> getRates() {
+        return rates;
+    }
+
+    public void setRates(List<ActivityRateDto> rates) {
+        this.rates = rates;
+    }
+
+    public List<ActivityRatePrices> getPricesByRate() {
+        return pricesByRate;
+    }
+
+    public void setPricesByRate(List<ActivityRatePrices> pricesByRate) {
+        this.pricesByRate = pricesByRate;
     }
 }
