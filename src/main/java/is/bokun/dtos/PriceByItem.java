@@ -8,7 +8,7 @@ import java.util.List;
 public class PriceByItem {
 
     public int id;
-    public Long amount;
+    public SimpleMoney amount;
     public List<PriceByItem> prices;
 
     public int getId() {
@@ -19,11 +19,11 @@ public class PriceByItem {
         this.id = id;
     }
 
-    public Long getAmount() {
+    public SimpleMoney getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(SimpleMoney amount) {
         this.amount = amount;
     }
 
