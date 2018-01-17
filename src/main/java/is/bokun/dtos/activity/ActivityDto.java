@@ -48,13 +48,11 @@ public class ActivityDto extends ProductDto implements WithExtras {
     public int minAge;
     
     public Double nextDefaultPrice;
-    
-    public boolean pickupService;
+
     public boolean pickupAllotment;
     public boolean useComponentPickupAllotments;
     public List<String> pickupFlags = new ArrayList<>();
     public boolean customPickupAllowed;
-    public PickupPricingTypeEnum pickupPricingType;
     public Integer pickupMinutesBefore;
     public String noPickupMsg;
     public boolean showGlobalPickupMsg;
@@ -98,6 +96,12 @@ public class ActivityDto extends ProductDto implements WithExtras {
 	public int bookingCutoffWeeks;
 
 	public List<ActivityStartPoint> startPoints = new ArrayList<>();
+
+	public List<ActivityRateDto> rates = new ArrayList<>();
+
+	public int defaultRateId;
+
+	public MeetingTypeEnum meetingType;
 
 	public ActivityDto() {
 		super();
@@ -552,4 +556,16 @@ public class ActivityDto extends ProductDto implements WithExtras {
 	public void setRoute(ActivityRouteDto route) {
 		this.route = route;
 	}
+
+	public List<ActivityRateDto> getRates() { return rates; }
+
+	public void setRates(List<ActivityRateDto> rates) { this.rates = rates; }
+
+	public int getDefaultRateId() { return defaultRateId; }
+
+	public void setDefaultRateId(int defaultRateId) { this.defaultRateId = defaultRateId; }
+
+	public MeetingTypeEnum getMeetingType() { return meetingType; }
+
+	public void setMeetingType(MeetingTypeEnum meetingType) { this.meetingType = meetingType; }
 }
