@@ -61,7 +61,6 @@ public class ActivityDto extends ProductDto implements WithExtras {
     public boolean dropoffService;
     public List<String> dropoffFlags = new ArrayList<>();
     public boolean customDropoffAllowed;
-    public PickupPricingTypeEnum dropoffPricingType;
 
     public boolean seasonAllYear;
 
@@ -435,14 +434,6 @@ public class ActivityDto extends ProductDto implements WithExtras {
 
 	public void setCustomDropoffAllowed(boolean customDropoffAllowed) {
 		this.customDropoffAllowed = customDropoffAllowed;
-	}
-
-	public PickupPricingTypeEnum getDropoffPricingType() {
-		return dropoffPricingType;
-	}
-
-	public void setDropoffPricingType(PickupPricingTypeEnum dropoffPricingType) {
-		this.dropoffPricingType = dropoffPricingType;
 	}
 
 	public boolean isSeasonAllYear() {
