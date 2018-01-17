@@ -349,14 +349,6 @@ public class ActivityDto extends ProductDto implements WithExtras {
 		this.nextDefaultPrice = nextDefaultPrice;
 	}
 
-	public boolean isPickupService() {
-		return pickupService;
-	}
-
-	public void setPickupService(boolean pickupService) {
-		this.pickupService = pickupService;
-	}
-
 	public boolean isPickupAllotment() {
 		return pickupAllotment;
 	}
@@ -387,14 +379,6 @@ public class ActivityDto extends ProductDto implements WithExtras {
 
 	public void setCustomPickupAllowed(boolean customPickupAllowed) {
 		this.customPickupAllowed = customPickupAllowed;
-	}
-
-	public PickupPricingTypeEnum getPickupPricingType() {
-		return pickupPricingType;
-	}
-
-	public void setPickupPricingType(PickupPricingTypeEnum pickupPricingType) {
-		this.pickupPricingType = pickupPricingType;
 	}
 
 	public Integer getPickupMinutesBefore() {
