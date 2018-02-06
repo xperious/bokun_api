@@ -179,7 +179,7 @@ public class RoomTypeDto extends HasBookableExtras implements WithPhotos {
 		public boolean stayRestrictions;
 		public int minNightsStay;
 		public int maxNightsStay;
-		public String cancellationPolicy;
+		public CancellationPolicyDto cancellationPolicy;
 	}
 
 }
