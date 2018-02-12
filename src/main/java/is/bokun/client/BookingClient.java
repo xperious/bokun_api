@@ -51,6 +51,30 @@ public class BookingClient extends AbstractClient {
     }
 
     /**
+     * Cancel one product booking
+     *
+     * @param productConfirmationCode the product confirmation code from ProductBookingDetailsDto
+     * @param cancellationRequest cancellation parameters
+     * @return
+     */
+    public ApiResponse cancelProductBooking(String productConfirmationCode, CancelProductBookingDto cancellationRequest) {
+        String uri = BASE + "/cancel-product-booking/" + productConfirmationCode;
+        return postAndValidate(uri, cancellationRequest, ApiResponse.class);
+    }
+
+    /**
+     * Cancel booking of cart
+     *
+     * @param confirmationCode the confirmation code from BookingDetailsDto for the whole booking cart
+     * @param cancellationRequest cancellation parameters
+     * @return
+     */
+    public ApiResponse cancelBooking(String confirmationCode, CancelBookingDto cancellationRequest) {
+        String uri = BASE + "/cancel-booking/" + confirmationCode;
+        return postAndValidate(uri, cancellationRequest, ApiResponse.class);
+    }
+
+    /**
      * Get a list of questions for the customer. This provides a list of all questions the customer
      * must answer in order to reserve the booking before payment.
      *
