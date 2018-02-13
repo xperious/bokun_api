@@ -5,15 +5,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CancelProductBookingDto {
 
-    private String note;
+    public String note;
 
-    private Boolean notify;
+    public Boolean notify;
 
-    private Boolean refund;
+    public Boolean refund;
 
-    private Long refundAmount;
+    public Long refundAmount;
 
-    private Boolean remainInvoiced;
+    public Boolean remainInvoiced;
 
     public String getNote() {
         return note;
