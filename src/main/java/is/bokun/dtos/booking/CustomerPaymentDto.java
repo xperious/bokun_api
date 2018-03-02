@@ -17,7 +17,12 @@ public class CustomerPaymentDto {
     private Double amount;
     private String currency;
     private String paymentReferenceId;
+    private String authorizationCode;
+    private String comment;
     private PaymentTypeEnum paymentType;
+    private String paymentProviderType;
+    private String cardBrand;
+    private String cardNumber;
 
     public Double getAmount() {
         return amount;
@@ -49,5 +54,34 @@ public class CustomerPaymentDto {
 
     public void setPaymentType(PaymentTypeEnum paymentType) {
         this.paymentType = paymentType;
+    }
+
+    public void setAuthorizationCode(String authorizationCode) { this.authorizationCode = authorizationCode; }
+
+    public String getAuthorizationCode() { return this.authorizationCode; }
+
+    public void setComment(String comment) { this.comment = comment; }
+
+    public String getComment() { return this.comment; }
+
+    public void setPaymentProviderType(String paymentProviderType) { this.paymentProviderType = paymentProviderType; }
+
+    public String getPaymentProviderType() { return this.paymentProviderType; }
+
+
+    public String getCardBrand() {
+        return cardBrand;
+    }
+
+    public void setCardBrand(String cardBrand) {
+        this.cardBrand = cardBrand;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 }

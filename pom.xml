@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>is.bokun</groupId>
     <artifactId>bokun-api</artifactId>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.5-SNAPSHOT</version>
     <repositories>
         <repository>
             <id>sonatype</id>
