@@ -16,6 +16,8 @@ public class CustomFieldTextValueDto extends CustomFieldDto {
 
 	public String value;
 
+	public String code;
+
     public CustomFieldTextValueDto() {}
 	
 	public CustomFieldTextValueDto(String value, List<String> flags) {
