@@ -537,6 +537,6 @@ public class ShoppingCartClient extends AbstractClient {
     }
     
     private ShoppingCartDto postAndGetCart(String uri, Object body) {
-        return postAndValidate(uri, body, ShoppingCartDto.class);
+        return postAndValidate(uri, body, ShoppingCartDto.class, true);
     }
 }
