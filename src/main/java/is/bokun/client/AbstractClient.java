@@ -95,8 +95,8 @@ public abstract class AbstractClient {
         try {
             if (logRequest) {
                 Request req = preparePost(uri, body).build();
-                System.err.println("Sending POST request to : " + uri);
-                System.err.println("Request contents: " + req.getStringData());
+                System.out.println("Sending POST request to : " + uri);
+                System.out.println("Request contents: " + req.getStringData());
             }
             Response r = preparePost(uri, body).execute().get();
             validateResponse(r);
