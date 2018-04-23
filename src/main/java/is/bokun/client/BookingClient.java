@@ -159,7 +159,7 @@ public class BookingClient extends AbstractClient {
     }
 
     private BookingDetailsDto postBooking(String uri, Object body) {
-        return postAndValidate(uri, body, BookingDetailsDto.class);
+        return postAndValidate(uri, body, BookingDetailsDto.class, true);
     }
 
     /**
