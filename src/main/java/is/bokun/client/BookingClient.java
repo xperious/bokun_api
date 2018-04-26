@@ -195,8 +195,8 @@ public class BookingClient extends AbstractClient {
      * @param currency The currency used for prices.
      * @return Booking details for the confirmed booking.
      */
-    public BookingDetailsDto confirmBooking(Long bookingId, String lang, String currency, boolean sendCustomerConfirmation) {
-    	return confirmBooking(bookingId, new CustomerPaymentDto(), lang, currency, sendCustomerConfirmation);
+    public BookingDetailsDto confirmBooking(Long bookingId, String lang, String currency, boolean sendCustomerNotification) {
+    	return confirmBooking(bookingId, new CustomerPaymentDto(), lang, currency, sendCustomerNotification);
     }
     
     /**
@@ -208,10 +208,10 @@ public class BookingClient extends AbstractClient {
      * @param currency The currency used for prices.
      * @return Booking details for the confirmed booking.
      */
-    public BookingDetailsDto confirmBooking(Long bookingId, CustomerPaymentDto payment, String lang, String currency, boolean sendCustomerConfirmation) {
+    public BookingDetailsDto confirmBooking(Long bookingId, CustomerPaymentDto payment, String lang, String currency, boolean sendCustomerNotification) {
     	BookingConfirmationDto confirmation = new BookingConfirmationDto();
     	confirmation.payment = payment;
-    	return confirmBooking(bookingId, confirmation, lang, currency, sendCustomerConfirmation);
+    	return confirmBooking(bookingId, confirmation, lang, currency, sendCustomerNotification);
     }
     
     /**
@@ -223,8 +223,8 @@ public class BookingClient extends AbstractClient {
      * @param currency The currency used for prices.
      * @return Booking details for the confirmed booking.
      */
-    public BookingDetailsDto confirmBooking(Long bookingId, BookingConfirmationDto confirmation, String lang, String currency, boolean sendCustomerConfirmation) {
-        String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/confirm", lang, currency, new NVP("sendCustomerConfirmation", sendCustomerConfirmation));
+    public BookingDetailsDto confirmBooking(Long bookingId, BookingConfirmationDto confirmation, String lang, String currency, boolean sendCustomerNotification) {
+        String uri = appendLangAndCurrency(BASE + "/" + bookingId + "/confirm", lang, currency, new NVP("sendCustomerNotification", sendCustomerNotification));
         return postBooking(uri, confirmation);
     }
 
