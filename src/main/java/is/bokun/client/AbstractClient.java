@@ -100,6 +100,7 @@ public abstract class AbstractClient {
             }
             Response r = preparePost(uri, body).execute().get();
             validateResponse(r);
+            System.out.println("Response body: " + r.getResponseBody());
             return json.readValue(r.getResponseBody("UTF-8"), c);
         } catch (Exception e) {
             throw wrapException(e);
