@@ -102,6 +102,10 @@ public class ActivityDto extends ProductDto implements WithExtras {
 
 	public MeetingTypeEnum meetingType;
 
+	public BookingTypeEnum bookingType;
+
+	public CapacityTypeEnum capacityTypeEnum;
+
 	public ActivityDto() {
 		super();
 	}
@@ -543,4 +547,20 @@ public class ActivityDto extends ProductDto implements WithExtras {
 	public MeetingTypeEnum getMeetingType() { return meetingType; }
 
 	public void setMeetingType(MeetingTypeEnum meetingType) { this.meetingType = meetingType; }
+
+	public BookingTypeEnum getBookingType() {
+		return bookingType;
+	}
+
+	public void setBookingType(BookingTypeEnum bookingType) {
+		this.bookingType = bookingType;
+	}
+
+	public CapacityTypeEnum getCapacityTypeEnum() {
+		return capacityTypeEnum;
+	}
+
+	public void setCapacityTypeEnum(CapacityTypeEnum capacityTypeEnum) {
+		this.capacityTypeEnum = capacityTypeEnum;
+	}
 }

@@ -5,5 +5,5 @@ package is.bokun.dtos;
  */
 public enum CapacityTypeEnum {
 
-    LIMITED, UNLIMITED
+    LIMITED, UNLIMITED, ON_REQUEST, FREE_SALE
 }

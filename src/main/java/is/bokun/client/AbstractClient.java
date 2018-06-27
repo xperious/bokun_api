@@ -91,17 +91,18 @@ public abstract class AbstractClient {
         return postAndValidate(uri, body, c, false);
     }
 
-    protected <T> T postAndValidate(String uri, Object body, Class<T> c, Boolean logRequest) {
+    protected <T> T postAndValidate(String uri, Object body, Class<T> c, Boolean logRequestResponse) {
         try {
-            if (logRequest) {
+            if (logRequestResponse) {
                 Request req = preparePost(uri, body).build();
                 System.out.println("Sending POST request to : " + uri);
                 System.out.println("Request contents: " + req.getStringData());
             }
             Response r = preparePost(uri, body).execute().get();
             validateResponse(r);
-//            Do not do leave this in production, responses might be hell long
-//            System.out.println("Response body: " + r.getResponseBody());
+            if (logRequestResponse) {
+                System.out.println("Response body: " + r.getResponseBody());
+            }
             return json.readValue(r.getResponseBody("UTF-8"), c);
         } catch (Exception e) {
             throw wrapException(e);
