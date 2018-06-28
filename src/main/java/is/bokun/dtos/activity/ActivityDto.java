@@ -104,7 +104,7 @@ public class ActivityDto extends ProductDto implements WithExtras {
 
 	public BookingTypeEnum bookingType;
 
-	public CapacityTypeEnum capacityTypeEnum;
+	public CapacityTypeEnum capacityType;
 
 	public ActivityDto() {
 		super();
