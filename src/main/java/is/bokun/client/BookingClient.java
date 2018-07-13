@@ -62,6 +62,11 @@ public class BookingClient extends AbstractClient {
         return postAndValidate(uri, cancellationRequest, ApiResponse.class);
     }
 
+    public ApiResponse cancelProductBooking(String productConfirmationCode, CancelProductBookingDto cancellationRequest, Boolean logRequestResponse) {
+        String uri = BASE + "/cancel-product-booking/" + productConfirmationCode;
+        return postAndValidate(uri, cancellationRequest, ApiResponse.class, logRequestResponse);
+    }
+
     /**
      * Cancel booking of cart
      *
