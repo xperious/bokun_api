@@ -115,6 +115,11 @@ public class BookingClient extends AbstractClient {
         return postBooking(uri, reservationInfo);
     }
 
+    public BookingDetailsDto reserveBookingForGuest(String sessionId, BookingReservationRequestDto reservationInfo, String lang, String currency, Map<String,String> paymentProviderParams, Boolean logRequestResponse) {
+        String uri = appendQueryParams(BASE + "/guest/" + sessionId + "/reserve", gatherParams(lang, currency, paymentProviderParams));
+        return postBooking(uri, reservationInfo, logRequestResponse);
+    }
+
     /**
      * Reserve a booking for a guest, reserving availability for all products.
      * Then try charging a card to pay for the booking.
@@ -164,7 +169,11 @@ public class BookingClient extends AbstractClient {
     }
 
     private BookingDetailsDto postBooking(String uri, Object body) {
-        return postAndValidate(uri, body, BookingDetailsDto.class, true);
+        return postAndValidate(uri, body, BookingDetailsDto.class, false);
+    }
+
+    private BookingDetailsDto postBooking(String uri, Object body, Boolean logRequestResponse) {
+        return postAndValidate(uri, body, BookingDetailsDto.class, logRequestResponse);
     }
 
     /**
