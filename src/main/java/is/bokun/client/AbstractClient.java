@@ -200,7 +200,16 @@ public abstract class AbstractClient {
         if ( r.getStatusCode() != 200 ) {
             // try parsing an API response
             try {
-                System.err.println("Got error from Bokun API: " + r.getResponseBody("UTF-8"));
+                String response = r.getResponseBody("UTF-8");
+                System.err.println(
+                    "Got error from Bokun API. Status: " +
+                    r.getStatusCode() + "/" + r.getStatusText() +
+                    ", response: " +
+                    response
+                        .replace("\n", "")
+                        .replace("\r", "")
+                        .substring(0, Math.min(500, response.length()))
+                );
                 ApiResponse ar = json.readValue(r.getResponseBody("UTF-8"), ApiResponse.class);
                 throw new RestServiceException(ar);
             } catch (Exception e) {
