@@ -202,7 +202,7 @@ public abstract class AbstractClient {
             try {
                 String response = r.getResponseBody("UTF-8");
                 System.err.println(
-                    "Got error from Bokun API. Status: " +
+                    "Get error in is.bokun.client.AbstractClient. Status: " +
                     r.getStatusCode() + "/" + r.getStatusText() +
                     ", response: " +
                     response
